@@ -35,7 +35,12 @@ validation: validate_scene.py, run_physics_test.py, open_scene.py --self-test, v
 ```
 Details: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md). Formats: [docs/ASSET_FORMATS.md](docs/ASSET_FORMATS.md).
 Physics: [docs/PHYSICS_AND_COLLISION.md](docs/PHYSICS_AND_COLLISION.md). Tests: [docs/VALIDATION.md](docs/VALIDATION.md).
-Backends: [docs/GEOMETRY_BACKENDS.md](docs/GEOMETRY_BACKENDS.md).
+Backends: [docs/GEOMETRY_BACKENDS.md](docs/GEOMETRY_BACKENDS.md) (function-level FreeCAD → Blender → USD path).
+Comparison: [docs/CAD_VS_BLENDER_COMPARISON.md](docs/CAD_VS_BLENDER_COMPARISON.md).
+**Roles:**
+- FreeCAD authors CAD geometry; it is the source of truth for CAD assets.
+- Blender is the common preparation / USD stage and imports the CAD tessellation; it never remodels CAD assets.
+- Colliders are analytic, simplified, and checked against the mesh by `colliders_match_mesh`.
 
 ## Directory map
 
@@ -81,6 +86,8 @@ export FREECAD_EXECUTABLE=/path/to/FreeCAD.AppImage   # OPTIONAL (freecad backen
 | Geometric reachability (IK + endpoint clearance) | `"$ISAACSIM_PYTHON" scripts/assets/reachability_check.py --scene <scene>.json --pick-support <tray> --drop <prefix>=<container> …` | Isaac |
 | Which geometry backend a spec gets (no build) | `python3 scripts/assets/backends.py select config/assets/<id>.json` (`tools` lists detected tools) | python3 |
 | CAD backend comparison (Blender vs FreeCAD vs STEP import) | `scripts/assets/build_cad_comparison.sh` | Blender, FreeCAD, Isaac |
+| Side-by-side backend comparison scene (4 variants, labelled) | `scripts/assets/build_backend_comparison.sh` | Blender, Isaac |
+| Measured comparison + renders (read-only on the library) | `python3 scripts/assets/compare_backends.py [--no-render]` | Blender, FreeCAD |
 | Full incremental demo | `scripts/assets/run_demo.sh` | Blender, Isaac |
 | Industrial brass-sorting scene | `scripts/assets/build_industrial_scene.sh`; open: `"$ISAACSIM_PYTHON" scripts/workstation/open_scene.py --scene assets/scenes/derived/industrial_brass_sorting.usda` | Blender, Isaac |
 
@@ -116,7 +123,8 @@ Never run Omniverse/pxr code with system `python3` (no `pxr`, no `numpy` there);
    `backend: auto` + `accuracy: engineering` / `require_step: true` for a STEP-backed part. FreeCAD builders
    exist only for `fitting`: do not claim CAD for other methods, and add a builder instead
    ([docs/GEOMETRY_BACKENDS.md](docs/GEOMETRY_BACKENDS.md#adding-a-freecad-builder)). Use `mesh_import` for a
-   user-supplied STL / STEP.
+   user-supplied STL / STEP. Its colliders are solid (`convex_hull`) unless a matching fitting spec is given in
+   `collision.sections_from`, which generation verifies against the mesh. Never invent an open bore.
 3. Create/edit the scene config with `asset_lib.py new-scene / add-instance / scatter` (the collider-based placement
    pre-check runs; parts can rest `on_instance` of a container, labels are `attached` to mount points).
 4. `python3 scripts/assets/add_asset.py --spec … --scene … --base-suites --preview` → read

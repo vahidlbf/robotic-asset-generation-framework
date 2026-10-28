@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "asset_id": "label_cmp_blender",
+  "category": "marking/label",
+  "description": "Comparison-scene label 'BLENDER' (visual only, no colliders).",
+  "source": "Project design (comparison scene marking).",
+  "geometry": {
+    "method": "label_plate",
+    "size": [
+      0.085,
+      0.003,
+      0.022
+    ],
+    "text": "BLENDER",
+    "text_color": [
+      0.015,
+      0.015,
+      0.015
+    ],
+    "text_height": 0.009,
+    "text_relief": 0.0006,
+    "bevel": 0.0006
+  },
+  "visual_material": {
+    "color": [
+      0.86,
+      0.86,
+      0.84
+    ],
+    "roughness": 0.5,
+    "metallic": 0.0
+  },
+  "collision": {
+    "representation": "none"
+  },
+  "physics": {
+    "body": "static"
+  },
+  "validation": {
+    "dimension_tolerance_m": 0.0005
+  }
+}

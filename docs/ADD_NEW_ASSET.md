@@ -46,9 +46,15 @@ geometry `method` is one of
 **Geometry backend** (`geometry.backend`; absent = `blender`): `auto` picks FreeCAD for `fitting` when
 `accuracy: engineering` or `require_step: true` and FreeCAD is installed, picks `import` for `mesh_import`, and
 otherwise picks Blender. It records the rule and reason in `asset_info.json`. Check it before building with
-`python3 scripts/assets/backends.py select <spec>`. Example: `config/assets/brass_adapter_male_cad.json` (FreeCAD,
-STEP) and `config/assets/brass_adapter_male_step_import.json` (STEP import). Details and limits:
-[GEOMETRY_BACKENDS.md](GEOMETRY_BACKENDS.md).
+`python3 scripts/assets/backends.py select <spec>`. Examples:
+- `config/assets/brass_adapter_male_cad.json`: FreeCAD; it writes STEP and, for builds from now on, `.FCStd`.
+- `config/assets/brass_adapter_male_step_import.json`: STEP import with a solid hull collider.
+- `config/assets/brass_adapter_male_step_import_open.json`: STEP import with open-bore colliders from
+  `collision.sections_from`, verified against the mesh.
+
+Details and limits: [GEOMETRY_BACKENDS.md](GEOMETRY_BACKENDS.md). To compare a CAD asset with its Blender
+counterpart, adapt the asset list in `scripts/assets/compare_backends.py`; see
+[CAD_VS_BLENDER_COMPARISON.md](CAD_VS_BLENDER_COMPARISON.md).
 
 `fitting` sections are `cylinder` (`diameter`, `chamfer_start/end`, `grooves`), `cone` (`d0`, `d1`), `hex`
 (`across_flats`, `chamfer`) and `thread` (outer: `major_diameter`, bore: `minor_diameter`; `pitch`, `depth`; a visual

@@ -3,7 +3,7 @@
   "scene_config": "config/scenes/brass_cad_comparison.json",
   "output": "assets/scenes/derived/brass_cad_comparison.usda",
   "base_scene": "assets/scenes/waste_sorting_workstation.usd",
-  "generated": "2026-10-28T18:19:47+01:00",
+  "generated": "2026-10-28T18:57:55+01:00",
   "passed": true,
   "summary": "76/76 checks passed",
   "failed": [],

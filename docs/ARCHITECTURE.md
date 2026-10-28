@@ -50,7 +50,7 @@ Every stage is a separate process; Omniverse code only runs under Isaac Sim's `p
 
 | Question | Answer (from the code) |
 |---|---|
-| Generates geometry | `generate_assets.py` (all workstation assets, fixed builder list in `main()`); `generate_asset.py` (one library asset from a spec). The workstation is built in Blender (`bpy`, `bmesh`). Library assets go through a **geometry backend** chosen by `backends.select_backend`: Blender builders (default), the optional FreeCAD builder `freecad_build.py` (parametric solid → STEP + tessellation → Blender visual), or an STL/STEP import. See [GEOMETRY_BACKENDS.md](GEOMETRY_BACKENDS.md). |
+| Generates geometry | `generate_assets.py` (all workstation assets, fixed builder list in `main()`); `generate_asset.py` (one library asset from a spec). The workstation is built in Blender (`bpy`, `bmesh`). Library assets go through a **geometry backend** chosen by `backends.select_backend`: Blender builders (default), the optional FreeCAD builder `freecad_build.py` (parametric solid → STEP + tessellation → Blender visual), or an STL/STEP import. On every route Blender is the preparation / USD stage; the CAD routes hand Blender the actual FreeCAD tessellation. Function-level path: [GEOMETRY_BACKENDS.md](GEOMETRY_BACKENDS.md#execution-path-of-the-freecad-route-function-level). |
 | Generates physics-ready USD | the same scripts, via `generate_assets.write_asset()` using Blender's bundled `pxr` (UsdPhysics only): colliders, `UsdPhysics` material, `RigidBodyAPI` + `MassAPI`. PhysX-specific attributes (combine modes) are authored later at scene level, because Blender's USD has no `PhysxSchema`. |
 | Assembles the workstation | `build_scene.py` (Isaac): deletes and rewrites `assets/scenes/waste_sorting_workstation.usd` from the config, references every asset by relative path and the Franka by URL. |
 | Adds objects incrementally | `compose_scene.py`: writes `assets/scenes/derived/<scene>.usda`, which sublayers the base scene and references library assets; it can also deactivate base prims (`active = false` in the derived layer only) and add preview cameras. Pure `Sdf` authoring, so it runs in Blender or Isaac. |
@@ -84,6 +84,9 @@ Every stage is a separate process; Omniverse code only runs under Isaac Sim's `p
 | Module | Runs in | Responsibility |
 |---|---|---|
 | `backends.py` | any Python (stdlib) | Backend capabilities, FreeCAD discovery (`FREECAD_EXECUTABLE`, never starts the GUI), deterministic `select_backend` (decision + rule + reason), spec-level backend errors. |
+| `freecad_measure.py` | FreeCAD `freecadcmd` | Comparison only: exact B-rep measurements of a STEP, a 1 µm reference tessellation, exact point-to-solid distances. |
+| `mesh_compare.py` | Blender | Comparison only: mesh metrics, feature measurements, sampled two-sided distances to the CAD surface, collider analysis, comparison renders (read-only). |
+| `compare_backends.py` | python3 | Orchestrates the two above → `logs/assets/backend_comparison/`, `docs/images/cad_comparison/`. |
 | `freecad_build.py` | FreeCAD `freecadcmd` | Parametric `fitting` solid from the spec sections (cylinders, cones, `makeChamfer`, groove cuts, chamfered hex, revolved bore cut; cosmetic threads), or STEP read; validity / bounding box / STEP round trip / tessellation checks; STEP + STL export; exact volume, COM, inertia. |
 | `asset_lib.py` | any Python | Paths (`abspath` refuses paths outside the project), tool discovery (`isaac_python`, `blender_bin`), JSON-schema subset validator, spec rules (`spec_errors`), derived values (`nominal_size`, `expected_colliders`), **analytic geometry shared by generator, placement and validators** (`container_dims`, `fitting_sections`, `fitting_zones`, `collider_pieces`, `support_surface`, `mount_frames`), asset status (`missing/stale/modified/failed/current`), registry, scene configs, **instance poses** (`scene_poses`: tabletop / floor / on another instance / attached to a mount point; upright or lying rest pose from the colliders), piece-based placement pre-check, seeded `scatter`, CLI. |
 | `generate_asset.py` | Blender | One asset: geometry method (`box`, `cylinder`, `tube`, `open_container`, `fitting`, `label_plate`) → visual mesh (+ sharp-edge shading), mass from mesh volume, colliders (`primitive`, `convex_hull`, `ring_segments`, `container_walls`, `fitting_sections`, `none`; optional PhysX contact offset), `export_visual` + `write_asset`, self-checks, `asset_info.json`, registry. Builds into `<id>.tmp/`, then moves the files into place. |
@@ -93,6 +96,7 @@ Every stage is a separate process; Omniverse code only runs under Isaac Sim's `p
 | `add_asset.py` | python3 | Orchestrator (one or several `--spec`) plus protected-file hashing and a report. |
 | `negative_control.py` | python3 → Isaac | Proves the validator rejects a tampered layer. |
 | `run_demo.sh` | bash | Reproduces the incremental demonstration (`test_spacer`). |
+| `build_backend_comparison.sh` | bash | The four brass-adapter variants upright and labelled on the unchanged workstation (`brass_backend_comparison`). |
 | `build_cad_comparison.sh` | bash | Blender vs. FreeCAD vs. STEP-import variants of one fitting on the unchanged workstation (`brass_cad_comparison`). |
 | `build_industrial_scene.sh` | bash | Reproduces the industrial brass-sorting scene (6 assets, 12 instances) end to end. |
 

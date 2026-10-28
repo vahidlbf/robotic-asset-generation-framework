@@ -78,6 +78,8 @@ warnings. Expected output on the tested machine: `environment check: OK`.
 | Spec / scene / placement unit tests (python3 only) | `python3 scripts/assets/asset_lib.py selftest` | nothing |
 | Check one spec | `python3 scripts/assets/asset_lib.py validate-spec config/assets/brass_adapter_male.json` | nothing |
 | Which backend would build a spec (no build) | `python3 scripts/assets/backends.py select config/assets/brass_adapter_male_cad.json` | nothing |
+| Side-by-side comparison scene (4 variants) | `scripts/assets/build_backend_comparison.sh` | `brass_backend_comparison` scene, `logs/assets/brass_backend_comparison/` |
+| Measured Blender-vs-CAD comparison + renders (FreeCAD needed) | `python3 scripts/assets/compare_backends.py` | `logs/assets/backend_comparison/`, `docs/images/cad_comparison/` |
 | CAD backend comparison scene (FreeCAD needed) | `scripts/assets/build_cad_comparison.sh` | the two CAD variants (if not current), `brass_cad_comparison` scene, `logs/assets/brass_cad_comparison/` |
 | Generate one library asset (skipped when current) | `"$BLENDER" -b --factory-startup --python-exit-code 1 --python scripts/assets/generate_asset.py -- --spec config/assets/brass_adapter_male.json` | `assets/library/<id>/` only if not current |
 | Rebuild one asset | the same with `--force` | that asset's files (+ `registry.json`) |

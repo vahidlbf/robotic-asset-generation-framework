@@ -1,0 +1,169 @@
+{
+  "asset_id": "label_cmp_freecad",
+  "schema_version": 1,
+  "ok": true,
+  "spec_file": "config/assets/label_cmp_freecad.json",
+  "spec_sha256": "501dfdc63e65b5b2e93b02605ac40bdab13ac9f536526ddaf9325d8c4d9b855a",
+  "spec": {
+    "schema_version": 1,
+    "asset_id": "label_cmp_freecad",
+    "category": "marking/label",
+    "description": "Comparison-scene label 'FREECAD' (visual only, no colliders).",
+    "source": "Project design (comparison scene marking).",
+    "geometry": {
+      "method": "label_plate",
+      "size": [
+        0.085,
+        0.003,
+        0.022
+      ],
+      "text": "FREECAD",
+      "text_color": [
+        0.015,
+        0.015,
+        0.015
+      ],
+      "text_height": 0.009,
+      "text_relief": 0.0006,
+      "bevel": 0.0006
+    },
+    "visual_material": {
+      "color": [
+        0.86,
+        0.86,
+        0.84
+      ],
+      "roughness": 0.5,
+      "metallic": 0.0
+    },
+    "collision": {
+      "representation": "none"
+    },
+    "physics": {
+      "body": "static"
+    },
+    "validation": {
+      "dimension_tolerance_m": 0.0005
+    }
+  },
+  "resolved_physics_material": null,
+  "generator": "scripts/assets/generate_asset.py",
+  "blender_version": "5.2.2 LTS",
+  "generated_utc": "2026-10-28T17:39:15+00:00",
+  "files": [
+    "label_cmp_freecad.usd",
+    "label_cmp_freecad_visual.usd"
+  ],
+  "file_sha256": {
+    "label_cmp_freecad.usd": "91284215720685013c94373a9e5333c1ffe4c992dbfa20772d3001ade9223ee8",
+    "label_cmp_freecad_visual.usd": "c63bb8efd374f35c6ab2e7e256195e4852613c8962c481225d81db19419ceb6e"
+  },
+  "usd_root_prim": "/LabelCmpFreecad",
+  "physics_material_prim": null,
+  "bounds_visual_m": [
+    [
+      -0.042500000447034836,
+      -0.0015000002458691597,
+      0.0
+    ],
+    [
+      0.042500000447034836,
+      0.001500000013038516,
+      0.02199999988079071
+    ]
+  ],
+  "nominal_bounds_m": [
+    [
+      -0.0425,
+      -0.0015,
+      0.0
+    ],
+    [
+      0.0425,
+      0.0015,
+      0.022
+    ]
+  ],
+  "mesh": {
+    "triangles": 1256,
+    "vertices": 1220,
+    "objects": 2,
+    "volume_m3": 4.492931772697914e-06,
+    "non_manifold_edges": 1164,
+    "boundary_edges": 1164,
+    "analytic_volume_m3": null,
+    "polygon_volume_m3": null,
+    "reference": "none (static visual mesh of several closed parts; volume not used)",
+    "volume_vs_polygon_rel_error": null
+  },
+  "mass_properties": null,
+  "colliders": [],
+  "collider_representation": "none",
+  "mounts": {},
+  "geometry_backend": {
+    "requested": "blender",
+    "method": "label_plate",
+    "accuracy": "visual",
+    "require_step": false,
+    "tools": {
+      "blender": true,
+      "freecad": true,
+      "freecad_executable": "FreeCAD_1.1.4-Linux-x86_64-py311.AppImage"
+    },
+    "rules": [
+      "1: explicit backend"
+    ],
+    "ok": true,
+    "error": null,
+    "backend": "blender",
+    "reason": "explicitly requested backend 'blender' (default for specs without geometry.backend)"
+  },
+  "cad": null,
+  "import_source": null,
+  "checks": {
+    "dimensions": {
+      "passed": true,
+      "measured_size_m": [
+        0.08500000089406967,
+        0.0030000002589076757,
+        0.02199999988079071
+      ],
+      "nominal_size_m": [
+        0.085,
+        0.003,
+        0.022
+      ],
+      "tolerance_m": 0.0005,
+      "bottom_z_m": 0.0
+    },
+    "closed_manifold_mesh": {
+      "passed": true,
+      "non_manifold_edges": 1164,
+      "boundary_edges": 1164,
+      "note": "informational for label plates (font outlines; static, no mass)"
+    },
+    "mesh_volume_matches_geometry": {
+      "passed": true,
+      "relative_error": null,
+      "tolerance": 1e-05,
+      "reference": "none (static visual mesh of several closed parts; volume not used)",
+      "note": "closed-mesh volume vs. the exact volume of the tessellated solid (float32 vertices); fitting: vs. the ring-loft integral (non-planar thread quads are triangulated); informational for bevelled boxes and static containers/labels"
+    },
+    "usd_asset": {
+      "default_prim": "/LabelCmpFreecad",
+      "units_ok": true,
+      "colliders": 0,
+      "colliders_expected": 0,
+      "colliders_guide_purpose": true,
+      "colliders_physics_material_bound": true,
+      "unresolved_dependencies": [],
+      "visual_meshes": 2,
+      "visual_references": [
+        "./label_cmp_freecad_visual.usd"
+      ],
+      "rigid_body": false,
+      "mass_authored_kg": null,
+      "passed": true
+    }
+  }
+}

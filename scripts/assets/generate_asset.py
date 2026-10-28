@@ -475,6 +475,56 @@ def import_mesh(path, scale, name, mat, recenter):
     return ob
 
 
+def colliders_match_mesh(spec, objs):
+    """fitting_sections colliders are analytic (from the spec's sections); check them against the ACTUAL visual mesh, zone
+    by zone: the collider's outer extent must cover the mesh's outer radius (and not exceed it by more than the dimension
+    tolerance), and no collider may reach into the measured bore (inner apothem >= the largest inner-surface radius)."""
+    import numpy as np
+
+    # classify triangles by orientation (radius alone fails on stepped profiles): normal pointing away from the axis ->
+    # outer surface, towards it -> bore; end faces (normal ~ +-z) are ignored. Points are sampled ACROSS each triangle
+    # (barycentric grid): CAD tessellations have long triangles whose vertices all lie at the ends of a cylinder.
+    T = np.array([[tuple(o.matrix_world @ o.data.vertices[i].co) for i in lt.vertices] for o in objs
+                  for lt in (o.data.calc_loop_triangles() or o.data.loop_triangles)], float)
+    n = np.cross(T[:, 1] - T[:, 0], T[:, 2] - T[:, 0])
+    n /= np.maximum(np.linalg.norm(n, axis=1), 1e-30)[:, None]
+    cen = T.mean(axis=1)
+    rc = np.maximum(np.hypot(cen[:, 0], cen[:, 1]), 1e-12)
+    radial = (n[:, 0] * cen[:, 0] + n[:, 1] * cen[:, 1]) / rc
+    k = 6
+    bary = np.array([(i / k, j / k) for i in range(k + 1) for j in range(k + 1 - i)])
+    S = T[:, None, 0] + bary[None, :, 0, None] * (T[:, None, 1] - T[:, None, 0]) + bary[None, :, 1, None] * (T[:, None, 2] - T[:, None, 0])
+    keep = np.abs(radial) >= 0.5
+    S = S[keep].reshape(-1, 3)
+    C = np.repeat(np.sign(radial[keep]), len(bary))
+    Rv, Zv = np.hypot(S[:, 0], S[:, 1]), S[:, 2]
+    C, r, Z = np.array(C), np.array(Rv), np.array(Zv)
+    tol = spec.get("validation", {}).get("dimension_tolerance_m", al.DEFAULT_TOL)
+    zones, worst = [], {"outer_excess_m": 0.0, "outer_shortfall_m": 0.0, "bore_intrusion_m": 0.0}
+    for zn in al.fitting_zones(spec):
+        e = min(5e-5, (zn["z1"] - zn["z0"]) / 4)
+        sel = (Z > zn["z0"] + e) & (Z < zn["z1"] - e)
+        if not sel.any():
+            zones.append({"zone": zn["index"], "vertices": 0})
+            continue
+        outer, inner = r[sel & (C > 0)], r[sel & (C < 0)]
+        vr = zn["apothem"] / math.cos(math.pi / zn["n"])
+        rec = {"zone": zn["index"], "shape": zn["shape"], "mesh_outer_max_m": float(outer.max()) if outer.size else None,
+               "collider_apothem_m": zn["apothem"], "collider_vertex_radius_m": vr,
+               "mesh_bore_max_m": float(inner.max()) if inner.size else None, "collider_inner_apothem_m": zn["bore_radius"]}
+        if outer.size:
+            worst["outer_excess_m"] = max(worst["outer_excess_m"], zn["apothem"] - float(outer.max()))
+            worst["outer_shortfall_m"] = max(worst["outer_shortfall_m"], float(outer.max()) - vr)
+        if inner.size:
+            worst["bore_intrusion_m"] = max(worst["bore_intrusion_m"], float(inner.max()) - zn["bore_radius"])
+        zones.append(rec)
+    ok = worst["outer_excess_m"] <= tol and worst["outer_shortfall_m"] <= 1e-5 and worst["bore_intrusion_m"] <= 1e-5 and \
+        all(z.get("vertices", 1) for z in zones)
+    return {"passed": ok, **worst, "tolerance_m": tol, "zones": zones,
+            "note": "analytic colliders vs. the actual visual mesh (CAD tessellation for the CAD routes): outer excess <= "
+                    "tolerance, no mesh beyond the collider's outer vertices, no collider inside the measured bore"}
+
+
 def mesh_checks(objs, spec):
     non_manifold = boundary = 0
     for ob in objs:
@@ -658,6 +708,8 @@ def generate(spec_rel, force=False):
                                              "inside the length; off-diagonal inertia < 1 % (principal axes = asset axes)"}
     if cad_mass_check:
         checks["cad_mesh_mass_consistency"] = cad_mass_check
+    if spec["collision"]["representation"] == "fitting_sections":
+        checks["colliders_match_mesh"] = colliders_match_mesh(spec, objs)
     if cad:
         checks["cad_solid"] = {"passed": cad["ok"], "freecad_checks": {k: v["passed"] for k, v in cad["checks"].items()}}
     ok = all(c["passed"] for c in checks.values())
@@ -667,7 +719,8 @@ def generate(spec_rel, force=False):
     for fn in os.listdir(tmp_dir):
         os.replace(os.path.join(tmp_dir, fn), os.path.join(final_dir, fn))
     shutil.rmtree(tmp_dir, ignore_errors=True)
-    files = [os.path.basename(paths["usd"]), os.path.basename(paths["visual"])] + ([cad["step"]] if cad and sel["backend"] == "freecad" else [])
+    files = [os.path.basename(paths["usd"]), os.path.basename(paths["visual"])] + (
+        [cad["step"]] + ([cad["fcstd"]] if cad.get("fcstd") else []) if cad and sel["backend"] == "freecad" else [])
     info = {"asset_id": aid, "schema_version": 1, "ok": ok, "spec_file": al.relpath(al.abspath(spec_rel)),
             "spec_sha256": al.canonical_sha256(spec), "spec": spec, "resolved_physics_material": pm,
             "generator": "scripts/assets/generate_asset.py", "blender_version": bpy.app.version_string,

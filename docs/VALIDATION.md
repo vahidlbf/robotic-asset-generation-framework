@@ -19,7 +19,8 @@ the bottles are solid, collision checking is discrete, and no grasping has been 
 | `scripts/assets/validate_asset_scene.py` | derived scene (targeted) | 54 for the spacer demo, 238 for `industrial_brass_sorting` | `logs/assets/<scene_id>/validation_*.{json,md}` |
 | `scripts/assets/reachability_check.py` | Lula IK + endpoint clearance of pickup / drop poses | per pose | `logs/assets/<scene_id>/reachability.{json,md}` |
 | `scripts/assets/negative_control.py` | the validator must fail on a tampered layer | 3 expected failures | `logs/assets/negative_control/` |
-| `scripts/assets/asset_lib.py selftest` | spec/scene/placement/backend-selection unit cases | 48 cases | console |
+| `scripts/assets/asset_lib.py selftest` | spec/scene/placement/backend-selection unit cases | 51 cases | console |
+| `scripts/assets/compare_backends.py` | Blender-vs-CAD measurements (dimensions, sampled surface deviations, physics, colliders) | report | `logs/assets/backend_comparison/` |
 
 ## Static validation (`validate_scene.py`): groups and counts
 
@@ -74,8 +75,9 @@ the bottles are solid, collision checking is discrete, and no grasping has been 
 - **`scene`** (from the scene config's `validation` block): distinct geometry of asset pairs (mesh hash, size, volume
   > 10 %, section layout), `compare_assets` variant pairs (same envelope within tolerance; volume / mass / inertia
   differences reported), the number of individual rigid bodies per support, and initially empty drop-test containers.
-- **CAD routes (generation):** `cad_solid` (FreeCAD: valid closed solid, bounding box, STEP round trip, tessellation)
-  and `cad_mesh_mass_consistency`; see [GEOMETRY_BACKENDS.md](GEOMETRY_BACKENDS.md#checks-on-the-cad-routes).
+- **CAD routes (generation):** `cad_solid` (FreeCAD: valid closed solid, bounding box, STEP round trip, tessellation,
+  `.FCStd` saved) and `cad_mesh_mass_consistency`. Every `fitting_sections` asset also gets `colliders_match_mesh`
+  (analytic colliders vs. the actual mesh); see [GEOMETRY_BACKENDS.md](GEOMETRY_BACKENDS.md#checks-on-the-cad-routes).
 - **`physics:*` for supported parts:**
   - `settled_on_support`, `inside_support_no_penetration` (final collider vertices vs. the container's inner wall
     planes and floor), `orientation_stable`, `no_extreme_motion` (≤ 0.3 m/s, ≤ 5 rad/s) and the support-floor
@@ -109,6 +111,21 @@ the bottles are solid, collision checking is discrete, and no grasping has been 
   covers the robot instead.
 - **Discrete collision checks:** clearances are checked at configurations, not swept volumes. Motion trajectories
   are re-checked densely (every 4 ms), but only at discrete times.
+
+## What was run for the CAD pipeline refinement and comparison (2026-10-28)
+
+| Run | Result |
+|---|---|
+| Baseline before editing | clean tree at `e75d50e`; 69 asset / config files hashed (content + mtime); parent 54 files |
+| `.FCStd` export, scratch build (FreeCAD only) | 6/6 CAD checks; STEP geometry section byte-identical to the committed STEP |
+| `.FCStd` end to end through `generate_asset.py` (temporary asset, removed) | files `.usd`, `_visual.usd`, `.step`, `.FCStd`; 8/8 checks incl. `colliders_match_mesh` on the CAD tessellation |
+| `brass_adapter_male_step_import_open` (open-bore import) | all checks PASS; `colliders_match_mesh` outer excess 0, bore intrusion 0 |
+| Negative control: wrong `sections_from` (female sections on the male STEP; temporary, removed) | `colliders_match_mesh` FAIL (7.5 mm excess, 1.95 mm bore intrusion), exit 1 |
+| `asset_lib.py selftest` | PASS, 51 cases |
+| `build_backend_comparison.sh` | PASS: 133/133 targeted, 94/94 static + 39/39 dynamic on the derived scene, 44 protected files + parent unchanged |
+| `compare_backends.py` | measurements + 7 renders; exact B-rep distance check: proxy error ≤ 3.4 µm |
+| Regression | brass_cad_comparison 76/76, industrial 238/238, spacer 54/54, negative control PASS, `run_regression.sh` 94/94, 39/39, GUI PASS |
+| After the work vs. the baseline | the 67 other baseline files are byte-identical with the same mtime; `registry.json` (derived) and the asset schema (new `sections_from`) changed as intended; parent unchanged |
 
 ## What was run for the geometry backends (2026-10-28)
 

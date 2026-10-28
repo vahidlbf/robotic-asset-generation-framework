@@ -1,0 +1,856 @@
+{
+  "passed": true,
+  "generated": "2026-10-28T18:56:53+01:00",
+  "spec": [
+    "config/assets/brass_adapter_male.json",
+    "config/assets/brass_adapter_male_cad.json",
+    "config/assets/brass_adapter_male_step_import.json",
+    "config/assets/brass_adapter_male_step_import_open.json",
+    "config/assets/label_cmp_blender.json",
+    "config/assets/label_cmp_freecad.json",
+    "config/assets/label_cmp_step.json",
+    "config/assets/label_cmp_step_open.json"
+  ],
+  "asset_id": "brass_adapter_male+brass_adapter_male_cad+brass_adapter_male_step_import+brass_adapter_male_step_import_open+label_cmp_blender+label_cmp_freecad+label_cmp_step+label_cmp_step_open",
+  "asset_ids": [
+    "brass_adapter_male",
+    "brass_adapter_male_cad",
+    "brass_adapter_male_step_import",
+    "brass_adapter_male_step_import_open",
+    "label_cmp_blender",
+    "label_cmp_freecad",
+    "label_cmp_step",
+    "label_cmp_step_open"
+  ],
+  "scene_config": "config/scenes/brass_backend_comparison.json",
+  "derived_scene": "assets/scenes/derived/brass_backend_comparison.usda",
+  "asset_status_before": {
+    "brass_adapter_male": "current",
+    "brass_adapter_male_cad": "current",
+    "brass_adapter_male_step_import": "current",
+    "brass_adapter_male_step_import_open": "current",
+    "label_cmp_blender": "current",
+    "label_cmp_freecad": "current",
+    "label_cmp_step": "current",
+    "label_cmp_step_open": "current"
+  },
+  "asset_status_after": {
+    "brass_adapter_male": "current",
+    "brass_adapter_male_cad": "current",
+    "brass_adapter_male_step_import": "current",
+    "brass_adapter_male_step_import_open": "current",
+    "label_cmp_blender": "current",
+    "label_cmp_freecad": "current",
+    "label_cmp_step": "current",
+    "label_cmp_step_open": "current"
+  },
+  "asset_rebuilt": {
+    "brass_adapter_male": false,
+    "brass_adapter_male_cad": false,
+    "brass_adapter_male_step_import": false,
+    "brass_adapter_male_step_import_open": false,
+    "label_cmp_blender": false,
+    "label_cmp_freecad": false,
+    "label_cmp_step": false,
+    "label_cmp_step_open": false
+  },
+  "stages": [
+    {
+      "stage": "generate_asset (brass_adapter_male)",
+      "command": "blender -b --factory-startup --python-exit-code 1 --python scripts/assets/generate_asset.py -- --spec config/assets/brass_adapter_male.json",
+      "exit_code": 0,
+      "seconds": 1.6,
+      "log": "logs/assets/brass_backend_comparison/generate_brass_adapter_male.log"
+    },
+    {
+      "stage": "generate_asset (brass_adapter_male_cad)",
+      "command": "blender -b --factory-startup --python-exit-code 1 --python scripts/assets/generate_asset.py -- --spec config/assets/brass_adapter_male_cad.json",
+      "exit_code": 0,
+      "seconds": 1.7,
+      "log": "logs/assets/brass_backend_comparison/generate_brass_adapter_male_cad.log"
+    },
+    {
+      "stage": "generate_asset (brass_adapter_male_step_import)",
+      "command": "blender -b --factory-startup --python-exit-code 1 --python scripts/assets/generate_asset.py -- --spec config/assets/brass_adapter_male_step_import.json",
+      "exit_code": 0,
+      "seconds": 1.7,
+      "log": "logs/assets/brass_backend_comparison/generate_brass_adapter_male_step_import.log"
+    },
+    {
+      "stage": "generate_asset (brass_adapter_male_step_import_open)",
+      "command": "blender -b --factory-startup --python-exit-code 1 --python scripts/assets/generate_asset.py -- --spec config/assets/brass_adapter_male_step_import_open.json",
+      "exit_code": 0,
+      "seconds": 1.6,
+      "log": "logs/assets/brass_backend_comparison/generate_brass_adapter_male_step_import_open.log"
+    },
+    {
+      "stage": "generate_asset (label_cmp_blender)",
+      "command": "blender -b --factory-startup --python-exit-code 1 --python scripts/assets/generate_asset.py -- --spec config/assets/label_cmp_blender.json",
+      "exit_code": 0,
+      "seconds": 1.7,
+      "log": "logs/assets/brass_backend_comparison/generate_label_cmp_blender.log"
+    },
+    {
+      "stage": "generate_asset (label_cmp_freecad)",
+      "command": "blender -b --factory-startup --python-exit-code 1 --python scripts/assets/generate_asset.py -- --spec config/assets/label_cmp_freecad.json",
+      "exit_code": 0,
+      "seconds": 1.6,
+      "log": "logs/assets/brass_backend_comparison/generate_label_cmp_freecad.log"
+    },
+    {
+      "stage": "generate_asset (label_cmp_step)",
+      "command": "blender -b --factory-startup --python-exit-code 1 --python scripts/assets/generate_asset.py -- --spec config/assets/label_cmp_step.json",
+      "exit_code": 0,
+      "seconds": 1.6,
+      "log": "logs/assets/brass_backend_comparison/generate_label_cmp_step.log"
+    },
+    {
+      "stage": "generate_asset (label_cmp_step_open)",
+      "command": "blender -b --factory-startup --python-exit-code 1 --python scripts/assets/generate_asset.py -- --spec config/assets/label_cmp_step_open.json",
+      "exit_code": 0,
+      "seconds": 1.6,
+      "log": "logs/assets/brass_backend_comparison/generate_label_cmp_step_open.log"
+    },
+    {
+      "stage": "compose_scene",
+      "command": "blender -b --factory-startup --python-exit-code 1 --python scripts/assets/compose_scene.py -- --scene config/scenes/brass_backend_comparison.json",
+      "exit_code": 0,
+      "seconds": 1.5,
+      "log": "logs/assets/brass_backend_comparison/compose.log"
+    },
+    {
+      "stage": "validate_asset_scene",
+      "command": "/home/mm42/isaacsim/python.sh scripts/assets/validate_asset_scene.py --scene config/scenes/brass_backend_comparison.json",
+      "exit_code": 0,
+      "seconds": 15.4,
+      "log": "logs/assets/brass_backend_comparison/validate.log"
+    },
+    {
+      "stage": "base suite: validate_scene",
+      "command": "/home/mm42/isaacsim/python.sh scripts/workstation/validate_scene.py --config logs/assets/brass_backend_comparison/base_suites/environment_config.json",
+      "exit_code": 0,
+      "seconds": 36.6,
+      "log": "logs/assets/brass_backend_comparison/base_suites/validate_scene.log"
+    },
+    {
+      "stage": "base suite: run_physics_test",
+      "command": "/home/mm42/isaacsim/python.sh scripts/workstation/run_physics_test.py --config logs/assets/brass_backend_comparison/base_suites/environment_config.json",
+      "exit_code": 0,
+      "seconds": 16.3,
+      "log": "logs/assets/brass_backend_comparison/base_suites/run_physics_test.log"
+    },
+    {
+      "stage": "preview",
+      "command": "/home/mm42/isaacsim/python.sh scripts/workstation/render_previews.py --config logs/assets/brass_backend_comparison/base_suites/environment_config.json --cameras backend_overview main",
+      "exit_code": 0,
+      "seconds": 20.3,
+      "log": "logs/assets/brass_backend_comparison/base_suites/render.log"
+    }
+  ],
+  "asset_info": {
+    "brass_adapter_male": {
+      "file_sha256": {
+        "brass_adapter_male.usd": "47cb105b95afa452813892a0253ece7a6593aa89218a00a655d0d5427a07bd07",
+        "brass_adapter_male_visual.usd": "8f77456cb22b3a2391d86202e3b2c23929fa6046eedd80592cad8e193036e0df"
+      },
+      "mass_properties": {
+        "mass_kg": 0.045,
+        "mass_source": "mass_kg",
+        "volume_m3": 5.490266311739419e-06,
+        "density_kg_m3": 8196.323719995135,
+        "center_of_mass": [
+          -2.121629102465417e-06,
+          4.704106645222134e-06,
+          0.02174335174024127
+        ],
+        "inertia_tensor": [
+          [
+            7.975401086671773e-06,
+            -4.216985596963279e-11,
+            2.3264369867509538e-09
+          ],
+          [
+            -4.216985596961953e-11,
+            7.975947903175224e-06,
+            1.9669377164971854e-09
+          ],
+          [
+            2.3264369867508264e-09,
+            1.96693771649718e-09,
+            3.4857567727468595e-06
+          ]
+        ],
+        "diagonal_inertia": [
+          7.975401086671773e-06,
+          7.975947903175224e-06,
+          3.4857567727468595e-06
+        ],
+        "max_offdiag_ratio": 0.0002916815675068288
+      },
+      "bounds_visual_m": [
+        [
+          -0.012413030490279198,
+          -0.01075000036507845,
+          0.0
+        ],
+        [
+          0.012413030490279198,
+          0.01075000036507845,
+          0.04500000178813934
+        ]
+      ],
+      "colliders": [
+        "Zone0_00",
+        "Zone0_01",
+        "Zone0_02",
+        "Zone0_03",
+        "Zone0_04",
+        "Zone0_05",
+        "Zone0_06",
+        "Zone0_07",
+        "Zone0_08",
+        "Zone0_09",
+        "Zone0_10",
+        "Zone0_11",
+        "Zone1_00",
+        "Zone1_01",
+        "Zone1_02",
+        "Zone1_03",
+        "Zone1_04",
+        "Zone1_05",
+        "Zone2_00",
+        "Zone2_01",
+        "Zone2_02",
+        "Zone2_03",
+        "Zone2_04",
+        "Zone2_05",
+        "Zone2_06",
+        "Zone2_07",
+        "Zone2_08",
+        "Zone2_09",
+        "Zone2_10",
+        "Zone2_11",
+        "Zone3_00",
+        "Zone3_01",
+        "Zone3_02",
+        "Zone3_03",
+        "Zone3_04",
+        "Zone3_05",
+        "Zone3_06",
+        "Zone3_07",
+        "Zone3_08",
+        "Zone3_09",
+        "Zone3_10",
+        "Zone3_11"
+      ],
+      "generated_utc": "2026-10-27T18:00:01+00:00"
+    },
+    "brass_adapter_male_cad": {
+      "file_sha256": {
+        "brass_adapter_male_cad.usd": "49fbceb0d4027633757e77c92620fd9c3bdd4232cb9ecb874126e86f986cc32d",
+        "brass_adapter_male_cad_visual.usd": "9820c8a1c8ab2d239069768923a71f40d9aabb39b6e242ee82de3a8860131d62",
+        "brass_adapter_male_cad.step": "51d4cde54919c6a3277d304f73b82c7991a1f96100a29114830d9b5c07ed407f"
+      },
+      "mass_properties": {
+        "mass_kg": 0.05024969607292468,
+        "mass_source": "density_kg_m3 x exact CAD volume",
+        "volume_m3": 5.932667777204803e-06,
+        "density_kg_m3": 8470.0,
+        "center_of_mass": [
+          -2.7877724782032543e-12,
+          -9.197902911046e-18,
+          0.020656040093552236
+        ],
+        "inertia_tensor": [
+          [
+            9.259882983411994e-06,
+            8.095739789438396e-22,
+            -2.3276428354308033e-16
+          ],
+          [
+            8.095739789438396e-22,
+            9.259882982378007e-06,
+            -8.592484861434035e-22
+          ],
+          [
+            -2.3276428354308033e-16,
+            -8.592484861434035e-22,
+            3.98854084136998e-06
+          ]
+        ],
+        "diagonal_inertia": [
+          9.259882983411994e-06,
+          9.259882982378007e-06,
+          3.98854084136998e-06
+        ],
+        "max_offdiag_ratio": 2.5136849348965913e-11,
+        "source": "exact CAD solid (FreeCAD)"
+      },
+      "bounds_visual_m": [
+        [
+          -0.012413031421601772,
+          -0.01075000036507845,
+          0.0
+        ],
+        [
+          0.012413031421601772,
+          0.01075000036507845,
+          0.04500000178813934
+        ]
+      ],
+      "colliders": [
+        "Zone0_00",
+        "Zone0_01",
+        "Zone0_02",
+        "Zone0_03",
+        "Zone0_04",
+        "Zone0_05",
+        "Zone0_06",
+        "Zone0_07",
+        "Zone0_08",
+        "Zone0_09",
+        "Zone0_10",
+        "Zone0_11",
+        "Zone1_00",
+        "Zone1_01",
+        "Zone1_02",
+        "Zone1_03",
+        "Zone1_04",
+        "Zone1_05",
+        "Zone2_00",
+        "Zone2_01",
+        "Zone2_02",
+        "Zone2_03",
+        "Zone2_04",
+        "Zone2_05",
+        "Zone2_06",
+        "Zone2_07",
+        "Zone2_08",
+        "Zone2_09",
+        "Zone2_10",
+        "Zone2_11",
+        "Zone3_00",
+        "Zone3_01",
+        "Zone3_02",
+        "Zone3_03",
+        "Zone3_04",
+        "Zone3_05",
+        "Zone3_06",
+        "Zone3_07",
+        "Zone3_08",
+        "Zone3_09",
+        "Zone3_10",
+        "Zone3_11"
+      ],
+      "generated_utc": "2026-10-28T17:10:50+00:00"
+    },
+    "brass_adapter_male_step_import": {
+      "file_sha256": {
+        "brass_adapter_male_step_import.usd": "17a23808b76727b11f1b124e292fa2f2840da8a540ff3c2c6ef59d752f1d56df",
+        "brass_adapter_male_step_import_visual.usd": "ab47bfe0bee48643b8e852303052b9f16696625700f0b6f1f8f58f8c3281d398"
+      },
+      "mass_properties": {
+        "mass_kg": 0.050249695688834445,
+        "mass_source": "density_kg_m3 x exact CAD volume",
+        "volume_m3": 5.932667731857667e-06,
+        "density_kg_m3": 8470.0,
+        "center_of_mass": [
+          -1.3693972091325075e-12,
+          2.8577627947379587e-16,
+          0.020656040104108684
+        ],
+        "inertia_tensor": [
+          [
+            9.259882965417526e-06,
+            2.479138509927405e-19,
+            -1.381045069476384e-16
+          ],
+          [
+            2.479138509927405e-19,
+            9.259882965243591e-06,
+            4.516437190557423e-21
+          ],
+          [
+            -1.381045069476384e-16,
+            4.516437190557423e-21,
+            3.9885408156182675e-06
+          ]
+        ],
+        "diagonal_inertia": [
+          9.259882965417526e-06,
+          9.259882965243591e-06,
+          3.9885408156182675e-06
+        ],
+        "max_offdiag_ratio": 1.491428212034765e-11,
+        "source": "exact CAD solid (FreeCAD)"
+      },
+      "bounds_visual_m": [
+        [
+          -0.012413031421601772,
+          -0.01075000036507845,
+          0.0
+        ],
+        [
+          0.012413031421601772,
+          0.01075000036507845,
+          0.04500000178813934
+        ]
+      ],
+      "colliders": [
+        "Hull"
+      ],
+      "generated_utc": "2026-10-28T17:12:12+00:00"
+    },
+    "brass_adapter_male_step_import_open": {
+      "file_sha256": {
+        "brass_adapter_male_step_import_open.usd": "7020ab0e5052cd634d82cfff59f2588e7086621bf3e38256c8697c69f9502dab",
+        "brass_adapter_male_step_import_open_visual.usd": "852a071ad3535bfeff7a0399e31d67ed288bf40e674c6a48cd3072516e53a891"
+      },
+      "mass_properties": {
+        "mass_kg": 0.050249695688834445,
+        "mass_source": "density_kg_m3 x exact CAD volume",
+        "volume_m3": 5.932667731857667e-06,
+        "density_kg_m3": 8470.0,
+        "center_of_mass": [
+          -1.3693972091325075e-12,
+          2.8577627947379587e-16,
+          0.020656040104108684
+        ],
+        "inertia_tensor": [
+          [
+            9.259882965417526e-06,
+            2.479138509927405e-19,
+            -1.381045069476384e-16
+          ],
+          [
+            2.479138509927405e-19,
+            9.259882965243591e-06,
+            4.516437190557423e-21
+          ],
+          [
+            -1.381045069476384e-16,
+            4.516437190557423e-21,
+            3.9885408156182675e-06
+          ]
+        ],
+        "diagonal_inertia": [
+          9.259882965417526e-06,
+          9.259882965243591e-06,
+          3.9885408156182675e-06
+        ],
+        "max_offdiag_ratio": 1.491428212034765e-11,
+        "source": "exact CAD solid (FreeCAD)"
+      },
+      "bounds_visual_m": [
+        [
+          -0.012413031421601772,
+          -0.01075000036507845,
+          0.0
+        ],
+        [
+          0.012413031421601772,
+          0.01075000036507845,
+          0.04500000178813934
+        ]
+      ],
+      "colliders": [
+        "Zone0_00",
+        "Zone0_01",
+        "Zone0_02",
+        "Zone0_03",
+        "Zone0_04",
+        "Zone0_05",
+        "Zone0_06",
+        "Zone0_07",
+        "Zone0_08",
+        "Zone0_09",
+        "Zone0_10",
+        "Zone0_11",
+        "Zone1_00",
+        "Zone1_01",
+        "Zone1_02",
+        "Zone1_03",
+        "Zone1_04",
+        "Zone1_05",
+        "Zone2_00",
+        "Zone2_01",
+        "Zone2_02",
+        "Zone2_03",
+        "Zone2_04",
+        "Zone2_05",
+        "Zone2_06",
+        "Zone2_07",
+        "Zone2_08",
+        "Zone2_09",
+        "Zone2_10",
+        "Zone2_11",
+        "Zone3_00",
+        "Zone3_01",
+        "Zone3_02",
+        "Zone3_03",
+        "Zone3_04",
+        "Zone3_05",
+        "Zone3_06",
+        "Zone3_07",
+        "Zone3_08",
+        "Zone3_09",
+        "Zone3_10",
+        "Zone3_11"
+      ],
+      "generated_utc": "2026-10-28T17:40:20+00:00"
+    },
+    "label_cmp_blender": {
+      "file_sha256": {
+        "label_cmp_blender.usd": "aaaa7247123e1f6d3d9d3bbbd4e28422031586b793f4c807576787e467571217",
+        "label_cmp_blender_visual.usd": "b9e350db50007d9d01f7d1780b4e5f70f1df7530988f2ffecfe00620c9f49c59"
+      },
+      "mass_properties": null,
+      "bounds_visual_m": [
+        [
+          -0.042500000447034836,
+          -0.0015000002458691597,
+          0.0
+        ],
+        [
+          0.042500000447034836,
+          0.001500000013038516,
+          0.02199999988079071
+        ]
+      ],
+      "colliders": [],
+      "generated_utc": "2026-10-28T17:39:13+00:00"
+    },
+    "label_cmp_freecad": {
+      "file_sha256": {
+        "label_cmp_freecad.usd": "91284215720685013c94373a9e5333c1ffe4c992dbfa20772d3001ade9223ee8",
+        "label_cmp_freecad_visual.usd": "c63bb8efd374f35c6ab2e7e256195e4852613c8962c481225d81db19419ceb6e"
+      },
+      "mass_properties": null,
+      "bounds_visual_m": [
+        [
+          -0.042500000447034836,
+          -0.0015000002458691597,
+          0.0
+        ],
+        [
+          0.042500000447034836,
+          0.001500000013038516,
+          0.02199999988079071
+        ]
+      ],
+      "colliders": [],
+      "generated_utc": "2026-10-28T17:39:15+00:00"
+    },
+    "label_cmp_step": {
+      "file_sha256": {
+        "label_cmp_step.usd": "a97513cd1fa5233776604f2b902ce7da0427c4e953816561ed606d68be8299aa",
+        "label_cmp_step_visual.usd": "48c7f9a2b00704fede52c8d7c46f9ba1a8e767d4aa37b05f55ad5cb4dbf555b1"
+      },
+      "mass_properties": null,
+      "bounds_visual_m": [
+        [
+          -0.042500000447034836,
+          -0.0015000002458691597,
+          0.0
+        ],
+        [
+          0.042500000447034836,
+          0.001500000013038516,
+          0.02199999988079071
+        ]
+      ],
+      "colliders": [],
+      "generated_utc": "2026-10-28T17:39:17+00:00"
+    },
+    "label_cmp_step_open": {
+      "file_sha256": {
+        "label_cmp_step_open.usd": "93a3ea52ce181b33d6da1e67ca4aefc628c81702d98f7408596b60005f3ab887",
+        "label_cmp_step_open_visual.usd": "7b8db93d498a28cc290ff011b955369ba08fe70ad04890cf183d97bb437e6534"
+      },
+      "mass_properties": null,
+      "bounds_visual_m": [
+        [
+          -0.042500000447034836,
+          -0.0015000002458691597,
+          0.0
+        ],
+        [
+          0.042500000447034836,
+          0.001500000013038516,
+          0.02199999988079071
+        ]
+      ],
+      "colliders": [],
+      "generated_utc": "2026-10-28T17:39:19+00:00"
+    }
+  },
+  "instances": [
+    {
+      "name": "AdapterBlender",
+      "prim": "/World/UserObjects/AdapterBlender",
+      "asset": "brass_adapter_male",
+      "reference": "../../library/brass_adapter_male/brass_adapter_male.usd",
+      "position": [
+        -0.7,
+        -0.2,
+        0.7515
+      ],
+      "orientation_wxyz": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "yaw_deg": 0.0,
+      "surface": "tabletop",
+      "support": null,
+      "static_override": false,
+      "asset_spec_sha256": "02d9544cfe05e8a46bfdd0b6e48e9f047bc2ee03af2348b825071fcd904a0cce"
+    },
+    {
+      "name": "Label_AdapterBlender",
+      "prim": "/World/UserObjects/Label_AdapterBlender",
+      "asset": "label_cmp_blender",
+      "reference": "../../library/label_cmp_blender/label_cmp_blender.usd",
+      "position": [
+        -0.7,
+        -0.245,
+        0.75
+      ],
+      "orientation_wxyz": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "yaw_deg": 0.0,
+      "surface": "tabletop",
+      "support": null,
+      "static_override": false,
+      "asset_spec_sha256": "96297e54813db356735aacb96cc2073e10e77c11a445ff5d9f71612875eb4edc"
+    },
+    {
+      "name": "AdapterFreeCAD",
+      "prim": "/World/UserObjects/AdapterFreeCAD",
+      "asset": "brass_adapter_male_cad",
+      "reference": "../../library/brass_adapter_male_cad/brass_adapter_male_cad.usd",
+      "position": [
+        -0.62,
+        -0.2,
+        0.7515
+      ],
+      "orientation_wxyz": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "yaw_deg": 0.0,
+      "surface": "tabletop",
+      "support": null,
+      "static_override": false,
+      "asset_spec_sha256": "56508c8bb21eb994dfadcd91350bba5610d55da54339aaa6abb18fa896205d46"
+    },
+    {
+      "name": "Label_AdapterFreeCAD",
+      "prim": "/World/UserObjects/Label_AdapterFreeCAD",
+      "asset": "label_cmp_freecad",
+      "reference": "../../library/label_cmp_freecad/label_cmp_freecad.usd",
+      "position": [
+        -0.62,
+        -0.245,
+        0.75
+      ],
+      "orientation_wxyz": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "yaw_deg": 0.0,
+      "surface": "tabletop",
+      "support": null,
+      "static_override": false,
+      "asset_spec_sha256": "501dfdc63e65b5b2e93b02605ac40bdab13ac9f536526ddaf9325d8c4d9b855a"
+    },
+    {
+      "name": "AdapterStepImport",
+      "prim": "/World/UserObjects/AdapterStepImport",
+      "asset": "brass_adapter_male_step_import",
+      "reference": "../../library/brass_adapter_male_step_import/brass_adapter_male_step_import.usd",
+      "position": [
+        -0.54,
+        -0.2,
+        0.7515
+      ],
+      "orientation_wxyz": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "yaw_deg": 0.0,
+      "surface": "tabletop",
+      "support": null,
+      "static_override": false,
+      "asset_spec_sha256": "8199bd212b7714c8539579be41bab0dd5667d2ad9bfb602af5541befd49d72f1"
+    },
+    {
+      "name": "Label_AdapterStepImport",
+      "prim": "/World/UserObjects/Label_AdapterStepImport",
+      "asset": "label_cmp_step",
+      "reference": "../../library/label_cmp_step/label_cmp_step.usd",
+      "position": [
+        -0.54,
+        -0.245,
+        0.75
+      ],
+      "orientation_wxyz": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "yaw_deg": 0.0,
+      "surface": "tabletop",
+      "support": null,
+      "static_override": false,
+      "asset_spec_sha256": "849bc9193ebdc9e9504c31c6c6ac2b14487367064ee9d5ee167d852981c011ec"
+    },
+    {
+      "name": "AdapterStepImportOpen",
+      "prim": "/World/UserObjects/AdapterStepImportOpen",
+      "asset": "brass_adapter_male_step_import_open",
+      "reference": "../../library/brass_adapter_male_step_import_open/brass_adapter_male_step_import_open.usd",
+      "position": [
+        -0.46,
+        -0.2,
+        0.7515
+      ],
+      "orientation_wxyz": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "yaw_deg": 0.0,
+      "surface": "tabletop",
+      "support": null,
+      "static_override": false,
+      "asset_spec_sha256": "6e35b8d170682ea4017f6820173b30d9e47b31939b70dca708194d183c54fca9"
+    },
+    {
+      "name": "Label_AdapterStepImportOpen",
+      "prim": "/World/UserObjects/Label_AdapterStepImportOpen",
+      "asset": "label_cmp_step_open",
+      "reference": "../../library/label_cmp_step_open/label_cmp_step_open.usd",
+      "position": [
+        -0.46,
+        -0.245,
+        0.75
+      ],
+      "orientation_wxyz": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "yaw_deg": 0.0,
+      "surface": "tabletop",
+      "support": null,
+      "static_override": false,
+      "asset_spec_sha256": "a13155c4b9c73e251391851d0cf2c0b28fab8b46abd52abe994007b86ba294af"
+    }
+  ],
+  "validation": {
+    "passed": true,
+    "summary": "133/133 checks passed",
+    "failed": [],
+    "physics_run": "yes"
+  },
+  "base_suites_on_derived_scene": {
+    "static": "[validate] 94/94 static checks passed; failed: []",
+    "dynamic": "[physics] 39/39 dynamic checks passed; failed: []"
+  },
+  "protected_files": {
+    "count": 44,
+    "content_changed": [],
+    "mtime_changed": []
+  },
+  "parent_project": {
+    "files": 51,
+    "changed": []
+  },
+  "gpu_memory": {
+    "idle": {
+      "peak_mib": 984,
+      "samples": 1,
+      "total_mib": 12282
+    },
+    "generate_asset (brass_adapter_male)": {
+      "peak_mib": 984,
+      "samples": 1,
+      "total_mib": 12282
+    },
+    "generate_asset (brass_adapter_male_cad)": {
+      "peak_mib": 984,
+      "samples": 2,
+      "total_mib": 12282
+    },
+    "generate_asset (brass_adapter_male_step_import)": {
+      "peak_mib": 984,
+      "samples": 1,
+      "total_mib": 12282
+    },
+    "generate_asset (brass_adapter_male_step_import_open)": {
+      "peak_mib": 984,
+      "samples": 2,
+      "total_mib": 12282
+    },
+    "generate_asset (label_cmp_blender)": {
+      "peak_mib": 984,
+      "samples": 2,
+      "total_mib": 12282
+    },
+    "generate_asset (label_cmp_freecad)": {
+      "peak_mib": 984,
+      "samples": 1,
+      "total_mib": 12282
+    },
+    "generate_asset (label_cmp_step)": {
+      "peak_mib": 984,
+      "samples": 2,
+      "total_mib": 12282
+    },
+    "generate_asset (label_cmp_step_open)": {
+      "peak_mib": 984,
+      "samples": 1,
+      "total_mib": 12282
+    },
+    "compose_scene": {
+      "peak_mib": 984,
+      "samples": 2,
+      "total_mib": 12282
+    },
+    "validate_asset_scene": {
+      "peak_mib": 2141,
+      "samples": 15,
+      "total_mib": 12282
+    },
+    "base suite: validate_scene": {
+      "peak_mib": 2031,
+      "samples": 36,
+      "total_mib": 12282
+    },
+    "base suite: run_physics_test": {
+      "peak_mib": 2350,
+      "samples": 16,
+      "total_mib": 12282
+    },
+    "preview": {
+      "peak_mib": 2457,
+      "samples": 20,
+      "total_mib": 12282
+    }
+  }
+}

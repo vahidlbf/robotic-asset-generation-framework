@@ -111,7 +111,8 @@ None of the scripts or configs contain a hardcoded user path.
   variants `Gripper=Default` and `Mesh=Performance`. The renderer setting is `RealTimePathTracing`.
 - **FreeCAD 1.1.4 (optional):** `Part` (makeCylinder/makeCone/makeChamfer/extrude/revolve/booleans,
   `optimalBoundingBox`, `exportStep`), `MeshPart.meshFromShape`, `freecadcmd` console mode of the AppImage.
-  Other versions are untested: rerun `build_cad_comparison.sh` and compare `asset_info.json` → `cad`.
+  Other versions are untested: rerun `build_cad_comparison.sh` and `compare_backends.py` and compare
+  `asset_info.json` → `cad` and `logs/assets/backend_comparison/comparison.json`.
 - **Blender 5.2:** `bpy.ops.wm.usd_export` options, the Principled BSDF input names and the bundled `pxr`. The
   Smooth-by-Angle modifier is unavailable with `--factory-startup` and is silently skipped by `mesh_object`.
 - **Snap Blender:** it can't write to a redirected file descriptor, so the orchestrators pipe its output through Python.

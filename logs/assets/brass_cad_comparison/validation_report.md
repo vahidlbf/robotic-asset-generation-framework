@@ -1,6 +1,6 @@
 # Derived scene validation: `brass_cad_comparison`
 
-- Generated: 2026-10-28T18:19:47+01:00
+- Generated: 2026-10-28T18:57:55+01:00
 - Scene config: `config/scenes/brass_cad_comparison.json`; derived layer: `assets/scenes/derived/brass_cad_comparison.usda`; base scene: `assets/scenes/waste_sorting_workstation.usd`
 - **Result: PASS** (76/76 checks passed)
 - Physics test: yes

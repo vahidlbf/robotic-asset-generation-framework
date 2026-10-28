@@ -343,7 +343,7 @@ def instance_checks(stage, scene, env, poses):
             check(g, "bore_open", bc >= ri - 1e-6, collider_distance_from_axis_m=bc, bore_radius_m=ri)
         if rep == "fitting_sections":
             d = [axis_distance_convex(to_frame(collider_points_world(p), M)) for p in cols]
-            narrowest = min(al.section_radius_range(b, True)[0] for b in al.fitting_sections(spec["geometry"], "bore"))
+            narrowest = min(al.section_radius_range(b, True)[0] for b in al.fitting_sections(al.collision_geometry(spec), "bore"))
             check(g, "bore_open", min(d) >= narrowest - 1e-6, collider_distance_from_axis_min_m=min(d),
                   narrowest_visual_bore_radius_m=narrowest, note="every collider piece clears the narrowest bore circle along the whole axis")
         if rep == "container_walls":

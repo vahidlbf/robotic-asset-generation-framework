@@ -1,0 +1,203 @@
+{
+  "ok": true,
+  "scene_config": "config/scenes/brass_backend_comparison.json",
+  "output": "assets/scenes/derived/brass_backend_comparison.usda",
+  "bytes": 9258,
+  "base_scene": "assets/scenes/waste_sorting_workstation.usd",
+  "base_scene_sha256": "b7916b35ab719a18c9cf675faf372f00ec1d6cafd297c36d21b43388689443ff",
+  "sublayers": [
+    "../waste_sorting_workstation.usd"
+  ],
+  "instances": [
+    {
+      "name": "AdapterBlender",
+      "prim": "/World/UserObjects/AdapterBlender",
+      "asset": "brass_adapter_male",
+      "reference": "../../library/brass_adapter_male/brass_adapter_male.usd",
+      "position": [
+        -0.7,
+        -0.2,
+        0.7515
+      ],
+      "orientation_wxyz": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "yaw_deg": 0.0,
+      "surface": "tabletop",
+      "support": null,
+      "static_override": false,
+      "asset_spec_sha256": "02d9544cfe05e8a46bfdd0b6e48e9f047bc2ee03af2348b825071fcd904a0cce"
+    },
+    {
+      "name": "Label_AdapterBlender",
+      "prim": "/World/UserObjects/Label_AdapterBlender",
+      "asset": "label_cmp_blender",
+      "reference": "../../library/label_cmp_blender/label_cmp_blender.usd",
+      "position": [
+        -0.7,
+        -0.245,
+        0.75
+      ],
+      "orientation_wxyz": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "yaw_deg": 0.0,
+      "surface": "tabletop",
+      "support": null,
+      "static_override": false,
+      "asset_spec_sha256": "96297e54813db356735aacb96cc2073e10e77c11a445ff5d9f71612875eb4edc"
+    },
+    {
+      "name": "AdapterFreeCAD",
+      "prim": "/World/UserObjects/AdapterFreeCAD",
+      "asset": "brass_adapter_male_cad",
+      "reference": "../../library/brass_adapter_male_cad/brass_adapter_male_cad.usd",
+      "position": [
+        -0.62,
+        -0.2,
+        0.7515
+      ],
+      "orientation_wxyz": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "yaw_deg": 0.0,
+      "surface": "tabletop",
+      "support": null,
+      "static_override": false,
+      "asset_spec_sha256": "56508c8bb21eb994dfadcd91350bba5610d55da54339aaa6abb18fa896205d46"
+    },
+    {
+      "name": "Label_AdapterFreeCAD",
+      "prim": "/World/UserObjects/Label_AdapterFreeCAD",
+      "asset": "label_cmp_freecad",
+      "reference": "../../library/label_cmp_freecad/label_cmp_freecad.usd",
+      "position": [
+        -0.62,
+        -0.245,
+        0.75
+      ],
+      "orientation_wxyz": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "yaw_deg": 0.0,
+      "surface": "tabletop",
+      "support": null,
+      "static_override": false,
+      "asset_spec_sha256": "501dfdc63e65b5b2e93b02605ac40bdab13ac9f536526ddaf9325d8c4d9b855a"
+    },
+    {
+      "name": "AdapterStepImport",
+      "prim": "/World/UserObjects/AdapterStepImport",
+      "asset": "brass_adapter_male_step_import",
+      "reference": "../../library/brass_adapter_male_step_import/brass_adapter_male_step_import.usd",
+      "position": [
+        -0.54,
+        -0.2,
+        0.7515
+      ],
+      "orientation_wxyz": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "yaw_deg": 0.0,
+      "surface": "tabletop",
+      "support": null,
+      "static_override": false,
+      "asset_spec_sha256": "8199bd212b7714c8539579be41bab0dd5667d2ad9bfb602af5541befd49d72f1"
+    },
+    {
+      "name": "Label_AdapterStepImport",
+      "prim": "/World/UserObjects/Label_AdapterStepImport",
+      "asset": "label_cmp_step",
+      "reference": "../../library/label_cmp_step/label_cmp_step.usd",
+      "position": [
+        -0.54,
+        -0.245,
+        0.75
+      ],
+      "orientation_wxyz": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "yaw_deg": 0.0,
+      "surface": "tabletop",
+      "support": null,
+      "static_override": false,
+      "asset_spec_sha256": "849bc9193ebdc9e9504c31c6c6ac2b14487367064ee9d5ee167d852981c011ec"
+    },
+    {
+      "name": "AdapterStepImportOpen",
+      "prim": "/World/UserObjects/AdapterStepImportOpen",
+      "asset": "brass_adapter_male_step_import_open",
+      "reference": "../../library/brass_adapter_male_step_import_open/brass_adapter_male_step_import_open.usd",
+      "position": [
+        -0.46,
+        -0.2,
+        0.7515
+      ],
+      "orientation_wxyz": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "yaw_deg": 0.0,
+      "surface": "tabletop",
+      "support": null,
+      "static_override": false,
+      "asset_spec_sha256": "6e35b8d170682ea4017f6820173b30d9e47b31939b70dca708194d183c54fca9"
+    },
+    {
+      "name": "Label_AdapterStepImportOpen",
+      "prim": "/World/UserObjects/Label_AdapterStepImportOpen",
+      "asset": "label_cmp_step_open",
+      "reference": "../../library/label_cmp_step_open/label_cmp_step_open.usd",
+      "position": [
+        -0.46,
+        -0.245,
+        0.75
+      ],
+      "orientation_wxyz": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "yaw_deg": 0.0,
+      "surface": "tabletop",
+      "support": null,
+      "static_override": false,
+      "asset_spec_sha256": "a13155c4b9c73e251391851d0cf2c0b28fab8b46abd52abe994007b86ba294af"
+    }
+  ],
+  "written_instances": [
+    "AdapterBlender",
+    "Label_AdapterBlender",
+    "AdapterFreeCAD",
+    "Label_AdapterFreeCAD",
+    "AdapterStepImport",
+    "Label_AdapterStepImport",
+    "AdapterStepImportOpen",
+    "Label_AdapterStepImportOpen"
+  ],
+  "preview_cameras": [
+    "BackendOverview"
+  ],
+  "deactivated_base_prims": []
+}

@@ -163,6 +163,22 @@ def export(shape, out_dir, stem, cad):
     RESULT.update(step=os.path.basename(step), stl=os.path.basename(stl), mesh={"facets": m.CountFacets, "points": m.CountPoints})
 
 
+def save_native(shape, out_dir, stem, spec):
+    """Native FreeCAD document with the solid as a Part::Feature and the generating spec as a property. The B-rep is
+    the build result; the parametric source remains the spec + this builder (no feature history is stored)."""
+    doc = App.newDocument(stem)
+    obj = doc.addObject("Part::Feature", "Solid")
+    obj.Shape = shape
+    obj.addProperty("App::PropertyString", "AssetSpecJSON", "RobotAgentLab", "spec this solid was built from")
+    obj.AssetSpecJSON = json.dumps(spec, sort_keys=True)
+    doc.recompute()
+    path = os.path.join(out_dir, stem + ".FCStd")
+    doc.saveAs(path)
+    App.closeDocument(doc.Name)
+    check("fcstd_saved", os.path.isfile(path) and os.path.getsize(path) > 0, bytes=os.path.getsize(path) if os.path.isfile(path) else 0)
+    RESULT["fcstd"] = os.path.basename(path)
+
+
 def main():
     mode = os.environ["FCB_MODE"]
     with open(os.environ["FCB_SPEC"]) as f:
@@ -192,6 +208,8 @@ def main():
         shape = shape.Solids[0]
     RESULT["solid"] = solid_props(shape)
     export(shape, out_dir, spec["asset_id"], cad)
+    if mode == "build":
+        save_native(shape, out_dir, spec["asset_id"], spec)
     RESULT["ok"] = all(c["passed"] for c in RESULT["checks"].values())
 
 

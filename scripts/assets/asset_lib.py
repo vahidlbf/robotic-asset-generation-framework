@@ -200,7 +200,7 @@ METHOD_OPTIONAL = {"box": ["bevel"], "cylinder": ["segments"], "tube": ["segment
                    "mesh_import": ["source_units", "recenter"]}
 # backend selection fields, allowed for every method (rules in backends.spec_backend_errors / select_backend)
 GEOMETRY_COMMON = ["backend", "accuracy", "require_step", "cad"]
-COLLISION_METHODS = {"ring_segments": ["tube"], "container_walls": ["open_container"], "fitting_sections": ["fitting"]}
+COLLISION_METHODS = {"ring_segments": ["tube"], "container_walls": ["open_container"], "fitting_sections": ["fitting", "mesh_import"]}
 SECTION_KEYS = {"cylinder": (["diameter"], ["chamfer_start", "chamfer_end", "grooves"]),
                 "cone": (["d0", "d1"], ["chamfer_start", "chamfer_end"]),
                 "hex": (["across_flats"], ["chamfer"]),
@@ -229,8 +229,9 @@ def spec_errors(spec, env_cfg=None):
     if m == "mesh_import":
         if not os.path.isfile(abspath(g["source"])):
             errs.append(f"$.geometry.source: file not found: {g['source']}")
-        if rep not in ("primitive", "convex_hull"):
-            errs.append("$.collision: mesh_import supports 'primitive' (box) and 'convex_hull' colliders (both solid)")
+        if rep not in ("primitive", "convex_hull", "fitting_sections"):
+            errs.append("$.collision: mesh_import supports 'primitive' / 'convex_hull' (solid) or 'fitting_sections' with "
+                        "sections_from (open bore, checked against the mesh)")
     if m == "tube" and g["inner_diameter"] >= g["outer_diameter"]:
         errs.append("$.geometry: inner_diameter must be smaller than outer_diameter")
     if rep in COLLISION_METHODS and m not in COLLISION_METHODS[rep]:
@@ -245,6 +246,18 @@ def spec_errors(spec, env_cfg=None):
         errs.append("$.collision: 'segments' only applies to ring_segments / fitting_sections")
     if "zones" in col and rep != "fitting_sections":
         errs.append("$.collision: 'zones' only applies to fitting_sections")
+    if "sections_from" in col and not (rep == "fitting_sections" and m == "mesh_import"):
+        errs.append("$.collision: 'sections_from' only applies to fitting_sections on a mesh_import asset")
+    if rep == "fitting_sections" and m == "mesh_import":
+        ref = col.get("sections_from")
+        if not ref or not os.path.isfile(abspath(ref)):
+            errs.append("$.collision.sections_from: an imported part needs the fitting spec that describes its sections "
+                        "(no open-bore collider is invented for an arbitrary mesh)")
+        elif load_json(ref)["geometry"]["method"] != "fitting":
+            errs.append(f"$.collision.sections_from: {ref} is not a fitting spec")
+        else:
+            errs += [f"(sections_from {ref}) {e}" for e in _fitting_errors(collision_geometry(spec), {**load_json(ref)["collision"], **{
+                k: v for k, v in col.items() if k in ("zones", "segments")}, "representation": "fitting_sections"})]
     if m in ("cylinder", "tube") and g.get("segments", 48) % 4:
         errs.append("$.geometry: segments must be a multiple of 4 (keeps the visual bounds equal to the diameter)")
     if m == "open_container":
@@ -473,10 +486,24 @@ def _rect(hx, hy, z):
     return [(hx, hy, z), (-hx, hy, z), (-hx, -hy, z), (hx, -hy, z)]
 
 
+def collision_geometry(spec):
+    """Geometry dict whose fitting sections the colliders use: the spec's own, or for a mesh_import the referenced
+    collision.sections_from fitting spec (its outer / bore sections)."""
+    ref = spec["collision"].get("sections_from")
+    return load_json(ref)["geometry"] if ref else spec["geometry"]
+
+
+def collision_settings(spec):
+    """fitting_sections settings; an import inherits zones / segments from its sections_from spec unless it sets them."""
+    c = spec["collision"]
+    ref = c.get("sections_from")
+    return {**(load_json(ref)["collision"] if ref else {}), **c}
+
+
 def fitting_zones(spec):
     """Collider zones: consecutive outer sections merged; hex zone = the hex, round zone = circumscribed n-gon of the zone's
     largest radius. Inner faces are tangent to the largest bore radius found in the zone's z range (bore stays open)."""
-    g, c = spec["geometry"], spec["collision"]
+    g, c = collision_geometry(spec), collision_settings(spec)
     outer, bore = fitting_sections(g, "outer"), fitting_sections(g, "bore")
     n_round = c.get("segments", 12)
     zones = []
@@ -1094,6 +1121,19 @@ def selftest():
             res = (r1["backend"] if r1["ok"] else None) == expect and r1 == r2
             ok &= res
             print(f"{'ok ' if res else 'BAD'} backend: {label}: {r1['backend'] if r1['ok'] else 'error: ' + r1['error'][:70]}")
+        imp = "config/assets/brass_adapter_male_step_import_open.json"
+        if os.path.isfile(abspath(imp)):
+            base_imp = load_json(imp)
+            ok_imp = not spec_errors(base_imp)
+            ok &= ok_imp
+            print(f"{'ok ' if ok_imp else 'BAD'} spec: STEP import with sections_from (open bore): {'valid' if ok_imp else spec_errors(base_imp)[0]}")
+            for label, mut in (("import fitting_sections without sections_from", lambda c: c.pop("sections_from")),
+                               ("sections_from a non-fitting spec", lambda c: c.update(sections_from="config/assets/industrial_gray_tray.json"))):
+                s2 = copy.deepcopy(base_imp)
+                mut(s2["collision"])
+                errs = spec_errors(s2)
+                ok &= bool(errs)
+                print(f"{'ok ' if errs else 'BAD'} spec: {label}: {errs[0] if errs else 'accepted'}")
         for label, s in (("freecad on open_container", with_geo(extra["industrial_blue_crate"], backend="freecad")),
                          ("require_step with blender", with_geo(fit, backend="blender", require_step=True))):
             errs = spec_errors(s)

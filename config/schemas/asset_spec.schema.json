@@ -654,7 +654,7 @@
             "fitting_sections",
             "none"
           ],
-          "description": "primitive: one UsdGeom Cube/Cylinder (solid; a tube becomes a solid cylinder). convex_hull: convex mesh of the visual vertices (solid). ring_segments: tube only, N boxes around the ring (keeps the hole open). container_walls: open_container only, floor + 4 separate convex walls (open top). fitting_sections: fitting only, per zone a ring of convex sector prisms (hex zones: 6, round zones: segments) whose inner faces are tangent to the largest bore radius of the zone (bore open). none: visual-only asset (static, no colliders)."
+          "description": "primitive: one UsdGeom Cube/Cylinder (solid; a tube becomes a solid cylinder). convex_hull: convex mesh of the visual vertices (solid). ring_segments: tube only, N boxes around the ring (keeps the hole open). container_walls: open_container only, floor + 4 separate convex walls (open top). fitting_sections: fitting, or mesh_import with collision.sections_from, per zone a ring of convex sector prisms (hex zones: 6, round zones: segments) whose inner faces are tangent to the largest bore radius of the zone (bore open). none: visual-only asset (static, no colliders)."
         },
         "segments": {
           "type": "integer",
@@ -680,6 +680,11 @@
           "exclusiveMinimum": 0,
           "maximum": 0.05,
           "description": "optional PhysxCollisionAPI contactOffset on every collider of the asset (contacts are generated this far before touching; rest offset unchanged). Use for thin static floors hit by fast small parts (CCD is off in the scene)."
+        },
+        "sections_from": {
+          "type": "string",
+          "pattern": "^config/assets/[a-z0-9_]+\\.json$",
+          "description": "mesh_import + fitting_sections only: the fitting spec whose outer/bore sections describe the imported part (e.g. the spec that generated a STEP). Generation checks that these sections match the imported mesh (colliders_match_mesh) and fails otherwise."
         }
       }
     },

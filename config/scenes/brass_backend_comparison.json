@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "scene_id": "brass_backend_comparison",
+  "description": "Geometry backend comparison: Type A brass adapter from Blender, FreeCAD, STEP import (solid hull) and STEP import (open-bore colliders), upright, same orientation, on the unchanged workstation.",
+  "base_scene": "assets/scenes/waste_sorting_workstation.usd",
+  "environment_config": "config/waste_sorting_environment.json",
+  "output": "assets/scenes/derived/brass_backend_comparison.usda",
+  "instances_root": "/World/UserObjects",
+  "instances": [
+    {
+      "name": "AdapterBlender",
+      "asset": "brass_adapter_male",
+      "placement": {
+        "surface": "tabletop",
+        "xy": [
+          -0.7,
+          -0.2
+        ],
+        "yaw_deg": 0.0
+      }
+    },
+    {
+      "name": "Label_AdapterBlender",
+      "asset": "label_cmp_blender",
+      "placement": {
+        "surface": "tabletop",
+        "xy": [
+          -0.7,
+          -0.245
+        ],
+        "yaw_deg": 0.0
+      }
+    },
+    {
+      "name": "AdapterFreeCAD",
+      "asset": "brass_adapter_male_cad",
+      "placement": {
+        "surface": "tabletop",
+        "xy": [
+          -0.62,
+          -0.2
+        ],
+        "yaw_deg": 0.0
+      }
+    },
+    {
+      "name": "Label_AdapterFreeCAD",
+      "asset": "label_cmp_freecad",
+      "placement": {
+        "surface": "tabletop",
+        "xy": [
+          -0.62,
+          -0.245
+        ],
+        "yaw_deg": 0.0
+      }
+    },
+    {
+      "name": "AdapterStepImport",
+      "asset": "brass_adapter_male_step_import",
+      "placement": {
+        "surface": "tabletop",
+        "xy": [
+          -0.54,
+          -0.2
+        ],
+        "yaw_deg": 0.0
+      }
+    },
+    {
+      "name": "Label_AdapterStepImport",
+      "asset": "label_cmp_step",
+      "placement": {
+        "surface": "tabletop",
+        "xy": [
+          -0.54,
+          -0.245
+        ],
+        "yaw_deg": 0.0
+      }
+    },
+    {
+      "name": "AdapterStepImportOpen",
+      "asset": "brass_adapter_male_step_import_open",
+      "placement": {
+        "surface": "tabletop",
+        "xy": [
+          -0.46,
+          -0.2
+        ],
+        "yaw_deg": 0.0
+      }
+    },
+    {
+      "name": "Label_AdapterStepImportOpen",
+      "asset": "label_cmp_step_open",
+      "placement": {
+        "surface": "tabletop",
+        "xy": [
+          -0.46,
+          -0.245
+        ],
+        "yaw_deg": 0.0
+      }
+    }
+  ],
+  "preview_cameras": {
+    "backend_overview": {
+      "position": [
+        -0.58,
+        -0.62,
+        1.02
+      ],
+      "target": [
+        -0.58,
+        -0.21,
+        0.775
+      ],
+      "focal_length": 24.0
+    }
+  },
+  "validation": {
+    "compare_assets": [
+      [
+        "brass_adapter_male",
+        "brass_adapter_male_cad"
+      ],
+      [
+        "brass_adapter_male_cad",
+        "brass_adapter_male_step_import"
+      ],
+      [
+        "brass_adapter_male_cad",
+        "brass_adapter_male_step_import_open"
+      ]
+    ],
+    "settle_duration_s": 3.0
+  }
+}

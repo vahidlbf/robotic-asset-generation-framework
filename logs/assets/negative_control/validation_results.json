@@ -3,7 +3,7 @@
   "scene_config": "config/scenes/negative_control.json",
   "output": "assets/scenes/derived/negative_control.usda",
   "base_scene": "assets/scenes/waste_sorting_workstation.usd",
-  "generated": "2026-10-28T18:21:32+01:00",
+  "generated": "2026-10-28T18:58:40+01:00",
   "passed": false,
   "summary": "38/41 checks passed",
   "failed": [

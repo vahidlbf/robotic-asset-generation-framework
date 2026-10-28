@@ -1,0 +1,1694 @@
+{
+  "reference": {
+    "triangles": 65884,
+    "area_m2": 0.005409233921808353,
+    "volume_m3": 5.932595333410725e-06,
+    "welded_vertices": 32942,
+    "boundary_edges": 0,
+    "non_manifold_edges": 0
+  },
+  "assets": {
+    "brass_adapter_male": {
+      "label": "Blender",
+      "backend": "blender",
+      "files_sha256": {
+        "brass_adapter_male.usd": "47cb105b95afa452813892a0253ece7a6593aa89218a00a655d0d5427a07bd07",
+        "brass_adapter_male_visual.usd": "8f77456cb22b3a2391d86202e3b2c23929fa6046eedd80592cad8e193036e0df"
+      },
+      "usd_vertices": 4320,
+      "usd_faces": 4320,
+      "triangles": 8640,
+      "area_m2": 0.0058045105186696234,
+      "volume_m3": 5.490266311739411e-06,
+      "welded_vertices": 4320,
+      "boundary_edges": 0,
+      "non_manifold_edges": 0,
+      "features": {
+        "length_mm": 45.00000178813934,
+        "bottom_z_mm": 0.0,
+        "max_od_mm": 24.82606205883946,
+        "sections": [
+          {
+            "type": "thread",
+            "z_mm": [
+              0.0,
+              13.0
+            ],
+            "outer_diameter_max_mm": 20.96000050065912,
+            "outer_diameter_min_mm": 18.719833203664507,
+            "nominal_diameter_mm": 20.96,
+            "thread_depth_visible_mm": 1.1200836484973071
+          },
+          {
+            "type": "cylinder",
+            "z_mm": [
+              13.0,
+              15.0
+            ],
+            "outer_diameter_max_mm": 19.000000565238118,
+            "outer_diameter_min_mm": 18.959319022976,
+            "nominal_diameter_mm": 19.0
+          },
+          {
+            "type": "hex",
+            "z_mm": [
+              15.0,
+              24.0
+            ],
+            "nominal_across_flats_mm": 21.5,
+            "across_flats_mm": [
+              21.500000644284736,
+              21.5000007301569,
+              21.500000644284736
+            ],
+            "corner_diameter_mm": 24.82606205883946,
+            "nominal_corner_diameter_mm": 24.826061575153908,
+            "corner_chamfer_length_mm": 1.2704773247241978,
+            "nominal_corner_chamfer_length_mm": 1.270477042567614,
+            "end_face_radius_mm": 10.230442733436277,
+            "nominal_end_face_radius_mm": 10.212499999999999
+          },
+          {
+            "type": "cylinder",
+            "z_mm": [
+              24.0,
+              31.0
+            ],
+            "outer_diameter_max_mm": 18.500000281147027,
+            "outer_diameter_min_mm": 18.460389499271123,
+            "nominal_diameter_mm": 18.5,
+            "grooves": [
+              {
+                "z_mm": 27.5,
+                "nominal_depth_mm": 0.4,
+                "depth_mm": 0.41894868935100743
+              }
+            ]
+          },
+          {
+            "type": "cone",
+            "z_mm": [
+              31.0,
+              34.0
+            ],
+            "fitted_end_diameters_mm": [
+              18.499999985099123,
+              17.00000184774283
+            ],
+            "nominal_diameter_mm": [
+              18.5,
+              17.0
+            ]
+          },
+          {
+            "type": "cylinder",
+            "z_mm": [
+              34.0,
+              45.0
+            ],
+            "outer_diameter_max_mm": 17.000000923871994,
+            "outer_diameter_min_mm": 16.963601154874567,
+            "nominal_diameter_mm": 17.0,
+            "grooves": [
+              {
+                "z_mm": 39.0,
+                "nominal_depth_mm": 0.4,
+                "depth_mm": 0.4173428274820319
+              }
+            ]
+          }
+        ],
+        "bore": [
+          {
+            "type": "cylinder",
+            "z_mm": [
+              0.0,
+              24.0
+            ],
+            "nominal_diameter_mm": 16.0,
+            "diameter_min_mm": 15.96574289237199,
+            "diameter_max_mm": 16.000000914709148
+          },
+          {
+            "type": "cone",
+            "z_mm": [
+              24.0,
+              26.000000000000004
+            ],
+            "nominal_diameter_mm": [
+              16.0,
+              13.0
+            ],
+            "fitted_end_diameters_mm": [
+              15.965882717661861,
+              12.972153666433922
+            ]
+          },
+          {
+            "type": "cylinder",
+            "z_mm": [
+              26.000000000000004,
+              45.0
+            ],
+            "nominal_diameter_mm": 13.0,
+            "diameter_min_mm": 12.972165657585343,
+            "diameter_max_mm": 13.000000494010902
+          }
+        ],
+        "axial_planes_mm": [
+          0.0,
+          13.0,
+          15.0,
+          24.0,
+          27.099999999999998,
+          27.900000000000002,
+          38.550000000000004,
+          39.449999999999996,
+          45.0
+        ],
+        "bottom_chamfers": {
+          "outer_radius_at_face_mm": 9.494254624858206,
+          "outer_nominal_radius_mm": 10.48,
+          "outer_chamfer_length_mm": 1.1260964420216624,
+          "outer_nominal_chamfer_mm": 1.0,
+          "bore_radius_at_face_mm": 8.600000306412364,
+          "bore_nominal_radius_mm": 8.0,
+          "bore_chamfer_length_mm": 0.6000000284984708,
+          "bore_nominal_chamfer_mm": 0.6
+        },
+        "top_chamfers": {
+          "outer_radius_at_face_mm": 7.700000212549584,
+          "outer_nominal_radius_mm": 8.5,
+          "outer_chamfer_length_mm": 0.8000023663043976,
+          "outer_nominal_chamfer_mm": 0.8,
+          "bore_radius_at_face_mm": 7.100000207409964,
+          "bore_nominal_radius_mm": 6.5,
+          "bore_chamfer_length_mm": 0.6000027060508728,
+          "bore_nominal_chamfer_mm": 0.6
+        }
+      },
+      "deviation": {
+        "mesh_to_cad": {
+          "all": {
+            "n": 20000,
+            "max_mm": 1.1199843138456345,
+            "mean_mm": 0.12263753982359914,
+            "p95_mm": 0.8425413048826157,
+            "p99_mm": 1.0909224255010486
+          },
+          "outside_thread_zone": {
+            "n": 11950,
+            "max_mm": 0.21357640798669308,
+            "mean_mm": 0.009232920646610113,
+            "p95_mm": 0.018303083379578308,
+            "p99_mm": 0.036675648661912426
+          }
+        },
+        "cad_to_mesh": {
+          "all": {
+            "n": 20000,
+            "max_mm": 0.8433173643425107,
+            "mean_mm": 0.0568213026773215,
+            "p95_mm": 0.4262293557985686,
+            "p99_mm": 0.6246067304164165
+          },
+          "outside_thread_zone": {
+            "n": 12988,
+            "max_mm": 0.20679949375335127,
+            "mean_mm": 0.009337255225040888,
+            "p95_mm": 0.018297419319424076,
+            "p99_mm": 0.04451073491509297
+          }
+        },
+        "exact_check": {
+          "points": 300,
+          "exact_max_mm": 1.1023022001899094,
+          "exact_mean_mm": 0.12001921719839574,
+          "max_abs_proxy_error_mm": 0.0004228853245021296,
+          "note": "Shape.distToShape (exact B-rep) vs. the 1 um reference tessellation for the same points"
+        }
+      },
+      "colliders": {
+        "count": 42,
+        "kinds": {
+          "mesh(convexHull)": 42
+        },
+        "min_distance_from_axis_mm": 7.100000046,
+        "narrowest_bore_radius_mm": 6.5,
+        "bore_open": true,
+        "hull_points": 0
+      },
+      "mass_properties": {
+        "mass_kg": 0.045,
+        "mass_source": "mass_kg",
+        "volume_m3": 5.490266311739419e-06,
+        "density_kg_m3": 8196.323719995135,
+        "center_of_mass": [
+          -2.121629102465417e-06,
+          4.704106645222134e-06,
+          0.02174335174024127
+        ],
+        "inertia_tensor": [
+          [
+            7.975401086671773e-06,
+            -4.216985596963279e-11,
+            2.3264369867509538e-09
+          ],
+          [
+            -4.216985596961953e-11,
+            7.975947903175224e-06,
+            1.9669377164971854e-09
+          ],
+          [
+            2.3264369867508264e-09,
+            1.96693771649718e-09,
+            3.4857567727468595e-06
+          ]
+        ],
+        "diagonal_inertia": [
+          7.975401086671773e-06,
+          7.975947903175224e-06,
+          3.4857567727468595e-06
+        ],
+        "max_offdiag_ratio": 0.0002916815675068288
+      },
+      "collision": {
+        "representation": "fitting_sections",
+        "segments": 12,
+        "zones": [
+          [
+            0,
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            5
+          ]
+        ]
+      },
+      "generation_checks": {
+        "dimensions": true,
+        "closed_manifold_mesh": true,
+        "mesh_volume_matches_geometry": true,
+        "usd_asset": true,
+        "mass_properties": true
+      },
+      "controlled_physics": {
+        "density_kg_m3": 8470.0,
+        "volume_m3": 5.490266311739419e-06,
+        "mass_kg": 0.04650255566043288,
+        "diagonal_inertia_kg_m2": [
+          8.24170073216069e-06,
+          8.242265806935973e-06,
+          3.6021466298531496e-06
+        ],
+        "center_of_mass_m": [
+          -2.121629102465417e-06,
+          4.704106645222134e-06,
+          0.02174335174024127
+        ]
+      },
+      "settle": {
+        "height_change_from_authored_m": -0.001500178813934272,
+        "horizontal_drift_from_authored_m": 1.6784820370594974e-07,
+        "max_tilt_deg": 0.004794621691307576,
+        "final_speed_m_s": 1.9215125310030173e-05,
+        "mean_normal_force_last_0_5s_N": 0.4414554238319397,
+        "weight_N": 0.44145,
+        "checks_passed": true
+      }
+    },
+    "brass_adapter_male_cad": {
+      "label": "FreeCAD",
+      "backend": "freecad",
+      "files_sha256": {
+        "brass_adapter_male_cad.usd": "49fbceb0d4027633757e77c92620fd9c3bdd4232cb9ecb874126e86f986cc32d",
+        "brass_adapter_male_cad_visual.usd": "9820c8a1c8ab2d239069768923a71f40d9aabb39b6e242ee82de3a8860131d62",
+        "brass_adapter_male_cad.step": "51d4cde54919c6a3277d304f73b82c7991a1f96100a29114830d9b5c07ed407f"
+      },
+      "usd_vertices": 4980,
+      "usd_faces": 9960,
+      "triangles": 9960,
+      "area_m2": 0.005408846216239032,
+      "volume_m3": 5.931372484718495e-06,
+      "welded_vertices": 4980,
+      "boundary_edges": 0,
+      "non_manifold_edges": 0,
+      "features": {
+        "length_mm": 45.00000178813934,
+        "bottom_z_mm": 0.0,
+        "max_od_mm": 24.826062843203545,
+        "sections": [
+          {
+            "type": "thread",
+            "z_mm": [
+              0.0,
+              13.0
+            ],
+            "outer_diameter_max_mm": 20.96000233508207,
+            "outer_diameter_min_mm": 20.955011673210862,
+            "nominal_diameter_mm": 20.96,
+            "thread_depth_visible_mm": 0.0024953309356035014
+          },
+          {
+            "type": "cylinder",
+            "z_mm": [
+              13.0,
+              15.0
+            ],
+            "outer_diameter_max_mm": 19.00000211123359,
+            "outer_diameter_min_mm": 18.995478642445562,
+            "nominal_diameter_mm": 19.0
+          },
+          {
+            "type": "hex",
+            "z_mm": [
+              15.0,
+              24.0
+            ],
+            "nominal_across_flats_mm": 21.5,
+            "across_flats_mm": [
+              21.50000190937055,
+              21.5000007301569,
+              21.50000190937055
+            ],
+            "corner_diameter_mm": 24.826062843203545,
+            "nominal_corner_diameter_mm": 24.826061575153908,
+            "corner_chamfer_length_mm": 1.2704773247241978,
+            "nominal_corner_chamfer_length_mm": 1.270477042567614,
+            "end_face_radius_mm": 10.264069429784495,
+            "nominal_end_face_radius_mm": 10.212499999999999
+          },
+          {
+            "type": "cylinder",
+            "z_mm": [
+              24.0,
+              31.0
+            ],
+            "outer_diameter_max_mm": 18.500002180207616,
+            "outer_diameter_min_mm": 18.49559703960043,
+            "nominal_diameter_mm": 18.5,
+            "grooves": [
+              {
+                "z_mm": 27.5,
+                "nominal_depth_mm": 0.4,
+                "depth_mm": 0.4021059888923515
+              }
+            ]
+          },
+          {
+            "type": "cone",
+            "z_mm": [
+              31.0,
+              34.0
+            ],
+            "fitted_end_diameters_mm": [
+              18.507180656657795,
+              17.00927773081636
+            ],
+            "nominal_diameter_mm": [
+              18.5,
+              17.0
+            ]
+          },
+          {
+            "type": "cylinder",
+            "z_mm": [
+              34.0,
+              45.0
+            ],
+            "outer_diameter_max_mm": 17.000001657786118,
+            "outer_diameter_min_mm": 16.99595459544839,
+            "nominal_diameter_mm": 17.0,
+            "grooves": [
+              {
+                "z_mm": 39.0,
+                "nominal_depth_mm": 0.4,
+                "depth_mm": 0.4019275165951415
+              }
+            ]
+          }
+        ],
+        "bore": [
+          {
+            "type": "cylinder",
+            "z_mm": [
+              0.0,
+              24.0
+            ],
+            "nominal_diameter_mm": 16.0,
+            "diameter_min_mm": 15.996192455248213,
+            "diameter_max_mm": 16.000001312931705
+          },
+          {
+            "type": "cone",
+            "z_mm": [
+              24.0,
+              26.000000000000004
+            ],
+            "nominal_diameter_mm": [
+              16.0,
+              13.0
+            ],
+            "fitted_end_diameters_mm": [
+              15.929959812633989,
+              12.971516320561955
+            ]
+          },
+          {
+            "type": "cylinder",
+            "z_mm": [
+              26.000000000000004,
+              45.0
+            ],
+            "nominal_diameter_mm": 13.0,
+            "diameter_min_mm": 12.99690650283116,
+            "diameter_max_mm": 13.000001811099917
+          }
+        ],
+        "axial_planes_mm": [
+          0.0,
+          13.0,
+          15.0,
+          24.0,
+          27.099999999999998,
+          27.900000000000002,
+          38.550000000000004,
+          39.449999999999996,
+          45.0
+        ],
+        "bottom_chamfers": {
+          "outer_radius_at_face_mm": 9.48000101083082,
+          "outer_nominal_radius_mm": 10.48,
+          "outer_chamfer_length_mm": 1.0000000474974513,
+          "outer_nominal_chamfer_mm": 1.0,
+          "bore_radius_at_face_mm": 8.600001223385334,
+          "bore_nominal_radius_mm": 8.0,
+          "bore_chamfer_length_mm": 0.6000000284984708,
+          "bore_nominal_chamfer_mm": 0.6
+        },
+        "top_chamfers": {
+          "outer_radius_at_face_mm": 7.700000600072176,
+          "outer_nominal_radius_mm": 8.5,
+          "outer_chamfer_length_mm": 0.7999986410140991,
+          "outer_nominal_chamfer_mm": 0.8,
+          "bore_radius_at_face_mm": 7.1000006587713544,
+          "bore_nominal_radius_mm": 6.5,
+          "bore_chamfer_length_mm": 0.5999989807605743,
+          "bore_nominal_chamfer_mm": 0.6
+        }
+      },
+      "deviation": {
+        "mesh_to_cad": {
+          "all": {
+            "n": 20000,
+            "max_mm": 0.007959577487781644,
+            "mean_mm": 0.00120501434604256,
+            "p95_mm": 0.00261660605929137,
+            "p99_mm": 0.005249001055744876
+          },
+          "outside_thread_zone": {
+            "n": 13072,
+            "max_mm": 0.007959577487781644,
+            "mean_mm": 0.0010839011737847088,
+            "p95_mm": 0.002800469417252313,
+            "p99_mm": 0.005798295524073181
+          }
+        },
+        "cad_to_mesh": {
+          "all": {
+            "n": 20000,
+            "max_mm": 0.007948594429763034,
+            "mean_mm": 0.0011768385747890882,
+            "p95_mm": 0.0023942370717122685,
+            "p99_mm": 0.005170193489902877
+          },
+          "outside_thread_zone": {
+            "n": 12988,
+            "max_mm": 0.007948594429763034,
+            "mean_mm": 0.0010823568403116005,
+            "p95_mm": 0.002682038689272303,
+            "p99_mm": 0.00580784663725353
+          }
+        },
+        "exact_check": {
+          "points": 300,
+          "exact_max_mm": 0.005995644066556677,
+          "exact_mean_mm": 0.001230369089419932,
+          "max_abs_proxy_error_mm": 0.0010980774522054788,
+          "note": "Shape.distToShape (exact B-rep) vs. the 1 um reference tessellation for the same points"
+        }
+      },
+      "colliders": {
+        "count": 42,
+        "kinds": {
+          "mesh(convexHull)": 42
+        },
+        "min_distance_from_axis_mm": 7.100000046,
+        "narrowest_bore_radius_mm": 6.5,
+        "bore_open": true,
+        "hull_points": 0
+      },
+      "mass_properties": {
+        "mass_kg": 0.05024969607292468,
+        "mass_source": "density_kg_m3 x exact CAD volume",
+        "volume_m3": 5.932667777204803e-06,
+        "density_kg_m3": 8470.0,
+        "center_of_mass": [
+          -2.7877724782032543e-12,
+          -9.197902911046e-18,
+          0.020656040093552236
+        ],
+        "inertia_tensor": [
+          [
+            9.259882983411994e-06,
+            8.095739789438396e-22,
+            -2.3276428354308033e-16
+          ],
+          [
+            8.095739789438396e-22,
+            9.259882982378007e-06,
+            -8.592484861434035e-22
+          ],
+          [
+            -2.3276428354308033e-16,
+            -8.592484861434035e-22,
+            3.98854084136998e-06
+          ]
+        ],
+        "diagonal_inertia": [
+          9.259882983411994e-06,
+          9.259882982378007e-06,
+          3.98854084136998e-06
+        ],
+        "max_offdiag_ratio": 2.5136849348965913e-11,
+        "source": "exact CAD solid (FreeCAD)"
+      },
+      "collision": {
+        "representation": "fitting_sections",
+        "segments": 12,
+        "zones": [
+          [
+            0,
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            5
+          ]
+        ]
+      },
+      "generation_checks": {
+        "dimensions": true,
+        "closed_manifold_mesh": true,
+        "mesh_volume_matches_geometry": true,
+        "usd_asset": true,
+        "mass_properties": true,
+        "cad_mesh_mass_consistency": true,
+        "cad_solid": true
+      },
+      "controlled_physics": {
+        "density_kg_m3": 8470.0,
+        "volume_m3": 5.932667777204803e-06,
+        "mass_kg": 0.05024969607292468,
+        "diagonal_inertia_kg_m2": [
+          9.259882983411994e-06,
+          9.259882982378007e-06,
+          3.98854084136998e-06
+        ],
+        "center_of_mass_m": [
+          -2.7877724782032543e-12,
+          -9.197902911046e-18,
+          0.020656040093552236
+        ]
+      },
+      "settle": {
+        "height_change_from_authored_m": -0.0014995231628417427,
+        "horizontal_drift_from_authored_m": 5.623090939821412e-09,
+        "max_tilt_deg": 0.00329028634359422,
+        "final_speed_m_s": 2.2217261249628407e-05,
+        "mean_normal_force_last_0_5s_N": 0.4929395020008087,
+        "weight_N": 0.4929495184753911,
+        "checks_passed": true
+      }
+    },
+    "brass_adapter_male_step_import": {
+      "label": "STEP import (hull)",
+      "backend": "import",
+      "files_sha256": {
+        "brass_adapter_male_step_import.usd": "17a23808b76727b11f1b124e292fa2f2840da8a540ff3c2c6ef59d752f1d56df",
+        "brass_adapter_male_step_import_visual.usd": "ab47bfe0bee48643b8e852303052b9f16696625700f0b6f1f8f58f8c3281d398"
+      },
+      "usd_vertices": 4980,
+      "usd_faces": 9960,
+      "triangles": 9960,
+      "area_m2": 0.005408846216239032,
+      "volume_m3": 5.9313724838988255e-06,
+      "welded_vertices": 4980,
+      "boundary_edges": 0,
+      "non_manifold_edges": 0,
+      "features": {
+        "length_mm": 45.00000178813934,
+        "bottom_z_mm": 0.0,
+        "max_od_mm": 24.826062843203545,
+        "sections": [
+          {
+            "type": "thread",
+            "z_mm": [
+              0.0,
+              13.0
+            ],
+            "outer_diameter_max_mm": 20.96000233508207,
+            "outer_diameter_min_mm": 20.955011673210862,
+            "nominal_diameter_mm": 20.96,
+            "thread_depth_visible_mm": 0.0024953309356035014
+          },
+          {
+            "type": "cylinder",
+            "z_mm": [
+              13.0,
+              15.0
+            ],
+            "outer_diameter_max_mm": 19.00000211123359,
+            "outer_diameter_min_mm": 18.995478642445562,
+            "nominal_diameter_mm": 19.0
+          },
+          {
+            "type": "hex",
+            "z_mm": [
+              15.0,
+              24.0
+            ],
+            "nominal_across_flats_mm": 21.5,
+            "across_flats_mm": [
+              21.50000190937055,
+              21.5000007301569,
+              21.50000190937055
+            ],
+            "corner_diameter_mm": 24.826062843203545,
+            "nominal_corner_diameter_mm": 24.826061575153908,
+            "corner_chamfer_length_mm": 1.2704773247241978,
+            "nominal_corner_chamfer_length_mm": 1.270477042567614,
+            "end_face_radius_mm": 10.264069429784495,
+            "nominal_end_face_radius_mm": 10.212499999999999
+          },
+          {
+            "type": "cylinder",
+            "z_mm": [
+              24.0,
+              31.0
+            ],
+            "outer_diameter_max_mm": 18.500002180207616,
+            "outer_diameter_min_mm": 18.49559703960043,
+            "nominal_diameter_mm": 18.5,
+            "grooves": [
+              {
+                "z_mm": 27.5,
+                "nominal_depth_mm": 0.4,
+                "depth_mm": 0.4021059888923515
+              }
+            ]
+          },
+          {
+            "type": "cone",
+            "z_mm": [
+              31.0,
+              34.0
+            ],
+            "fitted_end_diameters_mm": [
+              18.507180656657795,
+              17.00927773081636
+            ],
+            "nominal_diameter_mm": [
+              18.5,
+              17.0
+            ]
+          },
+          {
+            "type": "cylinder",
+            "z_mm": [
+              34.0,
+              45.0
+            ],
+            "outer_diameter_max_mm": 17.000001657786118,
+            "outer_diameter_min_mm": 16.99595459544839,
+            "nominal_diameter_mm": 17.0,
+            "grooves": [
+              {
+                "z_mm": 39.0,
+                "nominal_depth_mm": 0.4,
+                "depth_mm": 0.4019275165951415
+              }
+            ]
+          }
+        ],
+        "bore": [
+          {
+            "type": "cylinder",
+            "z_mm": [
+              0.0,
+              24.0
+            ],
+            "nominal_diameter_mm": 16.0,
+            "diameter_min_mm": 15.996192455248213,
+            "diameter_max_mm": 16.000001312931705
+          },
+          {
+            "type": "cone",
+            "z_mm": [
+              24.0,
+              26.000000000000004
+            ],
+            "nominal_diameter_mm": [
+              16.0,
+              13.0
+            ],
+            "fitted_end_diameters_mm": [
+              15.929959812633989,
+              12.971516320561955
+            ]
+          },
+          {
+            "type": "cylinder",
+            "z_mm": [
+              26.000000000000004,
+              45.0
+            ],
+            "nominal_diameter_mm": 13.0,
+            "diameter_min_mm": 12.99690650283116,
+            "diameter_max_mm": 13.000001811099917
+          }
+        ],
+        "axial_planes_mm": [
+          0.0,
+          13.0,
+          15.0,
+          24.0,
+          27.099999999999998,
+          27.900000000000002,
+          38.550000000000004,
+          39.449999999999996,
+          45.0
+        ],
+        "bottom_chamfers": {
+          "outer_radius_at_face_mm": 9.48000101083082,
+          "outer_nominal_radius_mm": 10.48,
+          "outer_chamfer_length_mm": 1.0000000474974513,
+          "outer_nominal_chamfer_mm": 1.0,
+          "bore_radius_at_face_mm": 8.600001223385334,
+          "bore_nominal_radius_mm": 8.0,
+          "bore_chamfer_length_mm": 0.6000000284984708,
+          "bore_nominal_chamfer_mm": 0.6
+        },
+        "top_chamfers": {
+          "outer_radius_at_face_mm": 7.700000600072176,
+          "outer_nominal_radius_mm": 8.5,
+          "outer_chamfer_length_mm": 0.7999986410140991,
+          "outer_nominal_chamfer_mm": 0.8,
+          "bore_radius_at_face_mm": 7.1000006587713544,
+          "bore_nominal_radius_mm": 6.5,
+          "bore_chamfer_length_mm": 0.5999989807605743,
+          "bore_nominal_chamfer_mm": 0.6
+        }
+      },
+      "deviation": {
+        "mesh_to_cad": {
+          "all": {
+            "n": 20000,
+            "max_mm": 0.007986458513187245,
+            "mean_mm": 0.0011826507040013756,
+            "p95_mm": 0.002466469845785468,
+            "p99_mm": 0.005026183162044602
+          },
+          "outside_thread_zone": {
+            "n": 12934,
+            "max_mm": 0.007986458513187245,
+            "mean_mm": 0.0010499434742041911,
+            "p95_mm": 0.0024807894874356823,
+            "p99_mm": 0.005590582077275033
+          }
+        },
+        "cad_to_mesh": {
+          "all": {
+            "n": 20000,
+            "max_mm": 0.007948594429763034,
+            "mean_mm": 0.0011768382795738358,
+            "p95_mm": 0.0023942370717122685,
+            "p99_mm": 0.005170197637198716
+          },
+          "outside_thread_zone": {
+            "n": 12988,
+            "max_mm": 0.007948594429763034,
+            "mean_mm": 0.0010823563600329837,
+            "p95_mm": 0.002682038689272303,
+            "p99_mm": 0.005807777247355258
+          }
+        },
+        "exact_check": {
+          "points": 300,
+          "exact_max_mm": 0.007577325265095995,
+          "exact_mean_mm": 0.0011388568860507414,
+          "max_abs_proxy_error_mm": 0.002300752296354812,
+          "note": "Shape.distToShape (exact B-rep) vs. the 1 um reference tessellation for the same points"
+        }
+      },
+      "colliders": {
+        "count": 1,
+        "kinds": {
+          "mesh(convexHull)": 1
+        },
+        "min_distance_from_axis_mm": 0.0,
+        "narrowest_bore_radius_mm": 6.5,
+        "bore_open": false,
+        "hull_points": 4980
+      },
+      "mass_properties": {
+        "mass_kg": 0.050249695688834445,
+        "mass_source": "density_kg_m3 x exact CAD volume",
+        "volume_m3": 5.932667731857667e-06,
+        "density_kg_m3": 8470.0,
+        "center_of_mass": [
+          -1.3693972091325075e-12,
+          2.8577627947379587e-16,
+          0.020656040104108684
+        ],
+        "inertia_tensor": [
+          [
+            9.259882965417526e-06,
+            2.479138509927405e-19,
+            -1.381045069476384e-16
+          ],
+          [
+            2.479138509927405e-19,
+            9.259882965243591e-06,
+            4.516437190557423e-21
+          ],
+          [
+            -1.381045069476384e-16,
+            4.516437190557423e-21,
+            3.9885408156182675e-06
+          ]
+        ],
+        "diagonal_inertia": [
+          9.259882965417526e-06,
+          9.259882965243591e-06,
+          3.9885408156182675e-06
+        ],
+        "max_offdiag_ratio": 1.491428212034765e-11,
+        "source": "exact CAD solid (FreeCAD)"
+      },
+      "collision": {
+        "representation": "convex_hull"
+      },
+      "generation_checks": {
+        "dimensions": true,
+        "closed_manifold_mesh": true,
+        "mesh_volume_matches_geometry": true,
+        "usd_asset": true,
+        "mass_properties": true,
+        "cad_mesh_mass_consistency": true,
+        "cad_solid": true
+      },
+      "controlled_physics": {
+        "density_kg_m3": 8470.0,
+        "volume_m3": 5.932667731857667e-06,
+        "mass_kg": 0.050249695688834445,
+        "diagonal_inertia_kg_m2": [
+          9.259882965417526e-06,
+          9.259882965243591e-06,
+          3.988540815618267e-06
+        ],
+        "center_of_mass_m": [
+          -1.3693972091325075e-12,
+          2.8577627947379587e-16,
+          0.020656040104108684
+        ]
+      },
+      "settle": {
+        "height_change_from_authored_m": -0.0015001192092894966,
+        "horizontal_drift_from_authored_m": 6.243770756742889e-07,
+        "max_tilt_deg": 0.00870693530979336,
+        "final_speed_m_s": 3.1195636203385387e-06,
+        "mean_normal_force_last_0_5s_N": 0.49294963479042053,
+        "weight_N": 0.49294951470746595,
+        "checks_passed": true
+      }
+    },
+    "brass_adapter_male_step_import_open": {
+      "label": "STEP import (open bore)",
+      "backend": "import",
+      "files_sha256": {
+        "brass_adapter_male_step_import_open.usd": "7020ab0e5052cd634d82cfff59f2588e7086621bf3e38256c8697c69f9502dab",
+        "brass_adapter_male_step_import_open_visual.usd": "852a071ad3535bfeff7a0399e31d67ed288bf40e674c6a48cd3072516e53a891"
+      },
+      "usd_vertices": 4980,
+      "usd_faces": 9960,
+      "triangles": 9960,
+      "area_m2": 0.005408846216239032,
+      "volume_m3": 5.9313724838988255e-06,
+      "welded_vertices": 4980,
+      "boundary_edges": 0,
+      "non_manifold_edges": 0,
+      "features": {
+        "length_mm": 45.00000178813934,
+        "bottom_z_mm": 0.0,
+        "max_od_mm": 24.826062843203545,
+        "sections": [
+          {
+            "type": "thread",
+            "z_mm": [
+              0.0,
+              13.0
+            ],
+            "outer_diameter_max_mm": 20.96000233508207,
+            "outer_diameter_min_mm": 20.955011673210862,
+            "nominal_diameter_mm": 20.96,
+            "thread_depth_visible_mm": 0.0024953309356035014
+          },
+          {
+            "type": "cylinder",
+            "z_mm": [
+              13.0,
+              15.0
+            ],
+            "outer_diameter_max_mm": 19.00000211123359,
+            "outer_diameter_min_mm": 18.995478642445562,
+            "nominal_diameter_mm": 19.0
+          },
+          {
+            "type": "hex",
+            "z_mm": [
+              15.0,
+              24.0
+            ],
+            "nominal_across_flats_mm": 21.5,
+            "across_flats_mm": [
+              21.50000190937055,
+              21.5000007301569,
+              21.50000190937055
+            ],
+            "corner_diameter_mm": 24.826062843203545,
+            "nominal_corner_diameter_mm": 24.826061575153908,
+            "corner_chamfer_length_mm": 1.2704773247241978,
+            "nominal_corner_chamfer_length_mm": 1.270477042567614,
+            "end_face_radius_mm": 10.264069429784495,
+            "nominal_end_face_radius_mm": 10.212499999999999
+          },
+          {
+            "type": "cylinder",
+            "z_mm": [
+              24.0,
+              31.0
+            ],
+            "outer_diameter_max_mm": 18.500002180207616,
+            "outer_diameter_min_mm": 18.49559703960043,
+            "nominal_diameter_mm": 18.5,
+            "grooves": [
+              {
+                "z_mm": 27.5,
+                "nominal_depth_mm": 0.4,
+                "depth_mm": 0.4021059888923515
+              }
+            ]
+          },
+          {
+            "type": "cone",
+            "z_mm": [
+              31.0,
+              34.0
+            ],
+            "fitted_end_diameters_mm": [
+              18.507180656657795,
+              17.00927773081636
+            ],
+            "nominal_diameter_mm": [
+              18.5,
+              17.0
+            ]
+          },
+          {
+            "type": "cylinder",
+            "z_mm": [
+              34.0,
+              45.0
+            ],
+            "outer_diameter_max_mm": 17.000001657786118,
+            "outer_diameter_min_mm": 16.99595459544839,
+            "nominal_diameter_mm": 17.0,
+            "grooves": [
+              {
+                "z_mm": 39.0,
+                "nominal_depth_mm": 0.4,
+                "depth_mm": 0.4019275165951415
+              }
+            ]
+          }
+        ],
+        "bore": [
+          {
+            "type": "cylinder",
+            "z_mm": [
+              0.0,
+              24.0
+            ],
+            "nominal_diameter_mm": 16.0,
+            "diameter_min_mm": 15.996192455248213,
+            "diameter_max_mm": 16.000001312931705
+          },
+          {
+            "type": "cone",
+            "z_mm": [
+              24.0,
+              26.000000000000004
+            ],
+            "nominal_diameter_mm": [
+              16.0,
+              13.0
+            ],
+            "fitted_end_diameters_mm": [
+              15.929959812633989,
+              12.971516320561955
+            ]
+          },
+          {
+            "type": "cylinder",
+            "z_mm": [
+              26.000000000000004,
+              45.0
+            ],
+            "nominal_diameter_mm": 13.0,
+            "diameter_min_mm": 12.99690650283116,
+            "diameter_max_mm": 13.000001811099917
+          }
+        ],
+        "axial_planes_mm": [
+          0.0,
+          13.0,
+          15.0,
+          24.0,
+          27.099999999999998,
+          27.900000000000002,
+          38.550000000000004,
+          39.449999999999996,
+          45.0
+        ],
+        "bottom_chamfers": {
+          "outer_radius_at_face_mm": 9.48000101083082,
+          "outer_nominal_radius_mm": 10.48,
+          "outer_chamfer_length_mm": 1.0000000474974513,
+          "outer_nominal_chamfer_mm": 1.0,
+          "bore_radius_at_face_mm": 8.600001223385334,
+          "bore_nominal_radius_mm": 8.0,
+          "bore_chamfer_length_mm": 0.6000000284984708,
+          "bore_nominal_chamfer_mm": 0.6
+        },
+        "top_chamfers": {
+          "outer_radius_at_face_mm": 7.700000600072176,
+          "outer_nominal_radius_mm": 8.5,
+          "outer_chamfer_length_mm": 0.7999986410140991,
+          "outer_nominal_chamfer_mm": 0.8,
+          "bore_radius_at_face_mm": 7.1000006587713544,
+          "bore_nominal_radius_mm": 6.5,
+          "bore_chamfer_length_mm": 0.5999989807605743,
+          "bore_nominal_chamfer_mm": 0.6
+        }
+      },
+      "deviation": {
+        "mesh_to_cad": {
+          "all": {
+            "n": 20000,
+            "max_mm": 0.007987080607563257,
+            "mean_mm": 0.0011901698295228413,
+            "p95_mm": 0.0024948300847427154,
+            "p99_mm": 0.005291819420563113
+          },
+          "outside_thread_zone": {
+            "n": 13037,
+            "max_mm": 0.007987080607563257,
+            "mean_mm": 0.0010734944335258727,
+            "p95_mm": 0.0026976455956173586,
+            "p99_mm": 0.0059576468447630395
+          }
+        },
+        "cad_to_mesh": {
+          "all": {
+            "n": 20000,
+            "max_mm": 0.007948594429763034,
+            "mean_mm": 0.0011768382795738358,
+            "p95_mm": 0.0023942370717122685,
+            "p99_mm": 0.005170197637198716
+          },
+          "outside_thread_zone": {
+            "n": 12988,
+            "max_mm": 0.007948594429763034,
+            "mean_mm": 0.0010823563600329837,
+            "p95_mm": 0.002682038689272303,
+            "p99_mm": 0.005807777247355258
+          }
+        },
+        "exact_check": {
+          "points": 300,
+          "exact_max_mm": 0.007723740792026559,
+          "exact_mean_mm": 0.0011493316182283558,
+          "max_abs_proxy_error_mm": 0.0034246158735168463,
+          "note": "Shape.distToShape (exact B-rep) vs. the 1 um reference tessellation for the same points"
+        }
+      },
+      "colliders": {
+        "count": 42,
+        "kinds": {
+          "mesh(convexHull)": 42
+        },
+        "min_distance_from_axis_mm": 7.100000046,
+        "narrowest_bore_radius_mm": 6.5,
+        "bore_open": true,
+        "hull_points": 0
+      },
+      "mass_properties": {
+        "mass_kg": 0.050249695688834445,
+        "mass_source": "density_kg_m3 x exact CAD volume",
+        "volume_m3": 5.932667731857667e-06,
+        "density_kg_m3": 8470.0,
+        "center_of_mass": [
+          -1.3693972091325075e-12,
+          2.8577627947379587e-16,
+          0.020656040104108684
+        ],
+        "inertia_tensor": [
+          [
+            9.259882965417526e-06,
+            2.479138509927405e-19,
+            -1.381045069476384e-16
+          ],
+          [
+            2.479138509927405e-19,
+            9.259882965243591e-06,
+            4.516437190557423e-21
+          ],
+          [
+            -1.381045069476384e-16,
+            4.516437190557423e-21,
+            3.9885408156182675e-06
+          ]
+        ],
+        "diagonal_inertia": [
+          9.259882965417526e-06,
+          9.259882965243591e-06,
+          3.9885408156182675e-06
+        ],
+        "max_offdiag_ratio": 1.491428212034765e-11,
+        "source": "exact CAD solid (FreeCAD)"
+      },
+      "collision": {
+        "representation": "fitting_sections",
+        "sections_from": "config/assets/brass_adapter_male_cad.json"
+      },
+      "generation_checks": {
+        "dimensions": true,
+        "closed_manifold_mesh": true,
+        "mesh_volume_matches_geometry": true,
+        "usd_asset": true,
+        "mass_properties": true,
+        "cad_mesh_mass_consistency": true,
+        "colliders_match_mesh": true,
+        "cad_solid": true
+      },
+      "controlled_physics": {
+        "density_kg_m3": 8470.0,
+        "volume_m3": 5.932667731857667e-06,
+        "mass_kg": 0.050249695688834445,
+        "diagonal_inertia_kg_m2": [
+          9.259882965417526e-06,
+          9.259882965243591e-06,
+          3.988540815618267e-06
+        ],
+        "center_of_mass_m": [
+          -1.3693972091325075e-12,
+          2.8577627947379587e-16,
+          0.020656040104108684
+        ]
+      },
+      "settle": {
+        "height_change_from_authored_m": -0.0015001192092894966,
+        "horizontal_drift_from_authored_m": 7.305156545075542e-08,
+        "max_tilt_deg": 0.004186106778813213,
+        "final_speed_m_s": 1.759279300520206e-05,
+        "mean_normal_force_last_0_5s_N": 0.492885023355484,
+        "weight_N": 0.49294951470746595,
+        "checks_passed": true
+      }
+    }
+  },
+  "sampling": {
+    "n_samples": 20000,
+    "seed": 0,
+    "thread_zone_upper_z_mm": 15.0,
+    "note": "area-weighted random surface samples; distances to the nearest point of the other surface (BVH). Sampled, so the maxima are lower bounds of the true Hausdorff distances."
+  },
+  "renders": [
+    "01_overall_brass.png",
+    "02_neutral_geometry_front.png",
+    "03_hex_closeup.png",
+    "04_bore_and_top_chamfer.png",
+    "05_thread_end_and_bottom_chamfer.png",
+    "06_wireframe_tessellation.png",
+    "07_wireframe_hex_closeup.png"
+  ],
+  "scene_validation": {
+    "scene": "brass_backend_comparison",
+    "summary": "133/133 checks passed",
+    "generated": "2026-10-28T18:55:40+01:00"
+  },
+  "cad_exact": {
+    "volume_mm3": 5932.667731857667,
+    "area_mm2": 5409.257181554492,
+    "center_of_mass_mm": [
+      -1.3693972091325076e-09,
+      2.857762794737959e-13,
+      20.656040104108683
+    ],
+    "bbox_mm": [
+      [
+        -12.413030787576869,
+        -10.750000000000002,
+        -2.220446049250313e-16
+      ],
+      [
+        12.413030787578876,
+        10.75,
+        45.0
+      ]
+    ],
+    "valid": true,
+    "closed": true,
+    "n_faces": 34,
+    "n_edges": 64,
+    "faces": [
+      {
+        "type": "Cylinder",
+        "area_mm2": 790.173384230905,
+        "z_mm": [
+          1.0,
+          13.0
+        ],
+        "radius_mm": 10.48
+      },
+      {
+        "type": "Cone",
+        "area_mm2": 88.67994344564298,
+        "z_mm": [
+          0.0,
+          1.0
+        ],
+        "radius_mm": 10.48,
+        "semi_angle_deg": 44.999999999974314
+      },
+      {
+        "type": "Plane",
+        "area_mm2": 61.51364079434961,
+        "z_mm": [
+          13.0,
+          13.0
+        ],
+        "normal": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "distance_from_axis_mm": null
+      },
+      {
+        "type": "Plane",
+        "area_mm2": 49.98399575567518,
+        "z_mm": [
+          0.0,
+          0.0
+        ],
+        "normal": [
+          -0.0,
+          -0.0,
+          -1.0
+        ],
+        "distance_from_axis_mm": null
+      },
+      {
+        "type": "Cylinder",
+        "area_mm2": 119.38052083641213,
+        "z_mm": [
+          13.0,
+          15.0
+        ],
+        "radius_mm": 9.5
+      },
+      {
+        "type": "Cone",
+        "area_mm2": 44.25111406405803,
+        "z_mm": [
+          0.0,
+          0.6
+        ],
+        "radius_mm": 8.6,
+        "semi_angle_deg": 44.999999999974314
+      },
+      {
+        "type": "Plane",
+        "area_mm2": 44.124159693520824,
+        "z_mm": [
+          15.0,
+          15.0
+        ],
+        "normal": [
+          -0.0,
+          -0.0,
+          -1.0
+        ],
+        "distance_from_axis_mm": null
+      },
+      {
+        "type": "Cylinder",
+        "area_mm2": 1176.2122895040184,
+        "z_mm": [
+          0.6,
+          24.0
+        ],
+        "radius_mm": 8.0
+      },
+      {
+        "type": "Cone",
+        "area_mm2": 83.90901682919082,
+        "z_mm": [
+          15.0,
+          16.270477042568
+        ],
+        "radius_mm": 10.2125,
+        "semi_angle_deg": 60.00000000002305
+      },
+      {
+        "type": "Cone",
+        "area_mm2": 113.88273369263445,
+        "z_mm": [
+          24.0,
+          26.0
+        ],
+        "radius_mm": 8.0,
+        "semi_angle_deg": 36.869897645827734
+      },
+      {
+        "type": "Plane",
+        "area_mm2": 95.83693340191353,
+        "z_mm": [
+          15.310339960947502,
+          23.689660039052498
+        ],
+        "normal": [
+          0.866025403784329,
+          0.50000000000019,
+          -0.0
+        ],
+        "distance_from_axis_mm": 10.749999999998678
+      },
+      {
+        "type": "Plane",
+        "area_mm2": 95.83693340189998,
+        "z_mm": [
+          15.310339960947502,
+          23.689660039052498
+        ],
+        "normal": [
+          -0.0,
+          1.0,
+          -0.0
+        ],
+        "distance_from_axis_mm": 10.75
+      },
+      {
+        "type": "Plane",
+        "area_mm2": 95.83693340186441,
+        "z_mm": [
+          15.310339960947502,
+          23.6896600390525
+        ],
+        "normal": [
+          -0.866025403784329,
+          0.50000000000019,
+          -0.0
+        ],
+        "distance_from_axis_mm": 10.750000000000949
+      },
+      {
+        "type": "Plane",
+        "area_mm2": 95.83693340189093,
+        "z_mm": [
+          15.310339960947498,
+          23.689660039052498
+        ],
+        "normal": [
+          -0.866025403784329,
+          -0.50000000000019,
+          -0.0
+        ],
+        "distance_from_axis_mm": 10.749999999992614
+      },
+      {
+        "type": "Plane",
+        "area_mm2": 95.83693340190001,
+        "z_mm": [
+          15.310339960947502,
+          23.689660039052498
+        ],
+        "normal": [
+          -2.862083998338e-16,
+          -1.0,
+          -0.0
+        ],
+        "distance_from_axis_mm": 10.750000000000002
+      },
+      {
+        "type": "Plane",
+        "area_mm2": 95.8369334019102,
+        "z_mm": [
+          15.310339960947502,
+          23.689660039052498
+        ],
+        "normal": [
+          0.866025403784329,
+          -0.50000000000019,
+          -0.0
+        ],
+        "distance_from_axis_mm": 10.750000000000949
+      },
+      {
+        "type": "Cylinder",
+        "area_mm2": 751.4689627386784,
+        "z_mm": [
+          26.0,
+          44.4
+        ],
+        "radius_mm": 6.5
+      },
+      {
+        "type": "Cone",
+        "area_mm2": 83.90901682916314,
+        "z_mm": [
+          22.729522957432,
+          24.0
+        ],
+        "radius_mm": 25.80095726812,
+        "semi_angle_deg": 60.00000000002305
+      },
+      {
+        "type": "Cone",
+        "area_mm2": 36.25392477537158,
+        "z_mm": [
+          44.4,
+          45.0
+        ],
+        "radius_mm": 6.5,
+        "semi_angle_deg": 44.999999999974314
+      },
+      {
+        "type": "Plane",
+        "area_mm2": 87.12470913953118,
+        "z_mm": [
+          24.0,
+          24.0
+        ],
+        "normal": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "distance_from_axis_mm": null
+      },
+      {
+        "type": "Plane",
+        "area_mm2": 27.89734276387742,
+        "z_mm": [
+          45.0,
+          45.0
+        ],
+        "normal": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "distance_from_axis_mm": null
+      },
+      {
+        "type": "Cone",
+        "area_mm2": 39.9859464434258,
+        "z_mm": [
+          24.0,
+          24.5
+        ],
+        "radius_mm": 9.25,
+        "semi_angle_deg": 44.999999999974314
+      },
+      {
+        "type": "Cone",
+        "area_mm2": 57.5797628785336,
+        "z_mm": [
+          44.2,
+          45.0
+        ],
+        "radius_mm": 8.5,
+        "semi_angle_deg": 44.999999999974314
+      },
+      {
+        "type": "Cylinder",
+        "area_mm2": 151.11060663766915,
+        "z_mm": [
+          24.5,
+          27.1
+        ],
+        "radius_mm": 9.25
+      },
+      {
+        "type": "Cylinder",
+        "area_mm2": 253.68360677737581,
+        "z_mm": [
+          39.45,
+          44.2
+        ],
+        "radius_mm": 8.5
+      },
+      {
+        "type": "Plane",
+        "area_mm2": 22.745130811990094,
+        "z_mm": [
+          27.1,
+          27.1
+        ],
+        "normal": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "distance_from_axis_mm": null
+      },
+      {
+        "type": "Plane",
+        "area_mm2": 20.86017521983638,
+        "z_mm": [
+          39.45,
+          39.45
+        ],
+        "normal": [
+          -0.0,
+          -0.0,
+          -1.0
+        ],
+        "distance_from_axis_mm": null
+      },
+      {
+        "type": "Cylinder",
+        "area_mm2": 44.48495197483131,
+        "z_mm": [
+          27.1,
+          27.9
+        ],
+        "radius_mm": 8.85
+      },
+      {
+        "type": "Cylinder",
+        "area_mm2": 45.804420889339475,
+        "z_mm": [
+          38.55,
+          39.45
+        ],
+        "radius_mm": 8.1
+      },
+      {
+        "type": "Plane",
+        "area_mm2": 22.745130811990094,
+        "z_mm": [
+          27.9,
+          27.9
+        ],
+        "normal": [
+          -0.0,
+          -0.0,
+          -1.0
+        ],
+        "distance_from_axis_mm": null
+      },
+      {
+        "type": "Plane",
+        "area_mm2": 20.86017521983638,
+        "z_mm": [
+          38.55,
+          38.55
+        ],
+        "normal": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "distance_from_axis_mm": null
+      },
+      {
+        "type": "Cylinder",
+        "area_mm2": 180.17033868337475,
+        "z_mm": [
+          27.9,
+          31.0
+        ],
+        "radius_mm": 9.25
+      },
+      {
+        "type": "Cylinder",
+        "area_mm2": 243.00219175517037,
+        "z_mm": [
+          34.0,
+          38.55
+        ],
+        "radius_mm": 8.5
+      },
+      {
+        "type": "Cone",
+        "area_mm2": 172.43838794671078,
+        "z_mm": [
+          31.0,
+          34.0
+        ],
+        "radius_mm": 9.25,
+        "semi_angle_deg": 14.036243467934263
+      }
+    ],
+    "reference_facets": 65884,
+    "reference_volume_mm3": 5932.62255859375,
+    "reference_linear_deflection_mm": 0.001
+  }
+}

@@ -78,6 +78,25 @@
       "backend": "import",
       "generated_utc": "2026-10-28T17:12:12+00:00"
     },
+    "brass_adapter_male_step_import_open": {
+      "category": "hardware/fitting/brass",
+      "description": "Route C with an open-bore collider: the STEP of brass_adapter_male_cad imported as an existing CAD model, with fitting_sections colliders built from the sections of the spec that generated the STEP (collision.sections_from); generation verifies them against the imported mesh.",
+      "spec_file": "config/assets/brass_adapter_male_step_import_open.json",
+      "spec_sha256": "6e35b8d170682ea4017f6820173b30d9e47b31939b70dca708194d183c54fca9",
+      "ok": true,
+      "usd": "assets/library/brass_adapter_male_step_import_open/brass_adapter_male_step_import_open.usd",
+      "visual": "assets/library/brass_adapter_male_step_import_open/brass_adapter_male_step_import_open_visual.usd",
+      "body": "dynamic",
+      "mass_kg": 0.050249695688834445,
+      "nominal_size_m": [
+        0.024826,
+        0.0215,
+        0.045
+      ],
+      "collision": "fitting_sections",
+      "backend": "import",
+      "generated_utc": "2026-10-28T17:40:20+00:00"
+    },
     "industrial_blue_crate": {
       "category": "container/crate",
       "description": "Blue polypropylene industrial storage crate: open top, tapered walls, thick reinforced rim, stacking foot, horizontal band, vertical external ribs, hand holes and label holders on the short sides.",
@@ -153,6 +172,82 @@
       "collision": "none",
       "backend": "blender",
       "generated_utc": "2026-10-27T18:00:09+00:00"
+    },
+    "label_cmp_blender": {
+      "category": "marking/label",
+      "description": "Comparison-scene label 'BLENDER' (visual only, no colliders).",
+      "spec_file": "config/assets/label_cmp_blender.json",
+      "spec_sha256": "96297e54813db356735aacb96cc2073e10e77c11a445ff5d9f71612875eb4edc",
+      "ok": true,
+      "usd": "assets/library/label_cmp_blender/label_cmp_blender.usd",
+      "visual": "assets/library/label_cmp_blender/label_cmp_blender_visual.usd",
+      "body": "static",
+      "mass_kg": null,
+      "nominal_size_m": [
+        0.085,
+        0.003,
+        0.022
+      ],
+      "collision": "none",
+      "backend": "blender",
+      "generated_utc": "2026-10-28T17:39:13+00:00"
+    },
+    "label_cmp_freecad": {
+      "category": "marking/label",
+      "description": "Comparison-scene label 'FREECAD' (visual only, no colliders).",
+      "spec_file": "config/assets/label_cmp_freecad.json",
+      "spec_sha256": "501dfdc63e65b5b2e93b02605ac40bdab13ac9f536526ddaf9325d8c4d9b855a",
+      "ok": true,
+      "usd": "assets/library/label_cmp_freecad/label_cmp_freecad.usd",
+      "visual": "assets/library/label_cmp_freecad/label_cmp_freecad_visual.usd",
+      "body": "static",
+      "mass_kg": null,
+      "nominal_size_m": [
+        0.085,
+        0.003,
+        0.022
+      ],
+      "collision": "none",
+      "backend": "blender",
+      "generated_utc": "2026-10-28T17:39:15+00:00"
+    },
+    "label_cmp_step": {
+      "category": "marking/label",
+      "description": "Comparison-scene label 'STEP IMPORT' (visual only, no colliders).",
+      "spec_file": "config/assets/label_cmp_step.json",
+      "spec_sha256": "849bc9193ebdc9e9504c31c6c6ac2b14487367064ee9d5ee167d852981c011ec",
+      "ok": true,
+      "usd": "assets/library/label_cmp_step/label_cmp_step.usd",
+      "visual": "assets/library/label_cmp_step/label_cmp_step_visual.usd",
+      "body": "static",
+      "mass_kg": null,
+      "nominal_size_m": [
+        0.085,
+        0.003,
+        0.022
+      ],
+      "collision": "none",
+      "backend": "blender",
+      "generated_utc": "2026-10-28T17:39:17+00:00"
+    },
+    "label_cmp_step_open": {
+      "category": "marking/label",
+      "description": "Comparison-scene label 'STEP + OPEN BORE' (visual only, no colliders).",
+      "spec_file": "config/assets/label_cmp_step_open.json",
+      "spec_sha256": "a13155c4b9c73e251391851d0cf2c0b28fab8b46abd52abe994007b86ba294af",
+      "ok": true,
+      "usd": "assets/library/label_cmp_step_open/label_cmp_step_open.usd",
+      "visual": "assets/library/label_cmp_step_open/label_cmp_step_open_visual.usd",
+      "body": "static",
+      "mass_kg": null,
+      "nominal_size_m": [
+        0.085,
+        0.003,
+        0.022
+      ],
+      "collision": "none",
+      "backend": "blender",
+      "generated_utc": "2026-10-28T17:39:19+00:00"
     },
     "test_spacer": {
       "category": "hardware/spacer",

@@ -1,0 +1,22 @@
+#usda 1.0
+(
+    defaultPrim = "LabelCmpBlender"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "LabelCmpBlender" (
+    customData = {
+        string robot_agent_lab_json = '{"frame": "bottom centre", "mounts": {}, "asset_id": "label_cmp_blender", "category": "marking/label", "nominal_size_m": [0.085, 0.003, 0.022], "collision": "none", "spec": "../../../config/assets/label_cmp_blender.json"}'
+    }
+    kind = "component"
+)
+{
+    def Xform "Visual" (
+        prepend references = @./label_cmp_blender_visual.usd@
+    )
+    {
+    }
+}
+

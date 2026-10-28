@@ -2,8 +2,10 @@
 
 ## Blender source files
 
-No `.blend` files are kept. **CAD:** the FreeCAD route keeps `<id>.step` (AP214, mm), the parametric solid, next to the
-USD files; a STEP import references its source file (path + SHA-256 in `asset_info.json` → `import_source`). The
+No `.blend` files are kept. **CAD:** the FreeCAD route keeps `<id>.step` (AP214, mm), the solid, next to the USD files.
+FreeCAD builds from 2026-10-28 on also keep `<id>.FCStd`: a native document with the solid as a `Part::Feature` and
+the generating spec in the `AssetSpecJSON` property. It holds no feature history, since the parametric source is the
+spec plus `freecad_build.py`. `brass_adapter_male_cad` predates this and has only its STEP. a STEP import references its source file (path + SHA-256 in `asset_info.json` → `import_source`). The
 intermediate STL tessellation is deleted after Blender imports it. Both generators build the geometry in an empty Blender scene (`clear_scene()` resets to factory
 settings, metric, scale 1) and export it directly. There are no `.blend` or `.glb` files in this sub-project;
 `.blend` and `.glb` exist only in the parent ramp project. To regenerate, rerun the generator: the code plus the

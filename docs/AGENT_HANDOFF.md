@@ -14,6 +14,7 @@ changed.
 | GUI physics tooling | PASS (base and derived scenes) | `open_scene.py --self-test` |
 | Motion home → PET pre-grasp → home | FULL SUCCESS (rerun 2026-10-27) | `logs/motion_planning/planning_report.md` |
 | Incremental assets | working; demo asset `test_spacer`, scene `workstation_test_spacer` (54/54 with the current validator) | `logs/assets/workstation_test_spacer/add_asset_report.md` |
+| Backend comparison | 4 variants measured (`docs/CAD_VS_BLENDER_COMPARISON.md`); scene `brass_backend_comparison` 133/133 + 94/94 + 39/39; open-bore STEP import `brass_adapter_male_step_import_open` | `logs/assets/backend_comparison/`, `docs/images/cad_comparison/` |
 | Geometry backends | Blender (default) / FreeCAD / import; `brass_adapter_male_cad` (FreeCAD, STEP) and `brass_adapter_male_step_import`; scene `brass_cad_comparison` 76/76 + 94/94 + 39/39 | `docs/GEOMETRY_BACKENDS.md`, `logs/assets/brass_cad_comparison/` |
 | Industrial brass sorting | 6 library assets, scene `industrial_brass_sorting` (12 instances); 238/238 targeted checks, GUI self-test PASS, previews inspected; top-down grasps 0/7 feasible (hand vs. 0.10 m tray walls / neighbours) | `logs/assets/industrial_brass_sorting/experiment_report.md`, `reachability.md` |
 
@@ -60,7 +61,11 @@ scripts/motion_planning/run_regression.sh                     # original worksta
 - **FreeCAD backend (optional):**
   - builders exist for `fitting` only;
   - threads are cosmetic (plain cylinders), so CAD parts are heavier than Blender parts;
-  - STEP imports get solid colliders;
+  - STEP imports get solid colliders unless `collision.sections_from` names a matching fitting spec; that case is
+    verified by `colliders_match_mesh`;
+  - `brass_adapter_male_cad` predates `.FCStd` export (STEP only);
+  - `colliders_match_mesh` exists only for assets generated from 2026-10-28 on; older `fitting_sections` assets were
+    checked by `compare_backends.py` instead;
   - `<AppImage> --version` opens the FreeCAD GUI, so never use it for detection;
   - tested only with FreeCAD 1.1.4. See `docs/GEOMETRY_BACKENDS.md`.
 
