@@ -1,0 +1,302 @@
+{
+  "ok": true,
+  "scene_config": "config/scenes/industrial_brass_sorting.json",
+  "output": "assets/scenes/derived/industrial_brass_sorting.usda",
+  "bytes": 17108,
+  "base_scene": "assets/scenes/waste_sorting_workstation.usd",
+  "base_scene_sha256": "b7916b35ab719a18c9cf675faf372f00ec1d6cafd297c36d21b43388689443ff",
+  "sublayers": [
+    "../waste_sorting_workstation.usd"
+  ],
+  "instances": [
+    {
+      "name": "InputTray",
+      "prim": "/World/UserObjects/InputTray",
+      "asset": "industrial_gray_tray",
+      "reference": "../../library/industrial_gray_tray/industrial_gray_tray.usd",
+      "position": [
+        0.42,
+        -0.215,
+        0.75
+      ],
+      "orientation_wxyz": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "yaw_deg": 0.0,
+      "surface": "tabletop",
+      "support": null,
+      "static_override": false,
+      "asset_spec_sha256": "b4b3913d034d43cd7a241f7ef9a76bd52ef57997860d865d10f644475b5c4f94"
+    },
+    {
+      "name": "sorting_bin_A",
+      "prim": "/World/UserObjects/sorting_bin_A",
+      "asset": "industrial_blue_crate",
+      "reference": "../../library/industrial_blue_crate/industrial_blue_crate.usd",
+      "position": [
+        -0.03,
+        -0.2,
+        0.75
+      ],
+      "orientation_wxyz": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "yaw_deg": 0.0,
+      "surface": "tabletop",
+      "support": null,
+      "static_override": false,
+      "asset_spec_sha256": "2f752d91a6b12dbb61d4ffbce37aa570c1e28c102ee78eb1604477eef9400a49"
+    },
+    {
+      "name": "sorting_bin_B",
+      "prim": "/World/UserObjects/sorting_bin_B",
+      "asset": "industrial_blue_crate",
+      "reference": "../../library/industrial_blue_crate/industrial_blue_crate.usd",
+      "position": [
+        -0.03,
+        0.2,
+        0.75
+      ],
+      "orientation_wxyz": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "yaw_deg": 0.0,
+      "surface": "tabletop",
+      "support": null,
+      "static_override": false,
+      "asset_spec_sha256": "2f752d91a6b12dbb61d4ffbce37aa570c1e28c102ee78eb1604477eef9400a49"
+    },
+    {
+      "name": "label_A",
+      "prim": "/World/UserObjects/label_A",
+      "asset": "label_bin_a",
+      "reference": "../../library/label_bin_a/label_bin_a.usd",
+      "position": [
+        0.16444373399640416,
+        -0.2,
+        0.845
+      ],
+      "orientation_wxyz": [
+        0.7071067811865476,
+        0.0,
+        0.0,
+        0.7071067811865475
+      ],
+      "yaw_deg": 89.99999999999999,
+      "surface": "attached",
+      "support": "sorting_bin_A",
+      "static_override": false,
+      "asset_spec_sha256": "486b26ad36d994d35e12c9ebc4db0278e9810ea2bf1a1dcad4f807ed01871ca3"
+    },
+    {
+      "name": "label_B",
+      "prim": "/World/UserObjects/label_B",
+      "asset": "label_bin_b",
+      "reference": "../../library/label_bin_b/label_bin_b.usd",
+      "position": [
+        0.16444373399640416,
+        0.2,
+        0.845
+      ],
+      "orientation_wxyz": [
+        0.7071067811865476,
+        0.0,
+        0.0,
+        0.7071067811865475
+      ],
+      "yaw_deg": 89.99999999999999,
+      "surface": "attached",
+      "support": "sorting_bin_B",
+      "static_override": false,
+      "asset_spec_sha256": "ab533e5cb44a869f137b667f86c9aad8b33802231fd93675b8e11e25f5baf95f"
+    },
+    {
+      "name": "FittingA_0",
+      "prim": "/World/UserObjects/FittingA_0",
+      "asset": "brass_adapter_male",
+      "reference": "../../library/brass_adapter_male/brass_adapter_male.usd",
+      "position": [
+        0.4048,
+        -0.1989,
+        0.76725
+      ],
+      "orientation_wxyz": [
+        0.01665926947700619,
+        -0.620532094350819,
+        0.3390279042801437,
+        -0.7069105097114433
+      ],
+      "yaw_deg": -117.30000000000001,
+      "surface": "on_instance",
+      "support": "InputTray",
+      "static_override": false,
+      "asset_spec_sha256": "02d9544cfe05e8a46bfdd0b6e48e9f047bc2ee03af2348b825071fcd904a0cce"
+    },
+    {
+      "name": "FittingA_1",
+      "prim": "/World/UserObjects/FittingA_1",
+      "asset": "brass_adapter_male",
+      "reference": "../../library/brass_adapter_male/brass_adapter_male.usd",
+      "position": [
+        0.4691,
+        -0.1839,
+        0.76725
+      ],
+      "orientation_wxyz": [
+        0.5141896602810017,
+        -0.1632701837998617,
+        0.6879991621230067,
+        0.4853957079127382
+      ],
+      "yaw_deg": 146.7,
+      "surface": "on_instance",
+      "support": "InputTray",
+      "static_override": false,
+      "asset_spec_sha256": "02d9544cfe05e8a46bfdd0b6e48e9f047bc2ee03af2348b825071fcd904a0cce"
+    },
+    {
+      "name": "FittingA_2",
+      "prim": "/World/UserObjects/FittingA_2",
+      "asset": "brass_adapter_male",
+      "reference": "../../library/brass_adapter_male/brass_adapter_male.usd",
+      "position": [
+        0.5291,
+        -0.2099,
+        0.76725
+      ],
+      "orientation_wxyz": [
+        -0.5396868550049829,
+        -0.12582508767293024,
+        0.6958218502692334,
+        -0.4568786474927787
+      ],
+      "yaw_deg": 140.5,
+      "surface": "on_instance",
+      "support": "InputTray",
+      "static_override": false,
+      "asset_spec_sha256": "02d9544cfe05e8a46bfdd0b6e48e9f047bc2ee03af2348b825071fcd904a0cce"
+    },
+    {
+      "name": "FittingA_3",
+      "prim": "/World/UserObjects/FittingA_3",
+      "asset": "brass_adapter_male",
+      "reference": "../../library/brass_adapter_male/brass_adapter_male.usd",
+      "position": [
+        0.3416,
+        -0.1457,
+        0.76725
+      ],
+      "orientation_wxyz": [
+        -0.21027579001489805,
+        -0.6898070913058412,
+        0.15545474191601497,
+        0.6751178357395179
+      ],
+      "yaw_deg": -85.40000000000005,
+      "surface": "on_instance",
+      "support": "InputTray",
+      "static_override": false,
+      "asset_spec_sha256": "02d9544cfe05e8a46bfdd0b6e48e9f047bc2ee03af2348b825071fcd904a0cce"
+    },
+    {
+      "name": "FittingB_0",
+      "prim": "/World/UserObjects/FittingB_0",
+      "asset": "brass_adapter_female",
+      "reference": "../../library/brass_adapter_female/brass_adapter_female.usd",
+      "position": [
+        0.3783,
+        -0.3032,
+        0.7650208496083888
+      ],
+      "orientation_wxyz": [
+        -0.7109842967704132,
+        0.5079650966242676,
+        -0.3704145194860234,
+        -0.3150648728616342
+      ],
+      "yaw_deg": 7.7465953490668715,
+      "surface": "on_instance",
+      "support": "InputTray",
+      "static_override": false,
+      "asset_spec_sha256": "1c67252d88b88875686675cefae8d8001ad7273212d87ed0e88a9f637e593f75"
+    },
+    {
+      "name": "FittingB_1",
+      "prim": "/World/UserObjects/FittingB_1",
+      "asset": "brass_adapter_female",
+      "reference": "../../library/brass_adapter_female/brass_adapter_female.usd",
+      "position": [
+        0.3173,
+        -0.2195,
+        0.7650208496083888
+      ],
+      "orientation_wxyz": [
+        0.4728745361568028,
+        0.24109125220327865,
+        0.5806121457096968,
+        -0.6173768844230606
+      ],
+      "yaw_deg": -145.1534046509331,
+      "surface": "on_instance",
+      "support": "InputTray",
+      "static_override": false,
+      "asset_spec_sha256": "1c67252d88b88875686675cefae8d8001ad7273212d87ed0e88a9f637e593f75"
+    },
+    {
+      "name": "FittingB_2",
+      "prim": "/World/UserObjects/FittingB_2",
+      "asset": "brass_adapter_female",
+      "reference": "../../library/brass_adapter_female/brass_adapter_female.usd",
+      "position": [
+        0.4903,
+        -0.3016,
+        0.7650208496083888
+      ],
+      "orientation_wxyz": [
+        -0.7677706072651127,
+        -0.22376055669491257,
+        0.5875088670838474,
+        0.12366421869399749
+      ],
+      "yaw_deg": -58.353404650933065,
+      "surface": "on_instance",
+      "support": "InputTray",
+      "static_override": false,
+      "asset_spec_sha256": "1c67252d88b88875686675cefae8d8001ad7273212d87ed0e88a9f637e593f75"
+    }
+  ],
+  "written_instances": [
+    "InputTray",
+    "sorting_bin_A",
+    "sorting_bin_B",
+    "label_A",
+    "label_B",
+    "FittingA_0",
+    "FittingA_1",
+    "FittingA_2",
+    "FittingA_3",
+    "FittingB_0",
+    "FittingB_1",
+    "FittingB_2"
+  ],
+  "preview_cameras": [
+    "IndustrialOverview",
+    "IndustrialTray",
+    "IndustrialFittings",
+    "IndustrialCrates"
+  ],
+  "deactivated_base_prims": [
+    "/World/Objects",
+    "/World/Targets",
+    "/World/Workstation/SortingZone"
+  ]
+}

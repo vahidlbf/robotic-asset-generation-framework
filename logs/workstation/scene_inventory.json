@@ -1,0 +1,255 @@
+{
+  "scene": "assets/scenes/waste_sorting_workstation.usd",
+  "components": {
+    "glass_bottle": {
+      "path": "/World/Objects/GlassBottle",
+      "visual_bounds": [
+        [
+          -0.12999999932944775,
+          -0.18999999932944775,
+          0.7515
+        ],
+        [
+          -0.07000000067055226,
+          -0.13000000067055226,
+          0.9815000041723251
+        ]
+      ],
+      "collision_bounds": [
+        [
+          -0.12999999932944775,
+          -0.18999999932944775,
+          0.7514999973177909
+        ],
+        [
+          -0.07000000067055226,
+          -0.13000000067055226,
+          0.9815000008940696
+        ]
+      ],
+      "tilt_deg": 0.0,
+      "colliders": [
+        "/World/Objects/GlassBottle/Collision/Body/Shape",
+        "/World/Objects/GlassBottle/Collision/Shoulder",
+        "/World/Objects/GlassBottle/Collision/Neck/Shape"
+      ],
+      "mass": 0.30000001192092896,
+      "diagonal_inertia": [
+        0.0014238674193620682,
+        0.0014238674193620682,
+        0.0001898910995805636
+      ],
+      "center_of_mass": [
+        8.039702864563077e-19,
+        -4.032983182999759e-18,
+        0.08823079615831375
+      ]
+    },
+    "plastic_bottle": {
+      "path": "/World/Objects/PlasticBottle",
+      "visual_bounds": [
+        [
+          -0.1524999988079071,
+          0.0675000011920929,
+          0.7515
+        ],
+        [
+          -0.08750000119209289,
+          0.1324999988079071,
+          0.971499998807907
+        ]
+      ],
+      "collision_bounds": [
+        [
+          -0.1524999988079071,
+          0.0675000011920929,
+          0.7514999997019767
+        ],
+        [
+          -0.08750000119209289,
+          0.1324999988079071,
+          0.9714999996125697
+        ]
+      ],
+      "tilt_deg": 0.0,
+      "colliders": [
+        "/World/Objects/PlasticBottle/Collision/Body/Shape",
+        "/World/Objects/PlasticBottle/Collision/Shoulder",
+        "/World/Objects/PlasticBottle/Collision/Neck/Shape",
+        "/World/Objects/PlasticBottle/Collision/Cap/Shape"
+      ],
+      "mass": 0.02500000037252903,
+      "diagonal_inertia": [
+        0.0001413162681274116,
+        0.0001413162681274116,
+        1.8734639525064267e-05
+      ],
+      "center_of_mass": [
+        -3.359939819380169e-18,
+        -1.241367895077621e-17,
+        0.09726065397262573
+      ]
+    },
+    "paper_cup": {
+      "path": "/World/Objects/PaperCup",
+      "visual_bounds": [
+        [
+          0.08000000089406967,
+          -0.23999999910593034,
+          0.7515
+        ],
+        [
+          0.15999999910593032,
+          -0.16000000089406968,
+          0.8614726557731628
+        ]
+      ],
+      "collision_bounds": [
+        [
+          0.07982550825779844,
+          -0.24017449174220157,
+          0.7513870918015444
+        ],
+        [
+          0.16017449174220158,
+          -0.15982550825779845,
+          0.8616129081984556
+        ]
+      ],
+      "tilt_deg": 0.0,
+      "colliders": [
+        "/World/Objects/PaperCup/Collision/Bottom/Shape",
+        "/World/Objects/PaperCup/Collision/Wall_00/Shape",
+        "/World/Objects/PaperCup/Collision/Wall_01/Shape",
+        "/World/Objects/PaperCup/Collision/Wall_02/Shape",
+        "/World/Objects/PaperCup/Collision/Wall_03/Shape",
+        "/World/Objects/PaperCup/Collision/Wall_04/Shape",
+        "/World/Objects/PaperCup/Collision/Wall_05/Shape",
+        "/World/Objects/PaperCup/Collision/Wall_06/Shape",
+        "/World/Objects/PaperCup/Collision/Wall_07/Shape",
+        "/World/Objects/PaperCup/Collision/Wall_08/Shape",
+        "/World/Objects/PaperCup/Collision/Wall_09/Shape",
+        "/World/Objects/PaperCup/Collision/Wall_10/Shape",
+        "/World/Objects/PaperCup/Collision/Wall_11/Shape",
+        "/World/Objects/PaperCup/Collision/Wall_12/Shape",
+        "/World/Objects/PaperCup/Collision/Wall_13/Shape",
+        "/World/Objects/PaperCup/Collision/Wall_14/Shape",
+        "/World/Objects/PaperCup/Collision/Wall_15/Shape"
+      ],
+      "mass": 0.012000000104308128,
+      "diagonal_inertia": [
+        2.2054253349779174e-05,
+        2.2054253349779174e-05,
+        1.2607730241143145e-05
+      ],
+      "center_of_mass": [
+        3.5707426625862454e-18,
+        -4.0869674713168075e-18,
+        0.05338072031736374
+      ]
+    },
+    "paper_bin": {
+      "path": "/World/Workstation/SortingZone/PaperBin",
+      "collision_bounds": [
+        [
+          0.8199999999478459,
+          0.3399999999478459,
+          -5.2154064053566707e-11
+        ],
+        [
+          1.140000000052154,
+          0.6600000000521541,
+          0.44999999678134917
+        ]
+      ],
+      "colliders": [
+        "/World/Workstation/SortingZone/PaperBin/Collision/Bottom/Shape",
+        "/World/Workstation/SortingZone/PaperBin/Collision/WallPosX/Shape",
+        "/World/Workstation/SortingZone/PaperBin/Collision/WallNegX/Shape",
+        "/World/Workstation/SortingZone/PaperBin/Collision/WallPosY/Shape",
+        "/World/Workstation/SortingZone/PaperBin/Collision/WallNegY/Shape"
+      ],
+      "label": "PAPER"
+    },
+    "plastic_bin": {
+      "path": "/World/Workstation/SortingZone/PlasticBin",
+      "collision_bounds": [
+        [
+          0.8199999999478459,
+          -0.5600000000521541,
+          -5.2154064053566707e-11
+        ],
+        [
+          1.140000000052154,
+          -0.23999999994784596,
+          0.44999999678134917
+        ]
+      ],
+      "colliders": [
+        "/World/Workstation/SortingZone/PlasticBin/Collision/Bottom/Shape",
+        "/World/Workstation/SortingZone/PlasticBin/Collision/WallPosX/Shape",
+        "/World/Workstation/SortingZone/PlasticBin/Collision/WallNegX/Shape",
+        "/World/Workstation/SortingZone/PlasticBin/Collision/WallPosY/Shape",
+        "/World/Workstation/SortingZone/PlasticBin/Collision/WallNegY/Shape"
+      ],
+      "label": "PLASTIC"
+    },
+    "crate": {
+      "path": "/World/Workstation/SortingZone/GlassCrate",
+      "collision_bounds": [
+        [
+          0.8799999970197678,
+          -0.10000000596046447,
+          0.5500000001117588
+        ],
+        [
+          1.2800000029802323,
+          0.20000000596046447,
+          0.8300000053644181
+        ]
+      ]
+    },
+    "robot": {
+      "path": "/World/RobotMount/Robot",
+      "asset": "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/6.2/Isaac/Robots/FrankaRobotics/FrankaPanda/franka.usd",
+      "base_position": [
+        0.45,
+        0.15,
+        0.75
+      ],
+      "base_yaw_deg": -90.0,
+      "dofs": [
+        "panda_joint1",
+        "panda_joint2",
+        "panda_joint3",
+        "panda_joint4",
+        "panda_joint5",
+        "panda_joint6",
+        "panda_joint7",
+        "panda_finger_joint1",
+        "panda_finger_joint2"
+      ],
+      "home_joint_positions_deg": {
+        "panda_joint1": 0.0,
+        "panda_joint2": -45.0,
+        "panda_joint3": 0.0,
+        "panda_joint4": -135.0,
+        "panda_joint5": 0.0,
+        "panda_joint6": 90.0,
+        "panda_joint7": 45.0
+      }
+    }
+  },
+  "cameras": {
+    "Main": "/World/Cameras/Main",
+    "Top": "/World/Cameras/Top",
+    "RobotSide": "/World/Cameras/RobotSide",
+    "SortingZone": "/World/Cameras/SortingZone",
+    "CrateCloseup": "/World/Cameras/CrateCloseup"
+  },
+  "lights": [
+    "/World/Environment/Lights/Dome",
+    "/World/Environment/Lights/KeyLight",
+    "/World/Environment/Lights/FillLight"
+  ]
+}

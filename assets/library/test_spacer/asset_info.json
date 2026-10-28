@@ -1,0 +1,196 @@
+{
+  "asset_id": "test_spacer",
+  "schema_version": 1,
+  "ok": true,
+  "spec_file": "config/assets/test_spacer.json",
+  "spec_sha256": "3a358e39287b9eb8c7378e0565355676a4ddd400de49b2d97ce52975809078ab",
+  "spec": {
+    "schema_version": 1,
+    "asset_id": "test_spacer",
+    "category": "hardware/spacer",
+    "description": "Infrastructure test asset: plain steel cylindrical spacer (tube), 30 mm OD, 12 mm bore, 25 mm long.",
+    "source": "Test dimensions chosen for the incremental-asset demonstration; not a catalogue part. Friction/restitution are illustrative simulation values.",
+    "geometry": {
+      "method": "tube",
+      "outer_diameter": 0.03,
+      "inner_diameter": 0.012,
+      "height": 0.025,
+      "segments": 48
+    },
+    "visual_material": {
+      "color": [
+        0.62,
+        0.63,
+        0.65
+      ],
+      "roughness": 0.35,
+      "metallic": 1.0
+    },
+    "collision": {
+      "representation": "ring_segments",
+      "segments": 12
+    },
+    "physics": {
+      "body": "dynamic",
+      "density_kg_m3": 7850,
+      "material": {
+        "id": "steel",
+        "static_friction": 0.6,
+        "dynamic_friction": 0.5,
+        "restitution": 0.1
+      }
+    },
+    "validation": {
+      "dimension_tolerance_m": 0.0005,
+      "settle_test": true
+    }
+  },
+  "resolved_physics_material": {
+    "id": "steel",
+    "static_friction": 0.6,
+    "dynamic_friction": 0.5,
+    "restitution": 0.1
+  },
+  "generator": "scripts/assets/generate_asset.py",
+  "blender_version": "5.2.2 LTS",
+  "generated_utc": "2026-10-27T16:25:47+00:00",
+  "files": [
+    "test_spacer.usd",
+    "test_spacer_visual.usd"
+  ],
+  "file_sha256": {
+    "test_spacer.usd": "804a1ed1193e3548703333e8aca7c4b27916d7dc76108b80743fe726ecfd7269",
+    "test_spacer_visual.usd": "eedd446fab04cc6df9a25d314d5473e7dd7f66c9f04231569b1a2a364b095aa4"
+  },
+  "usd_root_prim": "/TestSpacer",
+  "physics_material_prim": "PhysicsMaterial",
+  "bounds_visual_m": [
+    [
+      -0.014999999664723873,
+      -0.014999999664723873,
+      0.0
+    ],
+    [
+      0.014999999664723873,
+      0.014999999664723873,
+      0.02500000037252903
+    ]
+  ],
+  "nominal_bounds_m": [
+    [
+      -0.015,
+      -0.015,
+      0.0
+    ],
+    [
+      0.015,
+      0.015,
+      0.025
+    ]
+  ],
+  "mesh": {
+    "triangles": 384,
+    "volume_m3": 1.480166982874954e-05,
+    "non_manifold_edges": 0,
+    "boundary_edges": 0,
+    "analytic_volume_m3": 1.4844025288211772e-05,
+    "polygon_volume_m3": 1.4801670197753847e-05,
+    "volume_vs_polygon_rel_error": 2.492991002688446e-08
+  },
+  "mass_properties": {
+    "mass_kg": 0.1161931081556839,
+    "mass_source": "density_kg_m3 x mesh volume",
+    "volume_m3": 1.480166982874954e-05,
+    "density_kg_m3": 7850.0,
+    "center_of_mass": [
+      6.37430031279792e-20,
+      1.0300389049978419e-18,
+      0.012500000186264546
+    ],
+    "inertia_tensor": [
+      [
+        1.3611704114838126e-05,
+        -4.846048271419577e-22,
+        9.353241142847586e-24
+      ],
+      [
+        3.5371891901386e-23,
+        1.3611704114838123e-05,
+        -8.9180760971281e-22
+      ],
+      [
+        1.4885919015447637e-22,
+        -3.4559405985102483e-23,
+        1.5119959102748416e-05
+      ]
+    ],
+    "diagonal_inertia": [
+      1.3611704114838126e-05,
+      1.3611704114838123e-05,
+      1.5119959102748416e-05
+    ],
+    "max_offdiag_ratio": 5.898214430690508e-17
+  },
+  "colliders": [
+    "Ring_00",
+    "Ring_01",
+    "Ring_02",
+    "Ring_03",
+    "Ring_04",
+    "Ring_05",
+    "Ring_06",
+    "Ring_07",
+    "Ring_08",
+    "Ring_09",
+    "Ring_10",
+    "Ring_11"
+  ],
+  "collider_representation": "ring_segments",
+  "checks": {
+    "dimensions": {
+      "passed": true,
+      "measured_size_m": [
+        0.029999999329447746,
+        0.029999999329447746,
+        0.02500000037252903
+      ],
+      "nominal_size_m": [
+        0.03,
+        0.03,
+        0.025
+      ],
+      "tolerance_m": 0.0005,
+      "bottom_z_m": 0.0
+    },
+    "closed_manifold_mesh": {
+      "passed": true,
+      "non_manifold_edges": 0,
+      "boundary_edges": 0
+    },
+    "mesh_volume_matches_geometry": {
+      "passed": true,
+      "relative_error": 2.492991002688446e-08,
+      "note": "closed-mesh volume vs. the exact volume of the tessellated solid (float32 vertices); informational for bevelled boxes"
+    },
+    "usd_asset": {
+      "default_prim": "/TestSpacer",
+      "units_ok": true,
+      "colliders": 12,
+      "colliders_expected": 12,
+      "colliders_guide_purpose": true,
+      "colliders_physics_material_bound": true,
+      "unresolved_dependencies": [],
+      "visual_meshes": 1,
+      "visual_references": [
+        "./test_spacer_visual.usd"
+      ],
+      "rigid_body": true,
+      "mass_authored_kg": 0.11619310826063156,
+      "passed": true
+    },
+    "mass_properties": {
+      "passed": true,
+      "note": "symmetric solid: COM must be on the axis at half height"
+    }
+  }
+}

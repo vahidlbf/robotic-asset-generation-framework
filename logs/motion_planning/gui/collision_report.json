@@ -1,0 +1,114 @@
+{
+  "scope": [
+    "PhysX contact reports: every robot link vs. every obstacle collider prim, every physics step",
+    "cuMotion RobotWorldInspector on every executed joint state (world collision with safety-padded obstacles, self-collision spheres)",
+    "independent PhysX-hull clearance (robot convex hulls, real finger opening) every 6th step"
+  ],
+  "limitations": [
+    "no continuous/swept collision checking; checks are discrete (planned 4 ms, executed 8.3 ms)",
+    "PhysX articulation self-collision is disabled in the official asset, so self-collision is checked only with cuMotion's sphere model",
+    "cuMotion fingertip spheres assume the XRDF finger model; the hull check uses the real 0.04 m opening"
+  ],
+  "physics_contact_readback_ok": true,
+  "physics_contacts": [],
+  "unintended_contacts": [],
+  "executed_configuration_checks": {
+    "steps_checked": 938,
+    "inspector_world_collision_steps": 0,
+    "inspector_self_collision_steps": 0,
+    "inspector_min_distance_m": 0.0853216787693835,
+    "hull_min_clearance_m": 0.0970231061080933,
+    "hull_closest": [
+      "panda_leftfinger",
+      "object/plastic_bottle"
+    ],
+    "hull_steps_checked": 157,
+    "min_gripper_to_pet_clearance_m": 0.0970231061080933
+  },
+  "planned_trajectory_checks": {
+    "outbound": {
+      "attempt": 0,
+      "path_found": true,
+      "rrt_waypoints": 2,
+      "densify_round": 0,
+      "timed_waypoints": 2,
+      "duration_s": 2.659461574099614,
+      "samples": 666,
+      "within_position_limits": true,
+      "max_velocity_rad_s": [
+        0.39509125792548966,
+        0.5926507375628434,
+        0.5999985767403331,
+        0.2504518750990391,
+        0.06718633096858687,
+        0.3120769703092424,
+        0.010597067911952855
+      ],
+      "velocity_within_limits": true,
+      "max_acceleration_rad_s2": [
+        0.5942101748505052,
+        0.8913360934422692,
+        0.902387111947095,
+        0.37667513393147006,
+        0.10104703830206477,
+        0.46935817326852325,
+        0.015937800319671302
+      ],
+      "acceleration_within_limits": true,
+      "max_joint_step_between_samples_rad": 0.0023999973283280185,
+      "inspector_world_collision_samples": 0,
+      "inspector_self_collision_samples": 0,
+      "inspector_min_distance_m": 0.08778152272297585,
+      "hull_min_clearance_m": 0.09983602218865675,
+      "hull_closest": [
+        "panda_leftfinger",
+        "object/plastic_bottle"
+      ],
+      "hull_samples": 168,
+      "collision_free": true,
+      "valid": true
+    },
+    "return": {
+      "attempt": 0,
+      "path_found": true,
+      "rrt_waypoints": 2,
+      "densify_round": 0,
+      "timed_waypoints": 2,
+      "duration_s": 2.6450462772195436,
+      "samples": 663,
+      "within_position_limits": true,
+      "max_velocity_rad_s": [
+        0.39680741098172106,
+        0.5984497917725332,
+        0.599998947645547,
+        0.25153829297427577,
+        0.06768508751539559,
+        0.3143072366377324,
+        0.010674824848136026
+      ],
+      "velocity_within_limits": true,
+      "max_acceleration_rad_s2": [
+        0.5989448503698186,
+        0.9033057626122827,
+        0.9056440731046859,
+        0.379674272904891,
+        0.10216450976527797,
+        0.47441830875182345,
+        0.016112681352328326
+      ],
+      "acceleration_within_limits": true,
+      "max_joint_step_between_samples_rad": 0.0023999968985811693,
+      "inspector_world_collision_samples": 0,
+      "inspector_self_collision_samples": 0,
+      "inspector_min_distance_m": 0.08608513401251472,
+      "hull_min_clearance_m": 0.09826155714831708,
+      "hull_closest": [
+        "panda_leftfinger",
+        "object/plastic_bottle"
+      ],
+      "hull_samples": 167,
+      "collision_free": true,
+      "valid": true
+    }
+  }
+}

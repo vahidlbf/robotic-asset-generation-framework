@@ -1,0 +1,212 @@
+{
+  "asset_id": "industrial_blue_crate",
+  "schema_version": 1,
+  "ok": true,
+  "spec_file": "config/assets/industrial_blue_crate.json",
+  "spec_sha256": "2f752d91a6b12dbb61d4ffbce37aa570c1e28c102ee78eb1604477eef9400a49",
+  "spec": {
+    "schema_version": 1,
+    "asset_id": "industrial_blue_crate",
+    "category": "container/crate",
+    "description": "Blue polypropylene industrial storage crate: open top, tapered walls, thick reinforced rim, stacking foot, horizontal band, vertical external ribs, hand holes and label holders on the short sides.",
+    "source": "Representative envelope of a comparable 400 x 300 x 220 mm industrial PP container (prompt specification), styled after the reference photographs; not a measured replica. Friction/restitution are illustrative simulation values.",
+    "geometry": {
+      "method": "open_container",
+      "size": [
+        0.4,
+        0.3,
+        0.22
+      ],
+      "wall_thickness": 0.004,
+      "floor_thickness": 0.016,
+      "draft_deg": 2.5,
+      "corner_radius": 0.022,
+      "corner_segments": 6,
+      "rim": {
+        "height": 0.026,
+        "overhang": 0.008,
+        "round": 0.003
+      },
+      "foot": {
+        "height": 0.012,
+        "inset": 0.006
+      },
+      "band": {
+        "z": 0.075,
+        "height": 0.008,
+        "depth": 0.004
+      },
+      "ribs": {
+        "long": 5,
+        "short": 2,
+        "width": 0.007,
+        "depth": 0.006,
+        "corners": true
+      },
+      "handles": {
+        "width": 0.11,
+        "height": 0.028,
+        "below_rim": 0.006
+      },
+      "label_holder": {
+        "width": 0.15,
+        "height": 0.06,
+        "depth": 0.004,
+        "z_center": 0.12
+      }
+    },
+    "visual_material": {
+      "color": [
+        0.0,
+        0.1,
+        0.42
+      ],
+      "roughness": 0.55,
+      "metallic": 0.0
+    },
+    "collision": {
+      "representation": "container_walls",
+      "contact_offset_m": 0.02
+    },
+    "physics": {
+      "body": "static",
+      "material": {
+        "id": "polypropylene",
+        "static_friction": 0.35,
+        "dynamic_friction": 0.3,
+        "restitution": 0.1
+      }
+    },
+    "validation": {
+      "dimension_tolerance_m": 0.0005
+    }
+  },
+  "resolved_physics_material": {
+    "id": "polypropylene",
+    "static_friction": 0.35,
+    "dynamic_friction": 0.3,
+    "restitution": 0.1
+  },
+  "generator": "scripts/assets/generate_asset.py",
+  "blender_version": "5.2.2 LTS",
+  "generated_utc": "2026-10-27T18:15:46+00:00",
+  "files": [
+    "industrial_blue_crate.usd",
+    "industrial_blue_crate_visual.usd"
+  ],
+  "file_sha256": {
+    "industrial_blue_crate.usd": "72fb290640b4a801d9893ea62d548c6cdd56583eaea7f026d146ef37d58efff8",
+    "industrial_blue_crate_visual.usd": "00f3777502ed5ed35cf3ea42f7380cf1edf60e252202ed098095d52adc3bd584"
+  },
+  "usd_root_prim": "/IndustrialBlueCrate",
+  "physics_material_prim": "PhysicsMaterial",
+  "bounds_visual_m": [
+    [
+      -0.20000000298023224,
+      -0.15000000596046448,
+      0.0
+    ],
+    [
+      0.20000000298023224,
+      0.15000000596046448,
+      0.2199999988079071
+    ]
+  ],
+  "nominal_bounds_m": [
+    [
+      -0.2,
+      -0.15,
+      0.0
+    ],
+    [
+      0.2,
+      0.15,
+      0.22
+    ]
+  ],
+  "mesh": {
+    "triangles": 1480,
+    "vertices": 772,
+    "objects": 1,
+    "volume_m3": 0.002933593797658475,
+    "non_manifold_edges": 0,
+    "boundary_edges": 0,
+    "analytic_volume_m3": null,
+    "polygon_volume_m3": null,
+    "reference": "none (static visual mesh of several closed parts; volume not used)",
+    "volume_vs_polygon_rel_error": null
+  },
+  "mass_properties": null,
+  "colliders": [
+    "Floor",
+    "WallPosX",
+    "WallNegX",
+    "WallPosY",
+    "WallNegY"
+  ],
+  "collider_representation": "container_walls",
+  "mounts": {
+    "label_+x": [
+      [
+        0.19294373399640416,
+        0.0,
+        0.12
+      ],
+      90.0
+    ],
+    "label_-x": [
+      [
+        -0.19294373399640416,
+        0.0,
+        0.12
+      ],
+      -90.0
+    ]
+  },
+  "checks": {
+    "dimensions": {
+      "passed": true,
+      "measured_size_m": [
+        0.4000000059604645,
+        0.30000001192092896,
+        0.2199999988079071
+      ],
+      "nominal_size_m": [
+        0.4,
+        0.3,
+        0.22
+      ],
+      "tolerance_m": 0.0005,
+      "bottom_z_m": 0.0
+    },
+    "closed_manifold_mesh": {
+      "passed": true,
+      "non_manifold_edges": 0,
+      "boundary_edges": 0,
+      "note": ""
+    },
+    "mesh_volume_matches_geometry": {
+      "passed": true,
+      "relative_error": null,
+      "tolerance": 1e-05,
+      "reference": "none (static visual mesh of several closed parts; volume not used)",
+      "note": "closed-mesh volume vs. the exact volume of the tessellated solid (float32 vertices); fitting: vs. the ring-loft integral (non-planar thread quads are triangulated); informational for bevelled boxes and static containers/labels"
+    },
+    "usd_asset": {
+      "default_prim": "/IndustrialBlueCrate",
+      "units_ok": true,
+      "colliders": 5,
+      "colliders_expected": 5,
+      "colliders_guide_purpose": true,
+      "colliders_physics_material_bound": true,
+      "unresolved_dependencies": [],
+      "visual_meshes": 1,
+      "visual_references": [
+        "./industrial_blue_crate_visual.usd"
+      ],
+      "rigid_body": false,
+      "mass_authored_kg": null,
+      "passed": true
+    }
+  }
+}

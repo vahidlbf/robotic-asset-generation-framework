@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "asset_id": "industrial_blue_crate",
+  "category": "container/crate",
+  "description": "Blue polypropylene industrial storage crate: open top, tapered walls, thick reinforced rim, stacking foot, horizontal band, vertical external ribs, hand holes and label holders on the short sides.",
+  "source": "Representative envelope of a comparable 400 x 300 x 220 mm industrial PP container (prompt specification), styled after the reference photographs; not a measured replica. Friction/restitution are illustrative simulation values.",
+  "geometry": {
+    "method": "open_container",
+    "size": [
+      0.4,
+      0.3,
+      0.22
+    ],
+    "wall_thickness": 0.004,
+    "floor_thickness": 0.016,
+    "draft_deg": 2.5,
+    "corner_radius": 0.022,
+    "corner_segments": 6,
+    "rim": {
+      "height": 0.026,
+      "overhang": 0.008,
+      "round": 0.003
+    },
+    "foot": {
+      "height": 0.012,
+      "inset": 0.006
+    },
+    "band": {
+      "z": 0.075,
+      "height": 0.008,
+      "depth": 0.004
+    },
+    "ribs": {
+      "long": 5,
+      "short": 2,
+      "width": 0.007,
+      "depth": 0.006,
+      "corners": true
+    },
+    "handles": {
+      "width": 0.11,
+      "height": 0.028,
+      "below_rim": 0.006
+    },
+    "label_holder": {
+      "width": 0.15,
+      "height": 0.06,
+      "depth": 0.004,
+      "z_center": 0.12
+    }
+  },
+  "visual_material": {
+    "color": [
+      0.0,
+      0.1,
+      0.42
+    ],
+    "roughness": 0.55,
+    "metallic": 0.0
+  },
+  "collision": {
+    "representation": "container_walls",
+    "contact_offset_m": 0.02
+  },
+  "physics": {
+    "body": "static",
+    "material": {
+      "id": "polypropylene",
+      "static_friction": 0.35,
+      "dynamic_friction": 0.3,
+      "restitution": 0.1
+    }
+  },
+  "validation": {
+    "dimension_tolerance_m": 0.0005
+  }
+}

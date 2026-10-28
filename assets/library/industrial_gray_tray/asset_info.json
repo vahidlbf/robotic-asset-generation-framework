@@ -1,0 +1,168 @@
+{
+  "asset_id": "industrial_gray_tray",
+  "schema_version": 1,
+  "ok": true,
+  "spec_file": "config/assets/industrial_gray_tray.json",
+  "spec_sha256": "b4b3913d034d43cd7a241f7ef9a76bd52ef57997860d865d10f644475b5c4f94",
+  "spec": {
+    "schema_version": 1,
+    "asset_id": "industrial_gray_tray",
+    "category": "container/tray",
+    "description": "Shallow medium-gray plastic input tray: flat inner floor, four slightly tapered 5 mm walls, rounded upper rim, open top.",
+    "source": "Provisional dimensions from the prompt (350 x 300 x 100 mm, ~5 mm walls), styled after the reference photograph; not a measured replica. Friction values are illustrative (plastic against brass).",
+    "geometry": {
+      "method": "open_container",
+      "size": [
+        0.35,
+        0.3,
+        0.1
+      ],
+      "wall_thickness": 0.005,
+      "floor_thickness": 0.005,
+      "draft_deg": 4.0,
+      "corner_radius": 0.018,
+      "corner_segments": 6,
+      "rim": {
+        "height": 0.01,
+        "overhang": 0.004,
+        "round": 0.003
+      }
+    },
+    "visual_material": {
+      "color": [
+        0.2,
+        0.205,
+        0.215
+      ],
+      "roughness": 0.62,
+      "metallic": 0.0
+    },
+    "collision": {
+      "representation": "container_walls",
+      "contact_offset_m": 0.02
+    },
+    "physics": {
+      "body": "static",
+      "material": {
+        "id": "tray_plastic",
+        "static_friction": 0.4,
+        "dynamic_friction": 0.35,
+        "restitution": 0.05
+      }
+    },
+    "validation": {
+      "dimension_tolerance_m": 0.0005
+    }
+  },
+  "resolved_physics_material": {
+    "id": "tray_plastic",
+    "static_friction": 0.4,
+    "dynamic_friction": 0.35,
+    "restitution": 0.05
+  },
+  "generator": "scripts/assets/generate_asset.py",
+  "blender_version": "5.2.2 LTS",
+  "generated_utc": "2026-10-27T18:15:48+00:00",
+  "files": [
+    "industrial_gray_tray.usd",
+    "industrial_gray_tray_visual.usd"
+  ],
+  "file_sha256": {
+    "industrial_gray_tray.usd": "3e8bfcade4df6732a102d64cd0a045af5a43bcd287a679d5b4cf742d8c3fe78b",
+    "industrial_gray_tray_visual.usd": "6732d5dd92e67a606929f6a5a365422cdf60cacd6c8e95d9c0c141267b54c5e3"
+  },
+  "usd_root_prim": "/IndustrialGrayTray",
+  "physics_material_prim": "PhysicsMaterial",
+  "bounds_visual_m": [
+    [
+      -0.17499999701976776,
+      -0.15000000596046448,
+      0.0
+    ],
+    [
+      0.17499999701976776,
+      0.15000000596046448,
+      0.10000000149011612
+    ]
+  ],
+  "nominal_bounds_m": [
+    [
+      -0.175,
+      -0.15,
+      0.0
+    ],
+    [
+      0.175,
+      0.15,
+      0.1
+    ]
+  ],
+  "mesh": {
+    "triangles": 836,
+    "vertices": 420,
+    "objects": 1,
+    "volume_m3": 0.0010726075514514441,
+    "non_manifold_edges": 0,
+    "boundary_edges": 0,
+    "analytic_volume_m3": null,
+    "polygon_volume_m3": null,
+    "reference": "none (static visual mesh of several closed parts; volume not used)",
+    "volume_vs_polygon_rel_error": null
+  },
+  "mass_properties": null,
+  "colliders": [
+    "Floor",
+    "WallPosX",
+    "WallNegX",
+    "WallPosY",
+    "WallNegY"
+  ],
+  "collider_representation": "container_walls",
+  "mounts": {},
+  "checks": {
+    "dimensions": {
+      "passed": true,
+      "measured_size_m": [
+        0.3499999940395355,
+        0.30000001192092896,
+        0.10000000149011612
+      ],
+      "nominal_size_m": [
+        0.35,
+        0.3,
+        0.1
+      ],
+      "tolerance_m": 0.0005,
+      "bottom_z_m": 0.0
+    },
+    "closed_manifold_mesh": {
+      "passed": true,
+      "non_manifold_edges": 0,
+      "boundary_edges": 0,
+      "note": ""
+    },
+    "mesh_volume_matches_geometry": {
+      "passed": true,
+      "relative_error": null,
+      "tolerance": 1e-05,
+      "reference": "none (static visual mesh of several closed parts; volume not used)",
+      "note": "closed-mesh volume vs. the exact volume of the tessellated solid (float32 vertices); fitting: vs. the ring-loft integral (non-planar thread quads are triangulated); informational for bevelled boxes and static containers/labels"
+    },
+    "usd_asset": {
+      "default_prim": "/IndustrialGrayTray",
+      "units_ok": true,
+      "colliders": 5,
+      "colliders_expected": 5,
+      "colliders_guide_purpose": true,
+      "colliders_physics_material_bound": true,
+      "unresolved_dependencies": [],
+      "visual_meshes": 1,
+      "visual_references": [
+        "./industrial_gray_tray_visual.usd"
+      ],
+      "rigid_body": false,
+      "mass_authored_kg": null,
+      "passed": true
+    }
+  }
+}

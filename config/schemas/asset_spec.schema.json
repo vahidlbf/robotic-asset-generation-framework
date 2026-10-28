@@ -1,0 +1,718 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "asset_spec.schema.json",
+  "title": "Workstation asset definition (one reusable asset, no scene placement)",
+  "description": "Validated by scripts/assets/asset_lib.py (stdlib subset: type, required, properties, additionalProperties, enum, minimum, exclusiveMinimum, maximum, minItems, maxItems, items, pattern). Method-specific geometry parameters and cross-field rules are checked in asset_lib.py. Units: metres, kilograms, seconds, degrees. Local frame: origin at the bottom centre, Z up.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "asset_id",
+    "category",
+    "geometry",
+    "visual_material",
+    "collision",
+    "physics"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "enum": [
+        1
+      ]
+    },
+    "asset_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]{1,47}$",
+      "description": "Directory and file stem under assets/library/."
+    },
+    "category": {
+      "type": "string",
+      "pattern": "^[a-z0-9_/]+$",
+      "description": "Free-form taxonomy, e.g. hardware/fastener."
+    },
+    "description": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string",
+      "description": "Where the dimensions come from (standard, datasheet, measurement, test)."
+    },
+    "geometry": {
+      "type": "object",
+      "required": [
+        "method"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "method": {
+          "type": "string",
+          "enum": [
+            "box",
+            "cylinder",
+            "tube",
+            "open_container",
+            "fitting",
+            "label_plate"
+          ],
+          "description": "box/cylinder/tube: primitives. open_container: hollow open-top crate/tray (tapered walls, rim, optional ribs/handles/foot/label holder). fitting: stepped turned part (cylinders, cones, hex flats, visual threads) with a stepped bore. label_plate: thin plate with raised text, visual only."
+        },
+        "size": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "minItems": 3,
+          "maxItems": 3,
+          "description": "box, open_container, label_plate: outer envelope [x, y, z] in m (label_plate: [width, thickness incl. text relief, height])"
+        },
+        "diameter": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "cylinder"
+        },
+        "outer_diameter": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "tube"
+        },
+        "inner_diameter": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "tube; must be < outer_diameter"
+        },
+        "height": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "cylinder, tube"
+        },
+        "segments": {
+          "type": "integer",
+          "minimum": 8,
+          "maximum": 256,
+          "description": "cylinder/tube/fitting visual tessellation (default 48; fitting: multiple of 12)"
+        },
+        "bevel": {
+          "type": "number",
+          "minimum": 0,
+          "description": "box edge bevel (visual only), default 0"
+        },
+        "wall_thickness": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "open_container: wall thickness (horizontal)"
+        },
+        "floor_thickness": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "open_container: height of the inner floor above the container bottom"
+        },
+        "draft_deg": {
+          "type": "number",
+          "minimum": 0,
+          "description": "open_container: wall taper (outward towards the top), default 0"
+        },
+        "corner_radius": {
+          "type": "number",
+          "minimum": 0,
+          "description": "open_container: outer corner radius at the rim (offset surfaces shrink it)"
+        },
+        "corner_segments": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 16,
+          "description": "open_container: segments per rounded corner (default 6)"
+        },
+        "rim": {
+          "type": "object",
+          "required": [
+            "height"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "height": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "description": "rim band height"
+            },
+            "overhang": {
+              "type": "number",
+              "minimum": 0,
+              "description": "rim protrusion beyond the wall top"
+            },
+            "round": {
+              "type": "number",
+              "minimum": 0,
+              "description": "rounding of the rim's outer top edge"
+            }
+          },
+          "description": "open_container: reinforced upper rim"
+        },
+        "foot": {
+          "type": "object",
+          "required": [
+            "height",
+            "inset"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "height": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "description": "stacking-foot height"
+            },
+            "inset": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "description": "inset of the foot from the wall bottom"
+            }
+          },
+          "description": "open_container: recessed stacking foot"
+        },
+        "band": {
+          "type": "object",
+          "required": [
+            "z",
+            "height",
+            "depth"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "z": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "description": "band centre height"
+            },
+            "height": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "description": "band height"
+            },
+            "depth": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "description": "protrusion"
+            }
+          },
+          "description": "open_container: horizontal reinforcement band"
+        },
+        "ribs": {
+          "type": "object",
+          "required": [
+            "long",
+            "short",
+            "width",
+            "depth"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "long": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 20
+            },
+            "short": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 20
+            },
+            "width": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "description": "rib width"
+            },
+            "depth": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "description": "rib depth (must not exceed rim.overhang)"
+            },
+            "corners": {
+              "type": "boolean"
+            }
+          },
+          "description": "open_container: vertical external ribs (visual)"
+        },
+        "handles": {
+          "type": "object",
+          "required": [
+            "width",
+            "height"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "width": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "description": "hand-hole width"
+            },
+            "height": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "description": "hand-hole height"
+            },
+            "below_rim": {
+              "type": "number",
+              "minimum": 0,
+              "description": "gap between hole and rim"
+            }
+          },
+          "description": "open_container: hand holes in the short (+/-x) walls under the rim (visual; colliders stay solid)"
+        },
+        "label_holder": {
+          "type": "object",
+          "required": [
+            "width",
+            "height",
+            "depth",
+            "z_center"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "width": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "description": "panel width"
+            },
+            "height": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "description": "panel height"
+            },
+            "depth": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "description": "protrusion at the panel top"
+            },
+            "z_center": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "description": "panel centre height"
+            }
+          },
+          "description": "open_container: flat vertical label panel on both short (+/-x) walls; mount points label_+x / label_-x"
+        },
+        "outer": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "type",
+              "length"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "cylinder",
+                  "cone",
+                  "hex",
+                  "thread"
+                ]
+              },
+              "length": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "description": "axial length"
+              },
+              "diameter": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "description": "cylinder"
+              },
+              "d0": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "description": "cone: diameter at the section start"
+              },
+              "d1": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "description": "cone: diameter at the section end"
+              },
+              "across_flats": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "description": "hex"
+              },
+              "chamfer": {
+                "type": "boolean",
+                "description": "hex: 30 deg corner chamfer at both ends (default true)"
+              },
+              "major_diameter": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "description": "outer thread"
+              },
+              "minor_diameter": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "description": "bore thread"
+              },
+              "pitch": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "description": "thread pitch (visual helix)"
+              },
+              "depth": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "description": "thread depth (visual)"
+              },
+              "chamfer_start": {
+                "type": "number",
+                "minimum": 0,
+                "description": "45 deg chamfer at the section start"
+              },
+              "chamfer_end": {
+                "type": "number",
+                "minimum": 0,
+                "description": "45 deg chamfer at the section end"
+              },
+              "grooves": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "at",
+                    "width",
+                    "depth"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "at": {
+                      "type": "number",
+                      "exclusiveMinimum": 0,
+                      "description": "groove centre from section start"
+                    },
+                    "width": {
+                      "type": "number",
+                      "exclusiveMinimum": 0,
+                      "description": "width"
+                    },
+                    "depth": {
+                      "type": "number",
+                      "exclusiveMinimum": 0,
+                      "description": "depth"
+                    }
+                  },
+                  "description": ""
+                }
+              }
+            }
+          },
+          "minItems": 1,
+          "description": "fitting: outer sections from z = 0 upwards"
+        },
+        "bore": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "type",
+              "length"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "cylinder",
+                  "cone",
+                  "hex",
+                  "thread"
+                ]
+              },
+              "length": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "description": "axial length"
+              },
+              "diameter": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "description": "cylinder"
+              },
+              "d0": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "description": "cone: diameter at the section start"
+              },
+              "d1": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "description": "cone: diameter at the section end"
+              },
+              "across_flats": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "description": "hex"
+              },
+              "chamfer": {
+                "type": "boolean",
+                "description": "hex: 30 deg corner chamfer at both ends (default true)"
+              },
+              "major_diameter": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "description": "outer thread"
+              },
+              "minor_diameter": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "description": "bore thread"
+              },
+              "pitch": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "description": "thread pitch (visual helix)"
+              },
+              "depth": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "description": "thread depth (visual)"
+              },
+              "chamfer_start": {
+                "type": "number",
+                "minimum": 0,
+                "description": "45 deg chamfer at the section start"
+              },
+              "chamfer_end": {
+                "type": "number",
+                "minimum": 0,
+                "description": "45 deg chamfer at the section end"
+              },
+              "grooves": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "at",
+                    "width",
+                    "depth"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "at": {
+                      "type": "number",
+                      "exclusiveMinimum": 0,
+                      "description": "groove centre from section start"
+                    },
+                    "width": {
+                      "type": "number",
+                      "exclusiveMinimum": 0,
+                      "description": "width"
+                    },
+                    "depth": {
+                      "type": "number",
+                      "exclusiveMinimum": 0,
+                      "description": "depth"
+                    }
+                  },
+                  "description": ""
+                }
+              }
+            }
+          },
+          "minItems": 1,
+          "description": "fitting: bore sections from z = 0 upwards (same total length; cylinder/cone/thread)"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "description": "label_plate: text (\\n for a second line)"
+        },
+        "text_color": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "text_height": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "label_plate: character size"
+        },
+        "text_relief": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "label_plate: raised text thickness (part of size[1])"
+        }
+      }
+    },
+    "visual_material": {
+      "type": "object",
+      "required": [
+        "color"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "color": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "roughness": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "metallic": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "opacity": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "collision": {
+      "type": "object",
+      "required": [
+        "representation"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "representation": {
+          "type": "string",
+          "enum": [
+            "primitive",
+            "convex_hull",
+            "ring_segments",
+            "container_walls",
+            "fitting_sections",
+            "none"
+          ],
+          "description": "primitive: one UsdGeom Cube/Cylinder (solid; a tube becomes a solid cylinder). convex_hull: convex mesh of the visual vertices (solid). ring_segments: tube only, N boxes around the ring (keeps the hole open). container_walls: open_container only, floor + 4 separate convex walls (open top). fitting_sections: fitting only, per zone a ring of convex sector prisms (hex zones: 6, round zones: segments) whose inner faces are tangent to the largest bore radius of the zone (bore open). none: visual-only asset (static, no colliders)."
+        },
+        "segments": {
+          "type": "integer",
+          "minimum": 6,
+          "maximum": 64,
+          "description": "ring_segments count (default 12); fitting_sections: sectors per round zone (multiple of 12, default 12)"
+        },
+        "zones": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "description": "fitting_sections: consecutive groups of outer-section indices; each group becomes one collider zone"
+        },
+        "contact_offset_m": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 0.05,
+          "description": "optional PhysxCollisionAPI contactOffset on every collider of the asset (contacts are generated this far before touching; rest offset unchanged). Use for thin static floors hit by fast small parts (CCD is off in the scene)."
+        }
+      }
+    },
+    "physics": {
+      "type": "object",
+      "required": [
+        "body"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "body": {
+          "type": "string",
+          "enum": [
+            "dynamic",
+            "static"
+          ]
+        },
+        "mass_kg": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "dynamic: give exactly one of mass_kg / density_kg_m3"
+        },
+        "density_kg_m3": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "dynamic: mass = density x closed visual-mesh volume"
+        },
+        "material": {
+          "description": "Either the name of a material in config/waste_sorting_environment.json physics.materials, or an inline material. Required unless collision.representation is 'none'.",
+          "type": [
+            "string",
+            "object"
+          ],
+          "required": [
+            "id",
+            "static_friction",
+            "dynamic_friction",
+            "restitution"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*$"
+            },
+            "static_friction": {
+              "type": "number",
+              "minimum": 0
+            },
+            "dynamic_friction": {
+              "type": "number",
+              "minimum": 0
+            },
+            "restitution": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          }
+        }
+      }
+    },
+    "output_dir": {
+      "type": "string",
+      "pattern": "^assets/library/[a-z][a-z0-9_]*$",
+      "description": "Default assets/library/<asset_id>"
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "dimension_tolerance_m": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "default 0.0005"
+        },
+        "settle_test": {
+          "type": "boolean",
+          "description": "run the short PhysX settle test for instances (default true)"
+        },
+        "density_range_kg_m3": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "minItems": 2,
+          "maxItems": 2,
+          "description": "dynamic: plausible implied density band; generation fails outside it"
+        }
+      }
+    }
+  }
+}

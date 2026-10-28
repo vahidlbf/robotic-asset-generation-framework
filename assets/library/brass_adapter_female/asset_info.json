@@ -1,0 +1,353 @@
+{
+  "asset_id": "brass_adapter_female",
+  "schema_version": 1,
+  "ok": true,
+  "spec_file": "config/assets/brass_adapter_female.json",
+  "spec_sha256": "1c67252d88b88875686675cefae8d8001ad7273212d87ed0e88a9f637e593f75",
+  "spec": {
+    "schema_version": 1,
+    "asset_id": "brass_adapter_female",
+    "category": "hardware/fitting/brass",
+    "description": "Type B brass adapter: wide 32 mm socket with internal thread (visual helix) and two grooves, 25 mm neck, 22.5 mm hex, tapered collar, G3/8-style male spigot; stepped 12/20 mm passage.",
+    "source": "Engineering estimates from the prompt (~55 mm long, ~32 mm max OD, ~75 g); thread diameters G3/8-like (male) and G3/4-like (female) as visual approximations, not a measured part.",
+    "geometry": {
+      "method": "fitting",
+      "segments": 48,
+      "outer": [
+        {
+          "type": "thread",
+          "length": 0.011,
+          "major_diameter": 0.01666,
+          "pitch": 0.001337,
+          "depth": 0.0008,
+          "chamfer_start": 0.0008
+        },
+        {
+          "type": "cylinder",
+          "length": 0.002,
+          "diameter": 0.0148
+        },
+        {
+          "type": "cylinder",
+          "length": 0.004,
+          "diameter": 0.019,
+          "chamfer_start": 0.0005
+        },
+        {
+          "type": "cone",
+          "length": 0.004,
+          "d0": 0.019,
+          "d1": 0.023
+        },
+        {
+          "type": "hex",
+          "length": 0.01,
+          "across_flats": 0.0225,
+          "chamfer": true
+        },
+        {
+          "type": "cylinder",
+          "length": 0.003,
+          "diameter": 0.025
+        },
+        {
+          "type": "cylinder",
+          "length": 0.021,
+          "diameter": 0.032,
+          "chamfer_start": 0.0004,
+          "chamfer_end": 0.0004,
+          "grooves": [
+            {
+              "at": 0.006,
+              "width": 0.0012,
+              "depth": 0.0004
+            },
+            {
+              "at": 0.011,
+              "width": 0.0012,
+              "depth": 0.0004
+            }
+          ]
+        }
+      ],
+      "bore": [
+        {
+          "type": "cylinder",
+          "length": 0.022,
+          "diameter": 0.012,
+          "chamfer_start": 0.0006
+        },
+        {
+          "type": "cone",
+          "length": 0.008,
+          "d0": 0.012,
+          "d1": 0.02
+        },
+        {
+          "type": "cylinder",
+          "length": 0.004,
+          "diameter": 0.02
+        },
+        {
+          "type": "thread",
+          "length": 0.021,
+          "minor_diameter": 0.0275,
+          "pitch": 0.001814,
+          "depth": 0.0009,
+          "chamfer_end": 0.0004
+        }
+      ]
+    },
+    "visual_material": {
+      "color": [
+        0.88,
+        0.69,
+        0.34
+      ],
+      "roughness": 0.32,
+      "metallic": 1.0
+    },
+    "collision": {
+      "representation": "fitting_sections",
+      "segments": 12,
+      "zones": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4
+        ],
+        [
+          5
+        ],
+        [
+          6
+        ]
+      ]
+    },
+    "physics": {
+      "body": "dynamic",
+      "mass_kg": 0.075,
+      "material": {
+        "id": "brass",
+        "static_friction": 0.35,
+        "dynamic_friction": 0.3,
+        "restitution": 0.08
+      }
+    },
+    "validation": {
+      "dimension_tolerance_m": 0.0005,
+      "density_range_kg_m3": [
+        8000,
+        8800
+      ]
+    }
+  },
+  "resolved_physics_material": {
+    "id": "brass",
+    "static_friction": 0.35,
+    "dynamic_friction": 0.3,
+    "restitution": 0.08
+  },
+  "generator": "scripts/assets/generate_asset.py",
+  "blender_version": "5.2.2 LTS",
+  "generated_utc": "2026-10-27T18:03:43+00:00",
+  "files": [
+    "brass_adapter_female.usd",
+    "brass_adapter_female_visual.usd"
+  ],
+  "file_sha256": {
+    "brass_adapter_female.usd": "0726906d8c2666dc659b9ee3f7eae223626b50ae65a694fe4d96c05cfb60b2e6",
+    "brass_adapter_female_visual.usd": "d4df1311b36f29616d857b41fda79500fa3f96e6b9cd52bcee7494d72b5c82e6"
+  },
+  "usd_root_prim": "/BrassAdapterFemale",
+  "physics_material_prim": "PhysicsMaterial",
+  "bounds_visual_m": [
+    [
+      -0.01600000075995922,
+      -0.01600000075995922,
+      0.0
+    ],
+    [
+      0.01600000075995922,
+      0.01600000075995922,
+      0.054999999701976776
+    ]
+  ],
+  "nominal_bounds_m": [
+    [
+      -0.016,
+      -0.016,
+      0.0
+    ],
+    [
+      0.016,
+      0.016,
+      0.05500000000000001
+    ]
+  ],
+  "mesh": {
+    "triangles": 18816,
+    "vertices": 9408,
+    "objects": 1,
+    "volume_m3": 8.841993511432038e-06,
+    "non_manifold_edges": 0,
+    "boundary_edges": 0,
+    "analytic_volume_m3": 8.841701559170987e-06,
+    "polygon_volume_m3": 8.841701559170987e-06,
+    "reference": "prismatoid integral of the ring polygons",
+    "volume_vs_polygon_rel_error": 3.3019918066326245e-05
+  },
+  "mass_properties": {
+    "mass_kg": 0.075,
+    "mass_source": "mass_kg",
+    "volume_m3": 8.841993511432038e-06,
+    "density_kg_m3": 8482.250060807057,
+    "center_of_mass": [
+      -5.120389472516325e-06,
+      -3.175144284890784e-06,
+      0.029445298697210225
+    ],
+    "inertia_tensor": [
+      [
+        2.0182252009282987e-05,
+        7.786901621352027e-10,
+        7.892304405746908e-09
+      ],
+      [
+        7.786901621352455e-10,
+        2.0182015916633684e-05,
+        -4.9722420710145235e-09
+      ],
+      [
+        7.89230440574751e-09,
+        -4.972242071014897e-09,
+        1.0432720620505967e-05
+      ]
+    ],
+    "diagonal_inertia": [
+      2.0182252009282987e-05,
+      2.0182015916633684e-05,
+      1.0432720620505967e-05
+    ],
+    "max_offdiag_ratio": 0.0003910517221823106
+  },
+  "colliders": [
+    "Zone0_00",
+    "Zone0_01",
+    "Zone0_02",
+    "Zone0_03",
+    "Zone0_04",
+    "Zone0_05",
+    "Zone0_06",
+    "Zone0_07",
+    "Zone0_08",
+    "Zone0_09",
+    "Zone0_10",
+    "Zone0_11",
+    "Zone1_00",
+    "Zone1_01",
+    "Zone1_02",
+    "Zone1_03",
+    "Zone1_04",
+    "Zone1_05",
+    "Zone1_06",
+    "Zone1_07",
+    "Zone1_08",
+    "Zone1_09",
+    "Zone1_10",
+    "Zone1_11",
+    "Zone2_00",
+    "Zone2_01",
+    "Zone2_02",
+    "Zone2_03",
+    "Zone2_04",
+    "Zone2_05",
+    "Zone3_00",
+    "Zone3_01",
+    "Zone3_02",
+    "Zone3_03",
+    "Zone3_04",
+    "Zone3_05",
+    "Zone3_06",
+    "Zone3_07",
+    "Zone3_08",
+    "Zone3_09",
+    "Zone3_10",
+    "Zone3_11",
+    "Zone4_00",
+    "Zone4_01",
+    "Zone4_02",
+    "Zone4_03",
+    "Zone4_04",
+    "Zone4_05",
+    "Zone4_06",
+    "Zone4_07",
+    "Zone4_08",
+    "Zone4_09",
+    "Zone4_10",
+    "Zone4_11"
+  ],
+  "collider_representation": "fitting_sections",
+  "mounts": {},
+  "checks": {
+    "dimensions": {
+      "passed": true,
+      "measured_size_m": [
+        0.03200000151991844,
+        0.03200000151991844,
+        0.054999999701976776
+      ],
+      "nominal_size_m": [
+        0.032,
+        0.032,
+        0.05500000000000001
+      ],
+      "tolerance_m": 0.0005,
+      "bottom_z_m": 0.0
+    },
+    "closed_manifold_mesh": {
+      "passed": true,
+      "non_manifold_edges": 0,
+      "boundary_edges": 0,
+      "note": ""
+    },
+    "mesh_volume_matches_geometry": {
+      "passed": true,
+      "relative_error": 3.3019918066326245e-05,
+      "tolerance": 0.002,
+      "reference": "prismatoid integral of the ring polygons",
+      "note": "closed-mesh volume vs. the exact volume of the tessellated solid (float32 vertices); fitting: vs. the ring-loft integral (non-planar thread quads are triangulated); informational for bevelled boxes and static containers/labels"
+    },
+    "usd_asset": {
+      "default_prim": "/BrassAdapterFemale",
+      "units_ok": true,
+      "colliders": 54,
+      "colliders_expected": 54,
+      "colliders_guide_purpose": true,
+      "colliders_physics_material_bound": true,
+      "unresolved_dependencies": [],
+      "visual_meshes": 1,
+      "visual_references": [
+        "./brass_adapter_female_visual.usd"
+      ],
+      "rigid_body": true,
+      "mass_authored_kg": 0.07500000298023224,
+      "passed": true
+    },
+    "mass_properties": {
+      "passed": true,
+      "implied_density_kg_m3": 8482.250060807057,
+      "density_range_kg_m3": [
+        8000,
+        8800
+      ],
+      "note": "turned part: COM within 0.2 mm of the axis (helical threads are not exactly symmetric), inside the length; off-diagonal inertia < 1 % (principal axes = asset axes)"
+    }
+  }
+}

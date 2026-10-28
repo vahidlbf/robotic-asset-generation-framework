@@ -1,0 +1,22 @@
+#usda 1.0
+(
+    defaultPrim = "LabelBinB"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "LabelBinB" (
+    customData = {
+        string robot_agent_lab_json = '{"frame": "bottom centre", "mounts": {}, "asset_id": "label_bin_b", "category": "marking/label", "nominal_size_m": [0.13, 0.003, 0.05], "collision": "none", "spec": "../../../config/assets/label_bin_b.json"}'
+    }
+    kind = "component"
+)
+{
+    def Xform "Visual" (
+        prepend references = @./label_bin_b_visual.usd@
+    )
+    {
+    }
+}
+

@@ -1,0 +1,844 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary robot_agent_lab = {
+            string config = "../../config/waste_sorting_environment.json"
+            string generator = "scripts/workstation/build_scene.py"
+            string note = "Physics coefficients are illustrative simulation parameters."
+            string rendering_mode = "realtime"
+            string robot_asset = "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/6.2/Isaac/Robots/FrankaRobotics/FrankaPanda/franka.usd"
+            string scene = "waste_sorting_workstation"
+        }
+    }
+    defaultPrim = "World"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "World" (
+    kind = "assembly"
+)
+{
+    def PhysicsScene "PhysicsScene" (
+        prepend apiSchemas = ["PhysxSceneAPI"]
+    )
+    {
+        vector3f physics:gravityDirection = (0, 0, -1)
+        float physics:gravityMagnitude = 9.81
+        uniform token physxScene:broadphaseType = "MBP"
+        bool physxScene:enableCCD = 0
+        bool physxScene:enableGPUDynamics = 0
+        uniform token physxScene:solverType = "TGS"
+        uint physxScene:timeStepsPerSecond = 120
+    }
+
+    def Xform "Environment" (
+        kind = "group"
+    )
+    {
+        def Scope "Looks"
+        {
+            def Material "FloorVisual"
+            {
+                token outputs:surface.connect = </World/Environment/Looks/FloorVisual/Shader.outputs:surface>
+
+                def Shader "Shader"
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (0.42, 0.43, 0.45)
+                    float inputs:metallic = 0
+                    float inputs:roughness = 0.8
+                    token outputs:surface
+                }
+            }
+
+            def Material "FloorPhysics" (
+                prepend apiSchemas = ["PhysicsMaterialAPI", "PhysxMaterialAPI"]
+            )
+            {
+                float physics:dynamicFriction = 0.5
+                float physics:restitution = 0.05
+                float physics:staticFriction = 0.6
+                uniform token physxMaterial:frictionCombineMode = "average"
+                uniform token physxMaterial:restitutionCombineMode = "average"
+            }
+        }
+
+        def Xform "Ground"
+        {
+            double3 xformOp:translate = (0, 0, -0.01)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "Floor" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding = </World/Environment/Looks/FloorVisual>
+                rel material:binding:physics = </World/Environment/Looks/FloorPhysics> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (5, 5, 0.02)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "Lights"
+        {
+            def DomeLight "Dome"
+            {
+                color3f inputs:color = (1, 1, 1)
+                float inputs:intensity = 450
+            }
+
+            def RectLight "KeyLight"
+            {
+                float inputs:height = 1.2
+                float inputs:intensity = 9000
+                float inputs:width = 1.2
+                matrix4d xformOp:transform = ( (0.7863183388224226, 0.6178215519319035, -0, 0), (-0.44515341889411936, 0.5665588967743338, 0.6934330898743775, 0), (0.4284179077471231, -0.5452591553145203, 0.7205210266656161, 0), (1.2, -1.4, 2.6, 1) )
+                uniform token[] xformOpOrder = ["xformOp:transform"]
+            }
+
+            def RectLight "FillLight"
+            {
+                float inputs:height = 1.5
+                float inputs:intensity = 4500
+                float inputs:width = 1.5
+                matrix4d xformOp:transform = ( (-0.6305926250944657, -0.7761140001162655, 0, 0), (0.48497036424083506, -0.3940384209456784, 0.7807288060695262, 0), (-0.6059345566846162, 0.49232182730625057, 0.6248700115810103, 0), (-1.6, 1.3, 2.4, 1) )
+                uniform token[] xformOpOrder = ["xformOp:transform"]
+            }
+        }
+    }
+
+    def Xform "Workstation" (
+        kind = "group"
+    )
+    {
+        def Xform "Table" (
+            prepend references = @./../workstation/table/table.usd@
+        )
+        {
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+
+            over "Tabletop"
+            {
+                over "PhysicsMaterial" (
+                    prepend apiSchemas = ["PhysxMaterialAPI"]
+                )
+                {
+                    uniform token physxMaterial:frictionCombineMode = "average"
+                    uniform token physxMaterial:restitutionCombineMode = "average"
+                }
+            }
+
+            over "Leg_FL"
+            {
+                over "PhysicsMaterial" (
+                    prepend apiSchemas = ["PhysxMaterialAPI"]
+                )
+                {
+                    uniform token physxMaterial:frictionCombineMode = "average"
+                    uniform token physxMaterial:restitutionCombineMode = "average"
+                }
+            }
+
+            over "Leg_FR"
+            {
+                over "PhysicsMaterial" (
+                    prepend apiSchemas = ["PhysxMaterialAPI"]
+                )
+                {
+                    uniform token physxMaterial:frictionCombineMode = "average"
+                    uniform token physxMaterial:restitutionCombineMode = "average"
+                }
+            }
+
+            over "Leg_BL"
+            {
+                over "PhysicsMaterial" (
+                    prepend apiSchemas = ["PhysxMaterialAPI"]
+                )
+                {
+                    uniform token physxMaterial:frictionCombineMode = "average"
+                    uniform token physxMaterial:restitutionCombineMode = "average"
+                }
+            }
+
+            over "Leg_BR"
+            {
+                over "PhysicsMaterial" (
+                    prepend apiSchemas = ["PhysxMaterialAPI"]
+                )
+                {
+                    uniform token physxMaterial:frictionCombineMode = "average"
+                    uniform token physxMaterial:restitutionCombineMode = "average"
+                }
+            }
+        }
+
+        def Xform "SortingZone" (
+            kind = "group"
+        )
+        {
+            def Xform "PaperBin" (
+                prepend references = @./../workstation/paper_bin/paper_bin.usd@
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:translate = (0.98, 0.5, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+
+                over "PhysicsMaterial" (
+                    prepend apiSchemas = ["PhysxMaterialAPI"]
+                )
+                {
+                    uniform token physxMaterial:frictionCombineMode = "average"
+                    uniform token physxMaterial:restitutionCombineMode = "average"
+                }
+            }
+
+            def Xform "PlasticBin" (
+                prepend references = @./../workstation/plastic_bin/plastic_bin.usd@
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:translate = (0.98, -0.4, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+
+                over "PhysicsMaterial" (
+                    prepend apiSchemas = ["PhysxMaterialAPI"]
+                )
+                {
+                    uniform token physxMaterial:frictionCombineMode = "average"
+                    uniform token physxMaterial:restitutionCombineMode = "average"
+                }
+            }
+
+            def Xform "CratePlatform" (
+                prepend references = @./../workstation/crate_platform/crate_platform.usd@
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:translate = (1.08, 0.05, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+
+                over "PhysicsMaterial" (
+                    prepend apiSchemas = ["PhysxMaterialAPI"]
+                )
+                {
+                    uniform token physxMaterial:frictionCombineMode = "average"
+                    uniform token physxMaterial:restitutionCombineMode = "average"
+                }
+            }
+
+            def Xform "GlassCrate" (
+                prepend references = @./../workstation/glass_crate/glass_crate.usd@
+            )
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:translate = (1.08, 0.05, 0.55)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+
+                over "PhysicsMaterial" (
+                    prepend apiSchemas = ["PhysxMaterialAPI"]
+                )
+                {
+                    uniform token physxMaterial:frictionCombineMode = "average"
+                    uniform token physxMaterial:restitutionCombineMode = "average"
+                }
+            }
+
+            def Xform "CrateBottles" (
+                kind = "group"
+            )
+            {
+                def Xform "Bottle_0" (
+                    prepend references = @./../workstation/glass_bottle/glass_bottle.usd@
+                )
+                {
+                    bool physics:rigidBodyEnabled = 0
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:translate = (0.9518333333333334, -0.02149999999999999, 0.5605)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+
+                    over "Visual"
+                    {
+                        over "GlassBottle"
+                        {
+                            over "GlassBottle" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </World/Looks/glass_bottle_OmniGlass> (
+                                    bindMaterialAs = "strongerThanDescendants"
+                                )
+                            }
+                        }
+                    }
+
+                    over "PhysicsMaterial" (
+                        prepend apiSchemas = ["PhysxMaterialAPI"]
+                    )
+                    {
+                        uniform token physxMaterial:frictionCombineMode = "average"
+                        uniform token physxMaterial:restitutionCombineMode = "average"
+                    }
+                }
+
+                def Xform "Bottle_1" (
+                    prepend references = @./../workstation/glass_bottle/glass_bottle.usd@
+                )
+                {
+                    bool physics:rigidBodyEnabled = 0
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:translate = (1.08, 0.1215, 0.5605)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+
+                    over "Visual"
+                    {
+                        over "GlassBottle"
+                        {
+                            over "GlassBottle" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </World/Looks/glass_bottle_OmniGlass> (
+                                    bindMaterialAs = "strongerThanDescendants"
+                                )
+                            }
+                        }
+                    }
+
+                    over "PhysicsMaterial" (
+                        prepend apiSchemas = ["PhysxMaterialAPI"]
+                    )
+                    {
+                        uniform token physxMaterial:frictionCombineMode = "average"
+                        uniform token physxMaterial:restitutionCombineMode = "average"
+                    }
+                }
+
+                def Xform "Bottle_2" (
+                    prepend references = @./../workstation/glass_bottle/glass_bottle.usd@
+                )
+                {
+                    bool physics:rigidBodyEnabled = 0
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:translate = (1.2081666666666668, -0.02149999999999999, 0.5605)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+
+                    over "Visual"
+                    {
+                        over "GlassBottle"
+                        {
+                            over "GlassBottle" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </World/Looks/glass_bottle_OmniGlass> (
+                                    bindMaterialAs = "strongerThanDescendants"
+                                )
+                            }
+                        }
+                    }
+
+                    over "PhysicsMaterial" (
+                        prepend apiSchemas = ["PhysxMaterialAPI"]
+                    )
+                    {
+                        uniform token physxMaterial:frictionCombineMode = "average"
+                        uniform token physxMaterial:restitutionCombineMode = "average"
+                    }
+                }
+
+                def Xform "Bottle_3" (
+                    prepend references = @./../workstation/glass_bottle/glass_bottle.usd@
+                )
+                {
+                    bool physics:rigidBodyEnabled = 0
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:translate = (1.2081666666666668, 0.1215, 0.5605)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+
+                    over "Visual"
+                    {
+                        over "GlassBottle"
+                        {
+                            over "GlassBottle" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </World/Looks/glass_bottle_OmniGlass> (
+                                    bindMaterialAs = "strongerThanDescendants"
+                                )
+                            }
+                        }
+                    }
+
+                    over "PhysicsMaterial" (
+                        prepend apiSchemas = ["PhysxMaterialAPI"]
+                    )
+                    {
+                        uniform token physxMaterial:frictionCombineMode = "average"
+                        uniform token physxMaterial:restitutionCombineMode = "average"
+                    }
+                }
+            }
+        }
+    }
+
+    def Xform "Objects" (
+        kind = "group"
+    )
+    {
+        def Xform "GlassBottle" (
+            prepend references = @./../workstation/glass_bottle/glass_bottle.usd@
+        )
+        {
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:translate = (-0.1, -0.16, 0.7515)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+
+            over "Visual"
+            {
+                over "GlassBottle"
+                {
+                    over "GlassBottle" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </World/Looks/glass_bottle_OmniGlass> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "PhysicsMaterial" (
+                prepend apiSchemas = ["PhysxMaterialAPI"]
+            )
+            {
+                uniform token physxMaterial:frictionCombineMode = "average"
+                uniform token physxMaterial:restitutionCombineMode = "average"
+            }
+        }
+
+        def Xform "PlasticBottle" (
+            prepend references = @./../workstation/plastic_bottle/plastic_bottle.usd@
+        )
+        {
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:translate = (-0.12, 0.1, 0.7515)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+
+            over "Visual"
+            {
+                over "PlasticBottle"
+                {
+                    over "PlasticBottle" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </World/Looks/plastic_bottle_OmniGlass> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "PhysicsMaterial" (
+                prepend apiSchemas = ["PhysxMaterialAPI"]
+            )
+            {
+                uniform token physxMaterial:frictionCombineMode = "average"
+                uniform token physxMaterial:restitutionCombineMode = "average"
+            }
+        }
+
+        def Xform "PaperCup" (
+            prepend references = @./../workstation/paper_cup/paper_cup.usd@
+        )
+        {
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:translate = (0.12, -0.2, 0.7515)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+
+            over "PhysicsMaterial" (
+                prepend apiSchemas = ["PhysxMaterialAPI"]
+            )
+            {
+                uniform token physxMaterial:frictionCombineMode = "average"
+                uniform token physxMaterial:restitutionCombineMode = "average"
+            }
+        }
+    }
+
+    def Scope "Looks"
+    {
+        def Material "glass_bottle_OmniGlass"
+        {
+            token outputs:mdl:surface.connect = </World/Looks/glass_bottle_OmniGlass/Shader.outputs:out>
+
+            def Shader "Shader"
+            {
+                uniform token info:implementationSource = "sourceAsset"
+                uniform asset info:mdl:sourceAsset = @OmniGlass.mdl@
+                uniform token info:mdl:sourceAsset:subIdentifier = "OmniGlass"
+                float inputs:depth = 0.003
+                float inputs:frosting_roughness = 0.06
+                color3f inputs:glass_color = (0.25, 0.5, 0.95)
+                float inputs:glass_ior = 1.5
+                bool inputs:thin_walled = 0
+                token outputs:out
+            }
+        }
+
+        def Material "plastic_bottle_OmniGlass"
+        {
+            token outputs:mdl:surface.connect = </World/Looks/plastic_bottle_OmniGlass/Shader.outputs:out>
+
+            def Shader "Shader"
+            {
+                uniform token info:implementationSource = "sourceAsset"
+                uniform asset info:mdl:sourceAsset = @OmniGlass.mdl@
+                uniform token info:mdl:sourceAsset:subIdentifier = "OmniGlass"
+                float inputs:depth = 0.0006
+                float inputs:frosting_roughness = 0.03
+                color3f inputs:glass_color = (0.82, 0.92, 0.98)
+                float inputs:glass_ior = 1.57
+                bool inputs:thin_walled = 1
+                token outputs:out
+            }
+        }
+    }
+
+    def Xform "RobotMount" (
+        kind = "group"
+    )
+    {
+        quatd xformOp:orient = (0.7071067811865476, 0, 0, -0.7071067811865475)
+        double3 xformOp:translate = (0.45, 0.15, 0.75)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+
+        def Xform "Robot" (
+            prepend references = @https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/6.2/Isaac/Robots/FrankaRobotics/FrankaPanda/franka.usd@
+            variants = {
+                string Gripper = "Default"
+                string Mesh = "Performance"
+            }
+        )
+        {
+            over "panda_link0" (
+                prepend apiSchemas = ["PhysicsFilteredPairsAPI"]
+            )
+            {
+                prepend rel physics:filteredPairs = </World/Workstation/Table/Tabletop/Collision/TopSlab/Shape>
+
+                over "panda_joint1" (
+                    prepend apiSchemas = ["PhysicsJointStateAPI:angular"]
+                )
+                {
+                    float drive:angular:physics:targetPosition = 0
+                    float state:angular:physics:position = 0
+                    float state:angular:physics:velocity = 0
+                }
+            }
+
+            over "panda_link1"
+            {
+                over "panda_joint2" (
+                    prepend apiSchemas = ["PhysicsJointStateAPI:angular"]
+                )
+                {
+                    float drive:angular:physics:targetPosition = -45
+                    float state:angular:physics:position = -45
+                    float state:angular:physics:velocity = 0
+                }
+            }
+
+            over "panda_link2"
+            {
+                over "panda_joint3" (
+                    prepend apiSchemas = ["PhysicsJointStateAPI:angular"]
+                )
+                {
+                    float drive:angular:physics:targetPosition = 0
+                    float state:angular:physics:position = 0
+                    float state:angular:physics:velocity = 0
+                }
+            }
+
+            over "panda_link3"
+            {
+                over "panda_joint4" (
+                    prepend apiSchemas = ["PhysicsJointStateAPI:angular"]
+                )
+                {
+                    float drive:angular:physics:targetPosition = -135
+                    float state:angular:physics:position = -135
+                    float state:angular:physics:velocity = 0
+                }
+            }
+
+            over "panda_link4"
+            {
+                over "panda_joint5" (
+                    prepend apiSchemas = ["PhysicsJointStateAPI:angular"]
+                )
+                {
+                    float drive:angular:physics:targetPosition = 0
+                    float state:angular:physics:position = 0
+                    float state:angular:physics:velocity = 0
+                }
+            }
+
+            over "panda_link5"
+            {
+                over "panda_joint6" (
+                    prepend apiSchemas = ["PhysicsJointStateAPI:angular"]
+                )
+                {
+                    float drive:angular:physics:targetPosition = 90
+                    float state:angular:physics:position = 90
+                    float state:angular:physics:velocity = 0
+                }
+            }
+
+            over "panda_link6"
+            {
+                over "panda_joint7" (
+                    prepend apiSchemas = ["PhysicsJointStateAPI:angular"]
+                )
+                {
+                    float drive:angular:physics:targetPosition = 45
+                    float state:angular:physics:position = 45
+                    float state:angular:physics:velocity = 0
+                }
+            }
+
+            over "panda_hand"
+            {
+                over "panda_finger_joint1" (
+                    prepend apiSchemas = ["PhysicsJointStateAPI:linear"]
+                )
+                {
+                    float drive:linear:physics:targetPosition = 0.04
+                    float state:linear:physics:position = 0.04
+                    float state:linear:physics:velocity = 0
+                }
+
+                over "panda_finger_joint2" (
+                    prepend apiSchemas = ["PhysicsJointStateAPI:linear"]
+                )
+                {
+                    float state:linear:physics:position = 0.04
+                    float state:linear:physics:velocity = 0
+                }
+            }
+        }
+    }
+
+    def Xform "Targets" (
+        kind = "group"
+    )
+    {
+        def Xform "paper_bin"
+        {
+            def Xform "pre_drop" (
+                customData = {
+                    double finger_opening_m = 0.005
+                    string tcp_frame = "right_gripper"
+                }
+            )
+            {
+                quatd xformOp:orient = (0, 0.92388, -0.382683, 0)
+                double3 xformOp:translate = (0.97385, 0.50518, 0.708)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+            }
+
+            def Xform "drop" (
+                customData = {
+                    double finger_opening_m = 0.005
+                    string tcp_frame = "right_gripper"
+                }
+            )
+            {
+                quatd xformOp:orient = (0, 0.92388, -0.382683, 0)
+                double3 xformOp:translate = (0.97385, 0.50518, 0.618)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+            }
+
+            def Xform "retreat" (
+                customData = {
+                    double finger_opening_m = 0.034999999999999996
+                    string tcp_frame = "right_gripper"
+                }
+            )
+            {
+                quatd xformOp:orient = (0, 0.92388, -0.382683, 0)
+                double3 xformOp:translate = (0.97385, 0.50518, 0.718)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+            }
+        }
+
+        def Xform "plastic_bin"
+        {
+            def Xform "pre_drop" (
+                customData = {
+                    double finger_opening_m = 0.031
+                    string tcp_frame = "right_gripper"
+                }
+            )
+            {
+                quatd xformOp:orient = (0, 0, 1, 0)
+                double3 xformOp:translate = (0.92449, -0.34239, 0.812)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+            }
+
+            def Xform "drop" (
+                customData = {
+                    double finger_opening_m = 0.031
+                    string tcp_frame = "right_gripper"
+                }
+            )
+            {
+                quatd xformOp:orient = (0, 0, 1, 0)
+                double3 xformOp:translate = (0.92449, -0.34239, 0.722)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+            }
+
+            def Xform "retreat" (
+                customData = {
+                    double finger_opening_m = 0.061
+                    string tcp_frame = "right_gripper"
+                }
+            )
+            {
+                quatd xformOp:orient = (0, 0, 1, 0)
+                double3 xformOp:translate = (0.92449, -0.34239, 0.822)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+            }
+        }
+
+        def Xform "glass_crate"
+        {
+            def Xform "pre_place" (
+                customData = {
+                    double finger_opening_m = 0.026
+                    string tcp_frame = "right_gripper"
+                }
+            )
+            {
+                quatd xformOp:orient = (0, 0.707107, -0.707107, 0)
+                double3 xformOp:translate = (1.08, -0.0215, 1.142)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+            }
+
+            def Xform "insertion_start" (
+                customData = {
+                    double finger_opening_m = 0.026
+                    string tcp_frame = "right_gripper"
+                }
+            )
+            {
+                quatd xformOp:orient = (0, 0.707107, -0.707107, 0)
+                double3 xformOp:translate = (1.08, -0.0215, 1.057)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+            }
+
+            def Xform "final_place" (
+                customData = {
+                    double finger_opening_m = 0.026
+                    string tcp_frame = "right_gripper"
+                }
+            )
+            {
+                quatd xformOp:orient = (0, 0.707107, -0.707107, 0)
+                double3 xformOp:translate = (1.08, -0.0215, 0.774)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+            }
+
+            def Xform "release" (
+                customData = {
+                    double finger_opening_m = 0.055999999999999994
+                    string tcp_frame = "right_gripper"
+                }
+            )
+            {
+                quatd xformOp:orient = (0, 0.707107, -0.707107, 0)
+                double3 xformOp:translate = (1.08, -0.0215, 0.774)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+            }
+
+            def Xform "retreat_vertical" (
+                customData = {
+                    double finger_opening_m = 0.055999999999999994
+                    string tcp_frame = "right_gripper"
+                }
+            )
+            {
+                quatd xformOp:orient = (0, 0.707107, -0.707107, 0)
+                double3 xformOp:translate = (1.08, -0.0215, 0.98)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+            }
+        }
+    }
+
+    def Xform "Cameras"
+    {
+        def Camera "Main"
+        {
+            float2 clippingRange = (0.05, 100)
+            float focalLength = 20
+            float horizontalAperture = 20.955
+            float verticalAperture = 11.787188
+            matrix4d xformOp:transform = ( (0.6339279548854202, 0.7733921049602126, -0, 0), (-0.3427975883196973, 0.2809816297702437, 0.8964034455388136, 0), (0.6932713476388505, -0.5682552029826643, 0.4432390583264781, 0), (3.35, -2.45, 2.4, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+        }
+
+        def Camera "Top"
+        {
+            float2 clippingRange = (0.05, 100)
+            float focalLength = 18
+            float horizontalAperture = 20.955
+            float verticalAperture = 11.787188
+            matrix4d xformOp:transform = ( (1, -0, 0, 0), (0, 1, 0, 0), (-0, -0, 1, 0), (0, 0, 3.4, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+        }
+
+        def Camera "RobotSide"
+        {
+            float2 clippingRange = (0.05, 100)
+            float focalLength = 20
+            float horizontalAperture = 20.955
+            float verticalAperture = 11.787188
+            matrix4d xformOp:transform = ( (-0.6919053632356148, 0.7219882051154242, 0, 0), (-0.24514900199199943, -0.23493446024233278, 0.9405890527818035, 0), (0.6790942019691514, 0.6507986102204367, 0.33954710098457563, 0), (1.35, 1.05, 1.45, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+        }
+
+        def Camera "SortingZone"
+        {
+            float2 clippingRange = (0.05, 100)
+            float focalLength = 18
+            float horizontalAperture = 20.955
+            float verticalAperture = 11.787188
+            matrix4d xformOp:transform = ( (0.11354659116073192, 0.9935326726564042, -0, 0), (-0.5364796960969481, 0.06131196526822264, 0.8416830630294723, 0), (0.8362396231413002, -0.09557024264472003, 0.5399718709426682, 0), (2.75, -0.15, 1.55, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+        }
+
+        def Camera "CrateCloseup"
+        {
+            float2 clippingRange = (0.05, 100)
+            float focalLength = 24
+            float horizontalAperture = 20.955
+            float verticalAperture = 11.787188
+            matrix4d xformOp:transform = ( (0.6185596063312607, 0.7857378783126824, -0, 0), (-0.5740460942197193, 0.45190862736446, 0.6828247756376847, 0), (0.5365212904688879, -0.42236782441167775, 0.7305821827661453, 0), (1.55, -0.32, 1.3, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+        }
+    }
+}
+

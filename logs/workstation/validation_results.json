@@ -1,0 +1,210 @@
+{
+  "classification": "FULLY VALIDATED",
+  "generated": "2026-10-27T17:36:37+01:00",
+  "success_criteria": {
+    "1_complete_usd_scene": true,
+    "2_real_articulated_robot": true,
+    "3_table_four_legs": true,
+    "4_three_objects": true,
+    "5_two_bins": true,
+    "6_glass_crate": true,
+    "7_visual_materials": true,
+    "8_physics_configured": true,
+    "9_objects_settle": true,
+    "10_bins_functional_collision": true,
+    "11_scene_opens_in_isaac_sim": true,
+    "12_main_camera_complete_view": true,
+    "13_validation_saved": true,
+    "14_ramp_project_functional": true,
+    "15_sorting_zone_layout_valid": true,
+    "16_destination_targets_ik_and_endpoint_clear": true,
+    "17_glass_placement_stable": true
+  },
+  "stages": [
+    {
+      "stage": "generate_assets (Blender)",
+      "command": "blender -b --factory-startup --python-exit-code 1 --python scripts/workstation/generate_assets.py -- --config config/waste_sorting_environment.json",
+      "exit_code": 0,
+      "seconds": 2.0,
+      "log": "logs/workstation/assets_generate.log"
+    },
+    {
+      "stage": "build_scene",
+      "command": "/home/mm42/isaacsim/python.sh scripts/workstation/build_scene.py --config config/waste_sorting_environment.json",
+      "exit_code": 0,
+      "seconds": 10.4,
+      "log": "logs/workstation/build.log"
+    },
+    {
+      "stage": "validate_scene",
+      "command": "/home/mm42/isaacsim/python.sh scripts/workstation/validate_scene.py --config config/waste_sorting_environment.json",
+      "exit_code": 0,
+      "seconds": 31.3,
+      "log": "logs/workstation/validate.log"
+    },
+    {
+      "stage": "run_physics_test",
+      "command": "/home/mm42/isaacsim/python.sh scripts/workstation/run_physics_test.py --config config/waste_sorting_environment.json",
+      "exit_code": 0,
+      "seconds": 15.8,
+      "log": "logs/workstation/physics.log"
+    },
+    {
+      "stage": "render_previews",
+      "command": "/home/mm42/isaacsim/python.sh scripts/workstation/render_previews.py --config config/waste_sorting_environment.json",
+      "exit_code": 0,
+      "seconds": 25.6,
+      "log": "logs/workstation/render.log"
+    }
+  ],
+  "static_failed": [],
+  "dynamic_failed": [],
+  "static_checks": "94/94",
+  "dynamic_checks": "39/39",
+  "gpu_memory": {
+    "idle": {
+      "peak_mib": 6,
+      "samples": 3,
+      "total_mib": 12282
+    },
+    "generate_assets (Blender)": {
+      "peak_mib": 6,
+      "samples": 2,
+      "total_mib": 12282
+    },
+    "build_scene": {
+      "peak_mib": 1048,
+      "samples": 10,
+      "total_mib": 12282
+    },
+    "validate_scene": {
+      "peak_mib": 1052,
+      "samples": 30,
+      "total_mib": 12282
+    },
+    "run_physics_test": {
+      "peak_mib": 1379,
+      "samples": 16,
+      "total_mib": 12282
+    },
+    "render_previews": {
+      "peak_mib": 1501,
+      "samples": 25,
+      "total_mib": 12282
+    },
+    "ramp regression: asset pipeline (sandbox)": {
+      "peak_mib": 6,
+      "samples": 3,
+      "total_mib": 12282
+    },
+    "ramp regression: Isaac Sim friction test (sandbox)": {
+      "peak_mib": 1077,
+      "samples": 15,
+      "total_mib": 12282
+    }
+  },
+  "parent_project_files_changed": [],
+  "ramp_regression": {
+    "stage": "ramp regression: asset pipeline (sandbox)",
+    "command": "/usr/bin/python3 scripts/run_pipeline.py --no-preview",
+    "exit_code": 0,
+    "seconds": 3.5,
+    "log": "logs/workstation/ramp_regression.log",
+    "sandbox": "logs/workstation/ramp_regression",
+    "summary": {
+      "Baseline: FreeCAD": [
+        12,
+        12
+      ],
+      "Baseline: Blender": [
+        19,
+        19
+      ],
+      "Baseline: independent file checks": [
+        9,
+        9
+      ],
+      "Physics: USD physics script": [
+        18,
+        18
+      ],
+      "Physics: independent file checks": [
+        2,
+        2
+      ]
+    },
+    "isaac_stage": {
+      "stage": "ramp regression: Isaac Sim friction test (sandbox)",
+      "command": "/home/mm42/isaacsim/python.sh scripts/isaacsim/test_ramp_physics.py --config config/isaacsim_ramp_test.json",
+      "exit_code": 0,
+      "seconds": 15.5,
+      "log": "logs/workstation/ramp_regression_isaac.log"
+    },
+    "isaac_summary": {
+      "overall_pass": true,
+      "verdicts": {
+        "high_friction": "SUPPORTED",
+        "low_friction": "SLIDES"
+      }
+    }
+  },
+  "previews": {
+    "main": {
+      "file": "logs/workstation/preview_main.png",
+      "shape": [
+        720,
+        1280,
+        4
+      ],
+      "mean_rgb": 176.5845970775463,
+      "renderer_requested": "RealTimePathTracing",
+      "rtx_rendermode_active": "RealTimePathTracing"
+    },
+    "top": {
+      "file": "logs/workstation/preview_top.png",
+      "shape": [
+        720,
+        1280,
+        4
+      ],
+      "mean_rgb": 175.23599790219907,
+      "renderer_requested": "RealTimePathTracing",
+      "rtx_rendermode_active": "RealTimePathTracing"
+    },
+    "robot_side": {
+      "file": "logs/workstation/preview_robot_side.png",
+      "shape": [
+        720,
+        1280,
+        4
+      ],
+      "mean_rgb": 182.40254448784722,
+      "renderer_requested": "RealTimePathTracing",
+      "rtx_rendermode_active": "RealTimePathTracing"
+    },
+    "sorting_zone": {
+      "file": "logs/workstation/preview_sorting_zone.png",
+      "shape": [
+        720,
+        1280,
+        4
+      ],
+      "mean_rgb": 156.64649486400464,
+      "renderer_requested": "RealTimePathTracing",
+      "rtx_rendermode_active": "RealTimePathTracing"
+    },
+    "crate_closeup": {
+      "file": "logs/workstation/preview_crate_closeup.png",
+      "shape": [
+        720,
+        1280,
+        4
+      ],
+      "mean_rgb": 102.44289496527777,
+      "renderer_requested": "RealTimePathTracing",
+      "rtx_rendermode_active": "RealTimePathTracing"
+    }
+  },
+  "visual_inspection_current": true,
+  "warnings": []
+}

@@ -1,0 +1,77 @@
+{
+  "_doc": "First real robot motion: home -> PET pre-grasp -> home. Units: m, rad, s (degrees only where the key says _deg). The workstation layout/config is read-only here.",
+  "workstation_config": "config/waste_sorting_environment.json",
+  "logs_dir": "logs/motion_planning",
+
+  "planner": {
+    "framework": "NVIDIA cuMotion via isaacsim.robot_motion.cumotion (maintained Isaac Sim 6.2 robot-motion stack, mg substrate)",
+    "goal_solver": "cumotion.CollisionFreeIkSolver",
+    "path_planner": "isaacsim.robot_motion.cumotion.GraphBasedMotionPlanner.plan_to_cspace_target (RRT, collision-aware)",
+    "time_parameterization": "cumotion.CSpaceTrajectoryGenerator (cubic-spline, velocity/acceleration/jerk limited; not collision-aware -> validated densely)",
+    "executor": "isaacsim.robot_motion.experimental.motion_generation.TrajectoryFollower -> Articulation.set_dof_position_targets / set_dof_velocity_targets",
+    "robot_configuration": "franka",
+    "planning_tool_frame": "panda_hand",
+    "planner_config_file": "graph_based_motion_planner_config.yaml",
+    "planner_seed": 123456,
+    "max_planning_attempts": 3,
+    "densify_max_joint_step_rad": 0.04,
+    "max_densify_rounds": 3
+  },
+
+  "tcp": {
+    "frame": "right_gripper (project TCP, Lula definition)",
+    "_definition": "TCP = panda_hand * Translate(0, 0, 0.100) * RotZ(180 deg); fingertips are 0.0034 m beyond the TCP",
+    "offset_from_hand_m": [0.0, 0.0, 0.100],
+    "rotation_from_hand_deg_z": 180.0
+  },
+
+  "target": {
+    "object_prim": "/World/Objects/PlasticBottle",
+    "source": "physics state of the PET rigid body at experiment start (cross-checked against the USD/config pose)",
+    "approach": "top_down",
+    "grasp_point_height_from_bottom_m": 0.212,
+    "_grasp_note": "same cap grasp point as config objects.plastic_bottle.grasp.tcp_height_from_bottom",
+    "pre_grasp_clearance_above_grasp_m": 0.12,
+    "gripper_yaw_candidates_deg": [0, 45, 90, 135, 180, 225, 270, 315],
+    "prefer_existing_target_frame": "/World/Targets/pet_pre_grasp"
+  },
+
+  "collision": {
+    "obstacle_safety_tolerance_m": 0.02,
+    "_tolerance_note": "padding added by the mg ObstacleStrategy to every obstacle in the cuMotion world (planning + inspector)",
+    "min_inspector_distance_m": 0.0,
+    "min_hull_clearance_m": 0.015,
+    "_hull_note": "independent check: robot PhysX convex hulls (fingers at the real opening) vs. USD static colliders + objects",
+    "hull_check_every_n_samples": 4,
+    "trajectory_check_dt_s": 0.004,
+    "min_gripper_to_pet_clearance_m": 0.05,
+    "allowed_contacts": [["panda_link0", "/World/Workstation/Table/Tabletop"]]
+  },
+
+  "limits": {
+    "max_joint_velocity_rad_s": [0.6, 0.6, 0.6, 0.6, 0.8, 0.8, 0.8],
+    "max_joint_acceleration_rad_s2": [1.5, 1.5, 1.5, 1.5, 2.0, 2.0, 2.0],
+    "max_joint_jerk_rad_s3": [15.0, 15.0, 15.0, 15.0, 20.0, 20.0, 20.0],
+    "_note": "conservative fractions of the Franka limits (velocity ~2.1-2.6 rad/s, XRDF acceleration 7.5-20 rad/s^2)"
+  },
+
+  "execution": {
+    "physics_hz": 120,
+    "settle_home_s": 0.5,
+    "hold_target_s": 1.0,
+    "hold_home_s": 1.0,
+    "max_phase_overrun_s": 2.0,
+    "use_velocity_feedforward": true,
+    "finger_position_m": 0.04,
+    "gui_draw_planned_tcp_path": true
+  },
+
+  "tolerances": {
+    "final_tcp_position_mm": 10.0,
+    "final_tcp_orientation_deg": 5.0,
+    "home_joint_deg": 1.0,
+    "joint_tracking_max_rad": 0.10,
+    "base_drift_m": 0.001,
+    "_note": "provisional validation thresholds, not manufacturer accuracy specifications"
+  }
+}

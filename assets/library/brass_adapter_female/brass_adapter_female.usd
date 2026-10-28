@@ -1,0 +1,855 @@
+#usda 1.0
+(
+    defaultPrim = "BrassAdapterFemale"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "BrassAdapterFemale" (
+    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    customData = {
+        string robot_agent_lab_json = '{"frame": "bottom centre", "mounts": {}, "asset_id": "brass_adapter_female", "category": "hardware/fitting/brass", "nominal_size_m": [0.032, 0.032, 0.05500000000000001], "collision": "fitting_sections", "spec": "../../../config/assets/brass_adapter_female.json"}'
+    }
+    kind = "component"
+)
+{
+    point3f physics:centerOfMass = (-0.0000051203897, -0.0000031751442, 0.029445298)
+    float3 physics:diagonalInertia = (0.000020182251, 0.000020182017, 0.000010432721)
+    float physics:mass = 0.075
+    quatf physics:principalAxes = (1, 0, 0, 0)
+
+    def Xform "Visual" (
+        prepend references = @./brass_adapter_female_visual.usd@
+    )
+    {
+    }
+
+    def Material "PhysicsMaterial" (
+        prepend apiSchemas = ["PhysicsMaterialAPI"]
+        customData = {
+            dictionary robot_agent_lab = {
+                string material_id = "brass"
+            }
+        }
+    )
+    {
+        float physics:dynamicFriction = 0.3
+        float physics:restitution = 0.08
+        float physics:staticFriction = 0.35
+    }
+
+    def Scope "Collision"
+    {
+        def Mesh "Zone0_00" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.0066, 0.0017684647, 0), (0.00833, 0.0022320168, 0), (0.006097983, 0.006097983, 0), (0.0048315353, 0.0048315353, 0), (0.0066, 0.0017684647, 0.013), (0.00833, 0.0022320168, 0.013), (0.006097983, 0.006097983, 0.013), (0.0048315353, 0.0048315353, 0.013)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone0_01" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.0048315353, 0.0048315353, 0), (0.006097983, 0.006097983, 0), (0.0022320168, 0.00833, 0), (0.0017684647, 0.0066, 0), (0.0048315353, 0.0048315353, 0.013), (0.006097983, 0.006097983, 0.013), (0.0022320168, 0.00833, 0.013), (0.0017684647, 0.0066, 0.013)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone0_02" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.0017684647, 0.0066, 0), (0.0022320168, 0.00833, 0), (-0.0022320168, 0.00833, 0), (-0.0017684647, 0.0066, 0), (0.0017684647, 0.0066, 0.013), (0.0022320168, 0.00833, 0.013), (-0.0022320168, 0.00833, 0.013), (-0.0017684647, 0.0066, 0.013)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone0_03" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.0017684647, 0.0066, 0), (-0.0022320168, 0.00833, 0), (-0.006097983, 0.006097983, 0), (-0.0048315353, 0.0048315353, 0), (-0.0017684647, 0.0066, 0.013), (-0.0022320168, 0.00833, 0.013), (-0.006097983, 0.006097983, 0.013), (-0.0048315353, 0.0048315353, 0.013)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone0_04" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.0048315353, 0.0048315353, 0), (-0.006097983, 0.006097983, 0), (-0.00833, 0.0022320168, 0), (-0.0066, 0.0017684647, 0), (-0.0048315353, 0.0048315353, 0.013), (-0.006097983, 0.006097983, 0.013), (-0.00833, 0.0022320168, 0.013), (-0.0066, 0.0017684647, 0.013)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone0_05" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.0066, 0.0017684647, 0), (-0.00833, 0.0022320168, 0), (-0.00833, -0.0022320168, 0), (-0.0066, -0.0017684647, 0), (-0.0066, 0.0017684647, 0.013), (-0.00833, 0.0022320168, 0.013), (-0.00833, -0.0022320168, 0.013), (-0.0066, -0.0017684647, 0.013)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone0_06" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.0066, -0.0017684647, 0), (-0.00833, -0.0022320168, 0), (-0.006097983, -0.006097983, 0), (-0.0048315353, -0.0048315353, 0), (-0.0066, -0.0017684647, 0.013), (-0.00833, -0.0022320168, 0.013), (-0.006097983, -0.006097983, 0.013), (-0.0048315353, -0.0048315353, 0.013)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone0_07" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.0048315353, -0.0048315353, 0), (-0.006097983, -0.006097983, 0), (-0.0022320168, -0.00833, 0), (-0.0017684647, -0.0066, 0), (-0.0048315353, -0.0048315353, 0.013), (-0.006097983, -0.006097983, 0.013), (-0.0022320168, -0.00833, 0.013), (-0.0017684647, -0.0066, 0.013)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone0_08" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.0017684647, -0.0066, 0), (-0.0022320168, -0.00833, 0), (0.0022320168, -0.00833, 0), (0.0017684647, -0.0066, 0), (-0.0017684647, -0.0066, 0.013), (-0.0022320168, -0.00833, 0.013), (0.0022320168, -0.00833, 0.013), (0.0017684647, -0.0066, 0.013)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone0_09" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.0017684647, -0.0066, 0), (0.0022320168, -0.00833, 0), (0.006097983, -0.006097983, 0), (0.0048315353, -0.0048315353, 0), (0.0017684647, -0.0066, 0.013), (0.0022320168, -0.00833, 0.013), (0.006097983, -0.006097983, 0.013), (0.0048315353, -0.0048315353, 0.013)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone0_10" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.0048315353, -0.0048315353, 0), (0.006097983, -0.006097983, 0), (0.00833, -0.0022320168, 0), (0.0066, -0.0017684647, 0), (0.0048315353, -0.0048315353, 0.013), (0.006097983, -0.006097983, 0.013), (0.00833, -0.0022320168, 0.013), (0.0066, -0.0017684647, 0.013)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone0_11" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.0066, -0.0017684647, 0), (0.00833, -0.0022320168, 0), (0.00833, 0.0022320168, 0), (0.0066, 0.0017684647, 0), (0.0066, -0.0017684647, 0.013), (0.00833, -0.0022320168, 0.013), (0.00833, 0.0022320168, 0.013), (0.0066, 0.0017684647, 0.013)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone1_00" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.0066, 0.0017684647, 0.013), (0.0115, 0.0030814158, 0.013), (0.008418584, 0.008418584, 0.013), (0.0048315353, 0.0048315353, 0.013), (0.0066, 0.0017684647, 0.021), (0.0115, 0.0030814158, 0.021), (0.008418584, 0.008418584, 0.021), (0.0048315353, 0.0048315353, 0.021)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone1_01" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.0048315353, 0.0048315353, 0.013), (0.008418584, 0.008418584, 0.013), (0.0030814158, 0.0115, 0.013), (0.0017684647, 0.0066, 0.013), (0.0048315353, 0.0048315353, 0.021), (0.008418584, 0.008418584, 0.021), (0.0030814158, 0.0115, 0.021), (0.0017684647, 0.0066, 0.021)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone1_02" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.0017684647, 0.0066, 0.013), (0.0030814158, 0.0115, 0.013), (-0.0030814158, 0.0115, 0.013), (-0.0017684647, 0.0066, 0.013), (0.0017684647, 0.0066, 0.021), (0.0030814158, 0.0115, 0.021), (-0.0030814158, 0.0115, 0.021), (-0.0017684647, 0.0066, 0.021)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone1_03" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.0017684647, 0.0066, 0.013), (-0.0030814158, 0.0115, 0.013), (-0.008418584, 0.008418584, 0.013), (-0.0048315353, 0.0048315353, 0.013), (-0.0017684647, 0.0066, 0.021), (-0.0030814158, 0.0115, 0.021), (-0.008418584, 0.008418584, 0.021), (-0.0048315353, 0.0048315353, 0.021)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone1_04" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.0048315353, 0.0048315353, 0.013), (-0.008418584, 0.008418584, 0.013), (-0.0115, 0.0030814158, 0.013), (-0.0066, 0.0017684647, 0.013), (-0.0048315353, 0.0048315353, 0.021), (-0.008418584, 0.008418584, 0.021), (-0.0115, 0.0030814158, 0.021), (-0.0066, 0.0017684647, 0.021)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone1_05" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.0066, 0.0017684647, 0.013), (-0.0115, 0.0030814158, 0.013), (-0.0115, -0.0030814158, 0.013), (-0.0066, -0.0017684647, 0.013), (-0.0066, 0.0017684647, 0.021), (-0.0115, 0.0030814158, 0.021), (-0.0115, -0.0030814158, 0.021), (-0.0066, -0.0017684647, 0.021)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone1_06" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.0066, -0.0017684647, 0.013), (-0.0115, -0.0030814158, 0.013), (-0.008418584, -0.008418584, 0.013), (-0.0048315353, -0.0048315353, 0.013), (-0.0066, -0.0017684647, 0.021), (-0.0115, -0.0030814158, 0.021), (-0.008418584, -0.008418584, 0.021), (-0.0048315353, -0.0048315353, 0.021)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone1_07" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.0048315353, -0.0048315353, 0.013), (-0.008418584, -0.008418584, 0.013), (-0.0030814158, -0.0115, 0.013), (-0.0017684647, -0.0066, 0.013), (-0.0048315353, -0.0048315353, 0.021), (-0.008418584, -0.008418584, 0.021), (-0.0030814158, -0.0115, 0.021), (-0.0017684647, -0.0066, 0.021)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone1_08" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.0017684647, -0.0066, 0.013), (-0.0030814158, -0.0115, 0.013), (0.0030814158, -0.0115, 0.013), (0.0017684647, -0.0066, 0.013), (-0.0017684647, -0.0066, 0.021), (-0.0030814158, -0.0115, 0.021), (0.0030814158, -0.0115, 0.021), (0.0017684647, -0.0066, 0.021)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone1_09" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.0017684647, -0.0066, 0.013), (0.0030814158, -0.0115, 0.013), (0.008418584, -0.008418584, 0.013), (0.0048315353, -0.0048315353, 0.013), (0.0017684647, -0.0066, 0.021), (0.0030814158, -0.0115, 0.021), (0.008418584, -0.008418584, 0.021), (0.0048315353, -0.0048315353, 0.021)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone1_10" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.0048315353, -0.0048315353, 0.013), (0.008418584, -0.008418584, 0.013), (0.0115, -0.0030814158, 0.013), (0.0066, -0.0017684647, 0.013), (0.0048315353, -0.0048315353, 0.021), (0.008418584, -0.008418584, 0.021), (0.0115, -0.0030814158, 0.021), (0.0066, -0.0017684647, 0.021)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone1_11" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.0066, -0.0017684647, 0.013), (0.0115, -0.0030814158, 0.013), (0.0115, 0.0030814158, 0.013), (0.0066, 0.0017684647, 0.013), (0.0066, -0.0017684647, 0.021), (0.0115, -0.0030814158, 0.021), (0.0115, 0.0030814158, 0.021), (0.0066, 0.0017684647, 0.021)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone2_00" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.011547006, 0, 0.021), (0.012990381, 0, 0.021), (0.0064951903, 0.01125, 0.021), (0.005773503, 0.01, 0.021), (0.011547006, 0, 0.031), (0.012990381, 0, 0.031), (0.0064951903, 0.01125, 0.031), (0.005773503, 0.01, 0.031)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone2_01" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.005773503, 0.01, 0.021), (0.0064951903, 0.01125, 0.021), (-0.0064951903, 0.01125, 0.021), (-0.005773503, 0.01, 0.021), (0.005773503, 0.01, 0.031), (0.0064951903, 0.01125, 0.031), (-0.0064951903, 0.01125, 0.031), (-0.005773503, 0.01, 0.031)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone2_02" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.005773503, 0.01, 0.021), (-0.0064951903, 0.01125, 0.021), (-0.012990381, 1.5908628e-18, 0.021), (-0.011547006, 1.4141003e-18, 0.021), (-0.005773503, 0.01, 0.031), (-0.0064951903, 0.01125, 0.031), (-0.012990381, 1.5908628e-18, 0.031), (-0.011547006, 1.4141003e-18, 0.031)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone2_03" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.011547006, 1.4141003e-18, 0.021), (-0.012990381, 1.5908628e-18, 0.021), (-0.0064951903, -0.01125, 0.021), (-0.005773503, -0.01, 0.021), (-0.011547006, 1.4141003e-18, 0.031), (-0.012990381, 1.5908628e-18, 0.031), (-0.0064951903, -0.01125, 0.031), (-0.005773503, -0.01, 0.031)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone2_04" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.005773503, -0.01, 0.021), (-0.0064951903, -0.01125, 0.021), (0.0064951903, -0.01125, 0.021), (0.005773503, -0.01, 0.021), (-0.005773503, -0.01, 0.031), (-0.0064951903, -0.01125, 0.031), (0.0064951903, -0.01125, 0.031), (0.005773503, -0.01, 0.031)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone2_05" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.005773503, -0.01, 0.021), (0.0064951903, -0.01125, 0.021), (0.012990381, -3.1817256e-18, 0.021), (0.011547006, -2.8282006e-18, 0.021), (0.005773503, -0.01, 0.031), (0.0064951903, -0.01125, 0.031), (0.012990381, -3.1817256e-18, 0.031), (0.011547006, -2.8282006e-18, 0.031)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone3_00" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.01, 0.0026794919, 0.031), (0.0125, 0.003349365, 0.031), (0.009150635, 0.009150635, 0.031), (0.007320508, 0.007320508, 0.031), (0.01, 0.0026794919, 0.034), (0.0125, 0.003349365, 0.034), (0.009150635, 0.009150635, 0.034), (0.007320508, 0.007320508, 0.034)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone3_01" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.007320508, 0.007320508, 0.031), (0.009150635, 0.009150635, 0.031), (0.003349365, 0.0125, 0.031), (0.0026794919, 0.01, 0.031), (0.007320508, 0.007320508, 0.034), (0.009150635, 0.009150635, 0.034), (0.003349365, 0.0125, 0.034), (0.0026794919, 0.01, 0.034)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone3_02" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.0026794919, 0.01, 0.031), (0.003349365, 0.0125, 0.031), (-0.003349365, 0.0125, 0.031), (-0.0026794919, 0.01, 0.031), (0.0026794919, 0.01, 0.034), (0.003349365, 0.0125, 0.034), (-0.003349365, 0.0125, 0.034), (-0.0026794919, 0.01, 0.034)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone3_03" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.0026794919, 0.01, 0.031), (-0.003349365, 0.0125, 0.031), (-0.009150635, 0.009150635, 0.031), (-0.007320508, 0.007320508, 0.031), (-0.0026794919, 0.01, 0.034), (-0.003349365, 0.0125, 0.034), (-0.009150635, 0.009150635, 0.034), (-0.007320508, 0.007320508, 0.034)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone3_04" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.007320508, 0.007320508, 0.031), (-0.009150635, 0.009150635, 0.031), (-0.0125, 0.003349365, 0.031), (-0.01, 0.0026794919, 0.031), (-0.007320508, 0.007320508, 0.034), (-0.009150635, 0.009150635, 0.034), (-0.0125, 0.003349365, 0.034), (-0.01, 0.0026794919, 0.034)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone3_05" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.01, 0.0026794919, 0.031), (-0.0125, 0.003349365, 0.031), (-0.0125, -0.003349365, 0.031), (-0.01, -0.0026794919, 0.031), (-0.01, 0.0026794919, 0.034), (-0.0125, 0.003349365, 0.034), (-0.0125, -0.003349365, 0.034), (-0.01, -0.0026794919, 0.034)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone3_06" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.01, -0.0026794919, 0.031), (-0.0125, -0.003349365, 0.031), (-0.009150635, -0.009150635, 0.031), (-0.007320508, -0.007320508, 0.031), (-0.01, -0.0026794919, 0.034), (-0.0125, -0.003349365, 0.034), (-0.009150635, -0.009150635, 0.034), (-0.007320508, -0.007320508, 0.034)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone3_07" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.007320508, -0.007320508, 0.031), (-0.009150635, -0.009150635, 0.031), (-0.003349365, -0.0125, 0.031), (-0.0026794919, -0.01, 0.031), (-0.007320508, -0.007320508, 0.034), (-0.009150635, -0.009150635, 0.034), (-0.003349365, -0.0125, 0.034), (-0.0026794919, -0.01, 0.034)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone3_08" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.0026794919, -0.01, 0.031), (-0.003349365, -0.0125, 0.031), (0.003349365, -0.0125, 0.031), (0.0026794919, -0.01, 0.031), (-0.0026794919, -0.01, 0.034), (-0.003349365, -0.0125, 0.034), (0.003349365, -0.0125, 0.034), (0.0026794919, -0.01, 0.034)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone3_09" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.0026794919, -0.01, 0.031), (0.003349365, -0.0125, 0.031), (0.009150635, -0.009150635, 0.031), (0.007320508, -0.007320508, 0.031), (0.0026794919, -0.01, 0.034), (0.003349365, -0.0125, 0.034), (0.009150635, -0.009150635, 0.034), (0.007320508, -0.007320508, 0.034)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone3_10" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.007320508, -0.007320508, 0.031), (0.009150635, -0.009150635, 0.031), (0.0125, -0.003349365, 0.031), (0.01, -0.0026794919, 0.031), (0.007320508, -0.007320508, 0.034), (0.009150635, -0.009150635, 0.034), (0.0125, -0.003349365, 0.034), (0.01, -0.0026794919, 0.034)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone3_11" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.01, -0.0026794919, 0.031), (0.0125, -0.003349365, 0.031), (0.0125, 0.003349365, 0.031), (0.01, 0.0026794919, 0.031), (0.01, -0.0026794919, 0.034), (0.0125, -0.003349365, 0.034), (0.0125, 0.003349365, 0.034), (0.01, 0.0026794919, 0.034)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone4_00" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.01505, 0.004032635, 0.034), (0.016, 0.004287187, 0.034), (0.011712813, 0.011712813, 0.034), (0.011017364, 0.011017364, 0.034), (0.01505, 0.004032635, 0.055), (0.016, 0.004287187, 0.055), (0.011712813, 0.011712813, 0.055), (0.011017364, 0.011017364, 0.055)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone4_01" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.011017364, 0.011017364, 0.034), (0.011712813, 0.011712813, 0.034), (0.004287187, 0.016, 0.034), (0.004032635, 0.01505, 0.034), (0.011017364, 0.011017364, 0.055), (0.011712813, 0.011712813, 0.055), (0.004287187, 0.016, 0.055), (0.004032635, 0.01505, 0.055)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone4_02" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.004032635, 0.01505, 0.034), (0.004287187, 0.016, 0.034), (-0.004287187, 0.016, 0.034), (-0.004032635, 0.01505, 0.034), (0.004032635, 0.01505, 0.055), (0.004287187, 0.016, 0.055), (-0.004287187, 0.016, 0.055), (-0.004032635, 0.01505, 0.055)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone4_03" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.004032635, 0.01505, 0.034), (-0.004287187, 0.016, 0.034), (-0.011712813, 0.011712813, 0.034), (-0.011017364, 0.011017364, 0.034), (-0.004032635, 0.01505, 0.055), (-0.004287187, 0.016, 0.055), (-0.011712813, 0.011712813, 0.055), (-0.011017364, 0.011017364, 0.055)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone4_04" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.011017364, 0.011017364, 0.034), (-0.011712813, 0.011712813, 0.034), (-0.016, 0.004287187, 0.034), (-0.01505, 0.004032635, 0.034), (-0.011017364, 0.011017364, 0.055), (-0.011712813, 0.011712813, 0.055), (-0.016, 0.004287187, 0.055), (-0.01505, 0.004032635, 0.055)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone4_05" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.01505, 0.004032635, 0.034), (-0.016, 0.004287187, 0.034), (-0.016, -0.004287187, 0.034), (-0.01505, -0.004032635, 0.034), (-0.01505, 0.004032635, 0.055), (-0.016, 0.004287187, 0.055), (-0.016, -0.004287187, 0.055), (-0.01505, -0.004032635, 0.055)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone4_06" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.01505, -0.004032635, 0.034), (-0.016, -0.004287187, 0.034), (-0.011712813, -0.011712813, 0.034), (-0.011017364, -0.011017364, 0.034), (-0.01505, -0.004032635, 0.055), (-0.016, -0.004287187, 0.055), (-0.011712813, -0.011712813, 0.055), (-0.011017364, -0.011017364, 0.055)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone4_07" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.011017364, -0.011017364, 0.034), (-0.011712813, -0.011712813, 0.034), (-0.004287187, -0.016, 0.034), (-0.004032635, -0.01505, 0.034), (-0.011017364, -0.011017364, 0.055), (-0.011712813, -0.011712813, 0.055), (-0.004287187, -0.016, 0.055), (-0.004032635, -0.01505, 0.055)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone4_08" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.004032635, -0.01505, 0.034), (-0.004287187, -0.016, 0.034), (0.004287187, -0.016, 0.034), (0.004032635, -0.01505, 0.034), (-0.004032635, -0.01505, 0.055), (-0.004287187, -0.016, 0.055), (0.004287187, -0.016, 0.055), (0.004032635, -0.01505, 0.055)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone4_09" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.004032635, -0.01505, 0.034), (0.004287187, -0.016, 0.034), (0.011712813, -0.011712813, 0.034), (0.011017364, -0.011017364, 0.034), (0.004032635, -0.01505, 0.055), (0.004287187, -0.016, 0.055), (0.011712813, -0.011712813, 0.055), (0.011017364, -0.011017364, 0.055)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone4_10" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.011017364, -0.011017364, 0.034), (0.011712813, -0.011712813, 0.034), (0.016, -0.004287187, 0.034), (0.01505, -0.004032635, 0.034), (0.011017364, -0.011017364, 0.055), (0.011712813, -0.011712813, 0.055), (0.016, -0.004287187, 0.055), (0.01505, -0.004032635, 0.055)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Zone4_11" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </BrassAdapterFemale/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.01505, -0.004032635, 0.034), (0.016, -0.004287187, 0.034), (0.016, 0.004287187, 0.034), (0.01505, 0.004032635, 0.034), (0.01505, -0.004032635, 0.055), (0.016, -0.004287187, 0.055), (0.016, 0.004287187, 0.055), (0.01505, 0.004032635, 0.055)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+    }
+}
+

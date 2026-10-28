@@ -1,0 +1,419 @@
+{
+  "mode": "headless",
+  "frame_check": {
+    "hand_pos_err_m": 9.963440995279832e-08,
+    "hand_rot_err_deg": 0.017535908621390466,
+    "tcp_vs_lula_right_gripper_pos_m": 2.5075365590673038e-08,
+    "tcp_vs_lula_rot_deg": 0.01978234110314133
+  },
+  "world_sanity": {
+    "tracked_obstacle_prims": 63,
+    "samples": 400,
+    "targeted_positive_controls": {
+      "inside_tabletop": {
+        "ik": true,
+        "tcp_point": [
+          0.3,
+          -0.2,
+          0.735
+        ],
+        "cumotion_in_collision": true,
+        "cumotion_min_distance_m": -0.032410936392241116,
+        "hull_min_m": -0.01490349039151806,
+        "hull_box": "Tabletop"
+      },
+      "inside_crate_wall": {
+        "ik": true,
+        "tcp_point": [
+          1.08,
+          -0.09499999999999999,
+          0.8
+        ],
+        "cumotion_in_collision": true,
+        "cumotion_min_distance_m": -0.014011261315046755,
+        "hull_min_m": 0.017534607766427783,
+        "hull_box": "crate/WallNegY"
+      },
+      "inside_pet_bottle": {
+        "ik": true,
+        "tcp_point": [
+          -0.12,
+          0.1,
+          0.87
+        ],
+        "cumotion_in_collision": true,
+        "cumotion_min_distance_m": -0.047168876032886886,
+        "hull_min_m": -0.010466801002074616,
+        "hull_box": "object/plastic_bottle"
+      }
+    },
+    "targeted_detected": 3,
+    "targeted_total": 3,
+    "random_hull_clearance_percentiles_m": [
+      -0.0294,
+      -0.015,
+      0.13,
+      0.141
+    ],
+    "positive_control_configs": 0,
+    "positive_detected": 0,
+    "positive_missed_boxes": [],
+    "negative_control_configs": 325,
+    "negative_flagged": 0
+  },
+  "target": {
+    "existing_target_frame": false,
+    "pet_bottom_physics": [
+      -0.11999878287315369,
+      0.10000064969062805,
+      0.7500825524330139
+    ],
+    "pet_bottom_usd": [
+      -0.11999878287315369,
+      0.10000064969062805,
+      0.7500825524330139
+    ],
+    "pet_bottom_config": [
+      -0.12,
+      0.1,
+      0.7515
+    ],
+    "pet_tilt_deg": 0.0,
+    "physics_vs_config_m": 0.0014174482384377524,
+    "grasp_point": [
+      -0.11999878287315369,
+      0.10000064969062805,
+      0.9620825524330139
+    ],
+    "pre_grasp_tcp_position": [
+      -0.11999878287315369,
+      0.10000064969062805,
+      1.0820825524330138
+    ],
+    "fingertip_height_above_pet_top_m": 0.10859999999999981
+  },
+  "obstacle_discovery": {
+    "explicit": 63,
+    "scene_query_before": 1,
+    "scene_query_after": 63,
+    "guide_colliders_exposed_in_session_layer": 62
+  },
+  "self_collision_physx_enabled": false,
+  "obstacle_prims": 63,
+  "initial_home_error_deg": 0.005163964635195532,
+  "ik_candidates": [
+    {
+      "target": "yaw0",
+      "q": [
+        -0.6003926396369934,
+        0.11527863889932632,
+        -0.9117760062217712,
+        -1.9756903648376465,
+        0.10209838300943375,
+        2.045034885406494,
+        0.8015018105506897
+      ],
+      "pos_err_m": 0.00016413028093441352,
+      "rot_err_deg": 0.07101024282149847,
+      "in_collision": false,
+      "min_distance_m": 0.08778152272297585,
+      "self_collision": false,
+      "self_pairs": [],
+      "within_limits": true,
+      "hull_clearance_m": 0.10923811294050743,
+      "hull_closest": [
+        "panda_rightfinger",
+        "object/plastic_bottle"
+      ],
+      "gripper_to_pet_clearance_m": 0.10923811294050743,
+      "min_joint_margin_rad": 1.0961096351623536,
+      "joint_distance_from_home_rad": 1.543808826838723,
+      "accepted": true
+    },
+    {
+      "target": "yaw0",
+      "q": [
+        -0.35781386494636536,
+        0.18274959921836853,
+        -1.1803230047225952,
+        -1.9713716506958008,
+        0.18960140645503998,
+        2.033972978591919,
+        0.7381390929222107
+      ],
+      "pos_err_m": 0.0004751589307371866,
+      "rot_err_deg": 0.04568127465116944,
+      "in_collision": false,
+      "min_distance_m": 0.08747627810036196,
+      "self_collision": false,
+      "self_pairs": [],
+      "within_limits": true,
+      "hull_clearance_m": 0.10892093584547788,
+      "hull_closest": [
+        "panda_rightfinger",
+        "object/plastic_bottle"
+      ],
+      "gripper_to_pet_clearance_m": 0.10892093584547788,
+      "min_joint_margin_rad": 1.1004283493041993,
+      "joint_distance_from_home_rad": 1.6909315381735743,
+      "accepted": true
+    },
+    {
+      "target": "yaw315",
+      "q": [
+        -0.4512762129306793,
+        0.1472504585981369,
+        -1.0730947256088257,
+        -1.9716722965240479,
+        0.14445358514785767,
+        2.038290500640869,
+        1.557486891746521
+      ],
+      "pos_err_m": 0.0006819154225546605,
+      "rot_err_deg": 0.07224601230656688,
+      "in_collision": false,
+      "min_distance_m": 0.08842374567122535,
+      "self_collision": false,
+      "self_pairs": [],
+      "within_limits": true,
+      "hull_clearance_m": 0.10468866346803528,
+      "hull_closest": [
+        "panda_leftfinger",
+        "object/plastic_bottle"
+      ],
+      "gripper_to_pet_clearance_m": 0.10468866346803528,
+      "min_joint_margin_rad": 1.1001277034759522,
+      "joint_distance_from_home_rad": 1.7911894041283047,
+      "accepted": true
+    },
+    {
+      "target": "yaw45",
+      "q": [
+        -1.3727858066558838,
+        0.0733870267868042,
+        -0.11279332637786865,
+        -1.9754778146743774,
+        0.009325261227786541,
+        2.0485100746154785,
+        0.08172410726547241
+      ],
+      "pos_err_m": 0.00027534433653446226,
+      "rot_err_deg": 0.03525110572754867,
+      "in_collision": false,
+      "min_distance_m": 0.08763166038453085,
+      "self_collision": false,
+      "self_pairs": [],
+      "within_limits": true,
+      "hull_clearance_m": 0.10398123542296084,
+      "hull_closest": [
+        "panda_leftfinger",
+        "object/plastic_bottle"
+      ],
+      "gripper_to_pet_clearance_m": 0.10398123542296084,
+      "min_joint_margin_rad": 1.0963221853256226,
+      "joint_distance_from_home_rad": 1.871665520972668,
+      "accepted": true
+    },
+    {
+      "target": "yaw45",
+      "q": [
+        0.32374945282936096,
+        -0.5123153924942017,
+        -1.6275469064712524,
+        -1.9476433992385864,
+        -0.5492133498191833,
+        1.9248580932617188,
+        0.467480331659317
+      ],
+      "pos_err_m": 2.8755074544750047e-05,
+      "rot_err_deg": 0.02869004440731477,
+      "in_collision": false,
+      "min_distance_m": 0.08778243876270275,
+      "self_collision": false,
+      "self_pairs": [],
+      "within_limits": true,
+      "hull_clearance_m": 0.1041399017902453,
+      "hull_closest": [
+        "panda_rightfinger",
+        "object/plastic_bottle"
+      ],
+      "gripper_to_pet_clearance_m": 0.1041399017902453,
+      "min_joint_margin_rad": 1.1241566007614137,
+      "joint_distance_from_home_rad": 1.877050072250508,
+      "accepted": true
+    },
+    {
+      "target": "yaw90",
+      "q": [
+        0.38465529680252075,
+        -1.0762481689453125,
+        -1.3861271142959595,
+        -1.891848087310791,
+        -1.045562744140625,
+        1.566895842552185,
+        -0.03168141469359398
+      ],
+      "pos_err_m": 0.00023446678279088952,
+      "rot_err_deg": 0.032015380801183324,
+      "in_collision": false,
+      "min_distance_m": 0.0877432359189681,
+      "self_collision": false,
+      "self_pairs": [],
+      "within_limits": true,
+      "hull_clearance_m": 0.10911612398299289,
+      "hull_closest": [
+        "panda_leftfinger",
+        "object/plastic_bottle"
+      ],
+      "gripper_to_pet_clearance_m": 0.10911612398299289,
+      "min_joint_margin_rad": 0.6865518310546874,
+      "joint_distance_from_home_rad": 2.0323576617057006,
+      "accepted": true
+    },
+    {
+      "target": "yaw0",
+      "q": [
+        0.39776888489723206,
+        -1.1369901895523071,
+        -1.3586379289627075,
+        -1.8888001441955566,
+        -1.0939313173294067,
+        1.5216279029846191,
+        1.5608453750610352
+      ],
+      "pos_err_m": 0.0005060886877055395,
+      "rot_err_deg": 0.07520821310131981,
+      "in_collision": false,
+      "min_distance_m": 0.08747213269164578,
+      "self_collision": false,
+      "self_pairs": [],
+      "within_limits": true,
+      "hull_clearance_m": 0.10894651989065925,
+      "hull_closest": [
+        "panda_rightfinger",
+        "object/plastic_bottle"
+      ],
+      "gripper_to_pet_clearance_m": 0.10894651989065925,
+      "min_joint_margin_rad": 0.6258098104476928,
+      "joint_distance_from_home_rad": 2.0363555859700884,
+      "accepted": true
+    },
+    {
+      "target": "yaw0",
+      "q": [
+        0.4567762017250061,
+        -0.22256360948085785,
+        -1.8714133501052856,
+        -1.9704786539077759,
+        -0.23732607066631317,
+        2.0269789695739746,
+        1.0409778356552124
+      ],
+      "pos_err_m": 0.00010291557419988705,
+      "rot_err_deg": 0.06668036938244384,
+      "in_collision": false,
+      "min_distance_m": 0.0877720971382917,
+      "self_collision": false,
+      "self_pairs": [],
+      "within_limits": true,
+      "hull_clearance_m": 0.10925087785980073,
+      "hull_closest": [
+        "panda_leftfinger",
+        "object/plastic_bottle"
+      ],
+      "gripper_to_pet_clearance_m": 0.10925087785980073,
+      "min_joint_margin_rad": 1.0258866498947143,
+      "joint_distance_from_home_rad": 2.122766174442058,
+      "accepted": true
+    }
+  ],
+  "outbound_planning": {
+    "attempts": [
+      {
+        "attempt": 0,
+        "path_found": true,
+        "rrt_waypoints": 2,
+        "densify_round": 0,
+        "timed_waypoints": 2,
+        "duration_s": 2.659461574099614,
+        "samples": 666,
+        "within_position_limits": true,
+        "max_velocity_rad_s": [
+          0.39509125792548966,
+          0.5926507375628434,
+          0.5999985767403331,
+          0.2504518750990391,
+          0.06718633096858687,
+          0.3120769703092424,
+          0.010597067911952855
+        ],
+        "velocity_within_limits": true,
+        "max_acceleration_rad_s2": [
+          0.5942101748505052,
+          0.8913360934422692,
+          0.902387111947095,
+          0.37667513393147006,
+          0.10104703830206477,
+          0.46935817326852325,
+          0.015937800319671302
+        ],
+        "acceleration_within_limits": true,
+        "max_joint_step_between_samples_rad": 0.0023999973283280185,
+        "inspector_world_collision_samples": 0,
+        "inspector_self_collision_samples": 0,
+        "inspector_min_distance_m": 0.08778152272297585,
+        "hull_min_clearance_m": 0.09983602218865675,
+        "hull_closest": [
+          "panda_leftfinger",
+          "object/plastic_bottle"
+        ],
+        "hull_samples": 168,
+        "collision_free": true,
+        "valid": true
+      }
+    ],
+    "selected": {
+      "attempt": 0,
+      "path_found": true,
+      "rrt_waypoints": 2,
+      "densify_round": 0,
+      "timed_waypoints": 2,
+      "duration_s": 2.659461574099614,
+      "samples": 666,
+      "within_position_limits": true,
+      "max_velocity_rad_s": [
+        0.39509125792548966,
+        0.5926507375628434,
+        0.5999985767403331,
+        0.2504518750990391,
+        0.06718633096858687,
+        0.3120769703092424,
+        0.010597067911952855
+      ],
+      "velocity_within_limits": true,
+      "max_acceleration_rad_s2": [
+        0.5942101748505052,
+        0.8913360934422692,
+        0.902387111947095,
+        0.37667513393147006,
+        0.10104703830206477,
+        0.46935817326852325,
+        0.015937800319671302
+      ],
+      "acceleration_within_limits": true,
+      "max_joint_step_between_samples_rad": 0.0023999973283280185,
+      "inspector_world_collision_samples": 0,
+      "inspector_self_collision_samples": 0,
+      "inspector_min_distance_m": 0.08778152272297585,
+      "hull_min_clearance_m": 0.09983602218865675,
+      "hull_closest": [
+        "panda_leftfinger",
+        "object/plastic_bottle"
+      ],
+      "hull_samples": 168,
+      "collision_free": true,
+      "valid": true
+    },
+    "planning_time_s": 8.078615188598633
+  }
+}

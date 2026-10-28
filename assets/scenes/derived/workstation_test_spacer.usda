@@ -1,0 +1,79 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary robot_agent_lab = {
+            string base_scene = "../waste_sorting_workstation.usd"
+            string base_scene_sha256 = "b7916b35ab719a18c9cf675faf372f00ec1d6cafd297c36d21b43388689443ff"
+            string generator = "scripts/assets/compose_scene.py"
+            string instances_json = '[{"name": "TestSpacer_0", "prim": "/World/UserObjects/TestSpacer_0", "asset": "test_spacer", "reference": "../../library/test_spacer/test_spacer.usd", "position": [-0.55, -0.25, 0.7515], "yaw_deg": 0.0, "static_override": false, "asset_spec_sha256": "3a358e39287b9eb8c7378e0565355676a4ddd400de49b2d97ce52975809078ab"}, {"name": "TestSpacer_1", "prim": "/World/UserObjects/TestSpacer_1", "asset": "test_spacer", "reference": "../../library/test_spacer/test_spacer.usd", "position": [-0.45, -0.22, 0.7515], "yaw_deg": 30.0, "static_override": false, "asset_spec_sha256": "3a358e39287b9eb8c7378e0565355676a4ddd400de49b2d97ce52975809078ab"}]'
+            string note = "Derived layer: sublayers the base scene unchanged; regenerate from the scene config, do not edit."
+            string rendering_mode = "realtime"
+            string robot_asset = "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/6.2/Isaac/Robots/FrankaRobotics/FrankaPanda/franka.usd"
+            string scene = "workstation_test_spacer"
+            string scene_config = "../../../config/scenes/workstation_test_spacer.json"
+        }
+    }
+    defaultPrim = "World"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    subLayers = [
+        @../waste_sorting_workstation.usd@
+    ]
+    upAxis = "Z"
+)
+
+over "World"
+{
+    def Xform "UserObjects" (
+        kind = "group"
+    )
+    {
+        def Xform "TestSpacer_0" (
+            prepend references = @../../library/test_spacer/test_spacer.usd@
+        )
+        {
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:translate = (-0.55, -0.25, 0.7515)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+
+            over "PhysicsMaterial" (
+                prepend apiSchemas = ["PhysxMaterialAPI"]
+            )
+            {
+                uniform token physxMaterial:frictionCombineMode = "average"
+                uniform token physxMaterial:restitutionCombineMode = "average"
+            }
+        }
+
+        def Xform "TestSpacer_1" (
+            prepend references = @../../library/test_spacer/test_spacer.usd@
+        )
+        {
+            quatd xformOp:orient = (0.9659258262890683, 0, 0, 0.25881904510252074)
+            double3 xformOp:translate = (-0.45, -0.22, 0.7515)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+
+            over "PhysicsMaterial" (
+                prepend apiSchemas = ["PhysxMaterialAPI"]
+            )
+            {
+                uniform token physxMaterial:frictionCombineMode = "average"
+                uniform token physxMaterial:restitutionCombineMode = "average"
+            }
+        }
+    }
+
+    over "Cameras"
+    {
+        def Camera "AssetPreview"
+        {
+            float2 clippingRange = (0.01, 100)
+            float focalLength = 35
+            float horizontalAperture = 20.955
+            float verticalAperture = 11.787188
+            matrix4d xformOp:transform = ( (0.8058818128909416, 0.5920764339606918, -0, 0), (-0.2730367846417046, 0.3716334013178758, 0.8873215478378884, 0), (0.5253621778203383, -0.7150762975887939, 0.4611512449756304, 0), (-0.32, -0.48, 0.92, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+        }
+    }
+}
+

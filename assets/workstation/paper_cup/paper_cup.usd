@@ -1,0 +1,384 @@
+#usda 1.0
+(
+    defaultPrim = "PaperCup"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "PaperCup" (
+    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    customData = {
+        string robot_agent_lab_json = '{"frame": "bottom centre", "collision": "compound: base cylinder + 16 tilted wall boxes (open top, hollow)", "deformation": "not modelled"}'
+    }
+    kind = "component"
+)
+{
+    point3f physics:centerOfMass = (3.5707427e-18, -4.0869675e-18, 0.05338072)
+    float3 physics:diagonalInertia = (0.000022054253, 0.000022054253, 0.00001260773)
+    float physics:mass = 0.012
+    quatf physics:principalAxes = (1, 0, 0, 0)
+
+    def Xform "Visual" (
+        prepend references = @./paper_cup_visual.usd@
+    )
+    {
+    }
+
+    def Material "PhysicsMaterial" (
+        prepend apiSchemas = ["PhysicsMaterialAPI"]
+        customData = {
+            dictionary robot_agent_lab = {
+                string material_id = "paper"
+            }
+        }
+    )
+    {
+        float physics:dynamicFriction = 0.5
+        float physics:restitution = 0.05
+        float physics:staticFriction = 0.6
+    }
+
+    def Scope "Collision"
+    {
+        def Xform "Bottom"
+        {
+            double3 xformOp:translate = (0, 0, 0.003)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cylinder "Shape" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                uniform token axis = "Z"
+                double height = 0.006
+                rel material:binding:physics = </PaperCup/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token purpose = "guide"
+                double radius = 0.027
+            }
+        }
+
+        def Xform "Wall_00"
+        {
+            float3 xformOp:rotateXYZ = (0, 6.4830737, 0)
+            double3 xformOp:translate = (0.03275, 0, 0.055)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
+
+            def Cube "Shape" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </PaperCup/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token purpose = "guide"
+                double size = 1
+                float3 xformOp:scale = (0.002, 0.016855804, 0.110707946)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "Wall_01"
+        {
+            float3 xformOp:rotateXYZ = (0, 6.4830737, 22.5)
+            double3 xformOp:translate = (0.030257054689744642, 0.01253288240995669, 0.055)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
+
+            def Cube "Shape" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </PaperCup/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token purpose = "guide"
+                double size = 1
+                float3 xformOp:scale = (0.002, 0.016855804, 0.110707946)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "Wall_02"
+        {
+            float3 xformOp:rotateXYZ = (0, 6.4830737, 45)
+            double3 xformOp:translate = (0.023157747083859433, 0.02315774708385943, 0.055)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
+
+            def Cube "Shape" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </PaperCup/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token purpose = "guide"
+                double size = 1
+                float3 xformOp:scale = (0.002, 0.016855804, 0.110707946)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "Wall_03"
+        {
+            float3 xformOp:rotateXYZ = (0, 6.4830737, 67.5)
+            double3 xformOp:translate = (0.012532882409956692, 0.030257054689744642, 0.055)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
+
+            def Cube "Shape" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </PaperCup/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token purpose = "guide"
+                double size = 1
+                float3 xformOp:scale = (0.002, 0.016855804, 0.110707946)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "Wall_04"
+        {
+            float3 xformOp:rotateXYZ = (0, 6.4830737, 90)
+            double3 xformOp:translate = (2.005359133603791e-18, 0.03275, 0.055)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
+
+            def Cube "Shape" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </PaperCup/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token purpose = "guide"
+                double size = 1
+                float3 xformOp:scale = (0.002, 0.016855804, 0.110707946)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "Wall_05"
+        {
+            float3 xformOp:rotateXYZ = (0, 6.4830737, 112.5)
+            double3 xformOp:translate = (-0.012532882409956689, 0.030257054689744642, 0.055)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
+
+            def Cube "Shape" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </PaperCup/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token purpose = "guide"
+                double size = 1
+                float3 xformOp:scale = (0.002, 0.016855804, 0.110707946)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "Wall_06"
+        {
+            float3 xformOp:rotateXYZ = (0, 6.4830737, 135)
+            double3 xformOp:translate = (-0.02315774708385943, 0.023157747083859433, 0.055)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
+
+            def Cube "Shape" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </PaperCup/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token purpose = "guide"
+                double size = 1
+                float3 xformOp:scale = (0.002, 0.016855804, 0.110707946)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "Wall_07"
+        {
+            float3 xformOp:rotateXYZ = (0, 6.4830737, 157.5)
+            double3 xformOp:translate = (-0.030257054689744642, 0.012532882409956694, 0.055)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
+
+            def Cube "Shape" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </PaperCup/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token purpose = "guide"
+                double size = 1
+                float3 xformOp:scale = (0.002, 0.016855804, 0.110707946)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "Wall_08"
+        {
+            float3 xformOp:rotateXYZ = (0, 6.4830737, 180)
+            double3 xformOp:translate = (-0.03275, 4.010718267207582e-18, 0.055)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
+
+            def Cube "Shape" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </PaperCup/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token purpose = "guide"
+                double size = 1
+                float3 xformOp:scale = (0.002, 0.016855804, 0.110707946)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "Wall_09"
+        {
+            float3 xformOp:rotateXYZ = (0, 6.4830737, 202.5)
+            double3 xformOp:translate = (-0.030257054689744645, -0.012532882409956687, 0.055)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
+
+            def Cube "Shape" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </PaperCup/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token purpose = "guide"
+                double size = 1
+                float3 xformOp:scale = (0.002, 0.016855804, 0.110707946)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "Wall_10"
+        {
+            float3 xformOp:rotateXYZ = (0, 6.4830737, 225)
+            double3 xformOp:translate = (-0.023157747083859436, -0.02315774708385943, 0.055)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
+
+            def Cube "Shape" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </PaperCup/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token purpose = "guide"
+                double size = 1
+                float3 xformOp:scale = (0.002, 0.016855804, 0.110707946)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "Wall_11"
+        {
+            float3 xformOp:rotateXYZ = (0, 6.4830737, 247.5)
+            double3 xformOp:translate = (-0.012532882409956682, -0.030257054689744645, 0.055)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
+
+            def Cube "Shape" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </PaperCup/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token purpose = "guide"
+                double size = 1
+                float3 xformOp:scale = (0.002, 0.016855804, 0.110707946)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "Wall_12"
+        {
+            float3 xformOp:rotateXYZ = (0, 6.4830737, 270)
+            double3 xformOp:translate = (-6.0160774008113724e-18, -0.03275, 0.055)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
+
+            def Cube "Shape" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </PaperCup/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token purpose = "guide"
+                double size = 1
+                float3 xformOp:scale = (0.002, 0.016855804, 0.110707946)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "Wall_13"
+        {
+            float3 xformOp:rotateXYZ = (0, 6.4830737, 292.5)
+            double3 xformOp:translate = (0.012532882409956697, -0.03025705468974464, 0.055)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
+
+            def Cube "Shape" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </PaperCup/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token purpose = "guide"
+                double size = 1
+                float3 xformOp:scale = (0.002, 0.016855804, 0.110707946)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "Wall_14"
+        {
+            float3 xformOp:rotateXYZ = (0, 6.4830737, 315)
+            double3 xformOp:translate = (0.023157747083859426, -0.023157747083859436, 0.055)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
+
+            def Cube "Shape" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </PaperCup/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token purpose = "guide"
+                double size = 1
+                float3 xformOp:scale = (0.002, 0.016855804, 0.110707946)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "Wall_15"
+        {
+            float3 xformOp:rotateXYZ = (0, 6.4830737, 337.5)
+            double3 xformOp:translate = (0.030257054689744645, -0.012532882409956684, 0.055)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
+
+            def Cube "Shape" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </PaperCup/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token purpose = "guide"
+                double size = 1
+                float3 xformOp:scale = (0.002, 0.016855804, 0.110707946)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+    }
+}
+

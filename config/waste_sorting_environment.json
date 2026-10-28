@@ -1,0 +1,932 @@
+{
+  "_doc": "Single source of truth for the waste-sorting workstation. Units: m, kg, s, degrees for angles. World: Z up. Physics coefficients are illustrative simulation parameters, not measured material properties.",
+  "paths": {
+    "assets_dir": "assets/workstation",
+    "scene": "assets/scenes/waste_sorting_workstation.usd",
+    "logs_dir": "logs/workstation"
+  },
+  "world": {
+    "up_axis": "Z",
+    "meters_per_unit": 1.0,
+    "kilograms_per_unit": 1.0
+  },
+  "table": {
+    "position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "yaw_deg": 0.0,
+    "length": 1.6,
+    "width": 0.8,
+    "height": 0.75,
+    "top_thickness": 0.03,
+    "leg_size": 0.05,
+    "leg_height": 0.72,
+    "leg_inset": 0.08,
+    "leg_inset_reference": "leg_outer_face",
+    "top_bevel": 0.004,
+    "leg_bevel": 0.003,
+    "top_color": [
+      0.8,
+      0.7,
+      0.55
+    ],
+    "top_roughness": 0.55,
+    "leg_color": [
+      0.18,
+      0.18,
+      0.19
+    ],
+    "leg_metallic": 0.7,
+    "leg_roughness": 0.4,
+    "physics_material": "table"
+  },
+  "robot": {
+    "asset_relpath": "Isaac/Robots/FrankaRobotics/FrankaPanda/franka.usd",
+    "asset_source": "NVIDIA Isaac Sim 6.2 asset root (isaacsim.storage.native.get_assets_root_path)",
+    "variants": {
+      "Gripper": "Default",
+      "Mesh": "Performance"
+    },
+    "mount_prim": "/World/RobotMount",
+    "prim_name": "Robot",
+    "base_position": [
+      0.45,
+      0.15,
+      0.75
+    ],
+    "base_yaw_deg": -90.0,
+    "home_joint_positions_deg": {
+      "panda_joint1": 0.0,
+      "panda_joint2": -45.0,
+      "panda_joint3": 0.0,
+      "panda_joint4": -135.0,
+      "panda_joint5": 0.0,
+      "panda_joint6": 90.0,
+      "panda_joint7": 45.0
+    },
+    "home_finger_positions_m": {
+      "panda_finger_joint1": 0.04,
+      "panda_finger_joint2": 0.04
+    },
+    "tcp_offset_from_hand_m": 0.1034,
+    "nominal_reach_m": 0.855,
+    "shoulder_height_m": 0.333,
+    "filter_base_collision_with_tabletop": true,
+    "ik": {
+      "enabled": true,
+      "extension": "isaacsim.robot_motion.motion_generation",
+      "robot_description": "motion_policy_configs/franka/rmpflow/robot_descriptor.yaml",
+      "urdf": "motion_policy_configs/franka/lula_franka_gen.urdf",
+      "frame": "right_gripper",
+      "position_tolerance_m": 0.005,
+      "orientation_tolerance_rad": 0.05,
+      "seeds": 8
+    }
+  },
+  "objects": {
+    "clearance": 0.0015,
+    "glass_bottle": {
+      "asset": "glass_bottle",
+      "position": [
+        -0.1,
+        -0.16
+      ],
+      "yaw_deg": 0.0,
+      "height": 0.23,
+      "body_diameter": 0.06,
+      "neck_diameter": 0.026,
+      "wall_thickness": 0.003,
+      "base_thickness": 0.006,
+      "body_top_z": 0.135,
+      "shoulder_top_z": 0.185,
+      "lip_diameter": 0.029,
+      "mass": 0.3,
+      "color": [
+        0.05,
+        0.28,
+        0.78
+      ],
+      "opacity": 0.45,
+      "roughness": 0.2,
+      "ior": 1.5,
+      "physics_material": "glass",
+      "grasp": {
+        "approach": "top_down",
+        "tcp_height_from_bottom": 0.212,
+        "grasp_width_m": 0.026,
+        "tcp_offset_along_finger_axis_m": 0.0,
+        "_note": "neck grasp (straight neck 0.185-0.218 m); 0.212 keeps the palm ~24 mm above neighbouring bottle tops and the fingertips above the 0.20 m separators"
+      },
+      "render_material": {
+        "type": "OmniGlass",
+        "mesh": "GlassBottle",
+        "glass_color": [
+          0.25,
+          0.5,
+          0.95
+        ],
+        "glass_ior": 1.5,
+        "frosting_roughness": 0.06,
+        "thin_walled": false,
+        "depth": 0.003
+      }
+    },
+    "plastic_bottle": {
+      "asset": "plastic_bottle",
+      "position": [
+        -0.12,
+        0.1
+      ],
+      "yaw_deg": 0.0,
+      "height": 0.22,
+      "body_diameter": 0.065,
+      "neck_diameter": 0.028,
+      "wall_thickness": 0.0006,
+      "body_top_z": 0.14,
+      "shoulder_top_z": 0.185,
+      "cap_height": 0.018,
+      "cap_diameter": 0.031,
+      "mass": 0.025,
+      "cap_mass": 0.0025,
+      "color": [
+        0.7,
+        0.86,
+        0.95
+      ],
+      "opacity": 0.35,
+      "roughness": 0.15,
+      "cap_color": [
+        0.1,
+        0.35,
+        0.85
+      ],
+      "physics_material": "pet",
+      "grasp": {
+        "approach": "top_down",
+        "tcp_height_from_bottom": 0.212,
+        "grasp_width_m": 0.031,
+        "tcp_offset_along_finger_axis_m": 0.0,
+        "_note": "cap grasp"
+      },
+      "render_material": {
+        "type": "OmniGlass",
+        "mesh": "PlasticBottle",
+        "glass_color": [
+          0.82,
+          0.92,
+          0.98
+        ],
+        "glass_ior": 1.57,
+        "frosting_roughness": 0.03,
+        "thin_walled": true,
+        "depth": 0.0006
+      }
+    },
+    "paper_cup": {
+      "asset": "paper_cup",
+      "position": [
+        0.12,
+        -0.2
+      ],
+      "yaw_deg": 0.0,
+      "height": 0.11,
+      "top_diameter": 0.08,
+      "bottom_diameter": 0.055,
+      "wall_thickness": 0.001,
+      "bottom_recess": 0.005,
+      "rim_radius": 0.0018,
+      "mass": 0.012,
+      "color": [
+        0.95,
+        0.93,
+        0.88
+      ],
+      "roughness": 0.85,
+      "physics_material": "paper",
+      "collision_wall_segments": 16,
+      "collision_wall_thickness": 0.002,
+      "grasp": {
+        "approach": "top_down",
+        "tcp_height_from_bottom": 0.108,
+        "grasp_width_m": 0.005,
+        "tcp_offset_along_finger_axis_m": 0.0385,
+        "_note": "rim pinch: the 80 mm rim exceeds the 80 mm max opening, so the fingers straddle the wall"
+      }
+    }
+  },
+  "bins": {
+    "common": {
+      "width": 0.32,
+      "depth": 0.32,
+      "height": 0.45,
+      "wall_thickness": 0.012,
+      "rim_height": 0.025,
+      "bevel": 0.003,
+      "physics_material": "bin",
+      "label_size": [
+        0.2,
+        0.08
+      ],
+      "label_center_z": 0.33,
+      "label_faces": [
+        "+x",
+        "-x"
+      ]
+    },
+    "paper_bin": {
+      "asset": "paper_bin",
+      "position": [
+        0.98,
+        0.5,
+        0.0
+      ],
+      "yaw_deg": 0.0,
+      "color": [
+        0.08,
+        0.27,
+        0.7
+      ],
+      "rim_color": [
+        0.05,
+        0.18,
+        0.5
+      ],
+      "label": "PAPER",
+      "extra_label_face": "+y"
+    },
+    "plastic_bin": {
+      "asset": "plastic_bin",
+      "position": [
+        0.98,
+        -0.4,
+        0.0
+      ],
+      "yaw_deg": 0.0,
+      "color": [
+        0.96,
+        0.78,
+        0.08
+      ],
+      "rim_color": [
+        0.8,
+        0.62,
+        0.02
+      ],
+      "label": "PLASTIC",
+      "extra_label_face": "-y"
+    },
+    "drop_tcp_height_above_rim": 0.15
+  },
+  "crate": {
+    "asset": "glass_crate",
+    "position": [
+      1.08,
+      0.05,
+      0.55
+    ],
+    "yaw_deg": 0,
+    "length": 0.4,
+    "width": 0.3,
+    "height": 0.28,
+    "wall_thickness": 0.01,
+    "bottom_thickness": 0.01,
+    "separator_thickness": 0.006,
+    "separator_height": 0.2,
+    "cells": [
+      3,
+      2
+    ],
+    "color": [
+      0.1,
+      0.14,
+      0.24
+    ],
+    "roughness": 0.6,
+    "physics_material": "bin",
+    "bottles": {
+      "enabled": true,
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "static": true
+    },
+    "support": "crate_platform",
+    "target_compartment": [
+      1,
+      0
+    ],
+    "_compartment_note": "free compartment size is computed from length/width/wall/separator values (layout_geometry.crate_cells)"
+  },
+  "ground": {
+    "size": [
+      5.0,
+      5.0
+    ],
+    "thickness": 0.02,
+    "color": [
+      0.42,
+      0.43,
+      0.45
+    ],
+    "roughness": 0.8,
+    "physics_material": "floor"
+  },
+  "physics": {
+    "engine": "physx",
+    "gravity_m_s2": 9.81,
+    "steps_per_second": 120,
+    "solver_type": "TGS",
+    "gpu_dynamics": false,
+    "enable_ccd": false,
+    "friction_combine_mode": "average",
+    "restitution_combine_mode": "average",
+    "materials": {
+      "table": {
+        "static_friction": 0.6,
+        "dynamic_friction": 0.5,
+        "restitution": 0.05
+      },
+      "glass": {
+        "static_friction": 0.5,
+        "dynamic_friction": 0.4,
+        "restitution": 0.1
+      },
+      "pet": {
+        "static_friction": 0.5,
+        "dynamic_friction": 0.4,
+        "restitution": 0.15
+      },
+      "paper": {
+        "static_friction": 0.6,
+        "dynamic_friction": 0.5,
+        "restitution": 0.05
+      },
+      "bin": {
+        "static_friction": 0.6,
+        "dynamic_friction": 0.5,
+        "restitution": 0.05
+      },
+      "floor": {
+        "static_friction": 0.6,
+        "dynamic_friction": 0.5,
+        "restitution": 0.05
+      }
+    }
+  },
+  "cameras": {
+    "main": {
+      "position": [
+        3.35,
+        -2.45,
+        2.4
+      ],
+      "target": [
+        0.3,
+        0.05,
+        0.45
+      ],
+      "focal_length": 20.0
+    },
+    "top": {
+      "position": [
+        0.0,
+        0.0,
+        3.4
+      ],
+      "target": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "focal_length": 18.0,
+      "up": [
+        0,
+        1,
+        0
+      ]
+    },
+    "robot_side": {
+      "position": [
+        1.35,
+        1.05,
+        1.45
+      ],
+      "target": [
+        0.15,
+        -0.1,
+        0.85
+      ],
+      "focal_length": 20.0
+    },
+    "sorting_zone": {
+      "position": [
+        2.75,
+        -0.15,
+        1.55
+      ],
+      "target": [
+        1.0,
+        0.05,
+        0.42
+      ],
+      "focal_length": 18.0
+    },
+    "crate_closeup": {
+      "position": [
+        1.55,
+        -0.32,
+        1.3
+      ],
+      "target": [
+        1.08,
+        0.05,
+        0.66
+      ],
+      "focal_length": 24.0
+    }
+  },
+  "lighting": {
+    "dome": {
+      "intensity": 450.0,
+      "color": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "area_lights": [
+      {
+        "name": "KeyLight",
+        "position": [
+          1.2,
+          -1.4,
+          2.6
+        ],
+        "target": [
+          0.1,
+          0.0,
+          0.75
+        ],
+        "size": [
+          1.2,
+          1.2
+        ],
+        "intensity": 9000.0
+      },
+      {
+        "name": "FillLight",
+        "position": [
+          -1.6,
+          1.3,
+          2.4
+        ],
+        "target": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "size": [
+          1.5,
+          1.5
+        ],
+        "intensity": 4500.0
+      }
+    ]
+  },
+  "rendering": {
+    "mode": "realtime",
+    "resolution": [
+      1280,
+      720
+    ],
+    "warmup_frames": 40,
+    "translucency": true,
+    "path_tracing": false,
+    "_note": "Assets carry portable UsdPreviewSurface materials; the scene overrides glass/PET with Kit's OmniGlass MDL (RTX real-time translucency, no path tracing).",
+    "renderer": "RealTimePathTracing",
+    "_renderer_note": "RTX Real-Time 2.0. In this Isaac Sim 6.2 / Kit 110 build the legacy 'RaytracedLighting' mode is not honoured (setting it is reverted to RealTimePathTracing). Offline 'PathTracing' is not used."
+  },
+  "validation": {
+    "dimension_tolerance_m": 0.0015,
+    "position_tolerance_m": 0.002,
+    "settle_duration_s": 3.0,
+    "settle_max_horizontal_drift_m": 0.005,
+    "settle_max_height_change_m": 0.004,
+    "settle_max_tilt_deg": 2.0,
+    "settle_max_speed_m_s": 0.01,
+    "penetration_tolerance_m": 0.003,
+    "robot_max_joint_drift_deg": 1.0,
+    "robot_max_base_drift_m": 0.001,
+    "bin_drop": {
+      "object_size": 0.06,
+      "object_mass": 0.1,
+      "drop_height_above_rim": 0.15,
+      "xy_offset": [
+        0.03,
+        -0.02
+      ],
+      "duration_s": 2.5
+    },
+    "min_object_gap_m": 0.02
+  },
+  "gripper": {
+    "tcp_frame": "right_gripper",
+    "_tcp_note": "Lula right_gripper = panda_link8 + 0.100 m along Z (hand frame rotated 180 deg about Z); fingertips are 0.0034 m beyond it",
+    "tcp_offset_from_hand_m": 0.1,
+    "finger_joint_offset_from_hand_m": 0.0584,
+    "fingertip_beyond_tcp_m": 0.0034,
+    "max_opening_m": 0.08,
+    "release_extra_opening_m": 0.03,
+    "min_robot_clearance_m": 0.02,
+    "min_carried_object_clearance_m": 0.01,
+    "min_finger_clearance_in_compartment_m": 0.005,
+    "min_gripper_clearance_to_released_object_m": 0.01
+  },
+  "crate_platform": {
+    "asset": "crate_platform",
+    "position": [
+      1.08,
+      0.05,
+      0.0
+    ],
+    "yaw_deg": 0,
+    "height": 0.55,
+    "top_length": 0.46,
+    "top_width": 0.36,
+    "top_thickness": 0.03,
+    "top_overhang": 0.012,
+    "kick_height": 0.06,
+    "body_color": [
+      0.72,
+      0.74,
+      0.77
+    ],
+    "top_color": [
+      0.22,
+      0.23,
+      0.25
+    ],
+    "kick_color": [
+      0.12,
+      0.12,
+      0.13
+    ],
+    "physics_material": "table",
+    "_note": "static lab side cabinet; position/height chosen by optimize_layout.py"
+  },
+  "manipulation_targets": {
+    "paper_bin": {
+      "object": "paper_cup",
+      "pre_drop_bottom_above_rim": 0.15,
+      "drop_bottom_above_rim": 0.06,
+      "retreat_tcp_lift": 0.1,
+      "drop_xy_offsets_toward_robot_m": [
+        0.0,
+        0.04,
+        0.08
+      ]
+    },
+    "plastic_bin": {
+      "object": "plastic_bottle",
+      "pre_drop_bottom_above_rim": 0.15,
+      "drop_bottom_above_rim": 0.06,
+      "retreat_tcp_lift": 0.1,
+      "drop_xy_offsets_toward_robot_m": [
+        0.0,
+        0.04,
+        0.08
+      ]
+    },
+    "glass_crate": {
+      "object": "glass_bottle",
+      "pre_place_bottom_above_rim": 0.1,
+      "insertion_start_bottom_above_rim": 0.015,
+      "final_bottom_above_floor": 0.002,
+      "retreat_tcp_above_rim": 0.15,
+      "insertion_waypoint_step_m": 0.01,
+      "max_joint_step_between_waypoints_rad": 0.15
+    },
+    "_pose_definitions": {
+      "pre_drop": "carried object's lowest point pre_drop_bottom_above_rim over the bin rim, top-down",
+      "drop": "carried object's lowest point drop_bottom_above_rim over the rim (release here)",
+      "retreat": "TCP lifted retreat_tcp_lift above the drop pose after release",
+      "pre_place": "bottle bottom pre_place_bottom_above_rim over the crate rim, centred on the compartment",
+      "insertion_start": "bottle bottom insertion_start_bottom_above_rim over the rim",
+      "final_place": "bottle bottom final_bottom_above_floor over the compartment floor",
+      "release": "final_place TCP with fingers opened by release_extra_opening_m",
+      "retreat_vertical": "TCP retreat_tcp_above_rim over the rim, fingers open"
+    },
+    "selected": {
+      "paper_bin": {
+        "meta": {
+          "drop_xy": [
+            0.9466214156099306,
+            0.4779575386103316
+          ],
+          "drop_offset_toward_robot_m": 0.04,
+          "gripper_yaw_deg": 315.0,
+          "rim_z": 0.45,
+          "opening_inner_half_m": 0.148
+        },
+        "poses": {
+          "pre_drop": {
+            "tcp_position": [
+              0.97385,
+              0.50518,
+              0.708
+            ],
+            "tcp_orientation_wxyz": [
+              0.0,
+              0.92388,
+              -0.382683,
+              0.0
+            ],
+            "finger_opening_m": 0.005
+          },
+          "drop": {
+            "tcp_position": [
+              0.97385,
+              0.50518,
+              0.618
+            ],
+            "tcp_orientation_wxyz": [
+              0.0,
+              0.92388,
+              -0.382683,
+              0.0
+            ],
+            "finger_opening_m": 0.005
+          },
+          "retreat": {
+            "tcp_position": [
+              0.97385,
+              0.50518,
+              0.718
+            ],
+            "tcp_orientation_wxyz": [
+              0.0,
+              0.92388,
+              -0.382683,
+              0.0
+            ],
+            "finger_opening_m": 0.034999999999999996
+          }
+        }
+      },
+      "plastic_bin": {
+        "meta": {
+          "drop_xy": [
+            0.9244885407167254,
+            -0.34239376866829996
+          ],
+          "drop_offset_toward_robot_m": 0.08,
+          "gripper_yaw_deg": 180.0,
+          "rim_z": 0.45,
+          "opening_inner_half_m": 0.148
+        },
+        "poses": {
+          "pre_drop": {
+            "tcp_position": [
+              0.92449,
+              -0.34239,
+              0.812
+            ],
+            "tcp_orientation_wxyz": [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            "finger_opening_m": 0.031
+          },
+          "drop": {
+            "tcp_position": [
+              0.92449,
+              -0.34239,
+              0.722
+            ],
+            "tcp_orientation_wxyz": [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            "finger_opening_m": 0.031
+          },
+          "retreat": {
+            "tcp_position": [
+              0.92449,
+              -0.34239,
+              0.822
+            ],
+            "tcp_orientation_wxyz": [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            "finger_opening_m": 0.061
+          }
+        }
+      },
+      "glass_crate": {
+        "meta": {
+          "compartment": [
+            1,
+            0
+          ],
+          "compartment_centre": [
+            1.08,
+            -0.02149999999999999,
+            0.55
+          ],
+          "free_size_local": [
+            0.12066666666666667,
+            0.13699999999999998
+          ],
+          "floor_z": 0.56,
+          "rim_z": 0.8300000000000001,
+          "separator_top_z": 0.76,
+          "gripper_yaw_deg": -90.0,
+          "finger_axis_world": [
+            -1.0,
+            -6.123233995736766e-17,
+            0.0
+          ],
+          "finger_axis_along": "crate local x"
+        },
+        "poses": {
+          "pre_place": {
+            "tcp_position": [
+              1.08,
+              -0.0215,
+              1.142
+            ],
+            "tcp_orientation_wxyz": [
+              0.0,
+              0.707107,
+              -0.707107,
+              0.0
+            ],
+            "finger_opening_m": 0.026
+          },
+          "insertion_start": {
+            "tcp_position": [
+              1.08,
+              -0.0215,
+              1.057
+            ],
+            "tcp_orientation_wxyz": [
+              0.0,
+              0.707107,
+              -0.707107,
+              0.0
+            ],
+            "finger_opening_m": 0.026
+          },
+          "final_place": {
+            "tcp_position": [
+              1.08,
+              -0.0215,
+              0.774
+            ],
+            "tcp_orientation_wxyz": [
+              0.0,
+              0.707107,
+              -0.707107,
+              0.0
+            ],
+            "finger_opening_m": 0.026
+          },
+          "release": {
+            "tcp_position": [
+              1.08,
+              -0.0215,
+              0.774
+            ],
+            "tcp_orientation_wxyz": [
+              0.0,
+              0.707107,
+              -0.707107,
+              0.0
+            ],
+            "finger_opening_m": 0.055999999999999994
+          },
+          "retreat_vertical": {
+            "tcp_position": [
+              1.08,
+              -0.0215,
+              0.98
+            ],
+            "tcp_orientation_wxyz": [
+              0.0,
+              0.707107,
+              -0.707107,
+              0.0
+            ],
+            "finger_opening_m": 0.055999999999999994
+          }
+        }
+      }
+    },
+    "selected_by": "scripts/workstation/optimize_layout.py (seeded, reproducible)"
+  },
+  "layout_search": {
+    "seed": 0,
+    "ik_seeds": 4,
+    "bin_yaw_candidates_deg": [
+      0,
+      45,
+      90,
+      135,
+      180,
+      225,
+      270,
+      315
+    ],
+    "bin_x": [
+      0.98,
+      1.06,
+      1.14
+    ],
+    "bin_y": [
+      -0.7,
+      -0.55,
+      -0.4,
+      -0.25,
+      -0.1,
+      0.05,
+      0.2,
+      0.35,
+      0.5
+    ],
+    "crate_x": [
+      0.98,
+      1.08,
+      1.18
+    ],
+    "crate_y": [
+      -0.75,
+      -0.55,
+      -0.35,
+      -0.15,
+      0.05,
+      0.25,
+      0.45,
+      0.65
+    ],
+    "front_crate_xy": [
+      [
+        0.15,
+        -0.65
+      ],
+      [
+        0.35,
+        -0.65
+      ],
+      [
+        0.55,
+        -0.65
+      ],
+      [
+        0.75,
+        -0.65
+      ]
+    ],
+    "platform_heights": [
+      0.45,
+      0.55,
+      0.65,
+      0.75
+    ],
+    "crate_yaws_deg": [
+      0,
+      90
+    ],
+    "min_gap_between_destinations_m": 0.03,
+    "min_gap_to_table_m": 0.03,
+    "weights": {
+      "joint_margin": 1.0,
+      "manipulability": 1.0,
+      "clearance": 1.0,
+      "distance": 0.5
+    }
+  }
+}

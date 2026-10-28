@@ -1,0 +1,123 @@
+#usda 1.0
+(
+    defaultPrim = "IndustrialBlueCrate"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "IndustrialBlueCrate" (
+    customData = {
+        string robot_agent_lab_json = '{"frame": "bottom centre", "mounts": {"label_+x": [[0.19294373399640416, 0.0, 0.12], 90.0], "label_-x": [[-0.19294373399640416, 0.0, 0.12], -90.0]}, "asset_id": "industrial_blue_crate", "category": "container/crate", "nominal_size_m": [0.4, 0.3, 0.22], "collision": "container_walls", "spec": "../../../config/assets/industrial_blue_crate.json"}'
+    }
+    kind = "component"
+)
+{
+    def Xform "Visual" (
+        prepend references = @./industrial_blue_crate_visual.usd@
+    )
+    {
+    }
+
+    def Material "PhysicsMaterial" (
+        prepend apiSchemas = ["PhysicsMaterialAPI"]
+        customData = {
+            dictionary robot_agent_lab = {
+                string material_id = "polypropylene"
+            }
+        }
+    )
+    {
+        float physics:dynamicFriction = 0.3
+        float physics:restitution = 0.1
+        float physics:staticFriction = 0.35
+    }
+
+    def Scope "Collision"
+    {
+        def Xform "Floor"
+        {
+            double3 xformOp:translate = (0, 0, 0.008)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "Shape" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "MaterialBindingAPI", "PhysxCollisionAPI"]
+            )
+            {
+                rel material:binding:physics = </IndustrialBlueCrate/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                custom float physxCollision:contactOffset = 0.02
+                uniform token purpose = "guide"
+                double size = 1
+                float3 xformOp:scale = (0.36618632, 0.26618633, 0.016)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Mesh "WallPosX" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI", "PhysxCollisionAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </IndustrialBlueCrate/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            custom float physxCollision:contactOffset = 0.02
+            point3f[] points = [(0.17909317, -0.13309316, 0.016), (0.18309316, -0.13309316, 0.016), (0.18309316, 0.13309316, 0.016), (0.17909317, 0.13309316, 0.016), (0.188, -0.15, 0.22), (0.2, -0.15, 0.22), (0.2, 0.15, 0.22), (0.188, 0.15, 0.22)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "WallNegX" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI", "PhysxCollisionAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </IndustrialBlueCrate/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            custom float physxCollision:contactOffset = 0.02
+            point3f[] points = [(-0.17909317, -0.13309316, 0.016), (-0.18309316, -0.13309316, 0.016), (-0.18309316, 0.13309316, 0.016), (-0.17909317, 0.13309316, 0.016), (-0.188, -0.15, 0.22), (-0.2, -0.15, 0.22), (-0.2, 0.15, 0.22), (-0.188, 0.15, 0.22)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "WallPosY" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI", "PhysxCollisionAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </IndustrialBlueCrate/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            custom float physxCollision:contactOffset = 0.02
+            point3f[] points = [(-0.18309316, 0.12909317, 0.016), (-0.18309316, 0.13309316, 0.016), (0.18309316, 0.13309316, 0.016), (0.18309316, 0.12909317, 0.016), (-0.2, 0.138, 0.22), (-0.2, 0.15, 0.22), (0.2, 0.15, 0.22), (0.2, 0.138, 0.22)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "WallNegY" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI", "PhysxCollisionAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </IndustrialBlueCrate/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            custom float physxCollision:contactOffset = 0.02
+            point3f[] points = [(-0.18309316, -0.12909317, 0.016), (-0.18309316, -0.13309316, 0.016), (0.18309316, -0.13309316, 0.016), (0.18309316, -0.12909317, 0.016), (-0.2, -0.138, 0.22), (-0.2, -0.15, 0.22), (0.2, -0.15, 0.22), (0.2, -0.138, 0.22)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+    }
+}
+

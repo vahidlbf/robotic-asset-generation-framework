@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "asset_id": "label_bin_a",
+  "category": "marking/label",
+  "description": "Sorting-role label for sorting_bin_A: plate with raised text 'BIN A / TYPE A' (visual only, no colliders).",
+  "source": "Project design (destination marking); not part of the reference photographs.",
+  "geometry": {
+    "method": "label_plate",
+    "size": [
+      0.13,
+      0.003,
+      0.05
+    ],
+    "text": "BIN A\nTYPE A",
+    "text_color": [
+      0.015,
+      0.015,
+      0.015
+    ],
+    "text_height": 0.017,
+    "text_relief": 0.0006,
+    "bevel": 0.0008
+  },
+  "visual_material": {
+    "color": [
+      0.92,
+      0.68,
+      0.04
+    ],
+    "roughness": 0.5,
+    "metallic": 0.0
+  },
+  "collision": {
+    "representation": "none"
+  },
+  "physics": {
+    "body": "static"
+  },
+  "validation": {
+    "dimension_tolerance_m": 0.0005
+  }
+}

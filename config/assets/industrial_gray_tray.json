@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "asset_id": "industrial_gray_tray",
+  "category": "container/tray",
+  "description": "Shallow medium-gray plastic input tray: flat inner floor, four slightly tapered 5 mm walls, rounded upper rim, open top.",
+  "source": "Provisional dimensions from the prompt (350 x 300 x 100 mm, ~5 mm walls), styled after the reference photograph; not a measured replica. Friction values are illustrative (plastic against brass).",
+  "geometry": {
+    "method": "open_container",
+    "size": [
+      0.35,
+      0.3,
+      0.1
+    ],
+    "wall_thickness": 0.005,
+    "floor_thickness": 0.005,
+    "draft_deg": 4.0,
+    "corner_radius": 0.018,
+    "corner_segments": 6,
+    "rim": {
+      "height": 0.01,
+      "overhang": 0.004,
+      "round": 0.003
+    }
+  },
+  "visual_material": {
+    "color": [
+      0.2,
+      0.205,
+      0.215
+    ],
+    "roughness": 0.62,
+    "metallic": 0.0
+  },
+  "collision": {
+    "representation": "container_walls",
+    "contact_offset_m": 0.02
+  },
+  "physics": {
+    "body": "static",
+    "material": {
+      "id": "tray_plastic",
+      "static_friction": 0.4,
+      "dynamic_friction": 0.35,
+      "restitution": 0.05
+    }
+  },
+  "validation": {
+    "dimension_tolerance_m": 0.0005
+  }
+}

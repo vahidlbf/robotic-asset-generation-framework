@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "validator_exit_code": 1,
+  "expected_failures": [
+    "instance:TestSpacer_0.clearance_to_scene",
+    "preservation.base_prims_unchanged",
+    "structure.derived_layer_scope"
+  ],
+  "actual_failures": [
+    "instance:TestSpacer_0.clearance_to_scene",
+    "preservation.base_prims_unchanged",
+    "structure.derived_layer_scope"
+  ],
+  "summary": "38/41 checks passed"
+}

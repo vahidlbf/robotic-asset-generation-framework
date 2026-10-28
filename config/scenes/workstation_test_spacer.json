@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "scene_id": "workstation_test_spacer",
+  "description": "Base workstation + test_spacer instances (incremental-asset infrastructure demo)",
+  "base_scene": "assets/scenes/waste_sorting_workstation.usd",
+  "environment_config": "config/waste_sorting_environment.json",
+  "output": "assets/scenes/derived/workstation_test_spacer.usda",
+  "instances_root": "/World/UserObjects",
+  "instances": [
+    {
+      "name": "TestSpacer_0",
+      "asset": "test_spacer",
+      "placement": {
+        "surface": "tabletop",
+        "xy": [
+          -0.55,
+          -0.25
+        ],
+        "yaw_deg": 0.0
+      }
+    },
+    {
+      "name": "TestSpacer_1",
+      "asset": "test_spacer",
+      "placement": {
+        "surface": "tabletop",
+        "xy": [
+          -0.45,
+          -0.22
+        ],
+        "yaw_deg": 30.0
+      }
+    }
+  ],
+  "preview_camera": {
+    "position": [
+      -0.32,
+      -0.48,
+      0.92
+    ],
+    "target": [
+      -0.5,
+      -0.235,
+      0.762
+    ],
+    "focal_length": 35.0
+  }
+}

@@ -1,0 +1,745 @@
+{
+  "passed": true,
+  "generated": "2026-10-27T19:27:53+01:00",
+  "spec": [
+    "config/assets/industrial_gray_tray.json",
+    "config/assets/industrial_blue_crate.json",
+    "config/assets/label_bin_a.json",
+    "config/assets/label_bin_b.json",
+    "config/assets/brass_adapter_male.json",
+    "config/assets/brass_adapter_female.json"
+  ],
+  "asset_id": "industrial_gray_tray+industrial_blue_crate+label_bin_a+label_bin_b+brass_adapter_male+brass_adapter_female",
+  "asset_ids": [
+    "industrial_gray_tray",
+    "industrial_blue_crate",
+    "label_bin_a",
+    "label_bin_b",
+    "brass_adapter_male",
+    "brass_adapter_female"
+  ],
+  "scene_config": "config/scenes/industrial_brass_sorting.json",
+  "derived_scene": "assets/scenes/derived/industrial_brass_sorting.usda",
+  "asset_status_before": {
+    "industrial_gray_tray": "current",
+    "industrial_blue_crate": "current",
+    "label_bin_a": "current",
+    "label_bin_b": "current",
+    "brass_adapter_male": "current",
+    "brass_adapter_female": "current"
+  },
+  "asset_status_after": {
+    "industrial_gray_tray": "current",
+    "industrial_blue_crate": "current",
+    "label_bin_a": "current",
+    "label_bin_b": "current",
+    "brass_adapter_male": "current",
+    "brass_adapter_female": "current"
+  },
+  "asset_rebuilt": {
+    "industrial_gray_tray": false,
+    "industrial_blue_crate": false,
+    "label_bin_a": false,
+    "label_bin_b": false,
+    "brass_adapter_male": false,
+    "brass_adapter_female": false
+  },
+  "stages": [
+    {
+      "stage": "generate_asset (industrial_gray_tray)",
+      "command": "blender -b --factory-startup --python-exit-code 1 --python scripts/assets/generate_asset.py -- --spec config/assets/industrial_gray_tray.json",
+      "exit_code": 0,
+      "seconds": 1.2,
+      "log": "logs/assets/industrial_brass_sorting/generate_industrial_gray_tray.log"
+    },
+    {
+      "stage": "generate_asset (industrial_blue_crate)",
+      "command": "blender -b --factory-startup --python-exit-code 1 --python scripts/assets/generate_asset.py -- --spec config/assets/industrial_blue_crate.json",
+      "exit_code": 0,
+      "seconds": 1.3,
+      "log": "logs/assets/industrial_brass_sorting/generate_industrial_blue_crate.log"
+    },
+    {
+      "stage": "generate_asset (label_bin_a)",
+      "command": "blender -b --factory-startup --python-exit-code 1 --python scripts/assets/generate_asset.py -- --spec config/assets/label_bin_a.json",
+      "exit_code": 0,
+      "seconds": 1.3,
+      "log": "logs/assets/industrial_brass_sorting/generate_label_bin_a.log"
+    },
+    {
+      "stage": "generate_asset (label_bin_b)",
+      "command": "blender -b --factory-startup --python-exit-code 1 --python scripts/assets/generate_asset.py -- --spec config/assets/label_bin_b.json",
+      "exit_code": 0,
+      "seconds": 1.3,
+      "log": "logs/assets/industrial_brass_sorting/generate_label_bin_b.log"
+    },
+    {
+      "stage": "generate_asset (brass_adapter_male)",
+      "command": "blender -b --factory-startup --python-exit-code 1 --python scripts/assets/generate_asset.py -- --spec config/assets/brass_adapter_male.json",
+      "exit_code": 0,
+      "seconds": 1.3,
+      "log": "logs/assets/industrial_brass_sorting/generate_brass_adapter_male.log"
+    },
+    {
+      "stage": "generate_asset (brass_adapter_female)",
+      "command": "blender -b --factory-startup --python-exit-code 1 --python scripts/assets/generate_asset.py -- --spec config/assets/brass_adapter_female.json",
+      "exit_code": 0,
+      "seconds": 1.3,
+      "log": "logs/assets/industrial_brass_sorting/generate_brass_adapter_female.log"
+    },
+    {
+      "stage": "compose_scene",
+      "command": "blender -b --factory-startup --python-exit-code 1 --python scripts/assets/compose_scene.py -- --scene config/scenes/industrial_brass_sorting.json",
+      "exit_code": 0,
+      "seconds": 1.3,
+      "log": "logs/assets/industrial_brass_sorting/compose.log"
+    },
+    {
+      "stage": "validate_asset_scene",
+      "command": "/home/mm42/isaacsim/python.sh scripts/assets/validate_asset_scene.py --scene config/scenes/industrial_brass_sorting.json",
+      "exit_code": 0,
+      "seconds": 14.2,
+      "log": "logs/assets/industrial_brass_sorting/validate.log"
+    },
+    {
+      "stage": "preview",
+      "command": "/home/mm42/isaacsim/python.sh scripts/workstation/render_previews.py --config logs/assets/industrial_brass_sorting/base_suites/environment_config.json --cameras industrial_overview industrial_tray industrial_fittings industrial_crates main",
+      "exit_code": 0,
+      "seconds": 25.5,
+      "log": "logs/assets/industrial_brass_sorting/base_suites/render.log"
+    }
+  ],
+  "asset_info": {
+    "industrial_gray_tray": {
+      "file_sha256": {
+        "industrial_gray_tray.usd": "3e8bfcade4df6732a102d64cd0a045af5a43bcd287a679d5b4cf742d8c3fe78b",
+        "industrial_gray_tray_visual.usd": "6732d5dd92e67a606929f6a5a365422cdf60cacd6c8e95d9c0c141267b54c5e3"
+      },
+      "mass_properties": null,
+      "bounds_visual_m": [
+        [
+          -0.17499999701976776,
+          -0.15000000596046448,
+          0.0
+        ],
+        [
+          0.17499999701976776,
+          0.15000000596046448,
+          0.10000000149011612
+        ]
+      ],
+      "colliders": [
+        "Floor",
+        "WallPosX",
+        "WallNegX",
+        "WallPosY",
+        "WallNegY"
+      ],
+      "generated_utc": "2026-10-27T18:15:48+00:00"
+    },
+    "industrial_blue_crate": {
+      "file_sha256": {
+        "industrial_blue_crate.usd": "72fb290640b4a801d9893ea62d548c6cdd56583eaea7f026d146ef37d58efff8",
+        "industrial_blue_crate_visual.usd": "00f3777502ed5ed35cf3ea42f7380cf1edf60e252202ed098095d52adc3bd584"
+      },
+      "mass_properties": null,
+      "bounds_visual_m": [
+        [
+          -0.20000000298023224,
+          -0.15000000596046448,
+          0.0
+        ],
+        [
+          0.20000000298023224,
+          0.15000000596046448,
+          0.2199999988079071
+        ]
+      ],
+      "colliders": [
+        "Floor",
+        "WallPosX",
+        "WallNegX",
+        "WallPosY",
+        "WallNegY"
+      ],
+      "generated_utc": "2026-10-27T18:15:46+00:00"
+    },
+    "label_bin_a": {
+      "file_sha256": {
+        "label_bin_a.usd": "fc74a6472cd18c741fd5a42c965acdda9ddcd5faad35cd03ebc9571186bbda28",
+        "label_bin_a_visual.usd": "449e58f393fab0eb3a38a6362e65361ae5d4dfb1be9a51ae27f3834dcde70922"
+      },
+      "mass_properties": null,
+      "bounds_visual_m": [
+        [
+          -0.06499999761581421,
+          -0.001500000711530447,
+          0.0
+        ],
+        [
+          0.06499999761581421,
+          0.001500000013038516,
+          0.05000000074505806
+        ]
+      ],
+      "colliders": [],
+      "generated_utc": "2026-10-27T18:00:07+00:00"
+    },
+    "label_bin_b": {
+      "file_sha256": {
+        "label_bin_b.usd": "d29d478374494cb67ad982e74b4484cc63614357dec1a20a9162ccca91cad5ed",
+        "label_bin_b_visual.usd": "f21c918d3e77d1ea90bebf04d81a0ef2b8f73bd8738b3cadbce468387504b828"
+      },
+      "mass_properties": null,
+      "bounds_visual_m": [
+        [
+          -0.06499999761581421,
+          -0.001500000711530447,
+          0.0
+        ],
+        [
+          0.06499999761581421,
+          0.001500000013038516,
+          0.05000000074505806
+        ]
+      ],
+      "colliders": [],
+      "generated_utc": "2026-10-27T18:00:09+00:00"
+    },
+    "brass_adapter_male": {
+      "file_sha256": {
+        "brass_adapter_male.usd": "47cb105b95afa452813892a0253ece7a6593aa89218a00a655d0d5427a07bd07",
+        "brass_adapter_male_visual.usd": "8f77456cb22b3a2391d86202e3b2c23929fa6046eedd80592cad8e193036e0df"
+      },
+      "mass_properties": {
+        "mass_kg": 0.045,
+        "mass_source": "mass_kg",
+        "volume_m3": 5.490266311739419e-06,
+        "density_kg_m3": 8196.323719995135,
+        "center_of_mass": [
+          -2.121629102465417e-06,
+          4.704106645222134e-06,
+          0.02174335174024127
+        ],
+        "inertia_tensor": [
+          [
+            7.975401086671773e-06,
+            -4.216985596963279e-11,
+            2.3264369867509538e-09
+          ],
+          [
+            -4.216985596961953e-11,
+            7.975947903175224e-06,
+            1.9669377164971854e-09
+          ],
+          [
+            2.3264369867508264e-09,
+            1.96693771649718e-09,
+            3.4857567727468595e-06
+          ]
+        ],
+        "diagonal_inertia": [
+          7.975401086671773e-06,
+          7.975947903175224e-06,
+          3.4857567727468595e-06
+        ],
+        "max_offdiag_ratio": 0.0002916815675068288
+      },
+      "bounds_visual_m": [
+        [
+          -0.012413030490279198,
+          -0.01075000036507845,
+          0.0
+        ],
+        [
+          0.012413030490279198,
+          0.01075000036507845,
+          0.04500000178813934
+        ]
+      ],
+      "colliders": [
+        "Zone0_00",
+        "Zone0_01",
+        "Zone0_02",
+        "Zone0_03",
+        "Zone0_04",
+        "Zone0_05",
+        "Zone0_06",
+        "Zone0_07",
+        "Zone0_08",
+        "Zone0_09",
+        "Zone0_10",
+        "Zone0_11",
+        "Zone1_00",
+        "Zone1_01",
+        "Zone1_02",
+        "Zone1_03",
+        "Zone1_04",
+        "Zone1_05",
+        "Zone2_00",
+        "Zone2_01",
+        "Zone2_02",
+        "Zone2_03",
+        "Zone2_04",
+        "Zone2_05",
+        "Zone2_06",
+        "Zone2_07",
+        "Zone2_08",
+        "Zone2_09",
+        "Zone2_10",
+        "Zone2_11",
+        "Zone3_00",
+        "Zone3_01",
+        "Zone3_02",
+        "Zone3_03",
+        "Zone3_04",
+        "Zone3_05",
+        "Zone3_06",
+        "Zone3_07",
+        "Zone3_08",
+        "Zone3_09",
+        "Zone3_10",
+        "Zone3_11"
+      ],
+      "generated_utc": "2026-10-27T18:00:01+00:00"
+    },
+    "brass_adapter_female": {
+      "file_sha256": {
+        "brass_adapter_female.usd": "0726906d8c2666dc659b9ee3f7eae223626b50ae65a694fe4d96c05cfb60b2e6",
+        "brass_adapter_female_visual.usd": "d4df1311b36f29616d857b41fda79500fa3f96e6b9cd52bcee7494d72b5c82e6"
+      },
+      "mass_properties": {
+        "mass_kg": 0.075,
+        "mass_source": "mass_kg",
+        "volume_m3": 8.841993511432038e-06,
+        "density_kg_m3": 8482.250060807057,
+        "center_of_mass": [
+          -5.120389472516325e-06,
+          -3.175144284890784e-06,
+          0.029445298697210225
+        ],
+        "inertia_tensor": [
+          [
+            2.0182252009282987e-05,
+            7.786901621352027e-10,
+            7.892304405746908e-09
+          ],
+          [
+            7.786901621352455e-10,
+            2.0182015916633684e-05,
+            -4.9722420710145235e-09
+          ],
+          [
+            7.89230440574751e-09,
+            -4.972242071014897e-09,
+            1.0432720620505967e-05
+          ]
+        ],
+        "diagonal_inertia": [
+          2.0182252009282987e-05,
+          2.0182015916633684e-05,
+          1.0432720620505967e-05
+        ],
+        "max_offdiag_ratio": 0.0003910517221823106
+      },
+      "bounds_visual_m": [
+        [
+          -0.01600000075995922,
+          -0.01600000075995922,
+          0.0
+        ],
+        [
+          0.01600000075995922,
+          0.01600000075995922,
+          0.054999999701976776
+        ]
+      ],
+      "colliders": [
+        "Zone0_00",
+        "Zone0_01",
+        "Zone0_02",
+        "Zone0_03",
+        "Zone0_04",
+        "Zone0_05",
+        "Zone0_06",
+        "Zone0_07",
+        "Zone0_08",
+        "Zone0_09",
+        "Zone0_10",
+        "Zone0_11",
+        "Zone1_00",
+        "Zone1_01",
+        "Zone1_02",
+        "Zone1_03",
+        "Zone1_04",
+        "Zone1_05",
+        "Zone1_06",
+        "Zone1_07",
+        "Zone1_08",
+        "Zone1_09",
+        "Zone1_10",
+        "Zone1_11",
+        "Zone2_00",
+        "Zone2_01",
+        "Zone2_02",
+        "Zone2_03",
+        "Zone2_04",
+        "Zone2_05",
+        "Zone3_00",
+        "Zone3_01",
+        "Zone3_02",
+        "Zone3_03",
+        "Zone3_04",
+        "Zone3_05",
+        "Zone3_06",
+        "Zone3_07",
+        "Zone3_08",
+        "Zone3_09",
+        "Zone3_10",
+        "Zone3_11",
+        "Zone4_00",
+        "Zone4_01",
+        "Zone4_02",
+        "Zone4_03",
+        "Zone4_04",
+        "Zone4_05",
+        "Zone4_06",
+        "Zone4_07",
+        "Zone4_08",
+        "Zone4_09",
+        "Zone4_10",
+        "Zone4_11"
+      ],
+      "generated_utc": "2026-10-27T18:03:43+00:00"
+    }
+  },
+  "instances": [
+    {
+      "name": "InputTray",
+      "prim": "/World/UserObjects/InputTray",
+      "asset": "industrial_gray_tray",
+      "reference": "../../library/industrial_gray_tray/industrial_gray_tray.usd",
+      "position": [
+        0.42,
+        -0.215,
+        0.75
+      ],
+      "orientation_wxyz": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "yaw_deg": 0.0,
+      "surface": "tabletop",
+      "support": null,
+      "static_override": false,
+      "asset_spec_sha256": "b4b3913d034d43cd7a241f7ef9a76bd52ef57997860d865d10f644475b5c4f94"
+    },
+    {
+      "name": "sorting_bin_A",
+      "prim": "/World/UserObjects/sorting_bin_A",
+      "asset": "industrial_blue_crate",
+      "reference": "../../library/industrial_blue_crate/industrial_blue_crate.usd",
+      "position": [
+        -0.03,
+        -0.2,
+        0.75
+      ],
+      "orientation_wxyz": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "yaw_deg": 0.0,
+      "surface": "tabletop",
+      "support": null,
+      "static_override": false,
+      "asset_spec_sha256": "2f752d91a6b12dbb61d4ffbce37aa570c1e28c102ee78eb1604477eef9400a49"
+    },
+    {
+      "name": "sorting_bin_B",
+      "prim": "/World/UserObjects/sorting_bin_B",
+      "asset": "industrial_blue_crate",
+      "reference": "../../library/industrial_blue_crate/industrial_blue_crate.usd",
+      "position": [
+        -0.03,
+        0.2,
+        0.75
+      ],
+      "orientation_wxyz": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "yaw_deg": 0.0,
+      "surface": "tabletop",
+      "support": null,
+      "static_override": false,
+      "asset_spec_sha256": "2f752d91a6b12dbb61d4ffbce37aa570c1e28c102ee78eb1604477eef9400a49"
+    },
+    {
+      "name": "label_A",
+      "prim": "/World/UserObjects/label_A",
+      "asset": "label_bin_a",
+      "reference": "../../library/label_bin_a/label_bin_a.usd",
+      "position": [
+        0.16444373399640416,
+        -0.2,
+        0.845
+      ],
+      "orientation_wxyz": [
+        0.7071067811865476,
+        0.0,
+        0.0,
+        0.7071067811865475
+      ],
+      "yaw_deg": 89.99999999999999,
+      "surface": "attached",
+      "support": "sorting_bin_A",
+      "static_override": false,
+      "asset_spec_sha256": "486b26ad36d994d35e12c9ebc4db0278e9810ea2bf1a1dcad4f807ed01871ca3"
+    },
+    {
+      "name": "label_B",
+      "prim": "/World/UserObjects/label_B",
+      "asset": "label_bin_b",
+      "reference": "../../library/label_bin_b/label_bin_b.usd",
+      "position": [
+        0.16444373399640416,
+        0.2,
+        0.845
+      ],
+      "orientation_wxyz": [
+        0.7071067811865476,
+        0.0,
+        0.0,
+        0.7071067811865475
+      ],
+      "yaw_deg": 89.99999999999999,
+      "surface": "attached",
+      "support": "sorting_bin_B",
+      "static_override": false,
+      "asset_spec_sha256": "ab533e5cb44a869f137b667f86c9aad8b33802231fd93675b8e11e25f5baf95f"
+    },
+    {
+      "name": "FittingA_0",
+      "prim": "/World/UserObjects/FittingA_0",
+      "asset": "brass_adapter_male",
+      "reference": "../../library/brass_adapter_male/brass_adapter_male.usd",
+      "position": [
+        0.4048,
+        -0.1989,
+        0.76725
+      ],
+      "orientation_wxyz": [
+        0.01665926947700619,
+        -0.620532094350819,
+        0.3390279042801437,
+        -0.7069105097114433
+      ],
+      "yaw_deg": -117.30000000000001,
+      "surface": "on_instance",
+      "support": "InputTray",
+      "static_override": false,
+      "asset_spec_sha256": "02d9544cfe05e8a46bfdd0b6e48e9f047bc2ee03af2348b825071fcd904a0cce"
+    },
+    {
+      "name": "FittingA_1",
+      "prim": "/World/UserObjects/FittingA_1",
+      "asset": "brass_adapter_male",
+      "reference": "../../library/brass_adapter_male/brass_adapter_male.usd",
+      "position": [
+        0.4691,
+        -0.1839,
+        0.76725
+      ],
+      "orientation_wxyz": [
+        0.5141896602810017,
+        -0.1632701837998617,
+        0.6879991621230067,
+        0.4853957079127382
+      ],
+      "yaw_deg": 146.7,
+      "surface": "on_instance",
+      "support": "InputTray",
+      "static_override": false,
+      "asset_spec_sha256": "02d9544cfe05e8a46bfdd0b6e48e9f047bc2ee03af2348b825071fcd904a0cce"
+    },
+    {
+      "name": "FittingA_2",
+      "prim": "/World/UserObjects/FittingA_2",
+      "asset": "brass_adapter_male",
+      "reference": "../../library/brass_adapter_male/brass_adapter_male.usd",
+      "position": [
+        0.5291,
+        -0.2099,
+        0.76725
+      ],
+      "orientation_wxyz": [
+        -0.5396868550049829,
+        -0.12582508767293024,
+        0.6958218502692334,
+        -0.4568786474927787
+      ],
+      "yaw_deg": 140.5,
+      "surface": "on_instance",
+      "support": "InputTray",
+      "static_override": false,
+      "asset_spec_sha256": "02d9544cfe05e8a46bfdd0b6e48e9f047bc2ee03af2348b825071fcd904a0cce"
+    },
+    {
+      "name": "FittingA_3",
+      "prim": "/World/UserObjects/FittingA_3",
+      "asset": "brass_adapter_male",
+      "reference": "../../library/brass_adapter_male/brass_adapter_male.usd",
+      "position": [
+        0.3416,
+        -0.1457,
+        0.76725
+      ],
+      "orientation_wxyz": [
+        -0.21027579001489805,
+        -0.6898070913058412,
+        0.15545474191601497,
+        0.6751178357395179
+      ],
+      "yaw_deg": -85.40000000000005,
+      "surface": "on_instance",
+      "support": "InputTray",
+      "static_override": false,
+      "asset_spec_sha256": "02d9544cfe05e8a46bfdd0b6e48e9f047bc2ee03af2348b825071fcd904a0cce"
+    },
+    {
+      "name": "FittingB_0",
+      "prim": "/World/UserObjects/FittingB_0",
+      "asset": "brass_adapter_female",
+      "reference": "../../library/brass_adapter_female/brass_adapter_female.usd",
+      "position": [
+        0.3783,
+        -0.3032,
+        0.7650208496083888
+      ],
+      "orientation_wxyz": [
+        -0.7109842967704132,
+        0.5079650966242676,
+        -0.3704145194860234,
+        -0.3150648728616342
+      ],
+      "yaw_deg": 7.7465953490668715,
+      "surface": "on_instance",
+      "support": "InputTray",
+      "static_override": false,
+      "asset_spec_sha256": "1c67252d88b88875686675cefae8d8001ad7273212d87ed0e88a9f637e593f75"
+    },
+    {
+      "name": "FittingB_1",
+      "prim": "/World/UserObjects/FittingB_1",
+      "asset": "brass_adapter_female",
+      "reference": "../../library/brass_adapter_female/brass_adapter_female.usd",
+      "position": [
+        0.3173,
+        -0.2195,
+        0.7650208496083888
+      ],
+      "orientation_wxyz": [
+        0.4728745361568028,
+        0.24109125220327865,
+        0.5806121457096968,
+        -0.6173768844230606
+      ],
+      "yaw_deg": -145.1534046509331,
+      "surface": "on_instance",
+      "support": "InputTray",
+      "static_override": false,
+      "asset_spec_sha256": "1c67252d88b88875686675cefae8d8001ad7273212d87ed0e88a9f637e593f75"
+    },
+    {
+      "name": "FittingB_2",
+      "prim": "/World/UserObjects/FittingB_2",
+      "asset": "brass_adapter_female",
+      "reference": "../../library/brass_adapter_female/brass_adapter_female.usd",
+      "position": [
+        0.4903,
+        -0.3016,
+        0.7650208496083888
+      ],
+      "orientation_wxyz": [
+        -0.7677706072651127,
+        -0.22376055669491257,
+        0.5875088670838474,
+        0.12366421869399749
+      ],
+      "yaw_deg": -58.353404650933065,
+      "surface": "on_instance",
+      "support": "InputTray",
+      "static_override": false,
+      "asset_spec_sha256": "1c67252d88b88875686675cefae8d8001ad7273212d87ed0e88a9f637e593f75"
+    }
+  ],
+  "validation": {
+    "passed": true,
+    "summary": "238/238 checks passed",
+    "failed": [],
+    "physics_run": "yes"
+  },
+  "base_suites_on_derived_scene": null,
+  "protected_files": {
+    "count": 27,
+    "content_changed": [],
+    "mtime_changed": []
+  },
+  "parent_project": {
+    "files": 51,
+    "changed": []
+  },
+  "gpu_memory": {
+    "generate_asset (industrial_gray_tray)": {
+      "peak_mib": 6,
+      "samples": 2,
+      "total_mib": 12282
+    },
+    "generate_asset (industrial_blue_crate)": {
+      "peak_mib": 6,
+      "samples": 1,
+      "total_mib": 12282
+    },
+    "generate_asset (label_bin_a)": {
+      "peak_mib": 6,
+      "samples": 1,
+      "total_mib": 12282
+    },
+    "generate_asset (label_bin_b)": {
+      "peak_mib": 6,
+      "samples": 1,
+      "total_mib": 12282
+    },
+    "generate_asset (brass_adapter_male)": {
+      "peak_mib": 6,
+      "samples": 2,
+      "total_mib": 12282
+    },
+    "generate_asset (brass_adapter_female)": {
+      "peak_mib": 6,
+      "samples": 1,
+      "total_mib": 12282
+    },
+    "compose_scene": {
+      "peak_mib": 6,
+      "samples": 1,
+      "total_mib": 12282
+    },
+    "validate_asset_scene": {
+      "peak_mib": 1048,
+      "samples": 14,
+      "total_mib": 12282
+    },
+    "preview": {
+      "peak_mib": 1501,
+      "samples": 25,
+      "total_mib": 12282
+    }
+  }
+}

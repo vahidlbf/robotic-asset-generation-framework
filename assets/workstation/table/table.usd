@@ -1,0 +1,56 @@
+#usda 1.0
+(
+    defaultPrim = "Table"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "Table" (
+    customData = {
+        string robot_agent_lab_json = '{"frame": "floor under table centre", "length": 1.6, "width": 0.8, "height": 0.75, "leg_centres_xy": [[0.6950000000000001, -0.295], [0.6950000000000001, 0.295], [-0.6950000000000001, -0.295], [-0.6950000000000001, 0.295]]}'
+    }
+    kind = "component"
+)
+{
+    def Xform "Tabletop" (
+        prepend references = @./tabletop.usd@
+    )
+    {
+        double3 xformOp:translate = (0, 0, 0.735)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def Xform "Leg_FL" (
+        prepend references = @./table_leg.usd@
+    )
+    {
+        double3 xformOp:translate = (0.6950000000000001, -0.295, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def Xform "Leg_FR" (
+        prepend references = @./table_leg.usd@
+    )
+    {
+        double3 xformOp:translate = (0.6950000000000001, 0.295, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def Xform "Leg_BL" (
+        prepend references = @./table_leg.usd@
+    )
+    {
+        double3 xformOp:translate = (-0.6950000000000001, -0.295, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def Xform "Leg_BR" (
+        prepend references = @./table_leg.usd@
+    )
+    {
+        double3 xformOp:translate = (-0.6950000000000001, 0.295, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+}
+

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "asset_id": "test_spacer",
+  "category": "hardware/spacer",
+  "description": "Infrastructure test asset: plain steel cylindrical spacer (tube), 30 mm OD, 12 mm bore, 25 mm long.",
+  "source": "Test dimensions chosen for the incremental-asset demonstration; not a catalogue part. Friction/restitution are illustrative simulation values.",
+  "geometry": {
+    "method": "tube",
+    "outer_diameter": 0.03,
+    "inner_diameter": 0.012,
+    "height": 0.025,
+    "segments": 48
+  },
+  "visual_material": {
+    "color": [0.62, 0.63, 0.65],
+    "roughness": 0.35,
+    "metallic": 1.0
+  },
+  "collision": {
+    "representation": "ring_segments",
+    "segments": 12
+  },
+  "physics": {
+    "body": "dynamic",
+    "density_kg_m3": 7850,
+    "material": {
+      "id": "steel",
+      "static_friction": 0.6,
+      "dynamic_friction": 0.5,
+      "restitution": 0.1
+    }
+  },
+  "validation": {
+    "dimension_tolerance_m": 0.0005,
+    "settle_test": true
+  }
+}

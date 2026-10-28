@@ -1,0 +1,203 @@
+{
+  "passed": true,
+  "generated": "2026-10-27T17:27:22+01:00",
+  "spec": "config/assets/test_spacer.json",
+  "asset_id": "test_spacer",
+  "scene_config": "config/scenes/workstation_test_spacer.json",
+  "derived_scene": "assets/scenes/derived/workstation_test_spacer.usda",
+  "asset_status_before": "current",
+  "asset_status_after": "current",
+  "asset_rebuilt": true,
+  "stages": [
+    {
+      "stage": "generate_asset (test_spacer)",
+      "command": "blender -b --factory-startup --python-exit-code 1 --python scripts/assets/generate_asset.py -- --spec config/assets/test_spacer.json --force",
+      "exit_code": 0,
+      "seconds": 1.8,
+      "log": "logs/assets/workstation_test_spacer/generate_test_spacer.log"
+    },
+    {
+      "stage": "compose_scene",
+      "command": "blender -b --factory-startup --python-exit-code 1 --python scripts/assets/compose_scene.py -- --scene config/scenes/workstation_test_spacer.json",
+      "exit_code": 0,
+      "seconds": 1.5,
+      "log": "logs/assets/workstation_test_spacer/compose.log"
+    },
+    {
+      "stage": "validate_asset_scene",
+      "command": "/home/mm42/isaacsim/python.sh scripts/assets/validate_asset_scene.py --scene config/scenes/workstation_test_spacer.json",
+      "exit_code": 0,
+      "seconds": 14.8,
+      "log": "logs/assets/workstation_test_spacer/validate.log"
+    },
+    {
+      "stage": "base suite: validate_scene",
+      "command": "/home/mm42/isaacsim/python.sh scripts/workstation/validate_scene.py --config logs/assets/workstation_test_spacer/base_suites/environment_config.json",
+      "exit_code": 0,
+      "seconds": 39.4,
+      "log": "logs/assets/workstation_test_spacer/base_suites/validate_scene.log"
+    },
+    {
+      "stage": "base suite: run_physics_test",
+      "command": "/home/mm42/isaacsim/python.sh scripts/workstation/run_physics_test.py --config logs/assets/workstation_test_spacer/base_suites/environment_config.json",
+      "exit_code": 0,
+      "seconds": 16.3,
+      "log": "logs/assets/workstation_test_spacer/base_suites/run_physics_test.log"
+    },
+    {
+      "stage": "preview",
+      "command": "/home/mm42/isaacsim/python.sh scripts/workstation/render_previews.py --config logs/assets/workstation_test_spacer/base_suites/environment_config.json --cameras asset_preview main",
+      "exit_code": 0,
+      "seconds": 23.2,
+      "log": "logs/assets/workstation_test_spacer/base_suites/render.log"
+    }
+  ],
+  "asset_info": {
+    "file_sha256": {
+      "test_spacer.usd": "804a1ed1193e3548703333e8aca7c4b27916d7dc76108b80743fe726ecfd7269",
+      "test_spacer_visual.usd": "eedd446fab04cc6df9a25d314d5473e7dd7f66c9f04231569b1a2a364b095aa4"
+    },
+    "mass_properties": {
+      "mass_kg": 0.1161931081556839,
+      "mass_source": "density_kg_m3 x mesh volume",
+      "volume_m3": 1.480166982874954e-05,
+      "density_kg_m3": 7850.0,
+      "center_of_mass": [
+        6.37430031279792e-20,
+        1.0300389049978419e-18,
+        0.012500000186264546
+      ],
+      "inertia_tensor": [
+        [
+          1.3611704114838126e-05,
+          -4.846048271419577e-22,
+          9.353241142847586e-24
+        ],
+        [
+          3.5371891901386e-23,
+          1.3611704114838123e-05,
+          -8.9180760971281e-22
+        ],
+        [
+          1.4885919015447637e-22,
+          -3.4559405985102483e-23,
+          1.5119959102748416e-05
+        ]
+      ],
+      "diagonal_inertia": [
+        1.3611704114838126e-05,
+        1.3611704114838123e-05,
+        1.5119959102748416e-05
+      ],
+      "max_offdiag_ratio": 5.898214430690508e-17
+    },
+    "bounds_visual_m": [
+      [
+        -0.014999999664723873,
+        -0.014999999664723873,
+        0.0
+      ],
+      [
+        0.014999999664723873,
+        0.014999999664723873,
+        0.02500000037252903
+      ]
+    ],
+    "colliders": [
+      "Ring_00",
+      "Ring_01",
+      "Ring_02",
+      "Ring_03",
+      "Ring_04",
+      "Ring_05",
+      "Ring_06",
+      "Ring_07",
+      "Ring_08",
+      "Ring_09",
+      "Ring_10",
+      "Ring_11"
+    ],
+    "generated_utc": "2026-10-27T16:25:47+00:00"
+  },
+  "instances": [
+    {
+      "name": "TestSpacer_0",
+      "prim": "/World/UserObjects/TestSpacer_0",
+      "asset": "test_spacer",
+      "reference": "../../library/test_spacer/test_spacer.usd",
+      "position": [
+        -0.55,
+        -0.25,
+        0.7515
+      ],
+      "yaw_deg": 0.0,
+      "static_override": false,
+      "asset_spec_sha256": "3a358e39287b9eb8c7378e0565355676a4ddd400de49b2d97ce52975809078ab"
+    },
+    {
+      "name": "TestSpacer_1",
+      "prim": "/World/UserObjects/TestSpacer_1",
+      "asset": "test_spacer",
+      "reference": "../../library/test_spacer/test_spacer.usd",
+      "position": [
+        -0.45,
+        -0.22,
+        0.7515
+      ],
+      "yaw_deg": 30.0,
+      "static_override": false,
+      "asset_spec_sha256": "3a358e39287b9eb8c7378e0565355676a4ddd400de49b2d97ce52975809078ab"
+    }
+  ],
+  "validation": {
+    "passed": true,
+    "summary": "53/53 checks passed",
+    "failed": [],
+    "physics_run": "yes"
+  },
+  "base_suites_on_derived_scene": {
+    "static": "[validate] 94/94 static checks passed; failed: []",
+    "dynamic": "[physics] 39/39 dynamic checks passed; failed: []"
+  },
+  "protected_files": {
+    "count": 23,
+    "content_changed": [],
+    "mtime_changed": []
+  },
+  "parent_project": {
+    "files": 51,
+    "changed": []
+  },
+  "gpu_memory": {
+    "generate_asset (test_spacer)": {
+      "peak_mib": 1017,
+      "samples": 2,
+      "total_mib": 12282
+    },
+    "compose_scene": {
+      "peak_mib": 1017,
+      "samples": 2,
+      "total_mib": 12282
+    },
+    "validate_asset_scene": {
+      "peak_mib": 2055,
+      "samples": 14,
+      "total_mib": 12282
+    },
+    "base suite: validate_scene": {
+      "peak_mib": 2059,
+      "samples": 39,
+      "total_mib": 12282
+    },
+    "base suite: run_physics_test": {
+      "peak_mib": 2386,
+      "samples": 16,
+      "total_mib": 12282
+    },
+    "preview": {
+      "peak_mib": 2508,
+      "samples": 23,
+      "total_mib": 12282
+    }
+  }
+}

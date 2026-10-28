@@ -1,0 +1,123 @@
+#usda 1.0
+(
+    defaultPrim = "IndustrialGrayTray"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "IndustrialGrayTray" (
+    customData = {
+        string robot_agent_lab_json = '{"frame": "bottom centre", "mounts": {}, "asset_id": "industrial_gray_tray", "category": "container/tray", "nominal_size_m": [0.35, 0.3, 0.1], "collision": "container_walls", "spec": "../../../config/assets/industrial_gray_tray.json"}'
+    }
+    kind = "component"
+)
+{
+    def Xform "Visual" (
+        prepend references = @./industrial_gray_tray_visual.usd@
+    )
+    {
+    }
+
+    def Material "PhysicsMaterial" (
+        prepend apiSchemas = ["PhysicsMaterialAPI"]
+        customData = {
+            dictionary robot_agent_lab = {
+                string material_id = "tray_plastic"
+            }
+        }
+    )
+    {
+        float physics:dynamicFriction = 0.35
+        float physics:restitution = 0.05
+        float physics:staticFriction = 0.4
+    }
+
+    def Scope "Collision"
+    {
+        def Xform "Floor"
+        {
+            double3 xformOp:translate = (0, 0, 0.0025)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "Shape" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "MaterialBindingAPI", "PhysxCollisionAPI"]
+            )
+            {
+                rel material:binding:physics = </IndustrialGrayTray/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                custom float physxCollision:contactOffset = 0.02
+                uniform token purpose = "guide"
+                double size = 1
+                float3 xformOp:scale = (0.3287139, 0.2787139, 0.005)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Mesh "WallPosX" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI", "PhysxCollisionAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </IndustrialGrayTray/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            custom float physxCollision:contactOffset = 0.02
+            point3f[] points = [(0.15935695, -0.13935696, 0.005), (0.16435695, -0.13935696, 0.005), (0.16435695, 0.13935696, 0.005), (0.15935695, 0.13935696, 0.005), (0.166, -0.15, 0.1), (0.175, -0.15, 0.1), (0.175, 0.15, 0.1), (0.166, 0.15, 0.1)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "WallNegX" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI", "PhysxCollisionAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </IndustrialGrayTray/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            custom float physxCollision:contactOffset = 0.02
+            point3f[] points = [(-0.15935695, -0.13935696, 0.005), (-0.16435695, -0.13935696, 0.005), (-0.16435695, 0.13935696, 0.005), (-0.15935695, 0.13935696, 0.005), (-0.166, -0.15, 0.1), (-0.175, -0.15, 0.1), (-0.175, 0.15, 0.1), (-0.166, 0.15, 0.1)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "WallPosY" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI", "PhysxCollisionAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </IndustrialGrayTray/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            custom float physxCollision:contactOffset = 0.02
+            point3f[] points = [(-0.16435695, 0.13435695, 0.005), (-0.16435695, 0.13935696, 0.005), (0.16435695, 0.13935696, 0.005), (0.16435695, 0.13435695, 0.005), (-0.175, 0.141, 0.1), (-0.175, 0.15, 0.1), (0.175, 0.15, 0.1), (0.175, 0.141, 0.1)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "WallNegY" (
+            prepend apiSchemas = ["PhysicsMeshCollisionAPI", "PhysicsCollisionAPI", "MaterialBindingAPI", "PhysxCollisionAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [3, 2, 1, 0, 4, 5, 6, 7, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 3, 0, 4, 7]
+            rel material:binding:physics = </IndustrialGrayTray/PhysicsMaterial> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            uniform token physics:approximation = "convexHull"
+            custom float physxCollision:contactOffset = 0.02
+            point3f[] points = [(-0.16435695, -0.13435695, 0.005), (-0.16435695, -0.13935696, 0.005), (0.16435695, -0.13935696, 0.005), (0.16435695, -0.13435695, 0.005), (-0.175, -0.141, 0.1), (-0.175, -0.15, 0.1), (0.175, -0.15, 0.1), (0.175, -0.141, 0.1)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+        }
+    }
+}
+

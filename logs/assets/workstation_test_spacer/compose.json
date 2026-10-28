@@ -1,0 +1,46 @@
+{
+  "ok": true,
+  "scene_config": "config/scenes/workstation_test_spacer.json",
+  "output": "assets/scenes/derived/workstation_test_spacer.usda",
+  "bytes": 3605,
+  "base_scene": "assets/scenes/waste_sorting_workstation.usd",
+  "base_scene_sha256": "b7916b35ab719a18c9cf675faf372f00ec1d6cafd297c36d21b43388689443ff",
+  "sublayers": [
+    "../waste_sorting_workstation.usd"
+  ],
+  "instances": [
+    {
+      "name": "TestSpacer_0",
+      "prim": "/World/UserObjects/TestSpacer_0",
+      "asset": "test_spacer",
+      "reference": "../../library/test_spacer/test_spacer.usd",
+      "position": [
+        -0.55,
+        -0.25,
+        0.7515
+      ],
+      "yaw_deg": 0.0,
+      "static_override": false,
+      "asset_spec_sha256": "3a358e39287b9eb8c7378e0565355676a4ddd400de49b2d97ce52975809078ab"
+    },
+    {
+      "name": "TestSpacer_1",
+      "prim": "/World/UserObjects/TestSpacer_1",
+      "asset": "test_spacer",
+      "reference": "../../library/test_spacer/test_spacer.usd",
+      "position": [
+        -0.45,
+        -0.22,
+        0.7515
+      ],
+      "yaw_deg": 30.0,
+      "static_override": false,
+      "asset_spec_sha256": "3a358e39287b9eb8c7378e0565355676a4ddd400de49b2d97ce52975809078ab"
+    }
+  ],
+  "written_instances": [
+    "TestSpacer_0",
+    "TestSpacer_1"
+  ],
+  "preview_camera": true
+}

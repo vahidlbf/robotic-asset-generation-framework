@@ -1,0 +1,713 @@
+{
+  "scene_id": "workstation_test_spacer",
+  "scene_config": "config/scenes/workstation_test_spacer.json",
+  "output": "assets/scenes/derived/workstation_test_spacer.usda",
+  "base_scene": "assets/scenes/waste_sorting_workstation.usd",
+  "generated": "2026-10-27T19:25:17+01:00",
+  "passed": true,
+  "summary": "54/54 checks passed",
+  "failed": [],
+  "physics_run": "yes",
+  "physics": {
+    "dt": 0.008333333333333333,
+    "steps": 360,
+    "duration_s": 3.0,
+    "bodies": {
+      "TestSpacer_0": {
+        "authored": [
+          -0.55,
+          -0.25,
+          0.7515
+        ],
+        "first_sample": [
+          -0.5500000715255737,
+          -0.25,
+          0.7500618696212769
+        ],
+        "final": [
+          -0.5499999523162842,
+          -0.2500000298023224,
+          0.7500000596046448
+        ],
+        "height_change_from_authored_m": -0.0014999403953551704,
+        "horizontal_drift_from_authored_m": 5.6230909457055825e-08,
+        "max_tilt_deg": 1.9375207382177372e-05,
+        "max_rotation_from_authored_deg": 2.645320890690588e-05,
+        "final_speed_m_s": 0.0,
+        "peak_speed_m_s": 0.006852153929761999,
+        "peak_angular_speed_rad_s": 2.688162871308266e-05,
+        "peak_acceleration_m_s2": 0.7587457134674048,
+        "weight_N": 1.1398543910072592,
+        "mean_normal_force_last_0_5s_N": 1.1398545503616333,
+        "final_bottom_z_m": 0.7500000596046448,
+        "final_bottom_gap_m": 5.960464477539063e-08
+      },
+      "TestSpacer_1": {
+        "authored": [
+          -0.45,
+          -0.22,
+          0.7515
+        ],
+        "first_sample": [
+          -0.44999998807907104,
+          -0.2199999988079071,
+          0.7500618696212769
+        ],
+        "final": [
+          -0.45000001788139343,
+          -0.2199999988079071,
+          0.7500000596046448
+        ],
+        "height_change_from_authored_m": -0.0014999403953551704,
+        "horizontal_drift_from_authored_m": 1.792108579771788e-08,
+        "max_tilt_deg": 4.127357628098065e-05,
+        "max_rotation_from_authored_deg": 0.007131859451578528,
+        "final_speed_m_s": 1.1725503890240821e-07,
+        "peak_speed_m_s": 0.00685215019669562,
+        "peak_angular_speed_rad_s": 0.005816144700437615,
+        "peak_acceleration_m_s2": 0.7596017142473545,
+        "weight_N": 1.1398543910072592,
+        "mean_normal_force_last_0_5s_N": 1.1398544311523438,
+        "final_bottom_z_m": 0.7500000596046448,
+        "final_bottom_gap_m": 5.960464477539063e-08
+      },
+      "GlassBottle": {
+        "authored": [
+          -0.1,
+          -0.16,
+          0.7515
+        ],
+        "first_sample": [
+          -0.09999889880418777,
+          -0.1599997580051422,
+          0.750062108039856
+        ],
+        "final": [
+          -0.09999903291463852,
+          -0.15999957919120789,
+          0.750002384185791
+        ],
+        "height_change_from_authored_m": -0.0014976158142089302,
+        "horizontal_drift_from_authored_m": 1.054672525443079e-06,
+        "max_tilt_deg": 0.009655030458199924,
+        "max_rotation_from_authored_deg": 0.009655139966519436,
+        "final_speed_m_s": 0.0002041597039803424,
+        "peak_speed_m_s": 0.0068817536351660335,
+        "peak_angular_speed_rad_s": 0.02978594920778642,
+        "peak_acceleration_m_s2": 0.7613406514353058
+      },
+      "PlasticBottle": {
+        "authored": [
+          -0.12,
+          0.1,
+          0.7515
+        ],
+        "first_sample": [
+          -0.1199987381696701,
+          0.10000062733888626,
+          0.7500826120376587
+        ],
+        "final": [
+          -0.11999895423650742,
+          0.09999921917915344,
+          0.7500008940696716
+        ],
+        "height_change_from_authored_m": -0.001499105930328315,
+        "horizontal_drift_from_authored_m": 1.305106308635545e-06,
+        "max_tilt_deg": 0.006551278074908756,
+        "max_rotation_from_authored_deg": 0.006581449264581368,
+        "final_speed_m_s": 0.00020290367069131205,
+        "peak_speed_m_s": 0.008926291394273018,
+        "peak_angular_speed_rad_s": 0.018768697288041643,
+        "peak_acceleration_m_s2": 0.9649075503032689
+      },
+      "PaperCup": {
+        "authored": [
+          0.12,
+          -0.2,
+          0.7515
+        ],
+        "first_sample": [
+          0.11999999731779099,
+          -0.20000001788139343,
+          0.7501485347747803
+        ],
+        "final": [
+          0.11999993026256561,
+          -0.20000003278255463,
+          0.7501129508018494
+        ],
+        "height_change_from_authored_m": -0.0013870491981505806,
+        "horizontal_drift_from_authored_m": 7.705845600192003e-08,
+        "max_tilt_deg": 0.0007096533473127164,
+        "max_rotation_from_authored_deg": 0.0007098068915236168,
+        "final_speed_m_s": 1.665997777640092e-05,
+        "peak_speed_m_s": 0.004062652981407186,
+        "peak_angular_speed_rad_s": 0.0017732050235598352,
+        "peak_acceleration_m_s2": 0.4626274233293443
+      }
+    },
+    "drop_test": {},
+    "move_test": null
+  },
+  "checks": {
+    "structure": {
+      "derived_layer_exists": {
+        "passed": true,
+        "path": "assets/scenes/derived/workstation_test_spacer.usda"
+      },
+      "stage_opens": {
+        "passed": true
+      },
+      "all_dependencies_resolve": {
+        "passed": true,
+        "unresolved": [],
+        "layers": 62,
+        "local_layers": [
+          "assets/library/test_spacer/test_spacer.usd",
+          "assets/library/test_spacer/test_spacer_visual.usd",
+          "assets/scenes/derived/workstation_test_spacer.usda",
+          "assets/scenes/waste_sorting_workstation.usd",
+          "assets/workstation/crate_platform/crate_platform.usd",
+          "assets/workstation/crate_platform/crate_platform_visual.usd",
+          "assets/workstation/glass_bottle/glass_bottle.usd",
+          "assets/workstation/glass_bottle/glass_bottle_visual.usd",
+          "assets/workstation/glass_crate/glass_crate.usd",
+          "assets/workstation/glass_crate/glass_crate_visual.usd",
+          "assets/workstation/paper_bin/paper_bin.usd",
+          "assets/workstation/paper_bin/paper_bin_visual.usd",
+          "assets/workstation/paper_cup/paper_cup.usd",
+          "assets/workstation/paper_cup/paper_cup_visual.usd",
+          "assets/workstation/plastic_bin/plastic_bin.usd",
+          "assets/workstation/plastic_bin/plastic_bin_visual.usd",
+          "assets/workstation/plastic_bottle/plastic_bottle.usd",
+          "assets/workstation/plastic_bottle/plastic_bottle_visual.usd",
+          "assets/workstation/table/table.usd",
+          "assets/workstation/table/table_leg.usd",
+          "assets/workstation/table/table_leg_visual.usd",
+          "assets/workstation/table/tabletop.usd",
+          "assets/workstation/table/tabletop_visual.usd"
+        ]
+      },
+      "local_asset_paths_relative": {
+        "passed": true,
+        "absolute": [],
+        "remote_urls": [
+          "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/6.2/Isaac/Robots/FrankaRobotics/FrankaPanda/franka.usd"
+        ],
+        "note": "remote URLs are reported, not rejected (the robot is NVIDIA-hosted)"
+      },
+      "units_and_default_prim": {
+        "passed": true
+      },
+      "sublayers_only_base_scene": {
+        "passed": true,
+        "sublayers": [
+          "../waste_sorting_workstation.usd"
+        ]
+      },
+      "base_scene_unchanged_since_compose": {
+        "passed": true,
+        "composed_against": "b7916b35ab719a18c9cf675faf372f00ec1d6cafd297c36d21b43388689443ff",
+        "current": "b7916b35ab719a18c9cf675faf372f00ec1d6cafd297c36d21b43388689443ff"
+      },
+      "derived_layer_scope": {
+        "passed": true,
+        "authored_outside_allowed_roots": [],
+        "deactivations_with_extra_opinions": [],
+        "allowed_roots": [
+          "/World/UserObjects",
+          "/World/Cameras/AssetPreview"
+        ],
+        "deactivated": []
+      }
+    },
+    "registry": {
+      "test_spacer_current": {
+        "passed": true,
+        "status": "current",
+        "spec_file": "config/assets/test_spacer.json",
+        "generated_utc": "2026-10-27T16:25:47+00:00",
+        "generation_checks": {
+          "dimensions": true,
+          "closed_manifold_mesh": true,
+          "mesh_volume_matches_geometry": true,
+          "usd_asset": true,
+          "mass_properties": true
+        }
+      }
+    },
+    "instance:TestSpacer_0": {
+      "prim_exists": {
+        "passed": true,
+        "path": "/World/UserObjects/TestSpacer_0"
+      },
+      "references_library_asset": {
+        "passed": true,
+        "references": [
+          "../../library/test_spacer/test_spacer.usd"
+        ],
+        "expected": "../../library/test_spacer/test_spacer.usd"
+      },
+      "pose": {
+        "passed": true,
+        "position": [
+          -0.55,
+          -0.25,
+          0.7515
+        ],
+        "expected": [
+          -0.55,
+          -0.25,
+          0.7515
+        ],
+        "rotation_matrix_max_error": 0.0,
+        "rotation_error_deg": 0.0,
+        "yaw_deg": 0.0,
+        "tilt_deg": 0.0,
+        "pose": "upright"
+      },
+      "visual_dimensions": {
+        "passed": true,
+        "local_bounds": [
+          [
+            -0.014999999664723873,
+            -0.014999999664723873,
+            0.0
+          ],
+          [
+            0.014999999664723873,
+            0.014999999664723873,
+            0.02500000037252903
+          ]
+        ],
+        "nominal": [
+          [
+            -0.015,
+            -0.015,
+            0.0
+          ],
+          [
+            0.015,
+            0.015,
+            0.025
+          ]
+        ],
+        "size": [
+          0.029999999329447746,
+          0.029999999329447746,
+          0.02500000037252903
+        ],
+        "tolerance_m": 0.0005
+      },
+      "collider_dimensions": {
+        "passed": true,
+        "local_bounds": [
+          [
+            -0.01499999980368184,
+            -0.014999999803681838,
+            -1.8626456106674016e-10
+          ],
+          [
+            0.014999999803681838,
+            0.014999999803681838,
+            0.02500000018626447
+          ]
+        ],
+        "nominal": [
+          [
+            -0.015,
+            -0.015,
+            0.0
+          ],
+          [
+            0.015,
+            0.015,
+            0.025
+          ]
+        ],
+        "size": [
+          0.02999999960736368,
+          0.029999999607363676,
+          0.02500000037252903
+        ]
+      },
+      "colliders": {
+        "passed": true,
+        "count": 12,
+        "expected": 12,
+        "representation": "ring_segments",
+        "contact_offset_m": "PhysX default"
+      },
+      "physics_material": {
+        "passed": true,
+        "bound": true,
+        "values": [
+          [
+            0.6,
+            0.5,
+            0.1
+          ]
+        ],
+        "expected": [
+          [
+            0.6,
+            0.5,
+            0.1
+          ]
+        ]
+      },
+      "physx_combine_modes": {
+        "passed": true,
+        "combine_modes": [
+          [
+            "average",
+            "average"
+          ]
+        ]
+      },
+      "bore_open": {
+        "passed": true,
+        "collider_distance_from_axis_m": 0.006000000202341451,
+        "bore_radius_m": 0.006
+      },
+      "visual_material_bound": {
+        "passed": true,
+        "visual_meshes": 1
+      },
+      "rigid_body": {
+        "passed": true,
+        "rigid_body_enabled": true,
+        "static_override": false,
+        "mass_kg": 0.11619310826063156,
+        "expected_mass_kg": 0.1161931081556839,
+        "implied_density_kg_m3": 7850.0,
+        "diagonal_inertia": [
+          1.3611704162030946e-05,
+          1.3611704162030946e-05,
+          1.5119959243747871e-05
+        ],
+        "center_of_mass": [
+          6.374300329243087e-20,
+          1.030038902963415e-18,
+          0.012500000186264515
+        ],
+        "nested_rigid_bodies": []
+      },
+      "resting_on_tabletop": {
+        "passed": true,
+        "collider_bottom_z": 0.7514999998137354,
+        "tabletop_z": 0.75,
+        "gap_m": 0.0014999998137353865,
+        "expected_gap_m": 0.0015
+      },
+      "footprint_on_tabletop": {
+        "passed": true,
+        "collider_xy": [
+          [
+            -0.5649999998036819,
+            -0.26499999980368183
+          ],
+          [
+            -0.5350000001963182,
+            -0.23500000019631817
+          ]
+        ]
+      },
+      "clearance_to_scene": {
+        "passed": true,
+        "min_gap_m": 0.07000000039263637,
+        "closest": "instance:TestSpacer_1",
+        "required_m": 0.02,
+        "note": "per-collider AABB lower bound (3D between instances, xy to base objects); support-surface pieces exempt"
+      }
+    },
+    "instance:TestSpacer_1": {
+      "prim_exists": {
+        "passed": true,
+        "path": "/World/UserObjects/TestSpacer_1"
+      },
+      "references_library_asset": {
+        "passed": true,
+        "references": [
+          "../../library/test_spacer/test_spacer.usd"
+        ],
+        "expected": "../../library/test_spacer/test_spacer.usd"
+      },
+      "pose": {
+        "passed": true,
+        "position": [
+          -0.45,
+          -0.22,
+          0.7515
+        ],
+        "expected": [
+          -0.45,
+          -0.22,
+          0.7515
+        ],
+        "rotation_matrix_max_error": 5.551115123125783e-17,
+        "rotation_error_deg": 0.0,
+        "yaw_deg": 29.999999999999993,
+        "tilt_deg": 0.0,
+        "pose": "upright"
+      },
+      "visual_dimensions": {
+        "passed": true,
+        "local_bounds": [
+          [
+            -0.014999999664723873,
+            -0.014999999664723873,
+            0.0
+          ],
+          [
+            0.014999999664723873,
+            0.014999999664723873,
+            0.02500000037252903
+          ]
+        ],
+        "nominal": [
+          [
+            -0.015,
+            -0.015,
+            0.0
+          ],
+          [
+            0.015,
+            0.015,
+            0.025
+          ]
+        ],
+        "size": [
+          0.029999999329447746,
+          0.029999999329447746,
+          0.02500000037252903
+        ],
+        "tolerance_m": 0.0005
+      },
+      "collider_dimensions": {
+        "passed": true,
+        "local_bounds": [
+          [
+            -0.014999999803681784,
+            -0.014999999803681866,
+            -1.8626456106674016e-10
+          ],
+          [
+            0.01499999980368184,
+            0.014999999803681838,
+            0.02500000018626447
+          ]
+        ],
+        "nominal": [
+          [
+            -0.015,
+            -0.015,
+            0.0
+          ],
+          [
+            0.015,
+            0.015,
+            0.025
+          ]
+        ],
+        "size": [
+          0.029999999607363624,
+          0.029999999607363704,
+          0.02500000037252903
+        ]
+      },
+      "colliders": {
+        "passed": true,
+        "count": 12,
+        "expected": 12,
+        "representation": "ring_segments",
+        "contact_offset_m": "PhysX default"
+      },
+      "physics_material": {
+        "passed": true,
+        "bound": true,
+        "values": [
+          [
+            0.6,
+            0.5,
+            0.1
+          ]
+        ],
+        "expected": [
+          [
+            0.6,
+            0.5,
+            0.1
+          ]
+        ]
+      },
+      "physx_combine_modes": {
+        "passed": true,
+        "combine_modes": [
+          [
+            "average",
+            "average"
+          ]
+        ]
+      },
+      "bore_open": {
+        "passed": true,
+        "collider_distance_from_axis_m": 0.006000000202341397,
+        "bore_radius_m": 0.006
+      },
+      "visual_material_bound": {
+        "passed": true,
+        "visual_meshes": 1
+      },
+      "rigid_body": {
+        "passed": true,
+        "rigid_body_enabled": true,
+        "static_override": false,
+        "mass_kg": 0.11619310826063156,
+        "expected_mass_kg": 0.1161931081556839,
+        "implied_density_kg_m3": 7850.0,
+        "diagonal_inertia": [
+          1.3611704162030946e-05,
+          1.3611704162030946e-05,
+          1.5119959243747871e-05
+        ],
+        "center_of_mass": [
+          6.374300329243087e-20,
+          1.030038902963415e-18,
+          0.012500000186264515
+        ],
+        "nested_rigid_bodies": []
+      },
+      "resting_on_tabletop": {
+        "passed": true,
+        "collider_bottom_z": 0.7514999998137354,
+        "tabletop_z": 0.75,
+        "gap_m": 0.0014999998137353865,
+        "expected_gap_m": 0.0015
+      },
+      "footprint_on_tabletop": {
+        "passed": true,
+        "collider_xy": [
+          [
+            -0.46499999980368184,
+            -0.23499999980368183
+          ],
+          [
+            -0.4350000001963182,
+            -0.20500000019631817
+          ]
+        ]
+      },
+      "clearance_to_scene": {
+        "passed": true,
+        "min_gap_m": 0.07000000039263637,
+        "closest": "instance:TestSpacer_0",
+        "required_m": 0.02,
+        "note": "per-collider AABB lower bound (3D between instances, xy to base objects); support-surface pieces exempt"
+      }
+    },
+    "preservation": {
+      "all_base_prims_present": {
+        "passed": true,
+        "base_prims": 783,
+        "missing_unexpected": [],
+        "deactivated_roots": [],
+        "deactivated_prims": 0,
+        "deactivated_roots_inactive": true,
+        "note": "prims under deactivate_base_prims are intentionally inactive in the derived scene (base file unchanged)"
+      },
+      "base_prims_unchanged": {
+        "passed": true,
+        "prims_compared": 783,
+        "attributes_compared": 7639,
+        "differing": {},
+        "note": "type, world transform, every attribute value, relationships, applied schemas"
+      },
+      "new_prims_only_under_allowed_roots": {
+        "passed": true,
+        "new_prims": 68,
+        "outside": [],
+        "allowed_roots": [
+          "/World/UserObjects",
+          "/World/Cameras/AssetPreview"
+        ]
+      },
+      "robot_unchanged": {
+        "passed": true,
+        "robot_prims": 366
+      }
+    },
+    "physics:TestSpacer_0": {
+      "settled_on_tabletop": {
+        "passed": true,
+        "final_bottom_gap_mm": 0.0001,
+        "height_change_from_authored_mm": -1.4999,
+        "expected_drop_mm": 1.5
+      },
+      "remains_upright": {
+        "passed": true,
+        "max_tilt_deg": 0.0
+      },
+      "no_horizontal_drift": {
+        "passed": true,
+        "drift_mm": 0.0
+      },
+      "at_rest": {
+        "passed": true,
+        "mean_speed_last_0_5s": "0.00e+00"
+      },
+      "supported_by_tabletop_force": {
+        "passed": true,
+        "normal_force_N": 1.13985,
+        "weight_N": 1.13985
+      }
+    },
+    "physics:TestSpacer_1": {
+      "settled_on_tabletop": {
+        "passed": true,
+        "final_bottom_gap_mm": 0.0001,
+        "height_change_from_authored_mm": -1.4999,
+        "expected_drop_mm": 1.5
+      },
+      "remains_upright": {
+        "passed": true,
+        "max_tilt_deg": 0.0
+      },
+      "no_horizontal_drift": {
+        "passed": true,
+        "drift_mm": 0.0
+      },
+      "at_rest": {
+        "passed": true,
+        "mean_speed_last_0_5s": "1.17e-07"
+      },
+      "supported_by_tabletop_force": {
+        "passed": true,
+        "normal_force_N": 1.13985,
+        "weight_N": 1.13985
+      }
+    },
+    "physics:base_objects": {
+      "GlassBottle_undisturbed": {
+        "passed": true,
+        "drift_from_authored_mm": 0.0011,
+        "max_tilt_deg": 0.0097,
+        "height_change_from_authored_mm": -1.4976
+      },
+      "PlasticBottle_undisturbed": {
+        "passed": true,
+        "drift_from_authored_mm": 0.0013,
+        "max_tilt_deg": 0.0066,
+        "height_change_from_authored_mm": -1.4991
+      },
+      "PaperCup_undisturbed": {
+        "passed": true,
+        "drift_from_authored_mm": 0.0001,
+        "max_tilt_deg": 0.0007,
+        "height_change_from_authored_mm": -1.387
+      }
+    }
+  },
+  "warnings": []
+}

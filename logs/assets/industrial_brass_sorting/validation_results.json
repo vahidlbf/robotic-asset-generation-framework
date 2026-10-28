@@ -1,0 +1,3004 @@
+{
+  "scene_id": "industrial_brass_sorting",
+  "scene_config": "config/scenes/industrial_brass_sorting.json",
+  "output": "assets/scenes/derived/industrial_brass_sorting.usda",
+  "base_scene": "assets/scenes/waste_sorting_workstation.usd",
+  "generated": "2026-10-27T19:27:27+01:00",
+  "passed": true,
+  "summary": "238/238 checks passed",
+  "failed": [],
+  "physics_run": "yes",
+  "physics": {
+    "dt": 0.008333333333333333,
+    "steps": 360,
+    "duration_s": 3.0,
+    "bodies": {
+      "FittingA_0": {
+        "authored": [
+          0.4048,
+          -0.1989,
+          0.76725
+        ],
+        "first_sample": [
+          0.4047999978065491,
+          -0.19889996945858002,
+          0.7658034563064575
+        ],
+        "final": [
+          0.4047999978065491,
+          -0.1988999992609024,
+          0.7657501697540283
+        ],
+        "height_change_from_authored_m": -0.0014998302459716673,
+        "horizontal_drift_from_authored_m": 2.3146257122868537e-09,
+        "max_tilt_deg": 90.00000070892406,
+        "max_rotation_from_authored_deg": 0.016297505858558638,
+        "final_speed_m_s": 0.0,
+        "peak_speed_m_s": 0.006029608251784995,
+        "peak_angular_speed_rad_s": 0.04827193990979986,
+        "peak_acceleration_m_s2": 0.6814962069992113,
+        "weight_N": 0.44145,
+        "mean_normal_force_last_0_5s_N": 0.44144997000694275,
+        "final_lowest_collider_above_support_m": 1.6960710769609727e-07,
+        "max_wall_intrusion_m": -0.10949960693156399,
+        "final_top_local_z": 0.02650016941839972
+      },
+      "FittingA_1": {
+        "authored": [
+          0.4691,
+          -0.1839,
+          0.76725
+        ],
+        "first_sample": [
+          0.4691004753112793,
+          -0.18389995396137238,
+          0.7658040523529053
+        ],
+        "final": [
+          0.46909958124160767,
+          -0.18389959633350372,
+          0.7657501697540283
+        ],
+        "height_change_from_authored_m": -0.0014998302459716673,
+        "horizontal_drift_from_authored_m": 5.816401218856599e-07,
+        "max_tilt_deg": 90.00302997080712,
+        "max_rotation_from_authored_deg": 0.025892854874985147,
+        "final_speed_m_s": 4.494411622628878e-05,
+        "peak_speed_m_s": 0.006029696014178378,
+        "peak_angular_speed_rad_s": 0.06205280251916057,
+        "peak_acceleration_m_s2": 0.6737989219380109,
+        "weight_N": 0.44145,
+        "mean_normal_force_last_0_5s_N": 0.44143474102020264,
+        "final_lowest_collider_above_support_m": -8.395740124910595e-08,
+        "max_wall_intrusion_m": -0.06157136966623891,
+        "final_top_local_z": 0.026500246340780076
+      },
+      "FittingA_2": {
+        "authored": [
+          0.5291,
+          -0.2099,
+          0.76725
+        ],
+        "first_sample": [
+          0.529101550579071,
+          -0.209900364279747,
+          0.7658032178878784
+        ],
+        "final": [
+          0.5291000008583069,
+          -0.20990003645420074,
+          0.765749990940094
+        ],
+        "height_change_from_authored_m": -0.0015000090599059934,
+        "horizontal_drift_from_authored_m": 3.646430367327027e-08,
+        "max_tilt_deg": 90.00260807991309,
+        "max_rotation_from_authored_deg": 0.02711496300700748,
+        "final_speed_m_s": 5.6005769361370954e-05,
+        "peak_speed_m_s": 0.005961419505856203,
+        "peak_angular_speed_rad_s": 0.07039437061174784,
+        "peak_acceleration_m_s2": 0.6674110461189271,
+        "weight_N": 0.44145,
+        "mean_normal_force_last_0_5s_N": 0.44145268201828003,
+        "final_lowest_collider_above_support_m": -1.3863743593238442e-08,
+        "max_wall_intrusion_m": -0.04272567703781388,
+        "final_top_local_z": 0.02650007518042441
+      },
+      "FittingA_3": {
+        "authored": [
+          0.3416,
+          -0.1457,
+          0.76725
+        ],
+        "first_sample": [
+          0.3415999412536621,
+          -0.14569997787475586,
+          0.7658033967018127
+        ],
+        "final": [
+          0.3415992856025696,
+          -0.14569911360740662,
+          0.7657502293586731
+        ],
+        "height_change_from_authored_m": -0.0014997706413268919,
+        "horizontal_drift_from_authored_m": 1.1384443412879355e-06,
+        "max_tilt_deg": 90.00262420824676,
+        "max_rotation_from_authored_deg": 0.024931356245687406,
+        "final_speed_m_s": 7.152557373046873e-06,
+        "peak_speed_m_s": 0.006022455431786023,
+        "peak_angular_speed_rad_s": 0.046301844752482064,
+        "peak_acceleration_m_s2": 0.6797793575307857,
+        "weight_N": 0.44145,
+        "mean_normal_force_last_0_5s_N": 0.44145020842552185,
+        "final_lowest_collider_above_support_m": 7.804124524824624e-08,
+        "max_wall_intrusion_m": -0.03591871609535777,
+        "final_top_local_z": 0.026500160064348965
+      },
+      "FittingB_0": {
+        "authored": [
+          0.3783,
+          -0.3032,
+          0.7650208496083888
+        ],
+        "first_sample": [
+          0.3783004581928253,
+          -0.3032000958919525,
+          0.763574481010437
+        ],
+        "final": [
+          0.37830275297164917,
+          -0.30320048332214355,
+          0.7635202407836914
+        ],
+        "height_change_from_authored_m": -0.0015006088246973803,
+        "horizontal_drift_from_authored_m": 2.7950765992045822e-06,
+        "max_tilt_deg": 77.90609465957253,
+        "max_rotation_from_authored_deg": 0.023555630105258837,
+        "final_speed_m_s": 7.996802249550067e-06,
+        "peak_speed_m_s": 0.00601545808792731,
+        "peak_angular_speed_rad_s": 0.03798167310581456,
+        "peak_acceleration_m_s2": 0.675494198238978,
+        "weight_N": 0.73575,
+        "mean_normal_force_last_0_5s_N": 0.7357499003410339,
+        "final_lowest_collider_above_support_m": -2.5080782542997657e-06,
+        "max_wall_intrusion_m": -0.04463139759879617,
+        "final_top_local_z": 0.04068979856241994
+      },
+      "FittingB_1": {
+        "authored": [
+          0.3173,
+          -0.2195,
+          0.7650208496083888
+        ],
+        "first_sample": [
+          0.31730055809020996,
+          -0.21949982643127441,
+          0.7635745406150818
+        ],
+        "final": [
+          0.31730225682258606,
+          -0.21949923038482666,
+          0.7635208368301392
+        ],
+        "height_change_from_authored_m": -0.0015000127782496264,
+        "horizontal_drift_from_authored_m": 2.38444033262841e-06,
+        "max_tilt_deg": 77.90526327956096,
+        "max_rotation_from_authored_deg": 0.03326550634160871,
+        "final_speed_m_s": 9.855784458537797e-06,
+        "peak_speed_m_s": 0.006044351121575,
+        "peak_angular_speed_rad_s": 0.07232332998655507,
+        "peak_acceleration_m_s2": 0.6798582952002226,
+        "weight_N": 0.73575,
+        "mean_normal_force_last_0_5s_N": 0.7357494235038757,
+        "final_lowest_collider_above_support_m": -4.022996754572336e-07,
+        "max_wall_intrusion_m": -0.0491723614793067,
+        "final_top_local_z": 0.04069204002925564
+      },
+      "FittingB_2": {
+        "authored": [
+          0.4903,
+          -0.3016,
+          0.7650208496083888
+        ],
+        "first_sample": [
+          0.4903000593185425,
+          -0.3015998601913452,
+          0.763574481010437
+        ],
+        "final": [
+          0.49030008912086487,
+          -0.3016003370285034,
+          0.7635210156440735
+        ],
+        "height_change_from_authored_m": -0.0014998339643153002,
+        "horizontal_drift_from_authored_m": 3.486125939816179e-07,
+        "max_tilt_deg": 77.90559697808075,
+        "max_rotation_from_authored_deg": 0.02719215149101904,
+        "final_speed_m_s": 7.590158715338207e-05,
+        "peak_speed_m_s": 0.006022522327340209,
+        "peak_angular_speed_rad_s": 0.05808037595937232,
+        "peak_acceleration_m_s2": 0.6763635248201609,
+        "weight_N": 0.73575,
+        "mean_normal_force_last_0_5s_N": 0.7358155250549316,
+        "final_lowest_collider_above_support_m": 1.7395438911983058e-07,
+        "max_wall_intrusion_m": -0.022110190990591,
+        "final_top_local_z": 0.04068998599044338
+      }
+    },
+    "drop_test": {
+      "sorting_bin_A": {
+        "t_min_bottom_s": 0.30833333333333335,
+        "bottom_z_around_min": [
+          0.0169,
+          0.01607,
+          0.016,
+          0.016,
+          0.016,
+          0.016,
+          0.016
+        ],
+        "speed_before_impact_m_s": 0.008729629233998806,
+        "start_world": [
+          0.0,
+          -0.22,
+          1.15
+        ],
+        "final_local": [
+          0.02935352854663506,
+          -0.02074054181575774,
+          0.045999884605407715
+        ],
+        "xy_local_at_rim_crossing": [
+          0.03,
+          -0.019999998807907093
+        ],
+        "rim_local_z": 0.22,
+        "floor_top_local_z": 0.016,
+        "min_cube_bottom_local_z": 0.015999765396118165,
+        "final_speed_m_s": 7.928122485440479e-05,
+        "floor_contact_force_N": 0.9809800982475281,
+        "weight_N": 0.9810000000000001
+      },
+      "sorting_bin_B": {
+        "t_min_bottom_s": 0.30833333333333335,
+        "bottom_z_around_min": [
+          0.0169,
+          0.01607,
+          0.016,
+          0.016,
+          0.016,
+          0.016,
+          0.016
+        ],
+        "speed_before_impact_m_s": 0.008730947343342116,
+        "start_world": [
+          0.0,
+          0.18000000000000002,
+          1.15
+        ],
+        "final_local": [
+          0.029353155260905622,
+          -0.020740833878517162,
+          0.046000003814697266
+        ],
+        "xy_local_at_rim_crossing": [
+          0.03,
+          -0.019999992847442638
+        ],
+        "rim_local_z": 0.22,
+        "floor_top_local_z": 0.016,
+        "min_cube_bottom_local_z": 0.01599970579147339,
+        "final_speed_m_s": 7.679297779678623e-05,
+        "floor_contact_force_N": 0.9810018539428711,
+        "weight_N": 0.9810000000000001
+      }
+    },
+    "move_test": {
+      "instance": "FittingA_0",
+      "start": [
+        0.4047999978065491,
+        -0.1988999992609024,
+        0.7657501697540283
+      ],
+      "teleport_target": [
+        0.4047999978065491,
+        -0.1988999992609024,
+        0.8157501697540284
+      ],
+      "pose_after_teleport": [
+        0.4047999978065491,
+        -0.1988999992609024,
+        0.8150692582130432
+      ],
+      "usd_root_after_teleport": [
+        0.4047999978065491,
+        -0.1988999992609024,
+        0.8150692582130432
+      ],
+      "final": [
+        0.4044598937034607,
+        -0.1989896595478058,
+        0.7657502889633179
+      ],
+      "yaw_change_deg": 45.00062499204264,
+      "final_speed_m_s": 7.318887037353536e-05,
+      "others_max_displacement_m": 2.9256410290140015e-06,
+      "visual_mesh_offset_from_root": 2.220446049250313e-16,
+      "reset_xform_stack": [],
+      "visual_meshes": 1,
+      "colliders": 42
+    }
+  },
+  "checks": {
+    "structure": {
+      "derived_layer_exists": {
+        "passed": true,
+        "path": "assets/scenes/derived/industrial_brass_sorting.usda"
+      },
+      "stage_opens": {
+        "passed": true
+      },
+      "all_dependencies_resolve": {
+        "passed": true,
+        "unresolved": [],
+        "layers": 72,
+        "local_layers": [
+          "assets/library/brass_adapter_female/brass_adapter_female.usd",
+          "assets/library/brass_adapter_female/brass_adapter_female_visual.usd",
+          "assets/library/brass_adapter_male/brass_adapter_male.usd",
+          "assets/library/brass_adapter_male/brass_adapter_male_visual.usd",
+          "assets/library/industrial_blue_crate/industrial_blue_crate.usd",
+          "assets/library/industrial_blue_crate/industrial_blue_crate_visual.usd",
+          "assets/library/industrial_gray_tray/industrial_gray_tray.usd",
+          "assets/library/industrial_gray_tray/industrial_gray_tray_visual.usd",
+          "assets/library/label_bin_a/label_bin_a.usd",
+          "assets/library/label_bin_a/label_bin_a_visual.usd",
+          "assets/library/label_bin_b/label_bin_b.usd",
+          "assets/library/label_bin_b/label_bin_b_visual.usd",
+          "assets/scenes/derived/industrial_brass_sorting.usda",
+          "assets/scenes/waste_sorting_workstation.usd",
+          "assets/workstation/crate_platform/crate_platform.usd",
+          "assets/workstation/crate_platform/crate_platform_visual.usd",
+          "assets/workstation/glass_bottle/glass_bottle.usd",
+          "assets/workstation/glass_bottle/glass_bottle_visual.usd",
+          "assets/workstation/glass_crate/glass_crate.usd",
+          "assets/workstation/glass_crate/glass_crate_visual.usd",
+          "assets/workstation/paper_bin/paper_bin.usd",
+          "assets/workstation/paper_bin/paper_bin_visual.usd",
+          "assets/workstation/paper_cup/paper_cup.usd",
+          "assets/workstation/paper_cup/paper_cup_visual.usd",
+          "assets/workstation/plastic_bin/plastic_bin.usd",
+          "assets/workstation/plastic_bin/plastic_bin_visual.usd",
+          "assets/workstation/plastic_bottle/plastic_bottle.usd",
+          "assets/workstation/plastic_bottle/plastic_bottle_visual.usd",
+          "assets/workstation/table/table.usd",
+          "assets/workstation/table/table_leg.usd",
+          "assets/workstation/table/table_leg_visual.usd",
+          "assets/workstation/table/tabletop.usd",
+          "assets/workstation/table/tabletop_visual.usd"
+        ]
+      },
+      "local_asset_paths_relative": {
+        "passed": true,
+        "absolute": [],
+        "remote_urls": [
+          "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/6.2/Isaac/Robots/FrankaRobotics/FrankaPanda/franka.usd"
+        ],
+        "note": "remote URLs are reported, not rejected (the robot is NVIDIA-hosted)"
+      },
+      "units_and_default_prim": {
+        "passed": true
+      },
+      "sublayers_only_base_scene": {
+        "passed": true,
+        "sublayers": [
+          "../waste_sorting_workstation.usd"
+        ]
+      },
+      "base_scene_unchanged_since_compose": {
+        "passed": true,
+        "composed_against": "b7916b35ab719a18c9cf675faf372f00ec1d6cafd297c36d21b43388689443ff",
+        "current": "b7916b35ab719a18c9cf675faf372f00ec1d6cafd297c36d21b43388689443ff"
+      },
+      "derived_layer_scope": {
+        "passed": true,
+        "authored_outside_allowed_roots": [],
+        "deactivations_with_extra_opinions": [],
+        "allowed_roots": [
+          "/World/UserObjects",
+          "/World/Cameras/IndustrialOverview",
+          "/World/Cameras/IndustrialTray",
+          "/World/Cameras/IndustrialFittings",
+          "/World/Cameras/IndustrialCrates"
+        ],
+        "deactivated": [
+          "/World/Objects",
+          "/World/Targets",
+          "/World/Workstation/SortingZone"
+        ]
+      }
+    },
+    "registry": {
+      "brass_adapter_female_current": {
+        "passed": true,
+        "status": "current",
+        "spec_file": "config/assets/brass_adapter_female.json",
+        "generated_utc": "2026-10-27T18:03:43+00:00",
+        "generation_checks": {
+          "dimensions": true,
+          "closed_manifold_mesh": true,
+          "mesh_volume_matches_geometry": true,
+          "usd_asset": true,
+          "mass_properties": true
+        }
+      },
+      "brass_adapter_male_current": {
+        "passed": true,
+        "status": "current",
+        "spec_file": "config/assets/brass_adapter_male.json",
+        "generated_utc": "2026-10-27T18:00:01+00:00",
+        "generation_checks": {
+          "dimensions": true,
+          "closed_manifold_mesh": true,
+          "mesh_volume_matches_geometry": true,
+          "usd_asset": true,
+          "mass_properties": true
+        }
+      },
+      "industrial_blue_crate_current": {
+        "passed": true,
+        "status": "current",
+        "spec_file": "config/assets/industrial_blue_crate.json",
+        "generated_utc": "2026-10-27T18:15:46+00:00",
+        "generation_checks": {
+          "dimensions": true,
+          "closed_manifold_mesh": true,
+          "mesh_volume_matches_geometry": true,
+          "usd_asset": true
+        }
+      },
+      "industrial_gray_tray_current": {
+        "passed": true,
+        "status": "current",
+        "spec_file": "config/assets/industrial_gray_tray.json",
+        "generated_utc": "2026-10-27T18:15:48+00:00",
+        "generation_checks": {
+          "dimensions": true,
+          "closed_manifold_mesh": true,
+          "mesh_volume_matches_geometry": true,
+          "usd_asset": true
+        }
+      },
+      "label_bin_a_current": {
+        "passed": true,
+        "status": "current",
+        "spec_file": "config/assets/label_bin_a.json",
+        "generated_utc": "2026-10-27T18:00:07+00:00",
+        "generation_checks": {
+          "dimensions": true,
+          "closed_manifold_mesh": true,
+          "mesh_volume_matches_geometry": true,
+          "usd_asset": true
+        }
+      },
+      "label_bin_b_current": {
+        "passed": true,
+        "status": "current",
+        "spec_file": "config/assets/label_bin_b.json",
+        "generated_utc": "2026-10-27T18:00:09+00:00",
+        "generation_checks": {
+          "dimensions": true,
+          "closed_manifold_mesh": true,
+          "mesh_volume_matches_geometry": true,
+          "usd_asset": true
+        }
+      }
+    },
+    "instance:InputTray": {
+      "prim_exists": {
+        "passed": true,
+        "path": "/World/UserObjects/InputTray"
+      },
+      "references_library_asset": {
+        "passed": true,
+        "references": [
+          "../../library/industrial_gray_tray/industrial_gray_tray.usd"
+        ],
+        "expected": "../../library/industrial_gray_tray/industrial_gray_tray.usd"
+      },
+      "pose": {
+        "passed": true,
+        "position": [
+          0.42,
+          -0.215,
+          0.75
+        ],
+        "expected": [
+          0.42,
+          -0.215,
+          0.75
+        ],
+        "rotation_matrix_max_error": 0.0,
+        "rotation_error_deg": 0.0,
+        "yaw_deg": 0.0,
+        "tilt_deg": 0.0,
+        "pose": "upright"
+      },
+      "visual_dimensions": {
+        "passed": true,
+        "local_bounds": [
+          [
+            -0.17499999701976776,
+            -0.15000000596046448,
+            0.0
+          ],
+          [
+            0.17499999701976776,
+            0.15000000596046448,
+            0.10000000149011612
+          ]
+        ],
+        "nominal": [
+          [
+            -0.175,
+            -0.15,
+            0.0
+          ],
+          [
+            0.175,
+            0.15,
+            0.1
+          ]
+        ],
+        "size": [
+          0.3499999940395355,
+          0.30000001192092896,
+          0.10000000149011612
+        ],
+        "tolerance_m": 0.0005
+      },
+      "collider_dimensions": {
+        "passed": true,
+        "local_bounds": [
+          [
+            -0.17499999701976776,
+            -0.15000000596046448,
+            5.587930118622353e-11
+          ],
+          [
+            0.17499999701976776,
+            0.15000000596046448,
+            0.10000000149011612
+          ]
+        ],
+        "nominal": [
+          [
+            -0.175,
+            -0.15,
+            0.0
+          ],
+          [
+            0.175,
+            0.15,
+            0.1
+          ]
+        ],
+        "size": [
+          0.3499999940395355,
+          0.30000001192092896,
+          0.10000000143423682
+        ]
+      },
+      "colliders": {
+        "passed": true,
+        "count": 5,
+        "expected": 5,
+        "representation": "container_walls",
+        "contact_offset_m": [
+          0.02
+        ]
+      },
+      "physics_material": {
+        "passed": true,
+        "bound": true,
+        "values": [
+          [
+            0.4,
+            0.35,
+            0.05
+          ]
+        ],
+        "expected": [
+          [
+            0.4,
+            0.35,
+            0.05
+          ]
+        ]
+      },
+      "physx_combine_modes": {
+        "passed": true,
+        "combine_modes": [
+          [
+            "average",
+            "average"
+          ]
+        ]
+      },
+      "open_top": {
+        "passed": true,
+        "max_intrusion_into_floor_column_m": 7.112268995967952e-09,
+        "walls": [
+          "WallNegX",
+          "WallNegY",
+          "WallPosX",
+          "WallPosY"
+        ],
+        "floor_top_local_z": 0.004999999944120592,
+        "inner_floor_half_m": [
+          0.1593569528653665,
+          0.1343569528653665
+        ],
+        "note": "no collider above the floor reaches into the vertical column over the inner floor (no lid, opening clear)"
+      },
+      "visual_material_bound": {
+        "passed": true,
+        "visual_meshes": 1
+      },
+      "static_body": {
+        "passed": true
+      },
+      "resting_on_tabletop": {
+        "passed": true,
+        "collider_bottom_z": 0.7500000000558793,
+        "tabletop_z": 0.75,
+        "gap_m": 5.587930118622353e-11,
+        "expected_gap_m": 0.0
+      },
+      "footprint_on_tabletop": {
+        "passed": true,
+        "collider_xy": [
+          [
+            0.24500000298023222,
+            -0.36500000596046445
+          ],
+          [
+            0.5949999970197677,
+            -0.06499999403953552
+          ]
+        ]
+      },
+      "clearance_to_scene": {
+        "passed": true,
+        "min_gap_m": 0.02100149344985519,
+        "closest": "instance:FittingB_2",
+        "required_m": 0.02,
+        "note": "per-collider AABB lower bound (3D between instances, xy to base objects); support-surface pieces exempt"
+      }
+    },
+    "instance:sorting_bin_A": {
+      "prim_exists": {
+        "passed": true,
+        "path": "/World/UserObjects/sorting_bin_A"
+      },
+      "references_library_asset": {
+        "passed": true,
+        "references": [
+          "../../library/industrial_blue_crate/industrial_blue_crate.usd"
+        ],
+        "expected": "../../library/industrial_blue_crate/industrial_blue_crate.usd"
+      },
+      "pose": {
+        "passed": true,
+        "position": [
+          -0.03,
+          -0.2,
+          0.75
+        ],
+        "expected": [
+          -0.03,
+          -0.2,
+          0.75
+        ],
+        "rotation_matrix_max_error": 0.0,
+        "rotation_error_deg": 0.0,
+        "yaw_deg": 0.0,
+        "tilt_deg": 0.0,
+        "pose": "upright"
+      },
+      "visual_dimensions": {
+        "passed": true,
+        "local_bounds": [
+          [
+            -0.20000000298023224,
+            -0.15000000596046448,
+            0.0
+          ],
+          [
+            0.20000000298023224,
+            0.15000000596046448,
+            0.2199999988079071
+          ]
+        ],
+        "nominal": [
+          [
+            -0.2,
+            -0.15,
+            0.0
+          ],
+          [
+            0.2,
+            0.15,
+            0.22
+          ]
+        ],
+        "size": [
+          0.4000000059604645,
+          0.30000001192092896,
+          0.2199999988079071
+        ],
+        "tolerance_m": 0.0005
+      },
+      "collider_dimensions": {
+        "passed": true,
+        "local_bounds": [
+          [
+            -0.20000000298023224,
+            -0.15000000596046448,
+            -3.799796033376879e-10
+          ],
+          [
+            0.20000000298023224,
+            0.15000000596046448,
+            0.2199999988079071
+          ]
+        ],
+        "nominal": [
+          [
+            -0.2,
+            -0.15,
+            0.0
+          ],
+          [
+            0.2,
+            0.15,
+            0.22
+          ]
+        ],
+        "size": [
+          0.4000000059604645,
+          0.30000001192092896,
+          0.2199999991878867
+        ]
+      },
+      "colliders": {
+        "passed": true,
+        "count": 5,
+        "expected": 5,
+        "representation": "container_walls",
+        "contact_offset_m": [
+          0.02
+        ]
+      },
+      "physics_material": {
+        "passed": true,
+        "bound": true,
+        "values": [
+          [
+            0.35,
+            0.3,
+            0.1
+          ]
+        ],
+        "expected": [
+          [
+            0.35,
+            0.3,
+            0.1
+          ]
+        ]
+      },
+      "physx_combine_modes": {
+        "passed": true,
+        "combine_modes": [
+          [
+            "average",
+            "average"
+          ]
+        ]
+      },
+      "open_top": {
+        "passed": true,
+        "max_intrusion_into_floor_column_m": 4.6088016736334225e-10,
+        "walls": [
+          "WallNegX",
+          "WallNegY",
+          "WallPosX",
+          "WallPosY"
+        ],
+        "floor_top_local_z": 0.016000000379979618,
+        "inner_floor_half_m": [
+          0.17909316764666355,
+          0.12909316764666354
+        ],
+        "note": "no collider above the floor reaches into the vertical column over the inner floor (no lid, opening clear)"
+      },
+      "visual_material_bound": {
+        "passed": true,
+        "visual_meshes": 1
+      },
+      "static_body": {
+        "passed": true
+      },
+      "resting_on_tabletop": {
+        "passed": true,
+        "collider_bottom_z": 0.7499999996200204,
+        "tabletop_z": 0.75,
+        "gap_m": -3.799796033376879e-10,
+        "expected_gap_m": 0.0
+      },
+      "footprint_on_tabletop": {
+        "passed": true,
+        "collider_xy": [
+          [
+            -0.23000000298023224,
+            -0.3500000059604645
+          ],
+          [
+            0.17000000298023224,
+            -0.049999994039535534
+          ]
+        ]
+      },
+      "clearance_to_scene": {
+        "passed": true,
+        "min_gap_m": 0.07499999999999998,
+        "closest": "instance:InputTray",
+        "required_m": 0.02,
+        "note": "per-collider AABB lower bound (3D between instances, xy to base objects); support-surface pieces exempt"
+      }
+    },
+    "instance:sorting_bin_B": {
+      "prim_exists": {
+        "passed": true,
+        "path": "/World/UserObjects/sorting_bin_B"
+      },
+      "references_library_asset": {
+        "passed": true,
+        "references": [
+          "../../library/industrial_blue_crate/industrial_blue_crate.usd"
+        ],
+        "expected": "../../library/industrial_blue_crate/industrial_blue_crate.usd"
+      },
+      "pose": {
+        "passed": true,
+        "position": [
+          -0.03,
+          0.2,
+          0.75
+        ],
+        "expected": [
+          -0.03,
+          0.2,
+          0.75
+        ],
+        "rotation_matrix_max_error": 0.0,
+        "rotation_error_deg": 0.0,
+        "yaw_deg": 0.0,
+        "tilt_deg": 0.0,
+        "pose": "upright"
+      },
+      "visual_dimensions": {
+        "passed": true,
+        "local_bounds": [
+          [
+            -0.20000000298023224,
+            -0.15000000596046448,
+            0.0
+          ],
+          [
+            0.20000000298023224,
+            0.15000000596046448,
+            0.2199999988079071
+          ]
+        ],
+        "nominal": [
+          [
+            -0.2,
+            -0.15,
+            0.0
+          ],
+          [
+            0.2,
+            0.15,
+            0.22
+          ]
+        ],
+        "size": [
+          0.4000000059604645,
+          0.30000001192092896,
+          0.2199999988079071
+        ],
+        "tolerance_m": 0.0005
+      },
+      "collider_dimensions": {
+        "passed": true,
+        "local_bounds": [
+          [
+            -0.20000000298023224,
+            -0.15000000596046448,
+            -3.799796033376879e-10
+          ],
+          [
+            0.20000000298023224,
+            0.15000000596046448,
+            0.2199999988079071
+          ]
+        ],
+        "nominal": [
+          [
+            -0.2,
+            -0.15,
+            0.0
+          ],
+          [
+            0.2,
+            0.15,
+            0.22
+          ]
+        ],
+        "size": [
+          0.4000000059604645,
+          0.30000001192092896,
+          0.2199999991878867
+        ]
+      },
+      "colliders": {
+        "passed": true,
+        "count": 5,
+        "expected": 5,
+        "representation": "container_walls",
+        "contact_offset_m": [
+          0.02
+        ]
+      },
+      "physics_material": {
+        "passed": true,
+        "bound": true,
+        "values": [
+          [
+            0.35,
+            0.3,
+            0.1
+          ]
+        ],
+        "expected": [
+          [
+            0.35,
+            0.3,
+            0.1
+          ]
+        ]
+      },
+      "physx_combine_modes": {
+        "passed": true,
+        "combine_modes": [
+          [
+            "average",
+            "average"
+          ]
+        ]
+      },
+      "open_top": {
+        "passed": true,
+        "max_intrusion_into_floor_column_m": 4.6088016736334225e-10,
+        "walls": [
+          "WallNegX",
+          "WallNegY",
+          "WallPosX",
+          "WallPosY"
+        ],
+        "floor_top_local_z": 0.016000000379979618,
+        "inner_floor_half_m": [
+          0.17909316764666355,
+          0.12909316764666354
+        ],
+        "note": "no collider above the floor reaches into the vertical column over the inner floor (no lid, opening clear)"
+      },
+      "visual_material_bound": {
+        "passed": true,
+        "visual_meshes": 1
+      },
+      "static_body": {
+        "passed": true
+      },
+      "resting_on_tabletop": {
+        "passed": true,
+        "collider_bottom_z": 0.7499999996200204,
+        "tabletop_z": 0.75,
+        "gap_m": -3.799796033376879e-10,
+        "expected_gap_m": 0.0
+      },
+      "footprint_on_tabletop": {
+        "passed": true,
+        "collider_xy": [
+          [
+            -0.23000000298023224,
+            0.049999994039535534
+          ],
+          [
+            0.17000000298023224,
+            0.3500000059604645
+          ]
+        ]
+      },
+      "clearance_to_scene": {
+        "passed": true,
+        "min_gap_m": 0.09999998807907107,
+        "closest": "instance:sorting_bin_A",
+        "required_m": 0.02,
+        "note": "per-collider AABB lower bound (3D between instances, xy to base objects); support-surface pieces exempt"
+      }
+    },
+    "instance:label_A": {
+      "prim_exists": {
+        "passed": true,
+        "path": "/World/UserObjects/label_A"
+      },
+      "references_library_asset": {
+        "passed": true,
+        "references": [
+          "../../library/label_bin_a/label_bin_a.usd"
+        ],
+        "expected": "../../library/label_bin_a/label_bin_a.usd"
+      },
+      "pose": {
+        "passed": true,
+        "position": [
+          0.16444373399640416,
+          -0.2,
+          0.845
+        ],
+        "expected": [
+          0.16444373399640416,
+          -0.2,
+          0.845
+        ],
+        "rotation_matrix_max_error": 0.0,
+        "rotation_error_deg": 0.0,
+        "yaw_deg": 89.99999999999999,
+        "tilt_deg": 0.0,
+        "pose": "upright"
+      },
+      "visual_dimensions": {
+        "passed": true,
+        "local_bounds": [
+          [
+            -0.06499999761581421,
+            -0.001500000711530447,
+            0.0
+          ],
+          [
+            0.06499999761581421,
+            0.001500000013038516,
+            0.05000000074505806
+          ]
+        ],
+        "nominal": [
+          [
+            -0.065,
+            -0.0015,
+            0.0
+          ],
+          [
+            0.065,
+            0.0015,
+            0.05
+          ]
+        ],
+        "size": [
+          0.12999999523162842,
+          0.003000000724568963,
+          0.05000000074505806
+        ],
+        "tolerance_m": 0.0005
+      },
+      "colliders": {
+        "passed": true,
+        "count": 0,
+        "expected": 0,
+        "representation": "none",
+        "contact_offset_m": "PhysX default"
+      },
+      "visual_material_bound": {
+        "passed": true,
+        "visual_meshes": 2
+      },
+      "static_body": {
+        "passed": true
+      },
+      "on_mount_point": {
+        "passed": true,
+        "mount": "label_+x",
+        "support": "sorting_bin_A",
+        "mount_world": [
+          0.16294373399640416,
+          -0.2,
+          0.87
+        ],
+        "attach_point_world": [
+          0.16294373399640416,
+          -0.2,
+          0.87
+        ],
+        "colliders": 0,
+        "note": "visual-only: no colliders, no rigid body; back face on the label holder"
+      }
+    },
+    "instance:label_B": {
+      "prim_exists": {
+        "passed": true,
+        "path": "/World/UserObjects/label_B"
+      },
+      "references_library_asset": {
+        "passed": true,
+        "references": [
+          "../../library/label_bin_b/label_bin_b.usd"
+        ],
+        "expected": "../../library/label_bin_b/label_bin_b.usd"
+      },
+      "pose": {
+        "passed": true,
+        "position": [
+          0.16444373399640416,
+          0.2,
+          0.845
+        ],
+        "expected": [
+          0.16444373399640416,
+          0.2,
+          0.845
+        ],
+        "rotation_matrix_max_error": 0.0,
+        "rotation_error_deg": 0.0,
+        "yaw_deg": 89.99999999999999,
+        "tilt_deg": 0.0,
+        "pose": "upright"
+      },
+      "visual_dimensions": {
+        "passed": true,
+        "local_bounds": [
+          [
+            -0.06499999761581421,
+            -0.001500000711530447,
+            0.0
+          ],
+          [
+            0.06499999761581421,
+            0.001500000013038516,
+            0.05000000074505806
+          ]
+        ],
+        "nominal": [
+          [
+            -0.065,
+            -0.0015,
+            0.0
+          ],
+          [
+            0.065,
+            0.0015,
+            0.05
+          ]
+        ],
+        "size": [
+          0.12999999523162842,
+          0.003000000724568963,
+          0.05000000074505806
+        ],
+        "tolerance_m": 0.0005
+      },
+      "colliders": {
+        "passed": true,
+        "count": 0,
+        "expected": 0,
+        "representation": "none",
+        "contact_offset_m": "PhysX default"
+      },
+      "visual_material_bound": {
+        "passed": true,
+        "visual_meshes": 2
+      },
+      "static_body": {
+        "passed": true
+      },
+      "on_mount_point": {
+        "passed": true,
+        "mount": "label_+x",
+        "support": "sorting_bin_B",
+        "mount_world": [
+          0.16294373399640416,
+          0.2,
+          0.87
+        ],
+        "attach_point_world": [
+          0.16294373399640416,
+          0.2,
+          0.87
+        ],
+        "colliders": 0,
+        "note": "visual-only: no colliders, no rigid body; back face on the label holder"
+      }
+    },
+    "instance:FittingA_0": {
+      "prim_exists": {
+        "passed": true,
+        "path": "/World/UserObjects/FittingA_0"
+      },
+      "references_library_asset": {
+        "passed": true,
+        "references": [
+          "../../library/brass_adapter_male/brass_adapter_male.usd"
+        ],
+        "expected": "../../library/brass_adapter_male/brass_adapter_male.usd"
+      },
+      "pose": {
+        "passed": true,
+        "position": [
+          0.4048,
+          -0.1989,
+          0.76725
+        ],
+        "expected": [
+          0.4048,
+          -0.1989,
+          0.76725
+        ],
+        "rotation_matrix_max_error": 0.0,
+        "rotation_error_deg": 0.0,
+        "yaw_deg": -117.30000000000001,
+        "tilt_deg": 90.0,
+        "pose": "lying"
+      },
+      "visual_dimensions": {
+        "passed": true,
+        "local_bounds": [
+          [
+            -0.012413030490279198,
+            -0.01075000036507845,
+            -1.5132843994264239e-18
+          ],
+          [
+            0.012413030490279198,
+            0.01075000036507845,
+            0.04500000178813934
+          ]
+        ],
+        "nominal": [
+          [
+            -0.012413030787576954,
+            -0.01075,
+            0.0
+          ],
+          [
+            0.012413030787576954,
+            0.01075,
+            0.045
+          ]
+        ],
+        "size": [
+          0.024826060980558395,
+          0.0215000007301569,
+          0.04500000178813934
+        ],
+        "tolerance_m": 0.0005
+      },
+      "collider_dimensions": {
+        "passed": true,
+        "local_bounds": [
+          [
+            -0.012413030490279198,
+            -0.01075000036507845,
+            -1.4372238235226367e-18
+          ],
+          [
+            0.012413030490279198,
+            0.01075000036507845,
+            0.04500000178813934
+          ]
+        ],
+        "nominal": [
+          [
+            -0.012413030787576954,
+            -0.01075,
+            0.0
+          ],
+          [
+            0.012413030787576954,
+            0.01075,
+            0.045
+          ]
+        ],
+        "size": [
+          0.024826060980558395,
+          0.0215000007301569,
+          0.04500000178813934
+        ]
+      },
+      "colliders": {
+        "passed": true,
+        "count": 42,
+        "expected": 42,
+        "representation": "fitting_sections",
+        "contact_offset_m": "PhysX default"
+      },
+      "physics_material": {
+        "passed": true,
+        "bound": true,
+        "values": [
+          [
+            0.35,
+            0.3,
+            0.08
+          ]
+        ],
+        "expected": [
+          [
+            0.35,
+            0.3,
+            0.08
+          ]
+        ]
+      },
+      "physx_combine_modes": {
+        "passed": true,
+        "combine_modes": [
+          [
+            "average",
+            "average"
+          ]
+        ]
+      },
+      "bore_open": {
+        "passed": true,
+        "collider_distance_from_axis_min_m": 0.007100000046193544,
+        "narrowest_visual_bore_radius_m": 0.0065,
+        "note": "every collider piece clears the narrowest bore circle along the whole axis"
+      },
+      "visual_material_bound": {
+        "passed": true,
+        "visual_meshes": 1
+      },
+      "rigid_body": {
+        "passed": true,
+        "rigid_body_enabled": true,
+        "static_override": false,
+        "mass_kg": 0.04500000178813934,
+        "expected_mass_kg": 0.045,
+        "implied_density_kg_m3": 8196.323719995135,
+        "diagonal_inertia": [
+          7.97540087660309e-06,
+          7.975947482918855e-06,
+          3.485756678855978e-06
+        ],
+        "center_of_mass": [
+          -2.1216289951553335e-06,
+          4.704106686403975e-06,
+          0.021743351593613625
+        ],
+        "nested_rigid_bodies": []
+      },
+      "resting_on_support": {
+        "passed": true,
+        "collider_bottom_z": 0.7564999999461944,
+        "support_surface_z": 0.7549999999441206,
+        "gap_m": 0.0015000000020738424,
+        "expected_gap_m": 0.0015,
+        "support": "InputTray"
+      },
+      "inside_support": {
+        "passed": true,
+        "margin_to_support_edge_m": 0.10894424404906655,
+        "required_m": 0.02,
+        "support": "InputTray",
+        "note": "every collider vertex inside the support surface, at least min_object_gap_m from its edge"
+      },
+      "clearance_to_scene": {
+        "passed": true,
+        "min_gap_m": 0.021244328374462523,
+        "closest": "instance:FittingA_1",
+        "required_m": 0.02,
+        "note": "per-collider AABB lower bound (3D between instances, xy to base objects); support-surface pieces exempt"
+      }
+    },
+    "instance:FittingA_1": {
+      "prim_exists": {
+        "passed": true,
+        "path": "/World/UserObjects/FittingA_1"
+      },
+      "references_library_asset": {
+        "passed": true,
+        "references": [
+          "../../library/brass_adapter_male/brass_adapter_male.usd"
+        ],
+        "expected": "../../library/brass_adapter_male/brass_adapter_male.usd"
+      },
+      "pose": {
+        "passed": true,
+        "position": [
+          0.4691,
+          -0.1839,
+          0.76725
+        ],
+        "expected": [
+          0.4691,
+          -0.1839,
+          0.76725
+        ],
+        "rotation_matrix_max_error": 2.220446049250313e-16,
+        "rotation_error_deg": 0.0,
+        "yaw_deg": 146.7,
+        "tilt_deg": 89.99999999999999,
+        "pose": "lying"
+      },
+      "visual_dimensions": {
+        "passed": true,
+        "local_bounds": [
+          [
+            -0.0124130304902792,
+            -0.010750000365078458,
+            -2.703222094834887e-19
+          ],
+          [
+            0.0124130304902792,
+            0.010750000365078458,
+            0.04500000178813934
+          ]
+        ],
+        "nominal": [
+          [
+            -0.012413030787576954,
+            -0.01075,
+            0.0
+          ],
+          [
+            0.012413030787576954,
+            0.01075,
+            0.045
+          ]
+        ],
+        "size": [
+          0.0248260609805584,
+          0.021500000730156916,
+          0.04500000178813934
+        ],
+        "tolerance_m": 0.0005
+      },
+      "collider_dimensions": {
+        "passed": true,
+        "local_bounds": [
+          [
+            -0.0124130304902792,
+            -0.010750000365078456,
+            -2.4927412001916346e-19
+          ],
+          [
+            0.012413030490279198,
+            0.010750000365078456,
+            0.04500000178813934
+          ]
+        ],
+        "nominal": [
+          [
+            -0.012413030787576954,
+            -0.01075,
+            0.0
+          ],
+          [
+            0.012413030787576954,
+            0.01075,
+            0.045
+          ]
+        ],
+        "size": [
+          0.024826060980558395,
+          0.021500000730156912,
+          0.04500000178813934
+        ]
+      },
+      "colliders": {
+        "passed": true,
+        "count": 42,
+        "expected": 42,
+        "representation": "fitting_sections",
+        "contact_offset_m": "PhysX default"
+      },
+      "physics_material": {
+        "passed": true,
+        "bound": true,
+        "values": [
+          [
+            0.35,
+            0.3,
+            0.08
+          ]
+        ],
+        "expected": [
+          [
+            0.35,
+            0.3,
+            0.08
+          ]
+        ]
+      },
+      "physx_combine_modes": {
+        "passed": true,
+        "combine_modes": [
+          [
+            "average",
+            "average"
+          ]
+        ]
+      },
+      "bore_open": {
+        "passed": true,
+        "collider_distance_from_axis_min_m": 0.007100000046193489,
+        "narrowest_visual_bore_radius_m": 0.0065,
+        "note": "every collider piece clears the narrowest bore circle along the whole axis"
+      },
+      "visual_material_bound": {
+        "passed": true,
+        "visual_meshes": 1
+      },
+      "rigid_body": {
+        "passed": true,
+        "rigid_body_enabled": true,
+        "static_override": false,
+        "mass_kg": 0.04500000178813934,
+        "expected_mass_kg": 0.045,
+        "implied_density_kg_m3": 8196.323719995135,
+        "diagonal_inertia": [
+          7.97540087660309e-06,
+          7.975947482918855e-06,
+          3.485756678855978e-06
+        ],
+        "center_of_mass": [
+          -2.1216289951553335e-06,
+          4.704106686403975e-06,
+          0.021743351593613625
+        ],
+        "nested_rigid_bodies": []
+      },
+      "resting_on_support": {
+        "passed": true,
+        "collider_bottom_z": 0.7564999999461944,
+        "support_surface_z": 0.7549999999441206,
+        "gap_m": 0.0015000000020738424,
+        "expected_gap_m": 0.0015,
+        "support": "InputTray"
+      },
+      "inside_support": {
+        "passed": true,
+        "margin_to_support_edge_m": 0.060978925914717624,
+        "required_m": 0.02,
+        "support": "InputTray",
+        "note": "every collider vertex inside the support surface, at least min_object_gap_m from its edge"
+      },
+      "clearance_to_scene": {
+        "passed": true,
+        "min_gap_m": 0.021244328374462523,
+        "closest": "instance:FittingA_0",
+        "required_m": 0.02,
+        "note": "per-collider AABB lower bound (3D between instances, xy to base objects); support-surface pieces exempt"
+      }
+    },
+    "instance:FittingA_2": {
+      "prim_exists": {
+        "passed": true,
+        "path": "/World/UserObjects/FittingA_2"
+      },
+      "references_library_asset": {
+        "passed": true,
+        "references": [
+          "../../library/brass_adapter_male/brass_adapter_male.usd"
+        ],
+        "expected": "../../library/brass_adapter_male/brass_adapter_male.usd"
+      },
+      "pose": {
+        "passed": true,
+        "position": [
+          0.5291,
+          -0.2099,
+          0.76725
+        ],
+        "expected": [
+          0.5291,
+          -0.2099,
+          0.76725
+        ],
+        "rotation_matrix_max_error": 4.440892098500626e-16,
+        "rotation_error_deg": 0.0,
+        "yaw_deg": 140.50000000000003,
+        "tilt_deg": 90.00000000000003,
+        "pose": "lying"
+      },
+      "visual_dimensions": {
+        "passed": true,
+        "local_bounds": [
+          [
+            -0.0124130304902792,
+            -0.010750000365078451,
+            -1.4209676135277817e-18
+          ],
+          [
+            0.0124130304902792,
+            0.010750000365078451,
+            0.04500000178813934
+          ]
+        ],
+        "nominal": [
+          [
+            -0.012413030787576954,
+            -0.01075,
+            0.0
+          ],
+          [
+            0.012413030787576954,
+            0.01075,
+            0.045
+          ]
+        ],
+        "size": [
+          0.0248260609805584,
+          0.021500000730156902,
+          0.04500000178813934
+        ],
+        "tolerance_m": 0.0005
+      },
+      "collider_dimensions": {
+        "passed": true,
+        "local_bounds": [
+          [
+            -0.012413030490279198,
+            -0.010750000365078451,
+            -1.2713565350654601e-18
+          ],
+          [
+            0.0124130304902792,
+            0.010750000365078451,
+            0.04500000178813934
+          ]
+        ],
+        "nominal": [
+          [
+            -0.012413030787576954,
+            -0.01075,
+            0.0
+          ],
+          [
+            0.012413030787576954,
+            0.01075,
+            0.045
+          ]
+        ],
+        "size": [
+          0.024826060980558395,
+          0.021500000730156902,
+          0.04500000178813934
+        ]
+      },
+      "colliders": {
+        "passed": true,
+        "count": 42,
+        "expected": 42,
+        "representation": "fitting_sections",
+        "contact_offset_m": "PhysX default"
+      },
+      "physics_material": {
+        "passed": true,
+        "bound": true,
+        "values": [
+          [
+            0.35,
+            0.3,
+            0.08
+          ]
+        ],
+        "expected": [
+          [
+            0.35,
+            0.3,
+            0.08
+          ]
+        ]
+      },
+      "physx_combine_modes": {
+        "passed": true,
+        "combine_modes": [
+          [
+            "average",
+            "average"
+          ]
+        ]
+      },
+      "bore_open": {
+        "passed": true,
+        "collider_distance_from_axis_min_m": 0.007100000046193489,
+        "narrowest_visual_bore_radius_m": 0.0065,
+        "note": "every collider piece clears the narrowest bore circle along the whole axis"
+      },
+      "visual_material_bound": {
+        "passed": true,
+        "visual_meshes": 1
+      },
+      "rigid_body": {
+        "passed": true,
+        "rigid_body_enabled": true,
+        "static_override": false,
+        "mass_kg": 0.04500000178813934,
+        "expected_mass_kg": 0.045,
+        "implied_density_kg_m3": 8196.323719995135,
+        "diagonal_inertia": [
+          7.97540087660309e-06,
+          7.975947482918855e-06,
+          3.485756678855978e-06
+        ],
+        "center_of_mass": [
+          -2.1216289951553335e-06,
+          4.704106686403975e-06,
+          0.021743351593613625
+        ],
+        "nested_rigid_bodies": []
+      },
+      "resting_on_support": {
+        "passed": true,
+        "collider_bottom_z": 0.7564999999461944,
+        "support_surface_z": 0.7549999999441206,
+        "gap_m": 0.0015000000020738424,
+        "expected_gap_m": 0.0015,
+        "support": "InputTray"
+      },
+      "inside_support": {
+        "passed": true,
+        "margin_to_support_edge_m": 0.04217032704209833,
+        "required_m": 0.02,
+        "support": "InputTray",
+        "note": "every collider vertex inside the support surface, at least min_object_gap_m from its edge"
+      },
+      "clearance_to_scene": {
+        "passed": true,
+        "min_gap_m": 0.0239249505393061,
+        "closest": "instance:FittingA_1",
+        "required_m": 0.02,
+        "note": "per-collider AABB lower bound (3D between instances, xy to base objects); support-surface pieces exempt"
+      }
+    },
+    "instance:FittingA_3": {
+      "prim_exists": {
+        "passed": true,
+        "path": "/World/UserObjects/FittingA_3"
+      },
+      "references_library_asset": {
+        "passed": true,
+        "references": [
+          "../../library/brass_adapter_male/brass_adapter_male.usd"
+        ],
+        "expected": "../../library/brass_adapter_male/brass_adapter_male.usd"
+      },
+      "pose": {
+        "passed": true,
+        "position": [
+          0.3416,
+          -0.1457,
+          0.76725
+        ],
+        "expected": [
+          0.3416,
+          -0.1457,
+          0.76725
+        ],
+        "rotation_matrix_max_error": 4.718447854656915e-16,
+        "rotation_error_deg": 0.0,
+        "yaw_deg": -85.40000000000006,
+        "tilt_deg": 89.99999999999997,
+        "pose": "lying"
+      },
+      "visual_dimensions": {
+        "passed": true,
+        "local_bounds": [
+          [
+            -0.012413030490279198,
+            -0.01075000036507845,
+            -4.2154995971006044e-19
+          ],
+          [
+            0.012413030490279198,
+            0.01075000036507845,
+            0.04500000178813934
+          ]
+        ],
+        "nominal": [
+          [
+            -0.012413030787576954,
+            -0.01075,
+            0.0
+          ],
+          [
+            0.012413030787576954,
+            0.01075,
+            0.045
+          ]
+        ],
+        "size": [
+          0.024826060980558395,
+          0.0215000007301569,
+          0.04500000178813934
+        ],
+        "tolerance_m": 0.0005
+      },
+      "collider_dimensions": {
+        "passed": true,
+        "local_bounds": [
+          [
+            -0.012413030490279198,
+            -0.01075000036507845,
+            -3.809706084991404e-19
+          ],
+          [
+            0.012413030490279198,
+            0.01075000036507845,
+            0.04500000178813934
+          ]
+        ],
+        "nominal": [
+          [
+            -0.012413030787576954,
+            -0.01075,
+            0.0
+          ],
+          [
+            0.012413030787576954,
+            0.01075,
+            0.045
+          ]
+        ],
+        "size": [
+          0.024826060980558395,
+          0.0215000007301569,
+          0.04500000178813934
+        ]
+      },
+      "colliders": {
+        "passed": true,
+        "count": 42,
+        "expected": 42,
+        "representation": "fitting_sections",
+        "contact_offset_m": "PhysX default"
+      },
+      "physics_material": {
+        "passed": true,
+        "bound": true,
+        "values": [
+          [
+            0.35,
+            0.3,
+            0.08
+          ]
+        ],
+        "expected": [
+          [
+            0.35,
+            0.3,
+            0.08
+          ]
+        ]
+      },
+      "physx_combine_modes": {
+        "passed": true,
+        "combine_modes": [
+          [
+            "average",
+            "average"
+          ]
+        ]
+      },
+      "bore_open": {
+        "passed": true,
+        "collider_distance_from_axis_min_m": 0.007100000046193544,
+        "narrowest_visual_bore_radius_m": 0.0065,
+        "note": "every collider piece clears the narrowest bore circle along the whole axis"
+      },
+      "visual_material_bound": {
+        "passed": true,
+        "visual_meshes": 1
+      },
+      "rigid_body": {
+        "passed": true,
+        "rigid_body_enabled": true,
+        "static_override": false,
+        "mass_kg": 0.04500000178813934,
+        "expected_mass_kg": 0.045,
+        "implied_density_kg_m3": 8196.323719995135,
+        "diagonal_inertia": [
+          7.97540087660309e-06,
+          7.975947482918855e-06,
+          3.485756678855978e-06
+        ],
+        "center_of_mass": [
+          -2.1216289951553335e-06,
+          4.704106686403975e-06,
+          0.021743351593613625
+        ],
+        "nested_rigid_bodies": []
+      },
+      "resting_on_support": {
+        "passed": true,
+        "collider_bottom_z": 0.7564999999461944,
+        "support_surface_z": 0.7549999999441206,
+        "gap_m": 0.0015000000020738424,
+        "expected_gap_m": 0.0015,
+        "support": "InputTray"
+      },
+      "inside_support": {
+        "passed": true,
+        "margin_to_support_edge_m": 0.035420210660375595,
+        "required_m": 0.02,
+        "support": "InputTray",
+        "note": "every collider vertex inside the support surface, at least min_object_gap_m from its edge"
+      },
+      "clearance_to_scene": {
+        "passed": true,
+        "min_gap_m": 0.03542020950857111,
+        "closest": "instance:InputTray",
+        "required_m": 0.02,
+        "note": "per-collider AABB lower bound (3D between instances, xy to base objects); support-surface pieces exempt"
+      }
+    },
+    "instance:FittingB_0": {
+      "prim_exists": {
+        "passed": true,
+        "path": "/World/UserObjects/FittingB_0"
+      },
+      "references_library_asset": {
+        "passed": true,
+        "references": [
+          "../../library/brass_adapter_female/brass_adapter_female.usd"
+        ],
+        "expected": "../../library/brass_adapter_female/brass_adapter_female.usd"
+      },
+      "pose": {
+        "passed": true,
+        "position": [
+          0.3783,
+          -0.3032,
+          0.7650208496083888
+        ],
+        "expected": [
+          0.3783,
+          -0.3032,
+          0.7650208496083888
+        ],
+        "rotation_matrix_max_error": 3.3306690738754696e-16,
+        "rotation_error_deg": 0.0,
+        "yaw_deg": 7.746595349066883,
+        "tilt_deg": 77.9052429229879,
+        "pose": "lying"
+      },
+      "visual_dimensions": {
+        "passed": true,
+        "local_bounds": [
+          [
+            -0.01600000075995922,
+            -0.01600000075995922,
+            -8.88178461886335e-19
+          ],
+          [
+            0.01600000075995922,
+            0.01600000075995922,
+            0.054999999701976776
+          ]
+        ],
+        "nominal": [
+          [
+            -0.016,
+            -0.016,
+            0.0
+          ],
+          [
+            0.016,
+            0.016,
+            0.05500000000000001
+          ]
+        ],
+        "size": [
+          0.03200000151991844,
+          0.03200000151991844,
+          0.054999999701976776
+        ],
+        "tolerance_m": 0.0005
+      },
+      "collider_dimensions": {
+        "passed": true,
+        "local_bounds": [
+          [
+            -0.01600000075995922,
+            -0.01600000075995922,
+            -6.752931656387622e-19
+          ],
+          [
+            0.01600000075995922,
+            0.01600000075995922,
+            0.054999999701976776
+          ]
+        ],
+        "nominal": [
+          [
+            -0.016,
+            -0.016,
+            0.0
+          ],
+          [
+            0.016,
+            0.016,
+            0.05500000000000001
+          ]
+        ],
+        "size": [
+          0.03200000151991844,
+          0.03200000151991844,
+          0.054999999701976776
+        ]
+      },
+      "colliders": {
+        "passed": true,
+        "count": 54,
+        "expected": 54,
+        "representation": "fitting_sections",
+        "contact_offset_m": "PhysX default"
+      },
+      "physics_material": {
+        "passed": true,
+        "bound": true,
+        "values": [
+          [
+            0.35,
+            0.3,
+            0.08
+          ]
+        ],
+        "expected": [
+          [
+            0.35,
+            0.3,
+            0.08
+          ]
+        ]
+      },
+      "physx_combine_modes": {
+        "passed": true,
+        "combine_modes": [
+          [
+            "average",
+            "average"
+          ]
+        ]
+      },
+      "bore_open": {
+        "passed": true,
+        "collider_distance_from_axis_min_m": 0.006599999952221499,
+        "narrowest_visual_bore_radius_m": 0.006,
+        "note": "every collider piece clears the narrowest bore circle along the whole axis"
+      },
+      "visual_material_bound": {
+        "passed": true,
+        "visual_meshes": 1
+      },
+      "rigid_body": {
+        "passed": true,
+        "rigid_body_enabled": true,
+        "static_override": false,
+        "mass_kg": 0.07500000298023224,
+        "expected_mass_kg": 0.075,
+        "implied_density_kg_m3": 8482.250060807057,
+        "diagonal_inertia": [
+          2.0182251319056377e-05,
+          2.018201666942332e-05,
+          1.0432720955577679e-05
+        ],
+        "center_of_mass": [
+          -5.120389687363058e-06,
+          -3.175144229317084e-06,
+          0.02944529801607132
+        ],
+        "nested_rigid_bodies": []
+      },
+      "resting_on_support": {
+        "passed": true,
+        "collider_bottom_z": 0.7564999997772812,
+        "support_surface_z": 0.7549999999441206,
+        "gap_m": 0.0014999998331606257,
+        "expected_gap_m": 0.0015,
+        "support": "InputTray"
+      },
+      "inside_support": {
+        "passed": true,
+        "margin_to_support_edge_m": 0.04361944885972879,
+        "required_m": 0.02,
+        "support": "InputTray",
+        "note": "every collider vertex inside the support surface, at least min_object_gap_m from its edge"
+      },
+      "clearance_to_scene": {
+        "passed": true,
+        "min_gap_m": 0.022675691279384458,
+        "closest": "instance:FittingB_1",
+        "required_m": 0.02,
+        "note": "per-collider AABB lower bound (3D between instances, xy to base objects); support-surface pieces exempt"
+      }
+    },
+    "instance:FittingB_1": {
+      "prim_exists": {
+        "passed": true,
+        "path": "/World/UserObjects/FittingB_1"
+      },
+      "references_library_asset": {
+        "passed": true,
+        "references": [
+          "../../library/brass_adapter_female/brass_adapter_female.usd"
+        ],
+        "expected": "../../library/brass_adapter_female/brass_adapter_female.usd"
+      },
+      "pose": {
+        "passed": true,
+        "position": [
+          0.3173,
+          -0.2195,
+          0.7650208496083888
+        ],
+        "expected": [
+          0.3173,
+          -0.2195,
+          0.7650208496083888
+        ],
+        "rotation_matrix_max_error": 6.661338147750939e-16,
+        "rotation_error_deg": 1.2074182697257333e-06,
+        "yaw_deg": -145.15340465093314,
+        "tilt_deg": 77.9052429229879,
+        "pose": "lying"
+      },
+      "visual_dimensions": {
+        "passed": true,
+        "local_bounds": [
+          [
+            -0.01600000075995922,
+            -0.01600000075995922,
+            -1.332267692829505e-18
+          ],
+          [
+            0.01600000075995922,
+            0.01600000075995922,
+            0.05499999970197678
+          ]
+        ],
+        "nominal": [
+          [
+            -0.016,
+            -0.016,
+            0.0
+          ],
+          [
+            0.016,
+            0.016,
+            0.05500000000000001
+          ]
+        ],
+        "size": [
+          0.03200000151991844,
+          0.03200000151991844,
+          0.05499999970197678
+        ],
+        "tolerance_m": 0.0005
+      },
+      "collider_dimensions": {
+        "passed": true,
+        "local_bounds": [
+          [
+            -0.01600000075995922,
+            -0.01600000075995922,
+            -9.81964296672827e-19
+          ],
+          [
+            0.01600000075995922,
+            0.01600000075995922,
+            0.05499999970197678
+          ]
+        ],
+        "nominal": [
+          [
+            -0.016,
+            -0.016,
+            0.0
+          ],
+          [
+            0.016,
+            0.016,
+            0.05500000000000001
+          ]
+        ],
+        "size": [
+          0.03200000151991844,
+          0.03200000151991844,
+          0.05499999970197678
+        ]
+      },
+      "colliders": {
+        "passed": true,
+        "count": 54,
+        "expected": 54,
+        "representation": "fitting_sections",
+        "contact_offset_m": "PhysX default"
+      },
+      "physics_material": {
+        "passed": true,
+        "bound": true,
+        "values": [
+          [
+            0.35,
+            0.3,
+            0.08
+          ]
+        ],
+        "expected": [
+          [
+            0.35,
+            0.3,
+            0.08
+          ]
+        ]
+      },
+      "physx_combine_modes": {
+        "passed": true,
+        "combine_modes": [
+          [
+            "average",
+            "average"
+          ]
+        ]
+      },
+      "bore_open": {
+        "passed": true,
+        "collider_distance_from_axis_min_m": 0.006599999952221505,
+        "narrowest_visual_bore_radius_m": 0.006,
+        "note": "every collider piece clears the narrowest bore circle along the whole axis"
+      },
+      "visual_material_bound": {
+        "passed": true,
+        "visual_meshes": 1
+      },
+      "rigid_body": {
+        "passed": true,
+        "rigid_body_enabled": true,
+        "static_override": false,
+        "mass_kg": 0.07500000298023224,
+        "expected_mass_kg": 0.075,
+        "implied_density_kg_m3": 8482.250060807057,
+        "diagonal_inertia": [
+          2.0182251319056377e-05,
+          2.018201666942332e-05,
+          1.0432720955577679e-05
+        ],
+        "center_of_mass": [
+          -5.120389687363058e-06,
+          -3.175144229317084e-06,
+          0.02944529801607132
+        ],
+        "nested_rigid_bodies": []
+      },
+      "resting_on_support": {
+        "passed": true,
+        "collider_bottom_z": 0.7564999997772812,
+        "support_surface_z": 0.7549999999441206,
+        "gap_m": 0.0014999998331606257,
+        "expected_gap_m": 0.0015,
+        "support": "InputTray"
+      },
+      "inside_support": {
+        "passed": true,
+        "margin_to_support_edge_m": 0.048486786525103354,
+        "required_m": 0.02,
+        "support": "InputTray",
+        "note": "every collider vertex inside the support surface, at least min_object_gap_m from its edge"
+      },
+      "clearance_to_scene": {
+        "passed": true,
+        "min_gap_m": 0.022675691279384458,
+        "closest": "instance:FittingB_0",
+        "required_m": 0.02,
+        "note": "per-collider AABB lower bound (3D between instances, xy to base objects); support-surface pieces exempt"
+      }
+    },
+    "instance:FittingB_2": {
+      "prim_exists": {
+        "passed": true,
+        "path": "/World/UserObjects/FittingB_2"
+      },
+      "references_library_asset": {
+        "passed": true,
+        "references": [
+          "../../library/brass_adapter_female/brass_adapter_female.usd"
+        ],
+        "expected": "../../library/brass_adapter_female/brass_adapter_female.usd"
+      },
+      "pose": {
+        "passed": true,
+        "position": [
+          0.4903,
+          -0.3016,
+          0.7650208496083888
+        ],
+        "expected": [
+          0.4903,
+          -0.3016,
+          0.7650208496083888
+        ],
+        "rotation_matrix_max_error": 5.551115123125783e-16,
+        "rotation_error_deg": 0.0,
+        "yaw_deg": -58.35340465093303,
+        "tilt_deg": 77.90524292298785,
+        "pose": "lying"
+      },
+      "visual_dimensions": {
+        "passed": true,
+        "local_bounds": [
+          [
+            -0.01600000075995922,
+            -0.01600000075995922,
+            -1.776356923772673e-18
+          ],
+          [
+            0.01600000075995922,
+            0.01600000075995922,
+            0.054999999701976776
+          ]
+        ],
+        "nominal": [
+          [
+            -0.016,
+            -0.016,
+            0.0
+          ],
+          [
+            0.016,
+            0.016,
+            0.05500000000000001
+          ]
+        ],
+        "size": [
+          0.03200000151991844,
+          0.03200000151991844,
+          0.054999999701976776
+        ],
+        "tolerance_m": 0.0005
+      },
+      "collider_dimensions": {
+        "passed": true,
+        "local_bounds": [
+          [
+            -0.01600000075995922,
+            -0.01600000075995922,
+            -1.3505863312775275e-18
+          ],
+          [
+            0.01600000075995922,
+            0.01600000075995922,
+            0.054999999701976776
+          ]
+        ],
+        "nominal": [
+          [
+            -0.016,
+            -0.016,
+            0.0
+          ],
+          [
+            0.016,
+            0.016,
+            0.05500000000000001
+          ]
+        ],
+        "size": [
+          0.03200000151991844,
+          0.03200000151991844,
+          0.054999999701976776
+        ]
+      },
+      "colliders": {
+        "passed": true,
+        "count": 54,
+        "expected": 54,
+        "representation": "fitting_sections",
+        "contact_offset_m": "PhysX default"
+      },
+      "physics_material": {
+        "passed": true,
+        "bound": true,
+        "values": [
+          [
+            0.35,
+            0.3,
+            0.08
+          ]
+        ],
+        "expected": [
+          [
+            0.35,
+            0.3,
+            0.08
+          ]
+        ]
+      },
+      "physx_combine_modes": {
+        "passed": true,
+        "combine_modes": [
+          [
+            "average",
+            "average"
+          ]
+        ]
+      },
+      "bore_open": {
+        "passed": true,
+        "collider_distance_from_axis_min_m": 0.006599999952221563,
+        "narrowest_visual_bore_radius_m": 0.006,
+        "note": "every collider piece clears the narrowest bore circle along the whole axis"
+      },
+      "visual_material_bound": {
+        "passed": true,
+        "visual_meshes": 1
+      },
+      "rigid_body": {
+        "passed": true,
+        "rigid_body_enabled": true,
+        "static_override": false,
+        "mass_kg": 0.07500000298023224,
+        "expected_mass_kg": 0.075,
+        "implied_density_kg_m3": 8482.250060807057,
+        "diagonal_inertia": [
+          2.0182251319056377e-05,
+          2.018201666942332e-05,
+          1.0432720955577679e-05
+        ],
+        "center_of_mass": [
+          -5.120389687363058e-06,
+          -3.175144229317084e-06,
+          0.02944529801607132
+        ],
+        "nested_rigid_bodies": []
+      },
+      "resting_on_support": {
+        "passed": true,
+        "collider_bottom_z": 0.7564999997772812,
+        "support_surface_z": 0.7549999999441206,
+        "gap_m": 0.0014999998331606257,
+        "expected_gap_m": 0.0015,
+        "support": "InputTray"
+      },
+      "inside_support": {
+        "passed": true,
+        "margin_to_support_edge_m": 0.021001500562124187,
+        "required_m": 0.02,
+        "support": "InputTray",
+        "note": "every collider vertex inside the support surface, at least min_object_gap_m from its edge"
+      },
+      "clearance_to_scene": {
+        "passed": true,
+        "min_gap_m": 0.02100149344985519,
+        "closest": "instance:InputTray",
+        "required_m": 0.02,
+        "note": "per-collider AABB lower bound (3D between instances, xy to base objects); support-surface pieces exempt"
+      }
+    },
+    "preservation": {
+      "all_base_prims_present": {
+        "passed": true,
+        "base_prims": 783,
+        "missing_unexpected": [],
+        "deactivated_roots": [
+          "/World/Objects",
+          "/World/Targets",
+          "/World/Workstation/SortingZone"
+        ],
+        "deactivated_prims": 335,
+        "deactivated_roots_inactive": true,
+        "note": "prims under deactivate_base_prims are intentionally inactive in the derived scene (base file unchanged)"
+      },
+      "base_prims_unchanged": {
+        "passed": true,
+        "prims_compared": 448,
+        "attributes_compared": 4215,
+        "differing": {},
+        "note": "type, world transform, every attribute value, relationships, applied schemas"
+      },
+      "new_prims_only_under_allowed_roots": {
+        "passed": true,
+        "new_prims": 465,
+        "outside": [],
+        "allowed_roots": [
+          "/World/UserObjects",
+          "/World/Cameras/IndustrialOverview",
+          "/World/Cameras/IndustrialTray",
+          "/World/Cameras/IndustrialFittings",
+          "/World/Cameras/IndustrialCrates"
+        ]
+      },
+      "robot_unchanged": {
+        "passed": true,
+        "robot_prims": 366
+      }
+    },
+    "scene": {
+      "distinct_geometry_brass_adapter_male_vs_brass_adapter_female": {
+        "passed": true,
+        "criteria": {
+          "visual_mesh_hash": true,
+          "size": true,
+          "volume": true,
+          "section_layout": true
+        },
+        "size_m": [
+          [
+            0.024826061575153907,
+            0.0215,
+            0.045
+          ],
+          [
+            0.032,
+            0.032,
+            0.05500000000000001
+          ]
+        ],
+        "volume_m3": [
+          5.490266311739419e-06,
+          8.841993511432038e-06
+        ],
+        "sections": [
+          [
+            "thread",
+            "cylinder",
+            "hex",
+            "cylinder",
+            "cone",
+            "cylinder"
+          ],
+          [
+            "thread",
+            "cylinder",
+            "cylinder",
+            "cone",
+            "hex",
+            "cylinder",
+            "cylinder"
+          ]
+        ],
+        "triangles": [
+          8640,
+          18816
+        ]
+      },
+      "individual_rigid_bodies_on_InputTray": {
+        "passed": true,
+        "count": 7,
+        "expected": 7,
+        "bodies": [
+          "FittingA_0",
+          "FittingA_1",
+          "FittingA_2",
+          "FittingA_3",
+          "FittingB_0",
+          "FittingB_1",
+          "FittingB_2"
+        ],
+        "note": "each with its own RigidBodyAPI root (no merged meshes, no nested bodies)"
+      },
+      "sorting_bin_A_initially_empty": {
+        "passed": true,
+        "objects_inside": []
+      },
+      "sorting_bin_B_initially_empty": {
+        "passed": true,
+        "objects_inside": []
+      }
+    },
+    "physics:FittingA_0": {
+      "settled_on_support": {
+        "passed": true,
+        "height_change_from_authored_mm": -1.4998,
+        "expected_drop_mm": 1.5,
+        "final_gap_to_support_mm": 0.0002,
+        "support": "InputTray"
+      },
+      "inside_support_no_penetration": {
+        "passed": true,
+        "max_wall_intrusion_mm": -109.5,
+        "floor_penetration_mm": -0.0002,
+        "top_below_rim": true,
+        "note": "final collider vertices vs. the container's inner wall planes and floor (negative = inside / above)"
+      },
+      "orientation_stable": {
+        "passed": true,
+        "max_rotation_from_authored_deg": 0.0163
+      },
+      "no_horizontal_drift": {
+        "passed": true,
+        "drift_mm": 0.0
+      },
+      "at_rest": {
+        "passed": true,
+        "mean_speed_last_0_5s": "0.00e+00"
+      },
+      "no_extreme_motion": {
+        "passed": true,
+        "peak_speed_m_s": 0.006,
+        "peak_angular_speed_rad_s": 0.0483,
+        "peak_acceleration_m_s2": 0.68,
+        "note": "limits 0.3 m/s, 5 rad/s (a 1.5 mm drop reaches 0.17 m/s); acceleration is reported (contact impulses)"
+      },
+      "supported_by_support_force": {
+        "passed": true,
+        "normal_force_N": 0.44145,
+        "weight_N": 0.44145
+      }
+    },
+    "physics:FittingA_1": {
+      "settled_on_support": {
+        "passed": true,
+        "height_change_from_authored_mm": -1.4998,
+        "expected_drop_mm": 1.5,
+        "final_gap_to_support_mm": -0.0001,
+        "support": "InputTray"
+      },
+      "inside_support_no_penetration": {
+        "passed": true,
+        "max_wall_intrusion_mm": -61.571,
+        "floor_penetration_mm": 0.0001,
+        "top_below_rim": true,
+        "note": "final collider vertices vs. the container's inner wall planes and floor (negative = inside / above)"
+      },
+      "orientation_stable": {
+        "passed": true,
+        "max_rotation_from_authored_deg": 0.0259
+      },
+      "no_horizontal_drift": {
+        "passed": true,
+        "drift_mm": 0.001
+      },
+      "at_rest": {
+        "passed": true,
+        "mean_speed_last_0_5s": "4.49e-05"
+      },
+      "no_extreme_motion": {
+        "passed": true,
+        "peak_speed_m_s": 0.006,
+        "peak_angular_speed_rad_s": 0.0621,
+        "peak_acceleration_m_s2": 0.67,
+        "note": "limits 0.3 m/s, 5 rad/s (a 1.5 mm drop reaches 0.17 m/s); acceleration is reported (contact impulses)"
+      },
+      "supported_by_support_force": {
+        "passed": true,
+        "normal_force_N": 0.44143,
+        "weight_N": 0.44145
+      }
+    },
+    "physics:FittingA_2": {
+      "settled_on_support": {
+        "passed": true,
+        "height_change_from_authored_mm": -1.5,
+        "expected_drop_mm": 1.5,
+        "final_gap_to_support_mm": -0.0,
+        "support": "InputTray"
+      },
+      "inside_support_no_penetration": {
+        "passed": true,
+        "max_wall_intrusion_mm": -42.726,
+        "floor_penetration_mm": 0.0,
+        "top_below_rim": true,
+        "note": "final collider vertices vs. the container's inner wall planes and floor (negative = inside / above)"
+      },
+      "orientation_stable": {
+        "passed": true,
+        "max_rotation_from_authored_deg": 0.0271
+      },
+      "no_horizontal_drift": {
+        "passed": true,
+        "drift_mm": 0.0
+      },
+      "at_rest": {
+        "passed": true,
+        "mean_speed_last_0_5s": "5.60e-05"
+      },
+      "no_extreme_motion": {
+        "passed": true,
+        "peak_speed_m_s": 0.006,
+        "peak_angular_speed_rad_s": 0.0704,
+        "peak_acceleration_m_s2": 0.67,
+        "note": "limits 0.3 m/s, 5 rad/s (a 1.5 mm drop reaches 0.17 m/s); acceleration is reported (contact impulses)"
+      },
+      "supported_by_support_force": {
+        "passed": true,
+        "normal_force_N": 0.44145,
+        "weight_N": 0.44145
+      }
+    },
+    "physics:FittingA_3": {
+      "settled_on_support": {
+        "passed": true,
+        "height_change_from_authored_mm": -1.4998,
+        "expected_drop_mm": 1.5,
+        "final_gap_to_support_mm": 0.0001,
+        "support": "InputTray"
+      },
+      "inside_support_no_penetration": {
+        "passed": true,
+        "max_wall_intrusion_mm": -35.919,
+        "floor_penetration_mm": -0.0001,
+        "top_below_rim": true,
+        "note": "final collider vertices vs. the container's inner wall planes and floor (negative = inside / above)"
+      },
+      "orientation_stable": {
+        "passed": true,
+        "max_rotation_from_authored_deg": 0.0249
+      },
+      "no_horizontal_drift": {
+        "passed": true,
+        "drift_mm": 0.001
+      },
+      "at_rest": {
+        "passed": true,
+        "mean_speed_last_0_5s": "7.15e-06"
+      },
+      "no_extreme_motion": {
+        "passed": true,
+        "peak_speed_m_s": 0.006,
+        "peak_angular_speed_rad_s": 0.0463,
+        "peak_acceleration_m_s2": 0.68,
+        "note": "limits 0.3 m/s, 5 rad/s (a 1.5 mm drop reaches 0.17 m/s); acceleration is reported (contact impulses)"
+      },
+      "supported_by_support_force": {
+        "passed": true,
+        "normal_force_N": 0.44145,
+        "weight_N": 0.44145
+      }
+    },
+    "physics:FittingB_0": {
+      "settled_on_support": {
+        "passed": true,
+        "height_change_from_authored_mm": -1.5006,
+        "expected_drop_mm": 1.5,
+        "final_gap_to_support_mm": -0.0025,
+        "support": "InputTray"
+      },
+      "inside_support_no_penetration": {
+        "passed": true,
+        "max_wall_intrusion_mm": -44.631,
+        "floor_penetration_mm": 0.0025,
+        "top_below_rim": true,
+        "note": "final collider vertices vs. the container's inner wall planes and floor (negative = inside / above)"
+      },
+      "orientation_stable": {
+        "passed": true,
+        "max_rotation_from_authored_deg": 0.0236
+      },
+      "no_horizontal_drift": {
+        "passed": true,
+        "drift_mm": 0.003
+      },
+      "at_rest": {
+        "passed": true,
+        "mean_speed_last_0_5s": "8.00e-06"
+      },
+      "no_extreme_motion": {
+        "passed": true,
+        "peak_speed_m_s": 0.006,
+        "peak_angular_speed_rad_s": 0.038,
+        "peak_acceleration_m_s2": 0.68,
+        "note": "limits 0.3 m/s, 5 rad/s (a 1.5 mm drop reaches 0.17 m/s); acceleration is reported (contact impulses)"
+      },
+      "supported_by_support_force": {
+        "passed": true,
+        "normal_force_N": 0.73575,
+        "weight_N": 0.73575
+      }
+    },
+    "physics:FittingB_1": {
+      "settled_on_support": {
+        "passed": true,
+        "height_change_from_authored_mm": -1.5,
+        "expected_drop_mm": 1.5,
+        "final_gap_to_support_mm": -0.0004,
+        "support": "InputTray"
+      },
+      "inside_support_no_penetration": {
+        "passed": true,
+        "max_wall_intrusion_mm": -49.172,
+        "floor_penetration_mm": 0.0004,
+        "top_below_rim": true,
+        "note": "final collider vertices vs. the container's inner wall planes and floor (negative = inside / above)"
+      },
+      "orientation_stable": {
+        "passed": true,
+        "max_rotation_from_authored_deg": 0.0333
+      },
+      "no_horizontal_drift": {
+        "passed": true,
+        "drift_mm": 0.002
+      },
+      "at_rest": {
+        "passed": true,
+        "mean_speed_last_0_5s": "9.86e-06"
+      },
+      "no_extreme_motion": {
+        "passed": true,
+        "peak_speed_m_s": 0.006,
+        "peak_angular_speed_rad_s": 0.0723,
+        "peak_acceleration_m_s2": 0.68,
+        "note": "limits 0.3 m/s, 5 rad/s (a 1.5 mm drop reaches 0.17 m/s); acceleration is reported (contact impulses)"
+      },
+      "supported_by_support_force": {
+        "passed": true,
+        "normal_force_N": 0.73575,
+        "weight_N": 0.73575
+      }
+    },
+    "physics:FittingB_2": {
+      "settled_on_support": {
+        "passed": true,
+        "height_change_from_authored_mm": -1.4998,
+        "expected_drop_mm": 1.5,
+        "final_gap_to_support_mm": 0.0002,
+        "support": "InputTray"
+      },
+      "inside_support_no_penetration": {
+        "passed": true,
+        "max_wall_intrusion_mm": -22.11,
+        "floor_penetration_mm": -0.0002,
+        "top_below_rim": true,
+        "note": "final collider vertices vs. the container's inner wall planes and floor (negative = inside / above)"
+      },
+      "orientation_stable": {
+        "passed": true,
+        "max_rotation_from_authored_deg": 0.0272
+      },
+      "no_horizontal_drift": {
+        "passed": true,
+        "drift_mm": 0.0
+      },
+      "at_rest": {
+        "passed": true,
+        "mean_speed_last_0_5s": "7.59e-05"
+      },
+      "no_extreme_motion": {
+        "passed": true,
+        "peak_speed_m_s": 0.006,
+        "peak_angular_speed_rad_s": 0.0581,
+        "peak_acceleration_m_s2": 0.68,
+        "note": "limits 0.3 m/s, 5 rad/s (a 1.5 mm drop reaches 0.17 m/s); acceleration is reported (contact impulses)"
+      },
+      "supported_by_support_force": {
+        "passed": true,
+        "normal_force_N": 0.73582,
+        "weight_N": 0.73575
+      }
+    },
+    "physics:drop_test_sorting_bin_A": {
+      "enters_through_open_top": {
+        "passed": true,
+        "xy_local_at_rim": [
+          0.03,
+          -0.019999998807907093
+        ],
+        "opening_half_m": [
+          0.188,
+          0.13799999999999998
+        ],
+        "note": "cube footprint (incl. its diagonal) inside the opening when crossing the rim"
+      },
+      "contacts_floor": {
+        "passed": true,
+        "rest_bottom_local_z": 0.016,
+        "floor_top_local_z": 0.016,
+        "floor_contact_force_N": 0.981,
+        "weight_N": 0.981
+      },
+      "remains_inside": {
+        "passed": true,
+        "final_local": [
+          0.0294,
+          -0.0207,
+          0.046
+        ],
+        "final_speed": "7.93e-05"
+      },
+      "no_floor_penetration": {
+        "passed": true,
+        "min_cube_bottom_local_z": 0.016,
+        "floor_top_local_z": 0.016
+      }
+    },
+    "physics:drop_test_sorting_bin_B": {
+      "enters_through_open_top": {
+        "passed": true,
+        "xy_local_at_rim": [
+          0.03,
+          -0.019999992847442638
+        ],
+        "opening_half_m": [
+          0.188,
+          0.13799999999999998
+        ],
+        "note": "cube footprint (incl. its diagonal) inside the opening when crossing the rim"
+      },
+      "contacts_floor": {
+        "passed": true,
+        "rest_bottom_local_z": 0.016,
+        "floor_top_local_z": 0.016,
+        "floor_contact_force_N": 0.981,
+        "weight_N": 0.981
+      },
+      "remains_inside": {
+        "passed": true,
+        "final_local": [
+          0.0294,
+          -0.0207,
+          0.046
+        ],
+        "final_speed": "7.68e-05"
+      },
+      "no_floor_penetration": {
+        "passed": true,
+        "min_cube_bottom_local_z": 0.016,
+        "floor_top_local_z": 0.016
+      }
+    },
+    "physics:move_test_FittingA_0": {
+      "moved_independently": {
+        "passed": true,
+        "pose_after_teleport": [
+          0.4048,
+          -0.1989,
+          0.81507
+        ],
+        "target": [
+          0.4048,
+          -0.1989,
+          0.81575
+        ],
+        "others_max_displacement_mm": 0.0029
+      },
+      "resettled_after_move": {
+        "passed": true,
+        "final": [
+          0.40446,
+          -0.19899,
+          0.76575
+        ],
+        "start": [
+          0.4048,
+          -0.1989,
+          0.76575
+        ],
+        "yaw_change_deg": 45.001,
+        "final_speed": "7.32e-05"
+      },
+      "visual_and_colliders_follow_rigid_body": {
+        "passed": true,
+        "visual_mesh_offset_from_root": 2.220446049250313e-16,
+        "reset_xform_stack": [],
+        "usd_root_after_teleport": [
+          0.4048,
+          -0.1989,
+          0.81507
+        ],
+        "note": "visual mesh and colliders are children of the rigid-body root with identity / asset-local transforms and no resetXformStack, so they move with the body; usd_root_after_teleport shows whether PhysX wrote the pose back to USD"
+      }
+    }
+  },
+  "warnings": []
+}

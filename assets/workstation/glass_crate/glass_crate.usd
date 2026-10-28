@@ -1,0 +1,191 @@
+#usda 1.0
+(
+    defaultPrim = "GlassCrate"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "GlassCrate" (
+    customData = {
+        string robot_agent_lab_json = '{"frame": "bottom centre", "outer_size": [0.4, 0.3, 0.28], "cells": [3, 2], "collision": "compound open-top: bottom + 4 walls + separators"}'
+    }
+    kind = "component"
+)
+{
+    def Xform "Visual" (
+        prepend references = @./glass_crate_visual.usd@
+    )
+    {
+    }
+
+    def Material "PhysicsMaterial" (
+        prepend apiSchemas = ["PhysicsMaterialAPI"]
+        customData = {
+            dictionary robot_agent_lab = {
+                string material_id = "bin"
+            }
+        }
+    )
+    {
+        float physics:dynamicFriction = 0.5
+        float physics:restitution = 0.05
+        float physics:staticFriction = 0.6
+    }
+
+    def Scope "Collision"
+    {
+        def Xform "Bottom"
+        {
+            double3 xformOp:translate = (0, 0, 0.005)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "Shape" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </GlassCrate/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token purpose = "guide"
+                double size = 1
+                float3 xformOp:scale = (0.4, 0.3, 0.01)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "WallPosX"
+        {
+            double3 xformOp:translate = (0.195, 0, 0.14500000000000002)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "Shape" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </GlassCrate/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token purpose = "guide"
+                double size = 1
+                float3 xformOp:scale = (0.01, 0.3, 0.27)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "WallNegX"
+        {
+            double3 xformOp:translate = (-0.195, 0, 0.14500000000000002)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "Shape" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </GlassCrate/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token purpose = "guide"
+                double size = 1
+                float3 xformOp:scale = (0.01, 0.3, 0.27)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "WallPosY"
+        {
+            double3 xformOp:translate = (0, 0.145, 0.14500000000000002)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "Shape" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </GlassCrate/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token purpose = "guide"
+                double size = 1
+                float3 xformOp:scale = (0.38, 0.01, 0.27)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "WallNegY"
+        {
+            double3 xformOp:translate = (0, -0.145, 0.14500000000000002)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "Shape" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </GlassCrate/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token purpose = "guide"
+                double size = 1
+                float3 xformOp:scale = (0.38, 0.01, 0.27)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "SeparatorX1"
+        {
+            double3 xformOp:translate = (-0.06333333333333332, 0, 0.11)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "Shape" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </GlassCrate/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token purpose = "guide"
+                double size = 1
+                float3 xformOp:scale = (0.006, 0.28, 0.2)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "SeparatorX2"
+        {
+            double3 xformOp:translate = (0.06333333333333335, 0, 0.11)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "Shape" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </GlassCrate/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token purpose = "guide"
+                double size = 1
+                float3 xformOp:scale = (0.006, 0.28, 0.2)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "SeparatorY1"
+        {
+            double3 xformOp:translate = (0, 0, 0.11)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "Shape" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </GlassCrate/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token purpose = "guide"
+                double size = 1
+                float3 xformOp:scale = (0.38, 0.006, 0.2)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+    }
+}
+

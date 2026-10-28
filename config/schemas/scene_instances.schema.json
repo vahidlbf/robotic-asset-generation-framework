@@ -1,0 +1,251 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "scene_instances.schema.json",
+  "title": "Derived scene: a base scene plus placed instances of library assets",
+  "description": "Validated by scripts/assets/asset_lib.py. The derived USD layer (output) is generated from this file by scripts/assets/compose_scene.py and only sublayers base_scene; it never edits it. Paths are relative to the waste-sorting-workstation root.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "scene_id",
+    "base_scene",
+    "environment_config",
+    "output",
+    "instances_root",
+    "instances"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "enum": [
+        1
+      ]
+    },
+    "scene_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]{1,63}$"
+    },
+    "description": {
+      "type": "string"
+    },
+    "base_scene": {
+      "type": "string",
+      "pattern": "^assets/scenes/[^/]+\\.usd[ac]?$"
+    },
+    "environment_config": {
+      "type": "string",
+      "pattern": "^config/[^/]+\\.json$"
+    },
+    "output": {
+      "type": "string",
+      "pattern": "^assets/scenes/derived/[a-z0-9_]+\\.usda?$"
+    },
+    "instances_root": {
+      "type": "string",
+      "pattern": "^/World/[A-Za-z][A-Za-z0-9_]*$"
+    },
+    "preview_camera": {
+      "type": "object",
+      "required": [
+        "position",
+        "target"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "position": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "target": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "focal_length": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      }
+    },
+    "instances": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "asset",
+          "placement"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_]{0,63}$"
+          },
+          "asset": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]{1,47}$"
+          },
+          "placement": {
+            "type": "object",
+            "required": [
+              "surface"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "surface": {
+                "type": "string",
+                "enum": [
+                  "tabletop",
+                  "floor",
+                  "on_instance",
+                  "attached"
+                ],
+                "description": "tabletop / floor: lowest collider point at the surface (+ objects.clearance for dynamic bodies; same rule as build_scene.py). on_instance: on the support instance's 'inner_floor'/'top' surface. attached: visual-only asset fixed to a mount point of the support instance (no xy)."
+              },
+              "xy": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 2,
+                "maxItems": 2,
+                "description": "world xy of the asset origin (all surfaces except attached)"
+              },
+              "yaw_deg": {
+                "type": "number",
+                "description": "rotation about world Z (attached: about the mount normal frame)"
+              },
+              "support": {
+                "type": "string",
+                "pattern": "^[A-Za-z][A-Za-z0-9_]{0,63}$",
+                "description": "on_instance / attached: name of an earlier instance"
+              },
+              "support_surface": {
+                "type": "string",
+                "enum": [
+                  "inner_floor",
+                  "top"
+                ],
+                "description": "on_instance (default inner_floor for open_container, top otherwise)"
+              },
+              "mount": {
+                "type": "string",
+                "pattern": "^[a-z_+\\-]+$",
+                "description": "attached: mount point of the support asset, e.g. label_+x"
+              },
+              "pose": {
+                "type": "string",
+                "enum": [
+                  "upright",
+                  "lying"
+                ],
+                "description": "upright (default): asset Z = world Z. lying: asset axis horizontal, spun by spin_deg about its own axis, then tilted onto the lower convex hull of its colliders under the centre of mass (stable rest pose)"
+              },
+              "spin_deg": {
+                "type": "number",
+                "description": "lying: rotation about the asset's own axis before lying down"
+              }
+            }
+          },
+          "static": {
+            "type": "boolean",
+            "description": "instance-level override: physics:rigidBodyEnabled = false on this instance only"
+          }
+        }
+      }
+    },
+    "preview_cameras": {
+      "type": "object",
+      "description": "named preview cameras -> /World/Cameras/<CamelName>; render with render_previews.py --cameras <name> (names must not collide with the base scene's cameras)",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "position",
+          "target"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "position": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "target": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "focal_length": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          }
+        }
+      },
+      "properties": {}
+    },
+    "deactivate_base_prims": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^/World/[A-Za-z0-9_/]+$"
+      },
+      "description": "base-scene prims made inactive in the derived layer only (active = false; the base file is unchanged). The robot, table, ground, physics scene, lights and cameras cannot be deactivated."
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "scene-level targeted tests run by validate_asset_scene.py",
+      "properties": {
+        "drop_test": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "container instances that get a 6 cm test cube dropped through their open top (session layer only; the scene file is not changed). They must be empty."
+        },
+        "move_test": {
+          "type": "string",
+          "description": "dynamic instance teleported (+5 cm, +45 deg yaw) after the settle test: it must resettle on its own; all others must stay put"
+        },
+        "distinct_assets": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "description": "asset pairs that must be genuinely different geometry (mesh hash, size, volume, section layout)"
+        },
+        "rigid_bodies_on": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "description": "support instance -> expected number of individual dynamic rigid bodies resting on it"
+        },
+        "settle_duration_s": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      }
+    }
+  }
+}

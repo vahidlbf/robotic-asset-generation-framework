@@ -1,0 +1,96 @@
+#usda 1.0
+(
+    defaultPrim = "CratePlatform"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "CratePlatform" (
+    customData = {
+        string robot_agent_lab_json = '{"frame": "bottom centre", "height": 0.55, "top_size": [0.46, 0.36], "collision": "static: kick plinth + body + top plate (identical to the visual boxes)"}'
+    }
+    kind = "component"
+)
+{
+    def Xform "Visual" (
+        prepend references = @./crate_platform_visual.usd@
+    )
+    {
+    }
+
+    def Material "PhysicsMaterial" (
+        prepend apiSchemas = ["PhysicsMaterialAPI"]
+        customData = {
+            dictionary robot_agent_lab = {
+                string material_id = "table"
+            }
+        }
+    )
+    {
+        float physics:dynamicFriction = 0.5
+        float physics:restitution = 0.05
+        float physics:staticFriction = 0.6
+    }
+
+    def Scope "Collision"
+    {
+        def Xform "Kick"
+        {
+            double3 xformOp:translate = (0, 0, 0.03)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "Shape" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </CratePlatform/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token purpose = "guide"
+                double size = 1
+                float3 xformOp:scale = (0.406, 0.306, 0.06)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "Body"
+        {
+            double3 xformOp:translate = (0, 0, 0.29000000000000004)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "Shape" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </CratePlatform/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token purpose = "guide"
+                double size = 1
+                float3 xformOp:scale = (0.436, 0.336, 0.46)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "Top"
+        {
+            double3 xformOp:translate = (0, 0, 0.535)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "Shape" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </CratePlatform/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token purpose = "guide"
+                double size = 1
+                float3 xformOp:scale = (0.46, 0.36, 0.03)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+    }
+}
+

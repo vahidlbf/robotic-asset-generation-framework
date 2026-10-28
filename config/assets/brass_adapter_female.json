@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "asset_id": "brass_adapter_female",
+  "category": "hardware/fitting/brass",
+  "description": "Type B brass adapter: wide 32 mm socket with internal thread (visual helix) and two grooves, 25 mm neck, 22.5 mm hex, tapered collar, G3/8-style male spigot; stepped 12/20 mm passage.",
+  "source": "Engineering estimates from the prompt (~55 mm long, ~32 mm max OD, ~75 g); thread diameters G3/8-like (male) and G3/4-like (female) as visual approximations, not a measured part.",
+  "geometry": {
+    "method": "fitting",
+    "segments": 48,
+    "outer": [
+      {
+        "type": "thread",
+        "length": 0.011,
+        "major_diameter": 0.01666,
+        "pitch": 0.001337,
+        "depth": 0.0008,
+        "chamfer_start": 0.0008
+      },
+      {
+        "type": "cylinder",
+        "length": 0.002,
+        "diameter": 0.0148
+      },
+      {
+        "type": "cylinder",
+        "length": 0.004,
+        "diameter": 0.019,
+        "chamfer_start": 0.0005
+      },
+      {
+        "type": "cone",
+        "length": 0.004,
+        "d0": 0.019,
+        "d1": 0.023
+      },
+      {
+        "type": "hex",
+        "length": 0.01,
+        "across_flats": 0.0225,
+        "chamfer": true
+      },
+      {
+        "type": "cylinder",
+        "length": 0.003,
+        "diameter": 0.025
+      },
+      {
+        "type": "cylinder",
+        "length": 0.021,
+        "diameter": 0.032,
+        "chamfer_start": 0.0004,
+        "chamfer_end": 0.0004,
+        "grooves": [
+          {
+            "at": 0.006,
+            "width": 0.0012,
+            "depth": 0.0004
+          },
+          {
+            "at": 0.011,
+            "width": 0.0012,
+            "depth": 0.0004
+          }
+        ]
+      }
+    ],
+    "bore": [
+      {
+        "type": "cylinder",
+        "length": 0.022,
+        "diameter": 0.012,
+        "chamfer_start": 0.0006
+      },
+      {
+        "type": "cone",
+        "length": 0.008,
+        "d0": 0.012,
+        "d1": 0.02
+      },
+      {
+        "type": "cylinder",
+        "length": 0.004,
+        "diameter": 0.02
+      },
+      {
+        "type": "thread",
+        "length": 0.021,
+        "minor_diameter": 0.0275,
+        "pitch": 0.001814,
+        "depth": 0.0009,
+        "chamfer_end": 0.0004
+      }
+    ]
+  },
+  "visual_material": {
+    "color": [
+      0.88,
+      0.69,
+      0.34
+    ],
+    "roughness": 0.32,
+    "metallic": 1.0
+  },
+  "collision": {
+    "representation": "fitting_sections",
+    "segments": 12,
+    "zones": [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ]
+    ]
+  },
+  "physics": {
+    "body": "dynamic",
+    "mass_kg": 0.075,
+    "material": {
+      "id": "brass",
+      "static_friction": 0.35,
+      "dynamic_friction": 0.3,
+      "restitution": 0.08
+    }
+  },
+  "validation": {
+    "dimension_tolerance_m": 0.0005,
+    "density_range_kg_m3": [
+      8000,
+      8800
+    ]
+  }
+}

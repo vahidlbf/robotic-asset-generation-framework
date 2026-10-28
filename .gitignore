@@ -1,0 +1,69 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+# Blender / FreeCAD backups
+*.blend1
+*.blend2
+*.blend@
+*.FCBak
+# Credentials, keys and local environment (never commit)
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+id_ecdsa*
+.netrc
+.git-credentials
+credentials*.json
+*.token
+# Crash dumps, Kit / Omniverse caches, temporary files
+core
+core.[0-9]*
+*.dmp
+crash*.log
+*.tmp
+*.swp
+*~
+.DS_Store
+.cache/
+kit_cache/
+# Editor / agent local settings (project instructions in AGENTS.md / CLAUDE.md ARE tracked)
+.vscode/
+.idea/
+.claude/settings.local.json
+# Temporary build directories (generate_asset.py builds into <asset>.tmp/ and moves the files into place)
+assets/library/*.tmp/
+
+# Generated USD assets and scenes ARE tracked (see docs/PORTABILITY.md):
+#   - they are small (~2.5 MB total incl. the library), text (usda) except the Blender visual meshes (usdc)
+#   - regenerating them is geometrically but not byte-for-byte reproducible (UV float noise, export order),
+#     so the validated files are pinned here
+#   - without them a clone needs Blender + Isaac Sim just to open the scene
+# assets/<name>/ directories directly under assets/ (other than workstation, library, scenes) are empty leftovers.
+
+# Logs: keep reports, results, inventories, previews and inspection notes; drop raw console logs,
+# trajectories, CSVs, temporary test stages and the ramp-regression sandbox.
+logs/workstation/*
+!logs/workstation/validation_report.md
+!logs/workstation/validation_results.json
+!logs/workstation/scene_inventory.json
+!logs/workstation/visual_inspection.md
+!logs/workstation/preview_*.png
+
+logs/motion_planning/**/*.log
+logs/motion_planning/**/*.csv
+
+logs/assets/**/*.log
+logs/assets/*/base_suites/*
+!logs/assets/*/base_suites/preview_*.png

@@ -1,0 +1,134 @@
+#usda 1.0
+(
+    defaultPrim = "PlasticBin"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "PlasticBin" (
+    customData = {
+        string robot_agent_lab_json = '{"frame": "bottom centre", "label": "PLASTIC", "outer_size": [0.32, 0.32, 0.45], "wall_thickness": 0.012, "collision": "compound open-top: bottom + 4 wall boxes; labels are visual only", "inner_opening": [0.296, 0.296]}'
+    }
+    kind = "component"
+)
+{
+    def Xform "Visual" (
+        prepend references = @./plastic_bin_visual.usd@
+    )
+    {
+    }
+
+    def Material "PhysicsMaterial" (
+        prepend apiSchemas = ["PhysicsMaterialAPI"]
+        customData = {
+            dictionary robot_agent_lab = {
+                string material_id = "bin"
+            }
+        }
+    )
+    {
+        float physics:dynamicFriction = 0.5
+        float physics:restitution = 0.05
+        float physics:staticFriction = 0.6
+    }
+
+    def Scope "Collision"
+    {
+        def Xform "Bottom"
+        {
+            double3 xformOp:translate = (0, 0, 0.006)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "Shape" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </PlasticBin/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token purpose = "guide"
+                double size = 1
+                float3 xformOp:scale = (0.32, 0.32, 0.012)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "WallPosX"
+        {
+            double3 xformOp:translate = (0.154, 0, 0.231)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "Shape" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </PlasticBin/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token purpose = "guide"
+                double size = 1
+                float3 xformOp:scale = (0.012, 0.32, 0.438)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "WallNegX"
+        {
+            double3 xformOp:translate = (-0.154, 0, 0.231)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "Shape" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </PlasticBin/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token purpose = "guide"
+                double size = 1
+                float3 xformOp:scale = (0.012, 0.32, 0.438)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "WallPosY"
+        {
+            double3 xformOp:translate = (0, 0.154, 0.231)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "Shape" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </PlasticBin/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token purpose = "guide"
+                double size = 1
+                float3 xformOp:scale = (0.296, 0.012, 0.438)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "WallNegY"
+        {
+            double3 xformOp:translate = (0, -0.154, 0.231)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "Shape" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </PlasticBin/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token purpose = "guide"
+                double size = 1
+                float3 xformOp:scale = (0.296, 0.012, 0.438)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+    }
+}
+
