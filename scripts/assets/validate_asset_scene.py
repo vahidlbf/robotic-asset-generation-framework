@@ -150,6 +150,11 @@ def bore_clearance(inst_prim, cols):
     return best
 
 
+def cross2(u, v):
+    """z component of the 2-D cross product u x v (NumPy 2 no longer accepts 2-D vectors in np.cross)."""
+    return u[0] * v[1] - u[1] * v[0]
+
+
 def axis_distance_convex(points_local):
     """Distance from the local Z axis to a z-prism convex piece (its xy polygon); 0 if the axis passes through it."""
     xy = points_local[:, :2]
@@ -157,7 +162,7 @@ def axis_distance_convex(points_local):
     ang = np.arctan2(xy[:, 1] - c[1], xy[:, 0] - c[0])
     poly = xy[np.argsort(ang)]
     n = len(poly)
-    inside = all(np.cross(poly[(i + 1) % n] - poly[i], -poly[i]) >= -1e-12 for i in range(n))
+    inside = all(cross2(poly[(i + 1) % n] - poly[i], -poly[i]) >= -1e-12 for i in range(n))
     if inside:
         return 0.0
     d = []

@@ -20,6 +20,7 @@ the bottles are solid, collision checking is discrete, and no grasping has been 
 | `scripts/assets/reachability_check.py` | Lula IK + endpoint clearance of pickup / drop poses | per pose | `logs/assets/<scene_id>/reachability.{json,md}` |
 | `scripts/assets/negative_control.py` | the validator must fail on a tampered layer | 3 expected failures | `logs/assets/negative_control/` |
 | `scripts/assets/asset_lib.py selftest` | spec/scene/placement/backend-selection unit cases | 51 cases | console |
+| `scripts/assets/test_numpy_compat.py` | NumPy 1.x/2.x regression of `validate_asset_scene.py`'s 2-D helpers (`cross2`, `axis_distance_convex`, used by `bore_open`); any python3 with NumPy, no Isaac Sim | 15 cases (16 where NumPy still accepts 2-D `np.cross`) | console |
 | `scripts/assets/compare_backends.py` | Blender-vs-CAD measurements (dimensions, sampled surface deviations, physics, colliders) | report | `logs/assets/backend_comparison/` |
 
 ## Static validation (`validate_scene.py`): groups and counts

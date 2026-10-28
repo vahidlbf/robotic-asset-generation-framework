@@ -84,6 +84,7 @@ export FREECAD_EXECUTABLE=/path/to/FreeCAD.AppImage   # OPTIONAL (freecad backen
 | Add several assets at once | `python3 scripts/assets/add_asset.py --spec <a>.json --spec <b>.json … --scene config/scenes/<scene>.json [--preview]` | Blender, Isaac |
 | Edit instances | `python3 scripts/assets/asset_lib.py add-instance\|move-instance\|remove-instance\|scatter\|deactivate-base-prim\|set-preview-camera\|set-validation config/scenes/<scene>.json …` | python3 only |
 | Geometric reachability (IK + endpoint clearance) | `"$ISAACSIM_PYTHON" scripts/assets/reachability_check.py --scene <scene>.json --pick-support <tray> --drop <prefix>=<container> …` | Isaac |
+| NumPy-compat regression of the validator's 2-D helpers | `"$ISAACSIM_PYTHON" scripts/assets/test_numpy_compat.py` | any python with NumPy |
 | Which geometry backend a spec gets (no build) | `python3 scripts/assets/backends.py select config/assets/<id>.json` (`tools` lists detected tools) | python3 |
 | CAD backend comparison (Blender vs FreeCAD vs STEP import) | `scripts/assets/build_cad_comparison.sh` | Blender, FreeCAD, Isaac |
 | Side-by-side backend comparison scene (4 variants, labelled) | `scripts/assets/build_backend_comparison.sh` | Blender, Isaac |
