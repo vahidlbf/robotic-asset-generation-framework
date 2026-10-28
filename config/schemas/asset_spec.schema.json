@@ -53,9 +53,10 @@
             "tube",
             "open_container",
             "fitting",
-            "label_plate"
+            "label_plate",
+            "mesh_import"
           ],
-          "description": "box/cylinder/tube: primitives. open_container: hollow open-top crate/tray (tapered walls, rim, optional ribs/handles/foot/label holder). fitting: stepped turned part (cylinders, cones, hex flats, visual threads) with a stepped bore. label_plate: thin plate with raised text, visual only."
+          "description": "box/cylinder/tube: primitives. open_container: hollow open-top crate/tray (tapered walls, rim, optional ribs/handles/foot/label holder). fitting: stepped turned part (cylinders, cones, hex flats, visual threads) with a stepped bore. label_plate: thin plate with raised text, visual only. mesh_import: an existing STL or STEP file (backend import)."
         },
         "size": {
           "type": "array",
@@ -65,7 +66,7 @@
           },
           "minItems": 3,
           "maxItems": 3,
-          "description": "box, open_container, label_plate: outer envelope [x, y, z] in m (label_plate: [width, thickness incl. text relief, height])"
+          "description": "box, open_container, label_plate: outer envelope [x, y, z] in m (label_plate: [width, thickness incl. text relief, height]); mesh_import: the expected envelope after import (checked against the measured bounds)"
         },
         "diameter": {
           "type": "number",
@@ -542,6 +543,63 @@
           "type": "number",
           "exclusiveMinimum": 0,
           "description": "label_plate: raised text thickness (part of size[1])"
+        },
+        "backend": {
+          "type": "string",
+          "enum": [
+            "auto",
+            "blender",
+            "freecad",
+            "import"
+          ],
+          "description": "geometry backend (scripts/assets/backends.py). Absent = blender (the validated default for existing specs). auto = deterministic choice from method, accuracy, require_step, source and the installed tools."
+        },
+        "accuracy": {
+          "type": "string",
+          "enum": [
+            "visual",
+            "engineering"
+          ],
+          "description": "auto selection input: engineering prefers the FreeCAD builder when one exists and FreeCAD is installed (default visual)"
+        },
+        "require_step": {
+          "type": "boolean",
+          "description": "a STEP file must be produced/kept (FreeCAD builder or STEP source); otherwise selection fails"
+        },
+        "cad": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "FreeCAD route options",
+          "properties": {
+            "linear_deflection_mm": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "description": "tessellation chord error (default 0.01 mm)"
+            },
+            "angular_deflection_deg": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "maximum": 30,
+              "description": "tessellation angle (default 5 deg)"
+            }
+          }
+        },
+        "source": {
+          "type": "string",
+          "pattern": "^[^/].*\\.(stl|STL|step|STEP|stp|STP)$",
+          "description": "mesh_import: project-relative path of the STL / STEP file"
+        },
+        "source_units": {
+          "type": "string",
+          "enum": [
+            "m",
+            "mm"
+          ],
+          "description": "mesh_import: length unit of the source file (default mm)"
+        },
+        "recenter": {
+          "type": "boolean",
+          "description": "mesh_import: move the bounding-box bottom centre to the origin (default true)"
         }
       }
     },

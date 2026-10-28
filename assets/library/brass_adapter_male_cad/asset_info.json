@@ -1,0 +1,503 @@
+{
+  "asset_id": "brass_adapter_male_cad",
+  "schema_version": 1,
+  "ok": true,
+  "spec_file": "config/assets/brass_adapter_male_cad.json",
+  "spec_sha256": "56508c8bb21eb994dfadcd91350bba5610d55da54339aaa6abb18fa896205d46",
+  "spec": {
+    "schema_version": 1,
+    "asset_id": "brass_adapter_male_cad",
+    "category": "hardware/fitting/brass",
+    "description": "Type A brass adapter, CAD comparison variant: the same section parameters as brass_adapter_male, built as a parametric FreeCAD solid (exact bore, hex, chamfers, grooves; cosmetic threads) and exported as STEP.",
+    "source": "Representative envelope from the prompt (~45 mm long, ~26 mm max OD, 12-15 mm passage, ~45 g; a comparable commercial adapter is 43.5 mm / 44 g). Thread is a visual approximation (G1/2-like major diameter and pitch), not a reverse-engineered part. CAD variant: FreeCAD solid from the same parameters; threads are cosmetic (plain cylinder at the major diameter). Mass = exact CAD volume x 8470 kg/m3 (brass CW617N nominal density) instead of the 45 g target: the cosmetic threads keep the full major diameter, so the solid is ~8 % larger than the Blender variant.",
+    "geometry": {
+      "method": "fitting",
+      "backend": "auto",
+      "accuracy": "engineering",
+      "require_step": true,
+      "cad": {
+        "linear_deflection_mm": 0.01,
+        "angular_deflection_deg": 5.0
+      },
+      "segments": 48,
+      "outer": [
+        {
+          "type": "thread",
+          "length": 0.013,
+          "major_diameter": 0.02096,
+          "pitch": 0.001814,
+          "depth": 0.0011,
+          "chamfer_start": 0.001
+        },
+        {
+          "type": "cylinder",
+          "length": 0.002,
+          "diameter": 0.019
+        },
+        {
+          "type": "hex",
+          "length": 0.009,
+          "across_flats": 0.0215,
+          "chamfer": true
+        },
+        {
+          "type": "cylinder",
+          "length": 0.007,
+          "diameter": 0.0185,
+          "chamfer_start": 0.0005,
+          "grooves": [
+            {
+              "at": 0.0035,
+              "width": 0.0008,
+              "depth": 0.0004
+            }
+          ]
+        },
+        {
+          "type": "cone",
+          "length": 0.003,
+          "d0": 0.0185,
+          "d1": 0.017
+        },
+        {
+          "type": "cylinder",
+          "length": 0.011,
+          "diameter": 0.017,
+          "chamfer_end": 0.0008,
+          "grooves": [
+            {
+              "at": 0.005,
+              "width": 0.0009,
+              "depth": 0.0004
+            }
+          ]
+        }
+      ],
+      "bore": [
+        {
+          "type": "cylinder",
+          "length": 0.024,
+          "diameter": 0.016,
+          "chamfer_start": 0.0006
+        },
+        {
+          "type": "cone",
+          "length": 0.002,
+          "d0": 0.016,
+          "d1": 0.013
+        },
+        {
+          "type": "cylinder",
+          "length": 0.019,
+          "diameter": 0.013,
+          "chamfer_end": 0.0006
+        }
+      ]
+    },
+    "visual_material": {
+      "color": [
+        0.88,
+        0.69,
+        0.34
+      ],
+      "roughness": 0.32,
+      "metallic": 1.0
+    },
+    "collision": {
+      "representation": "fitting_sections",
+      "segments": 12,
+      "zones": [
+        [
+          0,
+          1
+        ],
+        [
+          2
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          5
+        ]
+      ]
+    },
+    "physics": {
+      "body": "dynamic",
+      "density_kg_m3": 8470,
+      "material": {
+        "id": "brass",
+        "static_friction": 0.35,
+        "dynamic_friction": 0.3,
+        "restitution": 0.08
+      }
+    },
+    "validation": {
+      "dimension_tolerance_m": 0.0005,
+      "density_range_kg_m3": [
+        8000,
+        8800
+      ]
+    }
+  },
+  "resolved_physics_material": {
+    "id": "brass",
+    "static_friction": 0.35,
+    "dynamic_friction": 0.3,
+    "restitution": 0.08
+  },
+  "generator": "scripts/assets/generate_asset.py",
+  "blender_version": "5.2.2 LTS",
+  "generated_utc": "2026-10-28T17:10:50+00:00",
+  "files": [
+    "brass_adapter_male_cad.usd",
+    "brass_adapter_male_cad_visual.usd",
+    "brass_adapter_male_cad.step"
+  ],
+  "file_sha256": {
+    "brass_adapter_male_cad.usd": "49fbceb0d4027633757e77c92620fd9c3bdd4232cb9ecb874126e86f986cc32d",
+    "brass_adapter_male_cad_visual.usd": "9820c8a1c8ab2d239069768923a71f40d9aabb39b6e242ee82de3a8860131d62",
+    "brass_adapter_male_cad.step": "51d4cde54919c6a3277d304f73b82c7991a1f96100a29114830d9b5c07ed407f"
+  },
+  "usd_root_prim": "/BrassAdapterMaleCad",
+  "physics_material_prim": "PhysicsMaterial",
+  "bounds_visual_m": [
+    [
+      -0.012413031421601772,
+      -0.01075000036507845,
+      0.0
+    ],
+    [
+      0.012413031421601772,
+      0.01075000036507845,
+      0.04500000178813934
+    ]
+  ],
+  "nominal_bounds_m": [
+    [
+      -0.012413030787576954,
+      -0.01075,
+      0.0
+    ],
+    [
+      0.012413030787576954,
+      0.01075,
+      0.045
+    ]
+  ],
+  "mesh": {
+    "triangles": 9960,
+    "vertices": 4980,
+    "objects": 1,
+    "volume_m3": 5.9313724847185e-06,
+    "non_manifold_edges": 0,
+    "boundary_edges": 0,
+    "analytic_volume_m3": 5.932667777204803e-06,
+    "polygon_volume_m3": 5.932667777204803e-06,
+    "reference": "exact CAD solid volume (FreeCAD)",
+    "volume_vs_polygon_rel_error": 0.00021833221325479662
+  },
+  "mass_properties": {
+    "mass_kg": 0.05024969607292468,
+    "mass_source": "density_kg_m3 x exact CAD volume",
+    "volume_m3": 5.932667777204803e-06,
+    "density_kg_m3": 8470.0,
+    "center_of_mass": [
+      -2.7877724782032543e-12,
+      -9.197902911046e-18,
+      0.020656040093552236
+    ],
+    "inertia_tensor": [
+      [
+        9.259882983411994e-06,
+        8.095739789438396e-22,
+        -2.3276428354308033e-16
+      ],
+      [
+        8.095739789438396e-22,
+        9.259882982378007e-06,
+        -8.592484861434035e-22
+      ],
+      [
+        -2.3276428354308033e-16,
+        -8.592484861434035e-22,
+        3.98854084136998e-06
+      ]
+    ],
+    "diagonal_inertia": [
+      9.259882983411994e-06,
+      9.259882982378007e-06,
+      3.98854084136998e-06
+    ],
+    "max_offdiag_ratio": 2.5136849348965913e-11,
+    "source": "exact CAD solid (FreeCAD)"
+  },
+  "colliders": [
+    "Zone0_00",
+    "Zone0_01",
+    "Zone0_02",
+    "Zone0_03",
+    "Zone0_04",
+    "Zone0_05",
+    "Zone0_06",
+    "Zone0_07",
+    "Zone0_08",
+    "Zone0_09",
+    "Zone0_10",
+    "Zone0_11",
+    "Zone1_00",
+    "Zone1_01",
+    "Zone1_02",
+    "Zone1_03",
+    "Zone1_04",
+    "Zone1_05",
+    "Zone2_00",
+    "Zone2_01",
+    "Zone2_02",
+    "Zone2_03",
+    "Zone2_04",
+    "Zone2_05",
+    "Zone2_06",
+    "Zone2_07",
+    "Zone2_08",
+    "Zone2_09",
+    "Zone2_10",
+    "Zone2_11",
+    "Zone3_00",
+    "Zone3_01",
+    "Zone3_02",
+    "Zone3_03",
+    "Zone3_04",
+    "Zone3_05",
+    "Zone3_06",
+    "Zone3_07",
+    "Zone3_08",
+    "Zone3_09",
+    "Zone3_10",
+    "Zone3_11"
+  ],
+  "collider_representation": "fitting_sections",
+  "mounts": {},
+  "geometry_backend": {
+    "requested": "auto",
+    "method": "fitting",
+    "accuracy": "engineering",
+    "require_step": true,
+    "tools": {
+      "blender": true,
+      "freecad": true,
+      "freecad_executable": "FreeCAD_1.1.4-Linux-x86_64-py311.AppImage"
+    },
+    "rules": [
+      "3: auto + engineering/STEP + FreeCAD builder + FreeCAD installed -> freecad"
+    ],
+    "ok": true,
+    "error": null,
+    "backend": "freecad",
+    "reason": "a STEP file is required, a FreeCAD builder exists for 'fitting' and FreeCAD is installed"
+  },
+  "cad": {
+    "mode": "build",
+    "freecad_version": "1.1.4",
+    "freecad_build": "20260928 (Git shallow)",
+    "python": "3.11.14",
+    "units": "mm",
+    "step": "brass_adapter_male_cad.step",
+    "solid": {
+      "volume_mm3": 5932.667777204802,
+      "area_mm2": 5409.257196412447,
+      "center_of_mass_mm": [
+        -2.787772478203254e-09,
+        -9.197902911046e-15,
+        20.656040093552235
+      ],
+      "inertia_unit_density_mm5": [
+        [
+          1093256.5505799283,
+          9.558134344083112e-11,
+          -2.748102521169779e-05
+        ],
+        [
+          9.558134344083112e-11,
+          1093256.550457852,
+          -1.0144610226014208e-10
+        ],
+        [
+          -2.748102521169779e-05,
+          -1.0144610226014208e-10,
+          470902.1064191239
+        ]
+      ],
+      "bbox_mm": [
+        [
+          -12.413030787576957,
+          -10.75,
+          0.0
+        ],
+        [
+          12.413030787576954,
+          10.75,
+          45.0
+        ]
+      ],
+      "faces": 34,
+      "edges": 64,
+      "solids": 1
+    },
+    "mesh": {
+      "facets": 9960,
+      "points": 4980
+    },
+    "checks": {
+      "bounding_box_vs_spec": {
+        "passed": true,
+        "measured_mm": [
+          [
+            -12.413030787576957,
+            -10.75,
+            0.0
+          ],
+          [
+            12.413030787576954,
+            10.75,
+            45.0
+          ]
+        ],
+        "nominal_mm": [
+          [
+            -12.413030787576954,
+            -10.75,
+            0.0
+          ],
+          [
+            12.413030787576954,
+            10.75,
+            45.0
+          ]
+        ],
+        "max_error_mm": 3.552713678800501e-15,
+        "tolerance_mm": 0.5
+      },
+      "valid_closed_solid": {
+        "passed": true,
+        "valid": true,
+        "solids": 1,
+        "shape_type": "Compound"
+      },
+      "step_roundtrip": {
+        "passed": true,
+        "volume_mm3": 5932.667731857667,
+        "solids": 1
+      },
+      "tessellation_watertight": {
+        "passed": true,
+        "facets": 9960,
+        "points": 4980
+      },
+      "tessellation_volume": {
+        "passed": true,
+        "mesh_volume_mm3": 5931.31787109375,
+        "cad_volume_mm3": 5932.667777204802,
+        "relative_error": 0.0002275377893633576,
+        "linear_deflection_mm": 0.01,
+        "angular_deflection_deg": 5.0
+      }
+    },
+    "features": [
+      "cosmetic thread 20.96 x 1.814 mm at z 0.00-13.00 (plain cylinder at the major diameter)",
+      "chamfer 1.00 mm (makeChamfer) on thread edge at z 0.00",
+      "hex AF 21.50 mm (extruded hexagon) at z 15.00-24.00",
+      "hex 30 deg corner chamfers at both ends (common with chamfer cones)",
+      "chamfer 0.50 mm (makeChamfer) on cylinder edge at z 24.00",
+      "groove 0.80 x 0.40 mm (boolean cut) at z 27.10",
+      "chamfer 0.80 mm (makeChamfer) on cylinder edge at z 45.00",
+      "groove 0.90 x 0.40 mm (boolean cut) at z 38.55",
+      "6 outer sections fused (multiFuse + removeSplitter)",
+      "bore countersink chamfers 0.60/0.00 mm (revolved profile) at z 0.00-24.00",
+      "bore countersink chamfers 0.00/0.60 mm (revolved profile) at z 26.00-45.00",
+      "bore: revolved profile (Face.revolve 360 deg), removed with a boolean cut"
+    ]
+  },
+  "import_source": null,
+  "checks": {
+    "dimensions": {
+      "passed": true,
+      "measured_size_m": [
+        0.024826062843203545,
+        0.0215000007301569,
+        0.04500000178813934
+      ],
+      "nominal_size_m": [
+        0.024826061575153907,
+        0.0215,
+        0.045
+      ],
+      "tolerance_m": 0.0005,
+      "bottom_z_m": 0.0
+    },
+    "closed_manifold_mesh": {
+      "passed": true,
+      "non_manifold_edges": 0,
+      "boundary_edges": 0,
+      "note": ""
+    },
+    "mesh_volume_matches_geometry": {
+      "passed": true,
+      "relative_error": 0.00021833221325479662,
+      "tolerance": 0.002,
+      "reference": "exact CAD solid volume (FreeCAD)",
+      "note": "closed-mesh volume vs. the exact volume of the tessellated solid (float32 vertices); fitting: vs. the ring-loft integral (non-planar thread quads are triangulated); informational for bevelled boxes and static containers/labels"
+    },
+    "usd_asset": {
+      "default_prim": "/BrassAdapterMaleCad",
+      "units_ok": true,
+      "colliders": 42,
+      "colliders_expected": 42,
+      "colliders_guide_purpose": true,
+      "colliders_physics_material_bound": true,
+      "unresolved_dependencies": [],
+      "visual_meshes": 1,
+      "visual_references": [
+        "./brass_adapter_male_cad_visual.usd"
+      ],
+      "rigid_body": true,
+      "mass_authored_kg": 0.050249695777893066,
+      "passed": true
+    },
+    "mass_properties": {
+      "passed": true,
+      "implied_density_kg_m3": 8470.0,
+      "density_range_kg_m3": [
+        8000,
+        8800
+      ],
+      "note": "turned part: COM within 0.2 mm of the axis (helical threads are not exactly symmetric), inside the length; off-diagonal inertia < 1 % (principal axes = asset axes)"
+    },
+    "cad_mesh_mass_consistency": {
+      "passed": true,
+      "inertia_rel_deviation_mesh_vs_cad": 0.00024088284010133544,
+      "com_mesh_m": [
+        -6.401992446850676e-10,
+        -2.170912777156681e-13,
+        0.020655316724206733
+      ],
+      "com_cad_m": [
+        -2.7877724782032543e-12,
+        -9.197902911046e-18,
+        0.020656040093552236
+      ],
+      "note": "USD gets the exact CAD values; the tessellated mesh must agree within 1 % / 0.1 mm"
+    },
+    "cad_solid": {
+      "passed": true,
+      "freecad_checks": {
+        "bounding_box_vs_spec": true,
+        "valid_closed_solid": true,
+        "step_roundtrip": true,
+        "tessellation_watertight": true,
+        "tessellation_volume": true
+      }
+    }
+  }
+}

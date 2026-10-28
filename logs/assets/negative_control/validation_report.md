@@ -1,6 +1,6 @@
 # Derived scene validation: `negative_control`
 
-- Generated: 2026-10-27T19:25:35+01:00
+- Generated: 2026-10-28T18:21:32+01:00
 - Scene config: `config/scenes/negative_control.json`; derived layer: `assets/scenes/derived/negative_control.usda`; base scene: `assets/scenes/waste_sorting_workstation.usd`
 - **Result: FAIL** (38/41 checks passed)
 - Physics test: no (--no-physics or disabled by spec)

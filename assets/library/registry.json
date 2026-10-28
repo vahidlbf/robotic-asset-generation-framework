@@ -18,6 +18,7 @@
         0.05500000000000001
       ],
       "collision": "fitting_sections",
+      "backend": "blender",
       "generated_utc": "2026-10-27T18:03:43+00:00"
     },
     "brass_adapter_male": {
@@ -36,7 +37,46 @@
         0.045
       ],
       "collision": "fitting_sections",
+      "backend": "blender",
       "generated_utc": "2026-10-27T18:00:01+00:00"
+    },
+    "brass_adapter_male_cad": {
+      "category": "hardware/fitting/brass",
+      "description": "Type A brass adapter, CAD comparison variant: the same section parameters as brass_adapter_male, built as a parametric FreeCAD solid (exact bore, hex, chamfers, grooves; cosmetic threads) and exported as STEP.",
+      "spec_file": "config/assets/brass_adapter_male_cad.json",
+      "spec_sha256": "56508c8bb21eb994dfadcd91350bba5610d55da54339aaa6abb18fa896205d46",
+      "ok": true,
+      "usd": "assets/library/brass_adapter_male_cad/brass_adapter_male_cad.usd",
+      "visual": "assets/library/brass_adapter_male_cad/brass_adapter_male_cad_visual.usd",
+      "body": "dynamic",
+      "mass_kg": 0.05024969607292468,
+      "nominal_size_m": [
+        0.024826061575153907,
+        0.0215,
+        0.045
+      ],
+      "collision": "fitting_sections",
+      "backend": "freecad",
+      "generated_utc": "2026-10-28T17:10:50+00:00"
+    },
+    "brass_adapter_male_step_import": {
+      "category": "hardware/fitting/brass",
+      "description": "Route C demonstration: the STEP file of brass_adapter_male_cad imported as an existing CAD model (FreeCAD reads and validates the STEP, Blender prepares the visual).",
+      "spec_file": "config/assets/brass_adapter_male_step_import.json",
+      "spec_sha256": "8199bd212b7714c8539579be41bab0dd5667d2ad9bfb602af5541befd49d72f1",
+      "ok": true,
+      "usd": "assets/library/brass_adapter_male_step_import/brass_adapter_male_step_import.usd",
+      "visual": "assets/library/brass_adapter_male_step_import/brass_adapter_male_step_import_visual.usd",
+      "body": "dynamic",
+      "mass_kg": 0.050249695688834445,
+      "nominal_size_m": [
+        0.024826,
+        0.0215,
+        0.045
+      ],
+      "collision": "convex_hull",
+      "backend": "import",
+      "generated_utc": "2026-10-28T17:12:12+00:00"
     },
     "industrial_blue_crate": {
       "category": "container/crate",
@@ -54,6 +94,7 @@
         0.22
       ],
       "collision": "container_walls",
+      "backend": "blender",
       "generated_utc": "2026-10-27T18:15:46+00:00"
     },
     "industrial_gray_tray": {
@@ -72,6 +113,7 @@
         0.1
       ],
       "collision": "container_walls",
+      "backend": "blender",
       "generated_utc": "2026-10-27T18:15:48+00:00"
     },
     "label_bin_a": {
@@ -90,6 +132,7 @@
         0.05
       ],
       "collision": "none",
+      "backend": "blender",
       "generated_utc": "2026-10-27T18:00:07+00:00"
     },
     "label_bin_b": {
@@ -108,6 +151,7 @@
         0.05
       ],
       "collision": "none",
+      "backend": "blender",
       "generated_utc": "2026-10-27T18:00:09+00:00"
     },
     "test_spacer": {
@@ -126,6 +170,7 @@
         0.025
       ],
       "collision": "ring_segments",
+      "backend": "blender",
       "generated_utc": "2026-10-27T16:25:47+00:00"
     }
   }

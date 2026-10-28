@@ -1,6 +1,6 @@
 # Derived scene validation: `industrial_brass_sorting`
 
-- Generated: 2026-10-27T19:27:27+01:00
+- Generated: 2026-10-28T18:21:07+01:00
 - Scene config: `config/scenes/industrial_brass_sorting.json`; derived layer: `assets/scenes/derived/industrial_brass_sorting.usda`; base scene: `assets/scenes/waste_sorting_workstation.usd`
 - **Result: PASS** (238/238 checks passed)
 - Physics test: yes

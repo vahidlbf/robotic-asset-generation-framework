@@ -2,7 +2,9 @@
 
 ## Blender source files
 
-None are kept. Both generators build the geometry in an empty Blender scene (`clear_scene()` resets to factory
+No `.blend` files are kept. **CAD:** the FreeCAD route keeps `<id>.step` (AP214, mm), the parametric solid, next to the
+USD files; a STEP import references its source file (path + SHA-256 in `asset_info.json` → `import_source`). The
+intermediate STL tessellation is deleted after Blender imports it. Both generators build the geometry in an empty Blender scene (`clear_scene()` resets to factory
 settings, metric, scale 1) and export it directly. There are no `.blend` or `.glb` files in this sub-project;
 `.blend` and `.glb` exist only in the parent ramp project. To regenerate, rerun the generator: the code plus the
 config are the source.
@@ -71,7 +73,7 @@ four `table_leg.usd` references.
 | File | Writer | Contents |
 |---|---|---|
 | `assets/workstation/asset_manifest.json` | `generate_assets.py` (whole file, every run) | per workstation asset: bounds, mass properties, colliders, files; Blender version; `ok` |
-| `assets/library/<id>/asset_info.json` | `generate_asset.py` | spec copy + `spec_sha256`, file SHA-256s, resolved physics material, bounds, mesh checks, mass properties, collider names, self-checks, `ok`, Blender version, UTC time |
+| `assets/library/<id>/asset_info.json` | `generate_asset.py` | spec copy + `spec_sha256`, file SHA-256s, resolved physics material, bounds, mesh checks, mass properties, collider names, self-checks, `ok`, Blender version, UTC time; `geometry_backend` (decision, rule, reason, tools); `cad` (FreeCAD version, solid properties, features, CAD checks) and `import_source` for the CAD routes |
 | `assets/library/registry.json` | `asset_lib.rebuild_registry()` | one entry per `asset_info.json`. It is derived, so don't edit it by hand. It is rewritten only when its content changes. |
 
 ## Scene files

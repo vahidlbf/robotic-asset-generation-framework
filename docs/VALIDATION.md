@@ -19,7 +19,7 @@ the bottles are solid, collision checking is discrete, and no grasping has been 
 | `scripts/assets/validate_asset_scene.py` | derived scene (targeted) | 54 for the spacer demo, 238 for `industrial_brass_sorting` | `logs/assets/<scene_id>/validation_*.{json,md}` |
 | `scripts/assets/reachability_check.py` | Lula IK + endpoint clearance of pickup / drop poses | per pose | `logs/assets/<scene_id>/reachability.{json,md}` |
 | `scripts/assets/negative_control.py` | the validator must fail on a tampered layer | 3 expected failures | `logs/assets/negative_control/` |
-| `scripts/assets/asset_lib.py selftest` | spec/scene/placement validator unit cases | 39 cases | console |
+| `scripts/assets/asset_lib.py selftest` | spec/scene/placement/backend-selection unit cases | 48 cases | console |
 
 ## Static validation (`validate_scene.py`): groups and counts
 
@@ -72,7 +72,10 @@ the bottles are solid, collision checking is discrete, and no grasping has been 
   - `open_top`: for `container_walls`, no wall piece reaches into the column above the inner floor.
   - Collider bounds and gaps come from the collider vertices, because BBoxCache bounds of rotated meshes are loose.
 - **`scene`** (from the scene config's `validation` block): distinct geometry of asset pairs (mesh hash, size, volume
-  > 10 %, section layout), the number of individual rigid bodies per support, and initially empty drop-test containers.
+  > 10 %, section layout), `compare_assets` variant pairs (same envelope within tolerance; volume / mass / inertia
+  differences reported), the number of individual rigid bodies per support, and initially empty drop-test containers.
+- **CAD routes (generation):** `cad_solid` (FreeCAD: valid closed solid, bounding box, STEP round trip, tessellation)
+  and `cad_mesh_mass_consistency`; see [GEOMETRY_BACKENDS.md](GEOMETRY_BACKENDS.md#checks-on-the-cad-routes).
 - **`physics:*` for supported parts:**
   - `settled_on_support`, `inside_support_no_penetration` (final collider vertices vs. the container's inner wall
     planes and floor), `orientation_stable`, `no_extreme_motion` (≤ 0.3 m/s, ≤ 5 rad/s) and the support-floor
@@ -106,6 +109,20 @@ the bottles are solid, collision checking is discrete, and no grasping has been 
   covers the robot instead.
 - **Discrete collision checks:** clearances are checked at configurations, not swept volumes. Motion trajectories
   are re-checked densely (every 4 ms), but only at discrete times.
+
+## What was run for the geometry backends (2026-10-28)
+
+| Run | Result |
+|---|---|
+| `asset_lib.py selftest` | PASS, 48 cases (incl. 7 deterministic backend-selection cases with simulated tool sets and 2 rejected backend combinations) |
+| FreeCAD 1.1.4 headless probe | revolve, cut, common, extrude, `makeChamfer`, `makeFillet`, STEP round trip, `meshFromShape`, `MatrixOfInertia` all work; `<AppImage> --version` opens the GUI, so it is not used |
+| `generate_asset.py` `brass_adapter_male_cad` (FreeCAD route) | 5/5 CAD checks + 7/7 asset checks; bounding box error 3.6e-15 mm; mesh vs. solid volume 2.2e-4; inertia mesh vs. CAD 2.4e-4 |
+| `generate_asset.py` `brass_adapter_male_step_import` (STEP import) | 4/4 CAD checks + 7/7 asset checks; identical to the CAD source to ~1e-8 |
+| STL import route (temporary asset, removed after the run) | 5/5 asset checks; mass within tessellation error of the CAD value (50.239 vs 50.250 g) |
+| FreeCAD unavailable (`FREECAD_EXECUTABLE=/nonexistent`) | selection fails with "STEP required but FreeCAD is not installed", exit 1, nothing written |
+| Blender route regression: `test_spacer`, `brass_adapter_male` forced rebuild | visual USD byte-identical; `brass_adapter_male.usd` byte-identical; `test_spacer.usd` differs only in its informational customData (`"mounts": {}`, added in the industrial work); committed files restored |
+| `build_cad_comparison.sh` (`--base-suites --preview`) | PASS: 76/76 targeted, 94/94 static + 39/39 dynamic on the derived scene, 43 protected files + parent unchanged; preview inspected |
+| Regression after the change | industrial 238/238, spacer 54/54, negative control PASS, `run_regression.sh` 94/94, 39/39, GUI PASS |
 
 ## What was run for the industrial brass-sorting scene (2026-10-27)
 

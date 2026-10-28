@@ -15,7 +15,7 @@ Validated state:
 **Agents start at [AGENTS.md](AGENTS.md).** Documentation: [architecture](docs/ARCHITECTURE.md) ·
 [installation](docs/INSTALLATION.md) · [add a new asset](docs/ADD_NEW_ASSET.md) · [asset formats](docs/ASSET_FORMATS.md) ·
 [physics & collision](docs/PHYSICS_AND_COLLISION.md) · [validation](docs/VALIDATION.md) · [portability & Git](docs/PORTABILITY.md) ·
-[agent handoff](docs/AGENT_HANDOFF.md).
+[agent handoff](docs/AGENT_HANDOFF.md) · [geometry backends](docs/GEOMETRY_BACKENDS.md).
 
 ## Setup
 
@@ -70,7 +70,11 @@ python3 scripts/assets/add_asset.py --spec config/assets/test_spacer.json --scen
 Full tutorial: [ADD_NEW_ASSET.md](docs/ADD_NEW_ASSET.md). Reproducible demo: `scripts/assets/run_demo.sh`.
 
 Geometry methods: `box`, `cylinder`, `tube`, `open_container` (crates and trays), `fitting` (turned parts with hex
-flats, visual threads and a stepped bore) and `label_plate`. Instances can stand on the tabletop or floor, rest
+flats, visual threads and a stepped bore), `label_plate` and `mesh_import` (STL / STEP). Each asset is built by a
+**geometry backend**: Blender (default), the optional FreeCAD parametric-CAD builder (STEP output, currently for
+`fitting`), or a CAD import. `geometry.backend: auto` chooses deterministically and records why; see
+[GEOMETRY_BACKENDS.md](docs/GEOMETRY_BACKENDS.md). `scripts/assets/build_cad_comparison.sh` compares the three routes for
+one brass adapter. Instances can stand on the tabletop or floor, rest
 inside another instance (`on_instance`, also lying down) or be attached to a mount point. They can be scattered
 with a seed.
 

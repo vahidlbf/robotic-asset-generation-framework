@@ -67,6 +67,14 @@ recorded, e.g. 7e-17 for the glass bottle.
   e.g. a 48-gon is 0.29 % smaller than a true circle. `validation.density_range_kg_m3` makes generation fail when a
   `mass_kg` implies an implausible density. The brass adapters (45 g and 75 g from the task) imply 8197 and
   8483 kg/m³ against a band of 8000–8800; the geometry was adjusted until both fell inside it.
+- **CAD routes:** mass = `mass_kg`, or `density_kg_m3` × the **exact solid volume** from FreeCAD. The COM and the
+  inertia tensor come from the exact solid (`Solid.MatrixOfInertia`, scaled by the density) and must agree with
+  the tessellated mesh integral within 1 % / 0.1 mm. `brass_adapter_male_cad` measured a 0.024 % deviation. Its
+  cosmetic threads keep the full major diameter, so it is heavier than the Blender variant: 50.25 g at
+  8470 kg/m³ against 45 g.
+- **Colliders do not depend on the backend:** CAD and Blender variants of a `fitting` use the same analytic
+  `fitting_sections` pieces. Imported meshes get `primitive` or `convex_hull`, which are solid, so an imported part's
+  bore is closed for physics.
 - **Turned parts with helical threads:** they are not exactly symmetric. The COM lies within 0.2 mm of the axis
   (measured ≤ 5.1 µm), and the off-diagonal inertia is below 1 % of the diagonal (measured ≤ 3.9e-4). That justifies
   `principalAxes = identity`.

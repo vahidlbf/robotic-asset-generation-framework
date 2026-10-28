@@ -244,6 +244,18 @@
         "settle_duration_s": {
           "type": "number",
           "exclusiveMinimum": 0
+        },
+        "compare_assets": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "description": "asset pairs that are variants of one part (e.g. Blender vs. FreeCAD build): the nominal envelopes and measured visual bounds must agree within the dimension tolerance; volume, mass and inertia differences are reported"
         }
       }
     }

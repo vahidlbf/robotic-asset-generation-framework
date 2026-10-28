@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "scene_id": "brass_cad_comparison",
+  "description": "CAD backend comparison on the unchanged waste-sorting workstation: Type A brass adapter from the Blender builder, the FreeCAD builder and a STEP import.",
+  "base_scene": "assets/scenes/waste_sorting_workstation.usd",
+  "environment_config": "config/waste_sorting_environment.json",
+  "output": "assets/scenes/derived/brass_cad_comparison.usda",
+  "instances_root": "/World/UserObjects",
+  "instances": [
+    {
+      "name": "AdapterBlender",
+      "asset": "brass_adapter_male",
+      "placement": {
+        "surface": "tabletop",
+        "xy": [
+          -0.55,
+          -0.12
+        ],
+        "yaw_deg": 90.0,
+        "pose": "lying",
+        "spin_deg": 30.0
+      }
+    },
+    {
+      "name": "AdapterFreeCAD",
+      "asset": "brass_adapter_male_cad",
+      "placement": {
+        "surface": "tabletop",
+        "xy": [
+          -0.55,
+          -0.02
+        ],
+        "yaw_deg": 90.0,
+        "pose": "lying",
+        "spin_deg": 30.0
+      }
+    },
+    {
+      "name": "AdapterStepImport",
+      "asset": "brass_adapter_male_step_import",
+      "placement": {
+        "surface": "tabletop",
+        "xy": [
+          -0.55,
+          0.09
+        ],
+        "yaw_deg": 0.0
+      }
+    }
+  ],
+  "preview_cameras": {
+    "cad_comparison": {
+      "position": [
+        -0.33,
+        -0.24,
+        0.92
+      ],
+      "target": [
+        -0.55,
+        -0.015,
+        0.765
+      ],
+      "focal_length": 30.0
+    }
+  },
+  "validation": {
+    "compare_assets": [
+      [
+        "brass_adapter_male",
+        "brass_adapter_male_cad"
+      ],
+      [
+        "brass_adapter_male_cad",
+        "brass_adapter_male_step_import"
+      ]
+    ],
+    "settle_duration_s": 3.0
+  }
+}

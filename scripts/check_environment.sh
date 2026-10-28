@@ -24,6 +24,19 @@ if [ -x "$ISAAC" ]; then
   IV=$([ -f "$VF" ] && head -1 "$VF" || echo "unknown version")
   case "$IV" in 6.2*) ok "Isaac Sim $IV ($ISAAC)";; *) warn "Isaac Sim $IV ($ISAAC) - tested with 6.2.0";; esac
 else bad "Isaac Sim python.sh not found at $ISAAC: set ISAACSIM_PYTHON or ISAACSIM_PATH (needed for scenes, validation, GUI)"; fi
+# FreeCAD is OPTIONAL (only the freecad / STEP-import backends need it). Discovery never starts the GUI.
+FC=$(python3 -c 'import sys; sys.path.insert(0, "scripts/assets"); import backends; print(backends.find_freecad() or "")')
+if [ -n "$FC" ]; then
+  T=$(mktemp -d)
+  printf 'import FreeCAD, os\nopen(os.environ["FC_OUT"], "w").write(".".join(FreeCAD.Version()[:3]))\n' > "$T/v.py"
+  CMD=$(python3 -c 'import sys; sys.path.insert(0, "scripts/assets"); import backends; print("\0".join(backends.freecad_command(sys.argv[1], sys.argv[2])))' "$FC" "$T/v.py" | tr '\0' '\n')
+  mapfile -t ARGV <<< "$CMD"
+  FC_OUT="$T/version" timeout 120 env -u PYTHONPATH -u PYTHONHOME "${ARGV[@]}" >/dev/null 2>&1
+  FV=$(cat "$T/version" 2>/dev/null); rm -rf "$T"
+  case "$FV" in 1.1*) ok "FreeCAD $FV ($(basename "$FC")) - optional CAD backend";;
+                "") warn "FreeCAD found ($(basename "$FC")) but its console mode did not run - CAD backend unavailable";;
+                *) warn "FreeCAD $FV ($(basename "$FC")) - tested with 1.1.4 (optional CAD backend)";; esac
+else warn "FreeCAD not found (optional): set FREECAD_EXECUTABLE to use the freecad / STEP-import backends"; fi
 if command -v nvidia-smi >/dev/null 2>&1; then
   nvidia-smi --query-gpu=index,name,memory.total,driver_version --format=csv,noheader 2>/dev/null | sed 's/^/  [ ok ] GPU /'
 else warn "nvidia-smi not found (Isaac Sim needs an NVIDIA RTX GPU; GPU memory sampling is skipped without it)"; fi

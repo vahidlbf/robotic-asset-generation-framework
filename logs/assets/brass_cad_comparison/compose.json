@@ -1,0 +1,88 @@
+{
+  "ok": true,
+  "scene_config": "config/scenes/brass_cad_comparison.json",
+  "output": "assets/scenes/derived/brass_cad_comparison.usda",
+  "bytes": 5272,
+  "base_scene": "assets/scenes/waste_sorting_workstation.usd",
+  "base_scene_sha256": "b7916b35ab719a18c9cf675faf372f00ec1d6cafd297c36d21b43388689443ff",
+  "sublayers": [
+    "../waste_sorting_workstation.usd"
+  ],
+  "instances": [
+    {
+      "name": "AdapterBlender",
+      "prim": "/World/UserObjects/AdapterBlender",
+      "asset": "brass_adapter_male",
+      "reference": "../../library/brass_adapter_male/brass_adapter_male.usd",
+      "position": [
+        -0.55,
+        -0.12,
+        0.76225
+      ],
+      "orientation_wxyz": [
+        0.35355339059327384,
+        -0.35355339059327373,
+        0.6123724356957945,
+        0.6123724356957946
+      ],
+      "yaw_deg": 179.99999999999997,
+      "surface": "tabletop",
+      "support": null,
+      "static_override": false,
+      "asset_spec_sha256": "02d9544cfe05e8a46bfdd0b6e48e9f047bc2ee03af2348b825071fcd904a0cce"
+    },
+    {
+      "name": "AdapterFreeCAD",
+      "prim": "/World/UserObjects/AdapterFreeCAD",
+      "asset": "brass_adapter_male_cad",
+      "reference": "../../library/brass_adapter_male_cad/brass_adapter_male_cad.usd",
+      "position": [
+        -0.55,
+        -0.02,
+        0.76225
+      ],
+      "orientation_wxyz": [
+        0.35355339059327384,
+        -0.35355339059327373,
+        0.6123724356957945,
+        0.6123724356957946
+      ],
+      "yaw_deg": 179.99999999999997,
+      "surface": "tabletop",
+      "support": null,
+      "static_override": false,
+      "asset_spec_sha256": "56508c8bb21eb994dfadcd91350bba5610d55da54339aaa6abb18fa896205d46"
+    },
+    {
+      "name": "AdapterStepImport",
+      "prim": "/World/UserObjects/AdapterStepImport",
+      "asset": "brass_adapter_male_step_import",
+      "reference": "../../library/brass_adapter_male_step_import/brass_adapter_male_step_import.usd",
+      "position": [
+        -0.55,
+        0.09,
+        0.7515
+      ],
+      "orientation_wxyz": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "yaw_deg": 0.0,
+      "surface": "tabletop",
+      "support": null,
+      "static_override": false,
+      "asset_spec_sha256": "8199bd212b7714c8539579be41bab0dd5667d2ad9bfb602af5541befd49d72f1"
+    }
+  ],
+  "written_instances": [
+    "AdapterBlender",
+    "AdapterFreeCAD",
+    "AdapterStepImport"
+  ],
+  "preview_cameras": [
+    "CadComparison"
+  ],
+  "deactivated_base_prims": []
+}

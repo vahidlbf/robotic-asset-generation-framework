@@ -4,7 +4,7 @@
 
 | Stage | Tools | GPU | Network | Output |
 |---|---|---|---|---|
-| 1. Generate assets | Blender 5.2 | no | no | `assets/workstation/*`, `assets/library/<id>/*` |
+| 1. Generate assets | Blender 5.2 (+ FreeCAD 1.1, optional, for the `freecad` backend and STEP imports) | no | no | `assets/workstation/*`, `assets/library/<id>/*` (+ `<id>.step`) |
 | 2a. Build the base scene | Isaac Sim 6.2 | needs the Isaac runtime (RTX GPU) | **yes** (Franka URL), unless a local asset root is set | `assets/scenes/waste_sorting_workstation.usd` |
 | 2b. Compose derived scenes | Blender **or** Isaac (`pxr` only) | no | no | `assets/scenes/derived/*.usda` |
 | 3. Open/run in Isaac Sim (GUI, previews) | Isaac Sim 6.2 | RTX GPU (+ display for GUI) | yes (robot) | — |
@@ -36,6 +36,7 @@ results should be unchanged.
 | `ISAACSIM_PYTHON` | `$ISAACSIM_PATH/python.sh`, else `~/isaacsim/python.sh` | `run_workflow.py`, `run_regression.sh`, `add_asset.py`, `negative_control.py` |
 | `ISAACSIM_PATH` | `~/isaacsim` | same (fallback) |
 | `BLENDER` | `blender` | `run_workflow.py`, `add_asset.py` |
+| `FREECAD_EXECUTABLE` | `freecadcmd` on PATH, else the newest `~/Applications/FreeCAD*.AppImage` | `backends.py` (`generate_asset.py`, `check_environment.sh`); optional |
 
 ## Tracked vs. generated files
 
@@ -108,6 +109,9 @@ None of the scripts or configs contain a hardcoded user path.
   - Lula from the deprecated `isaacsim.robot_motion.motion_generation`, which the IK checks use
 - **Robot asset and renderer:** the Franka asset path `Isaac/Robots/FrankaRobotics/FrankaPanda/franka.usd` with
   variants `Gripper=Default` and `Mesh=Performance`. The renderer setting is `RealTimePathTracing`.
+- **FreeCAD 1.1.4 (optional):** `Part` (makeCylinder/makeCone/makeChamfer/extrude/revolve/booleans,
+  `optimalBoundingBox`, `exportStep`), `MeshPart.meshFromShape`, `freecadcmd` console mode of the AppImage.
+  Other versions are untested: rerun `build_cad_comparison.sh` and compare `asset_info.json` → `cad`.
 - **Blender 5.2:** `bpy.ops.wm.usd_export` options, the Principled BSDF input names and the bundled `pxr`. The
   Smooth-by-Angle modifier is unavailable with `--factory-startup` and is silently skipped by `mesh_object`.
 - **Snap Blender:** it can't write to a redirected file descriptor, so the orchestrators pipe its output through Python.

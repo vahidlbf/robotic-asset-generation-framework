@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "asset_id": "brass_adapter_male_cad",
+  "category": "hardware/fitting/brass",
+  "description": "Type A brass adapter, CAD comparison variant: the same section parameters as brass_adapter_male, built as a parametric FreeCAD solid (exact bore, hex, chamfers, grooves; cosmetic threads) and exported as STEP.",
+  "source": "Representative envelope from the prompt (~45 mm long, ~26 mm max OD, 12-15 mm passage, ~45 g; a comparable commercial adapter is 43.5 mm / 44 g). Thread is a visual approximation (G1/2-like major diameter and pitch), not a reverse-engineered part. CAD variant: FreeCAD solid from the same parameters; threads are cosmetic (plain cylinder at the major diameter). Mass = exact CAD volume x 8470 kg/m3 (brass CW617N nominal density) instead of the 45 g target: the cosmetic threads keep the full major diameter, so the solid is ~8 % larger than the Blender variant.",
+  "geometry": {
+    "method": "fitting",
+    "backend": "auto",
+    "accuracy": "engineering",
+    "require_step": true,
+    "cad": {
+      "linear_deflection_mm": 0.01,
+      "angular_deflection_deg": 5.0
+    },
+    "segments": 48,
+    "outer": [
+      {
+        "type": "thread",
+        "length": 0.013,
+        "major_diameter": 0.02096,
+        "pitch": 0.001814,
+        "depth": 0.0011,
+        "chamfer_start": 0.001
+      },
+      {
+        "type": "cylinder",
+        "length": 0.002,
+        "diameter": 0.019
+      },
+      {
+        "type": "hex",
+        "length": 0.009,
+        "across_flats": 0.0215,
+        "chamfer": true
+      },
+      {
+        "type": "cylinder",
+        "length": 0.007,
+        "diameter": 0.0185,
+        "chamfer_start": 0.0005,
+        "grooves": [
+          {
+            "at": 0.0035,
+            "width": 0.0008,
+            "depth": 0.0004
+          }
+        ]
+      },
+      {
+        "type": "cone",
+        "length": 0.003,
+        "d0": 0.0185,
+        "d1": 0.017
+      },
+      {
+        "type": "cylinder",
+        "length": 0.011,
+        "diameter": 0.017,
+        "chamfer_end": 0.0008,
+        "grooves": [
+          {
+            "at": 0.005,
+            "width": 0.0009,
+            "depth": 0.0004
+          }
+        ]
+      }
+    ],
+    "bore": [
+      {
+        "type": "cylinder",
+        "length": 0.024,
+        "diameter": 0.016,
+        "chamfer_start": 0.0006
+      },
+      {
+        "type": "cone",
+        "length": 0.002,
+        "d0": 0.016,
+        "d1": 0.013
+      },
+      {
+        "type": "cylinder",
+        "length": 0.019,
+        "diameter": 0.013,
+        "chamfer_end": 0.0006
+      }
+    ]
+  },
+  "visual_material": {
+    "color": [
+      0.88,
+      0.69,
+      0.34
+    ],
+    "roughness": 0.32,
+    "metallic": 1.0
+  },
+  "collision": {
+    "representation": "fitting_sections",
+    "segments": 12,
+    "zones": [
+      [
+        0,
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        5
+      ]
+    ]
+  },
+  "physics": {
+    "body": "dynamic",
+    "density_kg_m3": 8470,
+    "material": {
+      "id": "brass",
+      "static_friction": 0.35,
+      "dynamic_friction": 0.3,
+      "restitution": 0.08
+    }
+  },
+  "validation": {
+    "dimension_tolerance_m": 0.0005,
+    "density_range_kg_m3": [
+      8000,
+      8800
+    ]
+  }
+}

@@ -16,9 +16,11 @@ write_asset), so library assets follow exactly the same conventions as the works
 
 import argparse
 import datetime as dt
+import json
 import math
 import os
 import shutil
+import subprocess
 import sys
 import traceback
 
@@ -26,6 +28,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 sys.path.insert(0, os.path.join(os.path.dirname(HERE), "workstation"))
 import asset_lib as al  # noqa: E402
+import backends  # noqa: E402
 import generate_assets as ga  # noqa: E402  (guarded: importing does not rebuild the workstation)
 
 import bmesh  # noqa: E402
@@ -417,6 +420,61 @@ def set_contact_offset(usd_path, offset):
     st.GetRootLayer().Save()
 
 
+def run_freecad(mode, spec_rel, out_dir, aid, source=None):
+    """Run freecad_build.py in FreeCAD's console interpreter; returns its result JSON (raises unless ok)."""
+    exe = backends.find_freecad()
+    if exe is None:
+        raise RuntimeError("FreeCAD not found (set FREECAD_EXECUTABLE)")
+    res = os.path.join(out_dir, "freecad_result.json")
+    log_rel = f"logs/assets/library/{aid}/freecad.log"
+    os.makedirs(os.path.dirname(al.abspath(log_rel)), exist_ok=True)
+    # Blender's interpreter environment must not leak into FreeCAD's Python
+    env = {k: v for k, v in os.environ.items() if k not in ("PYTHONPATH", "PYTHONHOME", "LD_LIBRARY_PATH", "LD_PRELOAD")}
+    env.update(FCB_MODE=mode, FCB_SPEC=al.abspath(spec_rel), FCB_OUT_DIR=out_dir, FCB_RESULT=res, **({"FCB_SOURCE": source} if source else {}))
+    cmd = backends.freecad_command(exe, os.path.join(HERE, "freecad_build.py"))
+    print(f"[asset] FreeCAD ({mode}): {os.path.basename(exe)} ... (log {log_rel})", flush=True)
+    with open(al.abspath(log_rel), "w") as log:
+        subprocess.run(cmd, env=env, stdout=log, stderr=subprocess.STDOUT, timeout=900, cwd=al.ROOT)
+    if not os.path.isfile(res):
+        raise RuntimeError(f"FreeCAD wrote no result; see {log_rel}")
+    with open(res) as f:
+        r = json.load(f)
+    os.remove(res)
+    failed = [k for k, c in r.get("checks", {}).items() if not c["passed"]]
+    if not r.get("ok"):
+        raise RuntimeError(f"FreeCAD {mode} failed: {r.get('error') or failed}; see {log_rel}")
+    print(f"[asset] FreeCAD {r['freecad_version']}: {len(r['checks'])} CAD checks passed; solid {r['solid']['volume_mm3']:.3f} mm3, "
+          f"{r['solid']['faces']} faces; {r['mesh']['facets']} facets", flush=True)
+    return r
+
+
+def import_mesh(path, scale, name, mat, recenter):
+    """Import an STL (FreeCAD tessellation or a user file) as the visual object: welded, optionally recentred to the
+    bottom centre, sharp edges above 30 deg."""
+    for o in bpy.context.scene.objects:
+        o.select_set(False)
+    bpy.ops.wm.stl_import(filepath=path, global_scale=scale)
+    ob = bpy.context.selected_objects[0]
+    ob.name = ob.data.name = name
+    bpy.context.view_layer.objects.active = ob
+    bpy.ops.object.transform_apply(location=True, rotation=True, scale=True)
+    bm = bmesh.new()
+    bm.from_mesh(ob.data)
+    bmesh.ops.remove_doubles(bm, verts=bm.verts, dist=1e-9)
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces)
+    if recenter:
+        xs, ys, zs = ([v.co[i] for v in bm.verts] for i in range(3))
+        bmesh.ops.translate(bm, verts=bm.verts, vec=(-(min(xs) + max(xs)) / 2, -(min(ys) + max(ys)) / 2, -min(zs)))
+    bm.to_mesh(ob.data)
+    bm.free()
+    ob.data.materials.clear()
+    ob.data.materials.append(mat)
+    for poly in ob.data.polygons:
+        poly.use_smooth = True
+    sharpen(ob, 30.0)
+    return ob
+
+
 def mesh_checks(objs, spec):
     non_manifold = boundary = 0
     for ob in objs:
@@ -431,6 +489,9 @@ def mesh_checks(objs, spec):
         v = fitting_volume(g)
         return {"non_manifold_edges": non_manifold, "boundary_edges": boundary, "analytic_volume_m3": v, "polygon_volume_m3": v,
                 "reference": "prismatoid integral of the ring polygons"}
+    if g["method"] == "mesh_import":
+        return {"non_manifold_edges": non_manifold, "boundary_edges": boundary, "analytic_volume_m3": None, "polygon_volume_m3": None,
+                "reference": "none for an STL source (a STEP source is checked against its exact solid volume)"}
     if g["method"] in ("open_container", "label_plate"):
         return {"non_manifold_edges": non_manifold, "boundary_edges": boundary, "analytic_volume_m3": None, "polygon_volume_m3": None,
                 "reference": "none (static visual mesh of several closed parts; volume not used)"}
@@ -481,7 +542,11 @@ def generate(spec_rel, force=False):
         print(f"[asset] {aid}: current (spec and files unchanged) - nothing to do; use --force to rebuild", flush=True)
         al.rebuild_registry()
         return True
-    print(f"[asset] {aid}: status={status} -> building", flush=True)
+    sel = backends.select_backend(spec)
+    if not sel["ok"]:
+        print(f"[asset] {aid}: backend selection FAILED: {sel['error']} (nothing written)", flush=True)
+        return False
+    print(f"[asset] {aid}: status={status} -> building with backend '{sel['backend']}' ({sel['reason']})", flush=True)
     paths = al.asset_paths(aid)
     final_dir = al.abspath(paths["dir"])
     tmp_dir = final_dir + ".tmp"
@@ -492,13 +557,32 @@ def generate(spec_rel, force=False):
 
     ga.clear_scene()
     mat = ga.material(f"{al.camel(aid)}Material", vm["color"], vm.get("roughness", 0.5), vm.get("metallic", 0.0), vm.get("opacity", 1.0))
-    objs = build_geometry(spec, mat, vm)
+    g, cad, source = spec["geometry"], None, None
+    if sel["backend"] == "blender":
+        objs = build_geometry(spec, mat, vm)
+    elif sel["backend"] == "freecad":  # parametric CAD solid -> STEP + tessellation -> Blender visual
+        cad = run_freecad("build", spec_rel, tmp_dir, aid)
+        objs = [import_mesh(os.path.join(tmp_dir, cad["stl"]), 0.001, al.camel(aid), mat, recenter=False)]
+    else:  # import: STEP through FreeCAD, STL directly
+        src = al.abspath(g["source"])
+        source = {"path": g["source"], "sha256": al.sha256_file(g["source"]), "units": g.get("source_units", "mm")}
+        stl = src
+        if src.lower().endswith((".step", ".stp")):
+            cad = run_freecad("import", spec_rel, tmp_dir, aid, source=src)
+            stl = os.path.join(tmp_dir, cad["stl"])
+            os.remove(os.path.join(tmp_dir, cad["step"]))  # FreeCAD's re-export; the source STEP stays the reference
+        objs = [import_mesh(stl, 0.001 if source["units"] == "mm" else 1.0, al.camel(aid), mat, recenter=g.get("recenter", True))]
+    for fn in [f for f in os.listdir(tmp_dir) if f.endswith(".stl")]:
+        os.remove(os.path.join(tmp_dir, fn))  # intermediate tessellation; the visual USD and the STEP are kept
     ob = objs[0]
     tris = ga.world_triangles(objs)
     unit = ga.mass_properties(tris, 1.0)
     volume = unit["volume_m3"]
     mesh = {"triangles": len(tris), "vertices": sum(len(o.data.vertices) for o in objs), "objects": len(objs), "volume_m3": volume,
             **mesh_checks(objs, spec)}
+    if cad:  # the exact solid is the volume reference of the CAD routes
+        mesh.update(analytic_volume_m3=cad["solid"]["volume_mm3"] * 1e-9, polygon_volume_m3=cad["solid"]["volume_mm3"] * 1e-9,
+                    reference="exact CAD solid volume (FreeCAD)")
     ref = mesh["polygon_volume_m3"]
     mesh["volume_vs_polygon_rel_error"] = abs(volume - ref) / ref if ref else None
     bmin, bmax = ga.bounds(objs)
@@ -508,11 +592,26 @@ def generate(spec_rel, force=False):
     dims_ok = all(abs(size[i] - (nb[1][i] - nb[0][i])) <= tol for i in range(3)) and abs(bmin[2]) <= 1e-9
 
     dynamic = None
+    cad_mass_check = None
     if ph["body"] == "dynamic":
-        mass = ph["mass_kg"] if "mass_kg" in ph else ph["density_kg_m3"] * volume
+        vol_src = cad["solid"]["volume_mm3"] * 1e-9 if cad else volume
+        mass = ph["mass_kg"] if "mass_kg" in ph else ph["density_kg_m3"] * vol_src
         mp = ga.mass_properties(tris, mass)
+        src_note = "mass_kg" if "mass_kg" in ph else ("density_kg_m3 x exact CAD volume" if cad else "density_kg_m3 x mesh volume")
+        if cad:  # exact solid properties (unit density, mm) scaled to the mass; cross-checked against the mesh integral
+            rho = mass / vol_src
+            I = [[rho * x * 1e-15 for x in row] for row in cad["solid"]["inertia_unit_density_mm5"]]
+            d = [I[i][i] for i in range(3)]
+            com = [c * 1e-3 for c in cad["solid"]["center_of_mass_mm"]]
+            off = max(abs(I[i][j]) for i in range(3) for j in range(3) if i != j) / max(d)
+            dev = max(abs(a - b) / b for a, b in zip(mp["diagonal_inertia"], d))
+            cad_mass_check = {"passed": dev < 0.01 and max(abs(a - b) for a, b in zip(mp["center_of_mass"], com)) < 1e-4,
+                              "inertia_rel_deviation_mesh_vs_cad": dev, "com_mesh_m": mp["center_of_mass"], "com_cad_m": com,
+                              "note": "USD gets the exact CAD values; the tessellated mesh must agree within 1 % / 0.1 mm"}
+            mp = {**mp, "volume_m3": vol_src, "density_kg_m3": rho, "center_of_mass": com, "inertia_tensor": I, "diagonal_inertia": d,
+                  "max_offdiag_ratio": off, "source": "exact CAD solid (FreeCAD)"}
         dynamic = {"mass": mass, **mp}
-        mass_props = {"mass_kg": mass, "mass_source": "mass_kg" if "mass_kg" in ph else "density_kg_m3 x mesh volume", **mp}
+        mass_props = {"mass_kg": mass, "mass_source": src_note, **mp}
     else:
         mass_props = None
 
@@ -531,7 +630,7 @@ def generate(spec_rel, force=False):
     closed_required = spec["geometry"]["method"] not in ("label_plate",)
     method = spec["geometry"]["method"]
     vol_err = mesh["volume_vs_polygon_rel_error"]
-    vol_tol = 2e-3 if method == "fitting" else 1e-5
+    vol_tol = 2e-3 if method == "fitting" or cad else 1e-5  # tessellated threads / CAD tessellation vs. exact solid
     checks = {"dimensions": {"passed": dims_ok, "measured_size_m": size, "nominal_size_m": al.nominal_size(spec), "tolerance_m": tol,
                              "bottom_z_m": bmin[2]},
               "closed_manifold_mesh": {"passed": (mesh["non_manifold_edges"] == 0 and mesh["boundary_edges"] == 0 and volume > 0)
@@ -546,17 +645,21 @@ def generate(spec_rel, force=False):
               "usd_asset": uc}
     if mass_props:
         com = mass_props["center_of_mass"]
-        sym = method != "fitting"
+        sym = method not in ("fitting", "mesh_import")
         rng = spec.get("validation", {}).get("density_range_kg_m3")
         checks["mass_properties"] = {"passed": mass_props["mass_kg"] > 0 and min(mass_props["diagonal_inertia"]) > 0
                                      and (abs(com[2] - al.nominal_size(spec)[2] / 2) < 1e-6 if sym else 0 < com[2] < al.nominal_size(spec)[2])
-                                     and max(abs(com[0]), abs(com[1])) < (1e-9 if sym else 2e-4)
+                                     and (method == "mesh_import" or max(abs(com[0]), abs(com[1])) < (1e-9 if sym else 2e-4))
                                      and mass_props["max_offdiag_ratio"] < 0.01
                                      and (rng is None or rng[0] <= mass_props["density_kg_m3"] <= rng[1]),
                                      "implied_density_kg_m3": mass_props["density_kg_m3"], "density_range_kg_m3": rng,
                                      "note": "symmetric solid: COM on the axis at half height" if sym else
                                              "turned part: COM within 0.2 mm of the axis (helical threads are not exactly symmetric), "
                                              "inside the length; off-diagonal inertia < 1 % (principal axes = asset axes)"}
+    if cad_mass_check:
+        checks["cad_mesh_mass_consistency"] = cad_mass_check
+    if cad:
+        checks["cad_solid"] = {"passed": cad["ok"], "freecad_checks": {k: v["passed"] for k, v in cad["checks"].items()}}
     ok = all(c["passed"] for c in checks.values())
 
     # move into place (only this asset's directory is replaced)
@@ -564,7 +667,7 @@ def generate(spec_rel, force=False):
     for fn in os.listdir(tmp_dir):
         os.replace(os.path.join(tmp_dir, fn), os.path.join(final_dir, fn))
     shutil.rmtree(tmp_dir, ignore_errors=True)
-    files = [os.path.basename(paths["usd"]), os.path.basename(paths["visual"])]
+    files = [os.path.basename(paths["usd"]), os.path.basename(paths["visual"])] + ([cad["step"]] if cad and sel["backend"] == "freecad" else [])
     info = {"asset_id": aid, "schema_version": 1, "ok": ok, "spec_file": al.relpath(al.abspath(spec_rel)),
             "spec_sha256": al.canonical_sha256(spec), "spec": spec, "resolved_physics_material": pm,
             "generator": "scripts/assets/generate_asset.py", "blender_version": bpy.app.version_string,
@@ -574,7 +677,9 @@ def generate(spec_rel, force=False):
             "bounds_visual_m": [bmin, bmax], "nominal_bounds_m": nb, "mesh": mesh, "mass_properties": mass_props,
             "colliders": [c["name"] for c in colliders], "collider_representation": spec["collision"]["representation"],
             "mounts": {k: [list(v[0]), v[1]] for k, v in al.mount_frames(spec).items()},
-            "checks": checks}
+            "geometry_backend": sel, "cad": cad and {k: cad[k] for k in ("mode", "freecad_version", "freecad_build", "python", "units",
+                                                                        "step", "solid", "mesh", "checks", "features") if k in cad},
+            "import_source": source, "checks": checks}
     al.write_json(paths["info"], info)
     reg = al.rebuild_registry()
     for k, c in checks.items():

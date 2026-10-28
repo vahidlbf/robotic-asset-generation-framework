@@ -14,6 +14,7 @@ changed.
 | GUI physics tooling | PASS (base and derived scenes) | `open_scene.py --self-test` |
 | Motion home → PET pre-grasp → home | FULL SUCCESS (rerun 2026-10-27) | `logs/motion_planning/planning_report.md` |
 | Incremental assets | working; demo asset `test_spacer`, scene `workstation_test_spacer` (54/54 with the current validator) | `logs/assets/workstation_test_spacer/add_asset_report.md` |
+| Geometry backends | Blender (default) / FreeCAD / import; `brass_adapter_male_cad` (FreeCAD, STEP) and `brass_adapter_male_step_import`; scene `brass_cad_comparison` 76/76 + 94/94 + 39/39 | `docs/GEOMETRY_BACKENDS.md`, `logs/assets/brass_cad_comparison/` |
 | Industrial brass sorting | 6 library assets, scene `industrial_brass_sorting` (12 instances); 238/238 targeted checks, GUI self-test PASS, previews inspected; top-down grasps 0/7 feasible (hand vs. 0.10 m tray walls / neighbours) | `logs/assets/industrial_brass_sorting/experiment_report.md`, `reachability.md` |
 
 ## Entry points
@@ -55,6 +56,13 @@ scripts/motion_planning/run_regression.sh                     # original worksta
 6. Report the numbers, failures and untested parts. Commit and push only when the user asks; never force-push.
 
 ## Known issues
+
+- **FreeCAD backend (optional):**
+  - builders exist for `fitting` only;
+  - threads are cosmetic (plain cylinders), so CAD parts are heavier than Blender parts;
+  - STEP imports get solid colliders;
+  - `<AppImage> --version` opens the FreeCAD GUI, so never use it for detection;
+  - tested only with FreeCAD 1.1.4. See `docs/GEOMETRY_BACKENDS.md`.
 
 - **Asset status covers the spec only:** status is `current` as long as the spec hash and files match. A change to
   the generator code is not detected, so rebuild the affected assets with `generate_asset.py --force`, as was done

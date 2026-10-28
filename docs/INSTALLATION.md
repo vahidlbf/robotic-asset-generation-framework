@@ -23,6 +23,7 @@ not exist in a clone. Nothing uses them.
 | OS | Ubuntu 22.04.5 (Linux 6.8) | everything (other Linux distributions are untested) |
 | System Python | 3.10, **standard library only** | orchestration (`run_workflow.py`, `add_asset.py`), `asset_lib.py`, `check_environment.sh` |
 | Blender | 5.2.2 LTS (snap, `/snap/bin/blender`) | asset geometry + asset USD; Isaac-free scene composition |
+| FreeCAD (**optional**) | 1.1.4 AppImage (`FreeCAD_1.1.4-Linux-x86_64-py311.AppImage`, Python 3.11) | only the `freecad` geometry backend and STEP imports ([GEOMETRY_BACKENDS.md](GEOMETRY_BACKENDS.md)) |
 | NVIDIA Isaac Sim | 6.2.0 (`6.2.0-rc.14+release.52805`), standalone install with `python.sh` | scene build, validation, physics, previews, GUI, motion planning |
 | GPU / driver | 1 × RTX A2000 12 GB, driver 595.99 | Isaac Sim (RTX rendering); physics runs on the CPU (`gpu_dynamics: false`) |
 | Network | access to `omniverse-content-production.s3-us-west-2.amazonaws.com` | the Franka robot asset (unless a local Isaac asset root is configured) |
@@ -49,7 +50,12 @@ not exist in a clone. Nothing uses them.
 ```bash
 export ISAACSIM_PYTHON=/path/to/isaacsim/python.sh   # or: export ISAACSIM_PATH=/path/to/isaacsim
 export BLENDER=/path/to/blender                      # default: "blender" on PATH
+export FREECAD_EXECUTABLE=/path/to/FreeCAD.AppImage  # optional; default: freecadcmd on PATH, else ~/Applications/FreeCAD*.AppImage
 ```
+FreeCAD is only needed for assets whose backend resolves to `freecad` or that import a STEP file. Never run
+`<FreeCAD AppImage> --version`: it starts the GUI. `scripts/check_environment.sh` reports the version through
+`freecadcmd`. Without FreeCAD, every Blender-route asset works unchanged, and a spec that needs FreeCAD fails its
+backend selection with a clear message. Nothing is silently replaced.
 - **Resolution order** (`scripts/assets/asset_lib.py:isaac_python`, `run_workflow.py`, `run_regression.sh`,
   `check_environment.sh`): `$ISAACSIM_PYTHON` → `$ISAACSIM_PATH/python.sh` → `~/isaacsim/python.sh`. Script
   docstrings write `"$ISAACSIM_PYTHON"`.
@@ -71,6 +77,8 @@ warnings. Expected output on the tested machine: `environment check: OK`.
 |---|---|---|
 | Spec / scene / placement unit tests (python3 only) | `python3 scripts/assets/asset_lib.py selftest` | nothing |
 | Check one spec | `python3 scripts/assets/asset_lib.py validate-spec config/assets/brass_adapter_male.json` | nothing |
+| Which backend would build a spec (no build) | `python3 scripts/assets/backends.py select config/assets/brass_adapter_male_cad.json` | nothing |
+| CAD backend comparison scene (FreeCAD needed) | `scripts/assets/build_cad_comparison.sh` | the two CAD variants (if not current), `brass_cad_comparison` scene, `logs/assets/brass_cad_comparison/` |
 | Generate one library asset (skipped when current) | `"$BLENDER" -b --factory-startup --python-exit-code 1 --python scripts/assets/generate_asset.py -- --spec config/assets/brass_adapter_male.json` | `assets/library/<id>/` only if not current |
 | Rebuild one asset | the same with `--force` | that asset's files (+ `registry.json`) |
 | Incremental demo (spacer) | `scripts/assets/run_demo.sh` | `test_spacer` files, its scene config/layer, `logs/assets/` |

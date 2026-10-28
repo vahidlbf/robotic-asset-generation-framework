@@ -41,6 +41,14 @@ geometry `method` is one of
 | `open_container` | `size`, `wall_thickness`, `floor_thickness` | `draft_deg`, `corner_radius`, `corner_segments`, `rim`, `foot`, `band`, `ribs`, `handles`, `label_holder` | `container_walls` (floor box + 4 convex walls, open top) |
 | `fitting` | `outer` (sections), `bore` (sections) | `segments` (multiple of 12) | `fitting_sections` (`zones`, `segments`; bore stays open) |
 | `label_plate` | `size`, `text` | `text_color`, `text_height`, `text_relief`, `bevel` | `none` (visual only, static) |
+| `mesh_import` | `source` (STL / STEP), `size` (expected envelope) | `source_units`, `recenter` | `primitive`, `convex_hull` (solid) |
+
+**Geometry backend** (`geometry.backend`; absent = `blender`): `auto` picks FreeCAD for `fitting` when
+`accuracy: engineering` or `require_step: true` and FreeCAD is installed, picks `import` for `mesh_import`, and
+otherwise picks Blender. It records the rule and reason in `asset_info.json`. Check it before building with
+`python3 scripts/assets/backends.py select <spec>`. Example: `config/assets/brass_adapter_male_cad.json` (FreeCAD,
+STEP) and `config/assets/brass_adapter_male_step_import.json` (STEP import). Details and limits:
+[GEOMETRY_BACKENDS.md](GEOMETRY_BACKENDS.md).
 
 `fitting` sections are `cylinder` (`diameter`, `chamfer_start/end`, `grooves`), `cone` (`d0`, `d1`), `hex`
 (`across_flats`, `chamfer`) and `thread` (outer: `major_diameter`, bore: `minor_diameter`; `pitch`, `depth`; a visual

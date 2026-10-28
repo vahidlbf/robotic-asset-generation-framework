@@ -502,6 +502,22 @@ def scene_checks(stage, scene):
                   "volume": abs(va - vb) / max(va, vb) > 0.1, "section_layout": sa != sb}
         check("scene", f"distinct_geometry_{a}_vs_{b}", all(differ.values()), criteria=differ, size_m=[size_a, size_b],
               volume_m3=[va, vb], sections=[sa, sb], triangles=[ia["mesh"]["triangles"], ib["mesh"]["triangles"]])
+    for a, b in v.get("compare_assets", []):
+        ia, ib = al.asset_info(a), al.asset_info(b)
+        tol = max(ia["spec"].get("validation", {}).get("dimension_tolerance_m", al.DEFAULT_TOL),
+                  ib["spec"].get("validation", {}).get("dimension_tolerance_m", al.DEFAULT_TOL))
+        na, nb = np.array(ia["nominal_bounds_m"]), np.array(ib["nominal_bounds_m"])
+        ba, bb = np.array(ia["bounds_visual_m"]), np.array(ib["bounds_visual_m"])
+        ma, mb = ia.get("mass_properties") or {}, ib.get("mass_properties") or {}
+        rel = lambda x, y: (y - x) / x if x else None
+        check("scene", f"same_envelope_{a}_vs_{b}", np.abs(na - nb).max() <= tol and np.abs(ba - bb).max() <= tol,
+              nominal_max_diff_m=float(np.abs(na - nb).max()), measured_max_diff_m=float(np.abs(ba - bb).max()), tolerance_m=tol,
+              backends=[(ia.get("geometry_backend") or {}).get("backend", "blender"), (ib.get("geometry_backend") or {}).get("backend", "blender")],
+              volume_m3=[ia["mesh"]["volume_m3"], ib["mesh"]["volume_m3"]], volume_rel_diff=rel(ia["mesh"]["volume_m3"], ib["mesh"]["volume_m3"]),
+              mass_kg=[ma.get("mass_kg"), mb.get("mass_kg")], mass_rel_diff=rel(ma.get("mass_kg"), mb.get("mass_kg")) if ma and mb else None,
+              inertia_rel_diff=[rel(x, y) for x, y in zip(ma.get("diagonal_inertia", []), mb.get("diagonal_inertia", []))],
+              triangles=[ia["mesh"]["triangles"], ib["mesh"]["triangles"]],
+              note="variants of one part: the envelope must match; volume / mass / inertia differences are reported, not judged")
     for sup, n in v.get("rigid_bodies_on", {}).items():
         bodies = []
         for i in scene["instances"]:
@@ -701,6 +717,16 @@ def physics_checks(scene, env):
                       and L[:, 2].max() < H, max_wall_intrusion_mm=round(wall * 1000, 3), floor_penetration_mm=round(floor_pen * 1000, 4),
                       top_below_rim=bool(L[:, 2].max() < H),
                       note="final collider vertices vs. the container's inner wall planes and floor (negative = inside / above)")
+                check(g, "orientation_stable", info["max_rotation_from_authored_deg"] <= v["settle_max_tilt_deg"],
+                      max_rotation_from_authored_deg=round(info["max_rotation_from_authored_deg"], 4))
+            elif pl.get("pose") == "lying":  # lying on the tabletop: lowest collider vertex, rotation from the authored pose
+                Rf, pf = rot(R[-1][2]), P[-1]
+                zmin = float(min((Rf @ np.array(q) + pf)[2] for pc in al.collider_pieces(specs[inst["asset"]]) for q in pc["points"]))
+                info.update(final_lowest_collider_z_m=zmin, final_bottom_gap_m=zmin - top_z)
+                check(g, "settled_on_tabletop", abs(info["final_bottom_gap_m"]) <= v["penetration_tolerance_m"]
+                      and abs(dz + env["objects"]["clearance"]) <= v["settle_max_height_change_m"],
+                      final_bottom_gap_mm=round(info["final_bottom_gap_m"] * 1000, 4), height_change_from_authored_mm=round(dz * 1000, 4),
+                      expected_drop_mm=env["objects"]["clearance"] * 1000, pose="lying")
                 check(g, "orientation_stable", info["max_rotation_from_authored_deg"] <= v["settle_max_tilt_deg"],
                       max_rotation_from_authored_deg=round(info["max_rotation_from_authored_deg"], 4))
             else:

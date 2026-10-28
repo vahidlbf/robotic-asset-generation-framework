@@ -17,6 +17,7 @@ bins, a glass crate on a cabinet platform, and a library of add-on assets placed
 | Robot-aware sorting-zone layout (Lula IK + endpoint collision clearance) | static `layout.*` / `reachability.*` checks |
 | First robot motion home → PET pre-grasp → home (cuMotion, PhysX) | `logs/motion_planning/planning_report.md`: FULL SUCCESS |
 | Incremental assets: spec → one asset → derived scene → targeted validation | `logs/assets/workstation_test_spacer/add_asset_report.md`: PASS (53/53 targeted at the time, 54/54 with the current validator; 94/94 + 39/39 on the derived scene) |
+| Geometry backends: Blender (default) / optional FreeCAD parametric CAD (STEP) / STL-STEP import, deterministic `auto` selection | `docs/GEOMETRY_BACKENDS.md`; `brass_cad_comparison`: 76/76 targeted + 94/94 + 39/39 on the derived scene |
 | Industrial brass-sorting scene (crate, tray, 2 brass fittings, labels; 12 instances) | `logs/assets/industrial_brass_sorting/experiment_report.md`: 238/238 targeted checks, GUI self-test PASS, previews inspected; **top-down grasps 0/7 feasible** (geometric reachability) |
 
 Not implemented / not validated: grasping, pick-and-place, perception, ROS 2 / MoveIt 2, continuous (swept)
@@ -26,6 +27,7 @@ collision checking, deformable PET/paper, measured friction values. Known issues
 
 ```
 config/*.json ──► Blender (generate_assets.py | assets/generate_asset.py) ──► assets/workstation/* | assets/library/<id>/*
+                   └ library assets: backends.select_backend → Blender builder | FreeCAD (freecad_build.py → STEP) | STL/STEP import
                                                                               │ relative USD references
 config/waste_sorting_environment.json ──► Isaac (build_scene.py) ──────────► assets/scenes/waste_sorting_workstation.usd  (base, validated)
 config/scenes/<id>.json ──► compose_scene.py (any pxr: Blender or Isaac) ───► assets/scenes/derived/<id>.usda  (sublayers the base)
@@ -33,6 +35,7 @@ validation: validate_scene.py, run_physics_test.py, open_scene.py --self-test, v
 ```
 Details: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md). Formats: [docs/ASSET_FORMATS.md](docs/ASSET_FORMATS.md).
 Physics: [docs/PHYSICS_AND_COLLISION.md](docs/PHYSICS_AND_COLLISION.md). Tests: [docs/VALIDATION.md](docs/VALIDATION.md).
+Backends: [docs/GEOMETRY_BACKENDS.md](docs/GEOMETRY_BACKENDS.md).
 
 ## Directory map
 
@@ -59,6 +62,7 @@ Set the tool locations once ([docs/INSTALLATION.md](docs/INSTALLATION.md)); defa
 ```bash
 export ISAACSIM_PYTHON=~/isaacsim/python.sh     # or ISAACSIM_PATH=<isaac sim dir>
 export BLENDER=blender                          # Blender 5.2 executable
+export FREECAD_EXECUTABLE=/path/to/FreeCAD.AppImage   # OPTIONAL (freecad backend / STEP import); never run it with --version (opens the GUI)
 ```
 | Task | Command | Needs |
 |---|---|---|
@@ -75,6 +79,8 @@ export BLENDER=blender                          # Blender 5.2 executable
 | Add several assets at once | `python3 scripts/assets/add_asset.py --spec <a>.json --spec <b>.json … --scene config/scenes/<scene>.json [--preview]` | Blender, Isaac |
 | Edit instances | `python3 scripts/assets/asset_lib.py add-instance\|move-instance\|remove-instance\|scatter\|deactivate-base-prim\|set-preview-camera\|set-validation config/scenes/<scene>.json …` | python3 only |
 | Geometric reachability (IK + endpoint clearance) | `"$ISAACSIM_PYTHON" scripts/assets/reachability_check.py --scene <scene>.json --pick-support <tray> --drop <prefix>=<container> …` | Isaac |
+| Which geometry backend a spec gets (no build) | `python3 scripts/assets/backends.py select config/assets/<id>.json` (`tools` lists detected tools) | python3 |
+| CAD backend comparison (Blender vs FreeCAD vs STEP import) | `scripts/assets/build_cad_comparison.sh` | Blender, FreeCAD, Isaac |
 | Full incremental demo | `scripts/assets/run_demo.sh` | Blender, Isaac |
 | Industrial brass-sorting scene | `scripts/assets/build_industrial_scene.sh`; open: `"$ISAACSIM_PYTHON" scripts/workstation/open_scene.py --scene assets/scenes/derived/industrial_brass_sorting.usda` | Blender, Isaac |
 
@@ -106,6 +112,11 @@ Never run Omniverse/pxr code with system `python3` (no `pxr`, no `numpy` there);
    shape needs a builder in `generate_asset.py:build_geometry`, the parameters in `asset_lib.METHOD_PARAMS`, the
    schema enum, `nominal_size` / `spec_errors` / `collider_pieces` and `mesh_checks` support.
    Generator code changes do not mark assets stale (only spec changes do): rebuild affected assets with `--force`.
+   **Backend:** leave `geometry.backend` out (= Blender, the validated default) unless the task needs CAD. Use
+   `backend: auto` + `accuracy: engineering` / `require_step: true` for a STEP-backed part. FreeCAD builders
+   exist only for `fitting`: do not claim CAD for other methods, and add a builder instead
+   ([docs/GEOMETRY_BACKENDS.md](docs/GEOMETRY_BACKENDS.md#adding-a-freecad-builder)). Use `mesh_import` for a
+   user-supplied STL / STEP.
 3. Create/edit the scene config with `asset_lib.py new-scene / add-instance / scatter` (the collider-based placement
    pre-check runs; parts can rest `on_instance` of a container, labels are `attached` to mount points).
 4. `python3 scripts/assets/add_asset.py --spec … --scene … --base-suites --preview` → read

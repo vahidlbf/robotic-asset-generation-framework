@@ -1,0 +1,479 @@
+{
+  "passed": true,
+  "generated": "2026-10-28T18:20:53+01:00",
+  "spec": [
+    "config/assets/brass_adapter_male.json",
+    "config/assets/brass_adapter_male_cad.json",
+    "config/assets/brass_adapter_male_step_import.json"
+  ],
+  "asset_id": "brass_adapter_male+brass_adapter_male_cad+brass_adapter_male_step_import",
+  "asset_ids": [
+    "brass_adapter_male",
+    "brass_adapter_male_cad",
+    "brass_adapter_male_step_import"
+  ],
+  "scene_config": "config/scenes/brass_cad_comparison.json",
+  "derived_scene": "assets/scenes/derived/brass_cad_comparison.usda",
+  "asset_status_before": {
+    "brass_adapter_male": "current",
+    "brass_adapter_male_cad": "current",
+    "brass_adapter_male_step_import": "current"
+  },
+  "asset_status_after": {
+    "brass_adapter_male": "current",
+    "brass_adapter_male_cad": "current",
+    "brass_adapter_male_step_import": "current"
+  },
+  "asset_rebuilt": {
+    "brass_adapter_male": false,
+    "brass_adapter_male_cad": false,
+    "brass_adapter_male_step_import": false
+  },
+  "stages": [
+    {
+      "stage": "generate_asset (brass_adapter_male)",
+      "command": "blender -b --factory-startup --python-exit-code 1 --python scripts/assets/generate_asset.py -- --spec config/assets/brass_adapter_male.json",
+      "exit_code": 0,
+      "seconds": 1.3,
+      "log": "logs/assets/brass_cad_comparison/generate_brass_adapter_male.log"
+    },
+    {
+      "stage": "generate_asset (brass_adapter_male_cad)",
+      "command": "blender -b --factory-startup --python-exit-code 1 --python scripts/assets/generate_asset.py -- --spec config/assets/brass_adapter_male_cad.json",
+      "exit_code": 0,
+      "seconds": 1.3,
+      "log": "logs/assets/brass_cad_comparison/generate_brass_adapter_male_cad.log"
+    },
+    {
+      "stage": "generate_asset (brass_adapter_male_step_import)",
+      "command": "blender -b --factory-startup --python-exit-code 1 --python scripts/assets/generate_asset.py -- --spec config/assets/brass_adapter_male_step_import.json",
+      "exit_code": 0,
+      "seconds": 1.3,
+      "log": "logs/assets/brass_cad_comparison/generate_brass_adapter_male_step_import.log"
+    },
+    {
+      "stage": "compose_scene",
+      "command": "blender -b --factory-startup --python-exit-code 1 --python scripts/assets/compose_scene.py -- --scene config/scenes/brass_cad_comparison.json",
+      "exit_code": 0,
+      "seconds": 1.3,
+      "log": "logs/assets/brass_cad_comparison/compose.log"
+    },
+    {
+      "stage": "validate_asset_scene",
+      "command": "/home/mm42/isaacsim/python.sh scripts/assets/validate_asset_scene.py --scene config/scenes/brass_cad_comparison.json",
+      "exit_code": 0,
+      "seconds": 13.7,
+      "log": "logs/assets/brass_cad_comparison/validate.log"
+    },
+    {
+      "stage": "base suite: validate_scene",
+      "command": "/home/mm42/isaacsim/python.sh scripts/workstation/validate_scene.py --config logs/assets/brass_cad_comparison/base_suites/environment_config.json",
+      "exit_code": 0,
+      "seconds": 31.2,
+      "log": "logs/assets/brass_cad_comparison/base_suites/validate_scene.log"
+    },
+    {
+      "stage": "base suite: run_physics_test",
+      "command": "/home/mm42/isaacsim/python.sh scripts/workstation/run_physics_test.py --config logs/assets/brass_cad_comparison/base_suites/environment_config.json",
+      "exit_code": 0,
+      "seconds": 17.3,
+      "log": "logs/assets/brass_cad_comparison/base_suites/run_physics_test.log"
+    },
+    {
+      "stage": "preview",
+      "command": "/home/mm42/isaacsim/python.sh scripts/workstation/render_previews.py --config logs/assets/brass_cad_comparison/base_suites/environment_config.json --cameras cad_comparison main",
+      "exit_code": 0,
+      "seconds": 16.4,
+      "log": "logs/assets/brass_cad_comparison/base_suites/render.log"
+    }
+  ],
+  "asset_info": {
+    "brass_adapter_male": {
+      "file_sha256": {
+        "brass_adapter_male.usd": "47cb105b95afa452813892a0253ece7a6593aa89218a00a655d0d5427a07bd07",
+        "brass_adapter_male_visual.usd": "8f77456cb22b3a2391d86202e3b2c23929fa6046eedd80592cad8e193036e0df"
+      },
+      "mass_properties": {
+        "mass_kg": 0.045,
+        "mass_source": "mass_kg",
+        "volume_m3": 5.490266311739419e-06,
+        "density_kg_m3": 8196.323719995135,
+        "center_of_mass": [
+          -2.121629102465417e-06,
+          4.704106645222134e-06,
+          0.02174335174024127
+        ],
+        "inertia_tensor": [
+          [
+            7.975401086671773e-06,
+            -4.216985596963279e-11,
+            2.3264369867509538e-09
+          ],
+          [
+            -4.216985596961953e-11,
+            7.975947903175224e-06,
+            1.9669377164971854e-09
+          ],
+          [
+            2.3264369867508264e-09,
+            1.96693771649718e-09,
+            3.4857567727468595e-06
+          ]
+        ],
+        "diagonal_inertia": [
+          7.975401086671773e-06,
+          7.975947903175224e-06,
+          3.4857567727468595e-06
+        ],
+        "max_offdiag_ratio": 0.0002916815675068288
+      },
+      "bounds_visual_m": [
+        [
+          -0.012413030490279198,
+          -0.01075000036507845,
+          0.0
+        ],
+        [
+          0.012413030490279198,
+          0.01075000036507845,
+          0.04500000178813934
+        ]
+      ],
+      "colliders": [
+        "Zone0_00",
+        "Zone0_01",
+        "Zone0_02",
+        "Zone0_03",
+        "Zone0_04",
+        "Zone0_05",
+        "Zone0_06",
+        "Zone0_07",
+        "Zone0_08",
+        "Zone0_09",
+        "Zone0_10",
+        "Zone0_11",
+        "Zone1_00",
+        "Zone1_01",
+        "Zone1_02",
+        "Zone1_03",
+        "Zone1_04",
+        "Zone1_05",
+        "Zone2_00",
+        "Zone2_01",
+        "Zone2_02",
+        "Zone2_03",
+        "Zone2_04",
+        "Zone2_05",
+        "Zone2_06",
+        "Zone2_07",
+        "Zone2_08",
+        "Zone2_09",
+        "Zone2_10",
+        "Zone2_11",
+        "Zone3_00",
+        "Zone3_01",
+        "Zone3_02",
+        "Zone3_03",
+        "Zone3_04",
+        "Zone3_05",
+        "Zone3_06",
+        "Zone3_07",
+        "Zone3_08",
+        "Zone3_09",
+        "Zone3_10",
+        "Zone3_11"
+      ],
+      "generated_utc": "2026-10-27T18:00:01+00:00"
+    },
+    "brass_adapter_male_cad": {
+      "file_sha256": {
+        "brass_adapter_male_cad.usd": "49fbceb0d4027633757e77c92620fd9c3bdd4232cb9ecb874126e86f986cc32d",
+        "brass_adapter_male_cad_visual.usd": "9820c8a1c8ab2d239069768923a71f40d9aabb39b6e242ee82de3a8860131d62",
+        "brass_adapter_male_cad.step": "51d4cde54919c6a3277d304f73b82c7991a1f96100a29114830d9b5c07ed407f"
+      },
+      "mass_properties": {
+        "mass_kg": 0.05024969607292468,
+        "mass_source": "density_kg_m3 x exact CAD volume",
+        "volume_m3": 5.932667777204803e-06,
+        "density_kg_m3": 8470.0,
+        "center_of_mass": [
+          -2.7877724782032543e-12,
+          -9.197902911046e-18,
+          0.020656040093552236
+        ],
+        "inertia_tensor": [
+          [
+            9.259882983411994e-06,
+            8.095739789438396e-22,
+            -2.3276428354308033e-16
+          ],
+          [
+            8.095739789438396e-22,
+            9.259882982378007e-06,
+            -8.592484861434035e-22
+          ],
+          [
+            -2.3276428354308033e-16,
+            -8.592484861434035e-22,
+            3.98854084136998e-06
+          ]
+        ],
+        "diagonal_inertia": [
+          9.259882983411994e-06,
+          9.259882982378007e-06,
+          3.98854084136998e-06
+        ],
+        "max_offdiag_ratio": 2.5136849348965913e-11,
+        "source": "exact CAD solid (FreeCAD)"
+      },
+      "bounds_visual_m": [
+        [
+          -0.012413031421601772,
+          -0.01075000036507845,
+          0.0
+        ],
+        [
+          0.012413031421601772,
+          0.01075000036507845,
+          0.04500000178813934
+        ]
+      ],
+      "colliders": [
+        "Zone0_00",
+        "Zone0_01",
+        "Zone0_02",
+        "Zone0_03",
+        "Zone0_04",
+        "Zone0_05",
+        "Zone0_06",
+        "Zone0_07",
+        "Zone0_08",
+        "Zone0_09",
+        "Zone0_10",
+        "Zone0_11",
+        "Zone1_00",
+        "Zone1_01",
+        "Zone1_02",
+        "Zone1_03",
+        "Zone1_04",
+        "Zone1_05",
+        "Zone2_00",
+        "Zone2_01",
+        "Zone2_02",
+        "Zone2_03",
+        "Zone2_04",
+        "Zone2_05",
+        "Zone2_06",
+        "Zone2_07",
+        "Zone2_08",
+        "Zone2_09",
+        "Zone2_10",
+        "Zone2_11",
+        "Zone3_00",
+        "Zone3_01",
+        "Zone3_02",
+        "Zone3_03",
+        "Zone3_04",
+        "Zone3_05",
+        "Zone3_06",
+        "Zone3_07",
+        "Zone3_08",
+        "Zone3_09",
+        "Zone3_10",
+        "Zone3_11"
+      ],
+      "generated_utc": "2026-10-28T17:10:50+00:00"
+    },
+    "brass_adapter_male_step_import": {
+      "file_sha256": {
+        "brass_adapter_male_step_import.usd": "17a23808b76727b11f1b124e292fa2f2840da8a540ff3c2c6ef59d752f1d56df",
+        "brass_adapter_male_step_import_visual.usd": "ab47bfe0bee48643b8e852303052b9f16696625700f0b6f1f8f58f8c3281d398"
+      },
+      "mass_properties": {
+        "mass_kg": 0.050249695688834445,
+        "mass_source": "density_kg_m3 x exact CAD volume",
+        "volume_m3": 5.932667731857667e-06,
+        "density_kg_m3": 8470.0,
+        "center_of_mass": [
+          -1.3693972091325075e-12,
+          2.8577627947379587e-16,
+          0.020656040104108684
+        ],
+        "inertia_tensor": [
+          [
+            9.259882965417526e-06,
+            2.479138509927405e-19,
+            -1.381045069476384e-16
+          ],
+          [
+            2.479138509927405e-19,
+            9.259882965243591e-06,
+            4.516437190557423e-21
+          ],
+          [
+            -1.381045069476384e-16,
+            4.516437190557423e-21,
+            3.9885408156182675e-06
+          ]
+        ],
+        "diagonal_inertia": [
+          9.259882965417526e-06,
+          9.259882965243591e-06,
+          3.9885408156182675e-06
+        ],
+        "max_offdiag_ratio": 1.491428212034765e-11,
+        "source": "exact CAD solid (FreeCAD)"
+      },
+      "bounds_visual_m": [
+        [
+          -0.012413031421601772,
+          -0.01075000036507845,
+          0.0
+        ],
+        [
+          0.012413031421601772,
+          0.01075000036507845,
+          0.04500000178813934
+        ]
+      ],
+      "colliders": [
+        "Hull"
+      ],
+      "generated_utc": "2026-10-28T17:12:12+00:00"
+    }
+  },
+  "instances": [
+    {
+      "name": "AdapterBlender",
+      "prim": "/World/UserObjects/AdapterBlender",
+      "asset": "brass_adapter_male",
+      "reference": "../../library/brass_adapter_male/brass_adapter_male.usd",
+      "position": [
+        -0.55,
+        -0.12,
+        0.76225
+      ],
+      "orientation_wxyz": [
+        0.35355339059327384,
+        -0.35355339059327373,
+        0.6123724356957945,
+        0.6123724356957946
+      ],
+      "yaw_deg": 179.99999999999997,
+      "surface": "tabletop",
+      "support": null,
+      "static_override": false,
+      "asset_spec_sha256": "02d9544cfe05e8a46bfdd0b6e48e9f047bc2ee03af2348b825071fcd904a0cce"
+    },
+    {
+      "name": "AdapterFreeCAD",
+      "prim": "/World/UserObjects/AdapterFreeCAD",
+      "asset": "brass_adapter_male_cad",
+      "reference": "../../library/brass_adapter_male_cad/brass_adapter_male_cad.usd",
+      "position": [
+        -0.55,
+        -0.02,
+        0.76225
+      ],
+      "orientation_wxyz": [
+        0.35355339059327384,
+        -0.35355339059327373,
+        0.6123724356957945,
+        0.6123724356957946
+      ],
+      "yaw_deg": 179.99999999999997,
+      "surface": "tabletop",
+      "support": null,
+      "static_override": false,
+      "asset_spec_sha256": "56508c8bb21eb994dfadcd91350bba5610d55da54339aaa6abb18fa896205d46"
+    },
+    {
+      "name": "AdapterStepImport",
+      "prim": "/World/UserObjects/AdapterStepImport",
+      "asset": "brass_adapter_male_step_import",
+      "reference": "../../library/brass_adapter_male_step_import/brass_adapter_male_step_import.usd",
+      "position": [
+        -0.55,
+        0.09,
+        0.7515
+      ],
+      "orientation_wxyz": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "yaw_deg": 0.0,
+      "surface": "tabletop",
+      "support": null,
+      "static_override": false,
+      "asset_spec_sha256": "8199bd212b7714c8539579be41bab0dd5667d2ad9bfb602af5541befd49d72f1"
+    }
+  ],
+  "validation": {
+    "passed": true,
+    "summary": "76/76 checks passed",
+    "failed": [],
+    "physics_run": "yes"
+  },
+  "base_suites_on_derived_scene": {
+    "static": "[validate] 94/94 static checks passed; failed: []",
+    "dynamic": "[physics] 39/39 dynamic checks passed; failed: []"
+  },
+  "protected_files": {
+    "count": 43,
+    "content_changed": [],
+    "mtime_changed": []
+  },
+  "parent_project": {
+    "files": 51,
+    "changed": []
+  },
+  "gpu_memory": {
+    "generate_asset (brass_adapter_male)": {
+      "peak_mib": 6,
+      "samples": 2,
+      "total_mib": 12282
+    },
+    "generate_asset (brass_adapter_male_cad)": {
+      "peak_mib": 6,
+      "samples": 1,
+      "total_mib": 12282
+    },
+    "generate_asset (brass_adapter_male_step_import)": {
+      "peak_mib": 6,
+      "samples": 1,
+      "total_mib": 12282
+    },
+    "compose_scene": {
+      "peak_mib": 6,
+      "samples": 2,
+      "total_mib": 12282
+    },
+    "validate_asset_scene": {
+      "peak_mib": 1120,
+      "samples": 13,
+      "total_mib": 12282
+    },
+    "base suite: validate_scene": {
+      "peak_mib": 1052,
+      "samples": 30,
+      "total_mib": 12282
+    },
+    "base suite: run_physics_test": {
+      "peak_mib": 1218,
+      "samples": 17,
+      "total_mib": 12282
+    },
+    "preview": {
+      "peak_mib": 1474,
+      "samples": 16,
+      "total_mib": 12282
+    },
+    "idle": {
+      "peak_mib": 6,
+      "samples": 1,
+      "total_mib": 12282
+    }
+  }
+}
